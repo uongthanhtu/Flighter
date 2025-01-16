@@ -4,13 +4,13 @@
 
 ---
 
-##### Môn: PRJ301
+#### Môn: PRJ301
 
-##### Nhóm: 2025SPSJ
+#### Nhóm: 2025SPSJ
 
-##### Lớp: SE1832
+#### Lớp: SE1832
 
-##### Thành viên nhóm:
+#### Thành viên nhóm:
 
 | STT | Thành viên                    |
 | :-: | ----------------------------- |
@@ -73,6 +73,6 @@
 #### Có gì hãy liên hệ với nhóm mình:
 
 ```
-Mail: uongthanhtu5@gmail.com
+Mail: uongthanhtu5@gmail.com, tuutse183853@fpt.edu.vn
 PhoneNumber: 0368830230
 ```
