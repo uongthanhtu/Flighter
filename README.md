@@ -62,3 +62,15 @@
 **Sau khi bấm chọn chuyến bay**
 ![](img/img_readme_9.png)
 ![](img/img_readme_10.png)
+**Còn tiếp...**
+
+---
+
+###### Cảm ơn đã xem.
+
+###### Có gì hãy liên hệ với nhóm mình:
+
+```
+Mail: uongthanhtu5@gmail.com
+PhoneNumber: 0368830230
+```
