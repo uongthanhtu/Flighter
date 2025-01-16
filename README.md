@@ -10,7 +10,7 @@
 
 ##### Lớp: SE1832
 
-###### Thành viên nhóm:
+##### Thành viên nhóm:
 
 | STT | Thành viên                    |
 | :-: | ----------------------------- |
@@ -21,7 +21,7 @@
 
 ---
 
-###### Requirements:
+##### Requirements:
 
 ```
 1. Quản lý tài khoản Admin và User
@@ -44,7 +44,9 @@
     + Admin có thể không xóa chuyến bay khỏi csdl nhưng vẫn có thể ẩn chuyến bay
 ```
 
-###### Các hình ảnh tham khảo:
+---
+
+##### Các hình ảnh tham khảo:
 
 **Lưu ý:** _Đây chỉ là các hình ảnh của nhóm mình tham khảo từ các trang đặt vé lớn khi chưa tự thiết kế xong._
 **Với trang chủ:**
@@ -66,9 +68,9 @@
 
 ---
 
-###### Cảm ơn đã xem.
+##### Cảm ơn đã xem.
 
-###### Có gì hãy liên hệ với nhóm mình:
+##### Có gì hãy liên hệ với nhóm mình:
 
 ```
 Mail: uongthanhtu5@gmail.com
