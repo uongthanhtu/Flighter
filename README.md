@@ -29,6 +29,7 @@
 1. Quản lý chuyến bay:
     - Thêm, xóa, sửa chuyến bay.
     - Thêm, chỉnh sửa thông tin của chuyến bay.
+        + Mã chuyến bay, tên hãng, địa điểm, giá tiền, vị trí chỗ ngồi.
     - Trạng thái chuyến bay.
 2. Quản lý tài khoản người dùng.
     - Thêm, xóa, sửa tài khoản người dùng.
