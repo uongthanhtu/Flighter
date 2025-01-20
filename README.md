@@ -23,25 +23,30 @@
 
 ### Requirements:
 
+#### Admin
+
 ```
-1. Quản lý tài khoản Admin và User
-    + Admin : Thêm xóa sửa user, quản lý chuyến bay
-    + User: Đăng kí, đăng nhập, đặt vé
-2. Đổi mật khẩu User
-    + Có thể sử dụng form để đặt lại mật khẩu
-3. Quản lý chuyến bay (thêm, sửa, xóa).
-    + Admin có thể quản lý các thông tin về chuyến bay như mã số, hãng bay, thời gian, địa điểm khởi hành và đến, giá vé, số ghế trống
-4. Tìm kiếm chuyến bay theo ngày, giờ, địa điểm.
-5. Đặt chuyến bay và thanh toán
-    + Đang tham khảo mock API của MoMo, VNPay để giả lập thanh toán
-6. Đăng ký tài khoản bằng Google hoặc email.
-    + Đang tham khảo Google OAuth hoặc API để gửi email xác nhận
-7. Lịch sử đặt vé.
-    + Hiển thị cho user đó xem nếu đã đặt thành công chuyến bay (ngày giờ và địa điểm bay từ-đến)
-8. Xác nhận đặt vé qua email.
-    + Đang tham khảo JavaMail API
-9. Quản lý trạng thái chuyến bay (đang mở, đã đóng, bị hủy).
-    + Admin có thể không xóa chuyến bay khỏi csdl nhưng vẫn có thể ẩn chuyến bay
+1. Quản lý chuyến bay:
+    - Thêm, xóa, sửa chuyến bay.
+    - Thêm, chỉnh sửa thông tin của chuyến bay.
+    - Trạng thái chuyến bay.
+2. Quản lý tài khoản người dùng.
+    - Thêm, xóa, sửa tài khoản người dùng.
+```
+
+#### User
+
+```
+1. Quản lý tài khoản:
+    - Đăng ký tài khoản.
+    - Đăng nhập.
+    - Đổi mật khẩu.
+2. Đặt vé máy bay:
+    - Tìm kiếm chuyến bay theo ngày, giờ, và địa điểm.
+    - Đặt vé theo hạng vé, vị trí chỗ ngồi.
+    - Thanh toán (Momo, VNPay).
+3. Lịch sử đặt vé:
+    - Hiển thị các vé đã được đặt thành công.
 ```
 
 ---
