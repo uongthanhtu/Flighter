@@ -42,11 +42,12 @@
     - Đăng nhập.
     - Đổi mật khẩu.
 2. Đặt vé máy bay:
-    - Tìm kiếm chuyến bay theo ngày, giờ, và địa điểm.
+    - Tìm kiếm chuyến bay theo ngày, giờ, địa điểm, giá tiền.
     - Đặt vé theo hạng vé, vị trí chỗ ngồi.
+        + Có thể chọn được chính xác vị trí chỗ ngồi nếu chưa ai đặt chỗ đó.
     - Thanh toán (Momo, VNPay).
 3. Lịch sử đặt vé:
-    - Hiển thị các vé đã được đặt thành công.
+    - Hiển thị thông tin các chuyến bay đã được đặt thành công.
 ```
 
 ---
