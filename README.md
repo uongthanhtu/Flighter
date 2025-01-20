@@ -30,6 +30,7 @@
     - Thêm, xóa, sửa chuyến bay.
     - Thêm, chỉnh sửa thông tin của chuyến bay.
         + Mã chuyến bay, tên hãng, địa điểm, giá tiền, hạng vé, vị trí chỗ ngồi.
+        + Tự động cập nhật trạng thái chỗ ngồi nếu đã có người đặt.
     - Trạng thái chuyến bay.
 2. Quản lý tài khoản người dùng.
     - Thêm, xóa, sửa tài khoản người dùng.
