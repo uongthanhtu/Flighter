@@ -46,39 +46,11 @@
 2. Đặt vé máy bay:
     - Tìm kiếm chuyến bay theo ngày, giờ, địa điểm, giá tiền.
     - Đặt vé theo hạng vé, vị trí chỗ ngồi.
-        + Có thể chọn được chính xác vị trí chỗ ngồi nếu chưa ai đặt chỗ đó.
+        + Chọn được chính xác vị trí chỗ ngồi nếu chưa ai đặt chỗ đó.
     - Thanh toán (Momo, VNPay).
 3. Lịch sử đặt vé:
     - Hiển thị thông tin các chuyến bay đã được đặt thành công.
 ```
-
----
-
-### Các hình ảnh tham khảo:
-
-**Lưu ý:** _Đây chỉ là các hình ảnh của nhóm mình tham khảo từ các trang đặt vé lớn khi chưa tự thiết kế xong._
-**Với trang chủ:**
-![](img/img_readme_1.png)
-![](img/img_readme_2.png)
-![](img/img_readme_3.png)
-![](img/img_readme_4.png)
-![](img/img_readme_5.png)
-
-**Sau khi bấm tìm kiếm chuyến bay sau khi nhập form xong**
-![](img/img_readme_6.png)
-![](img/img_readme_7.png)
-**Sau khi bấm vào 1 chuyến bay bất kì nó sẽ hiển thị thông tin đầy đủ hơn**
-![](img/img_readme_8.png)
-**Sau khi bấm chọn chuyến bay**
-![](img/img_readme_9.png)
-![](img/img_readme_10.png)
-**Còn tiếp...**
-
----
-
-#### Cảm ơn đã xem.
-
-#### Có gì hãy liên hệ với nhóm mình:
 
 ```
 Mail: uongthanhtu5@gmail.com, tuutse183853@fpt.edu.vn
