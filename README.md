@@ -49,7 +49,7 @@
     - Thanh toán (Momo, VNPay).
 3. Lịch sử đặt vé:
     - Hiển thị thông tin các chuyến bay đã được đặt thành công.
-    - Thông tin chuyến bay ( ngày, giờ, điểm đi, điểm đến, hãng bay).
+    - Thông tin chuyến bay (mã số, hãng bay, thời gian, địa điểm).
 4. Thông báo qua Email:
     - Gửi email xác nhận đặt vé thành công.
     - Gửi thông báo nếu chuyến bay bị hủy hoặc hoãn.
