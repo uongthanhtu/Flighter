@@ -45,7 +45,7 @@
     - Log in and log out.
     - Change password.
 2. Flight Search & Booking
-    - Search for flights by date, time, location, and price.
+    - Search for flights by date, time, departure, arrival Ariport.
     - Select fare class (Economy, Business, First Class).
     - Choose an exact seat (if available).
     - Make payments via Momo, VNPay.
