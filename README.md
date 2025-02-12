@@ -1,18 +1,16 @@
 <!-- # prj301-25sp-se1832-01 -->
 
-# Đặt vé máy bay trực tuyến
+# Online Flight Booking
 
 ---
 
-#### Môn: PRJ301
+#### Course: PRJ301
 
-#### Nhóm: 2025SPSJ
+#### Team: 2025SPSJ
 
-#### Lớp: SE1832
+#### Class: SE1832
 
-#### Thành viên nhóm:
-
-| STT | Thành viên                    |
+| STT | Member                        |
 | :-: | ----------------------------- |
 |  1  | SE183853 - Uông Thanh Tú      |
 |  2  | SE184137 - Nguyễn Hoài Phương |
@@ -23,36 +21,40 @@
 
 ### Requirements:
 
-#### Admin
+#### Admin Features
 
 ```
-1. Quản lý chuyến bay:
-    - Thêm, xóa, sửa chuyến bay.
-    - Cập nhật thông tin chuyến bay (mã số, hãng bay, thời gian, địa điểm, giá vé, số ghế trống).
-    - Tự động cập nhật trạng thái chỗ ngồi nếu đã có người đặt.
-    - Quản lý trạng thái chuyến bay (đang mở, đã đóng, bị hủy).
-2. Quản lý tài khoản người dùng.
-    - Thêm, xóa, sửa tài khoản người dùng.
+1. Flight Management:
+    - Add, delete, and update flight details.
+    - Update flight information (Flight ID, Airline, Time, Location, Ticket Price, Available Seats).
+    - Automatically update seat status when booked.
+    - Manage flight status (Open, Delayed, Canceled).
+2. User Account Management:
+    - Add, delete, and edit user accounts.
+3. Data Management & Reports:
+    - User Statistics – Track user activity and engagement.
+    - Booking & Transaction Reports – Generate reports on flight bookings and transactions.
+    - Flight Management Reports – Monitor flight schedules, occupancy rates, and operational efficiency.
 ```
 
-#### User
+#### User Features
 
 ```
-1. Quản lý tài khoản:
-    - Đăng ký tài khoản (có thể đăng kí qua Email hoặc Google).
-    - Đăng nhập, đăng xuất.
-    - Đổi mật khẩu.
-2. Tìm kiếm và đặt vé máy bay:
-    - Tìm kiếm chuyến bay theo ngày, giờ, địa điểm, giá tiền.
-    - Chọn hạng vé (phổ thông, thương gia, hạng nhất).
-    - Chọn vị trí chỗ ngồi chính xác (nếu vị trí đó trống).
-    - Thanh toán (Momo, VNPay).
-3. Lịch sử đặt vé:
-    - Hiển thị thông tin các chuyến bay đã được đặt thành công.
-    - Thông tin chuyến bay (mã số, hãng bay, thời gian, địa điểm, hạng vé, vị trí).
-4. Thông báo qua Email:
-    - Gửi email xác nhận đặt vé thành công.
-    - Gửi thông báo nếu chuyến bay bị hủy hoặc hoãn.
+1. Account Management
+    - Register an account (via Email or Google).
+    - Log in and log out.
+    - Change password.
+2. Flight Search & Booking
+    - Search for flights by date, time, location, and price.
+    - Select fare class (Economy, Business, First Class).
+    - Choose an exact seat (if available).
+    - Make payments via Momo, VNPay.
+3. Booking History
+    - View successfully booked flights.
+    - Flight details (Flight ID, Airline, Time, Location, Fare Class, Seat Number).
+4. Email Notifications
+    - Receive confirmation emails for successful bookings.
+    - Get notifications if a flight is canceled or delayed.
 ```
 
 ### GUI
