@@ -32,9 +32,9 @@
 2. User Account Management:
     - Add, delete, and edit user accounts.
 3. Data Management & Reports:
-    - User Statistics – Track user activity and engagement.
-    - Booking & Transaction Reports – Generate reports on flight bookings and transactions.
-    - Flight Management Reports – Monitor flight schedules, occupancy rates, and operational efficiency.
+    - User Statistics
+    - Booking & Transaction Reports
+    - Flight Management Reports
 ```
 
 #### User Features
