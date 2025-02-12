@@ -4,11 +4,11 @@
 
 ---
 
-#### Course: PRJ301
+### Course: PRJ301
 
-#### Team: 2025SPSJ
+### Team: 2025SPSJ
 
-#### Class: SE1832
+### Class: SE1832
 
 | STT | Member                        |
 | :-: | ----------------------------- |
@@ -85,6 +85,8 @@
 ![seat](img/bookingseat.jpg)
 
 #### Payment
+
+![payment](img/payment.jpg)
 
 #### Booking History
 
