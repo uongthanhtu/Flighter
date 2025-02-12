@@ -87,7 +87,7 @@
 #### Booking History
 
 ![bookinghis](img/bookinghis1.jpg)
-![bookinghis](img/bookingseat.jpg)
+![bookinghis](img/bookinghis.jpg)
 
 ### Admin
 
