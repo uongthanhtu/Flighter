@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Flight - Take your dream to the new height</title>
+    <title>Flighter - Take your dream to the new height</title>
 
     <link
       rel="apple-touch-icon"
@@ -83,7 +83,48 @@
     <meta name="theme-color" content="#ffffff" />
 
     <link rel="stylesheet" href="./styles/reset.css" />
+    <link rel="stylesheet" href="../resources/fonts/stylesheet.css" />
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
-  <body></body>
+  <body>
+    <main>
+      <header class="header">
+        <div class="content">
+          <div class="header-container">
+            <nav class="navbar">
+              <!-- Logo -->
+              <a href="index.html">
+                <img
+                  src="./img/logo-removebg-preview.png"
+                  alt="logo"
+                  class="logo"
+                />
+              </a>
+              <!-- Navigation -->
+              <ul>
+                <li><a href="#!">My booking</a></li>
+                <li class="support-btn_wrapper">
+                  <a href="#!" class="support-btn">Support</a>
+                </li>
+              </ul>
+              <form action="/search" method="GET" class="search-form">
+                <input
+                  type="text"
+                  name="search"
+                  placeholder="Search destinations ..."
+                />
+                <button type="submit">Search</button>
+              </form>
+              <!-- Action -->
+              <div class="actions">
+                <a href="#!">Sign in</a>
+                <a href="#!">Sign up</a>
+              </div>
+            </nav>
+            <img src="./img/plane.png" alt="hero-img" class="hero-img" />
+          </div>
+        </div>
+      </header>
+    </main>
+  </body>
 </html>
