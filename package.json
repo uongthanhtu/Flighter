@@ -1,0 +1,20 @@
+{
+  "name": "prj301-25sp-se1832-01",
+  "version": "1.0.0",
+  "description": "<!-- # prj301-25sp-se1832-01 -->",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass front-end/static/scss:front-end/static/css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dunghuynh-teaching/prj301-25sp-se1832-01.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dunghuynh-teaching/prj301-25sp-se1832-01/issues"
+  },
+  "homepage": "https://github.com/dunghuynh-teaching/prj301-25sp-se1832-01#readme"
+}

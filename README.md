@@ -63,53 +63,53 @@
 
 #### Home
 
-![home](img/homepage.jpg)
+![home](images/homepage.jpg)
 
 #### Login & Register
 
-![login](img/login.png)
-![register](img/register.png)
+![login](images/login.png)
+![register](images/register.png)
 
 #### Search by departure, arrival Ariport and departure date
 
-![search](img/search.jpg)
+![search](images/search.jpg)
 
 #### Flight Details Display:
 
 #### After selecting a flight, the system will display the following details:
 
-![bookingdetails](img/bookingdetail.jpg)
+![bookingdetails](images/bookingdetail.jpg)
 
 #### Seat Selection: After viewing flight details and selecting a fare class, the user will proceed to seat selection
 
-![seat](img/bookingseat.jpg)
+![seat](images/bookingseat.jpg)
 
 #### Payment
 
-![payment](img/payment.jpg)
+![payment](images/payment.jpg)
 
 #### Booking History
 
-![bookinghis](img/bookinghis1.jpg)
-![bookinghis](img/bookinghis.jpg)
+![bookinghis](images/bookinghis1.jpg)
+![bookinghis](images/bookinghis.jpg)
 
 ### Admin
 
 #### Flight List Management
 
-![flightlistmanage](img/admin_dashboard.jpg)
+![flightlistmanage](images/admin_dashboard.jpg)
 
 #### Add Flight
 
-![addflight](img/admin_addflight.jpg)
+![addflight](images/admin_addflight.jpg)
 
 #### User Account Management
 
-![useraccuntmanagement](img/admin_useraccount.jpg)
+![useraccuntmanagement](images/admin_useraccount.jpg)
 
 #### Report & Analytics
 
-![report](img/admin_report.jpg)
+![report](images/admin_report.jpg)
 
 ```
 Mail: uongthanhtu5@gmail.com, tuutse183853@fpt.edu.vn
