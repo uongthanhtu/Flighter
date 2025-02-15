@@ -15,6 +15,8 @@ html {
 }
 
 body {
+  //height: 4000px;
+
   font: {
     size: 1.6rem;
     family: "Poppins", sans-serif;
@@ -41,16 +43,24 @@ a {
   background: hsl(201.43deg 76.36% 78.43%);
   height: 100vh;
 
-  &-container {
+  &-img-container {
     position: relative;
+  }
+
+  .container {
+    height: 100%;
   }
 }
 
 .navbar {
-  padding: 10px 0;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  padding: 10px 10%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: hsl(201.43deg 76.36% 78.43%);
 
   ul {
     display: flex;
@@ -58,11 +68,19 @@ a {
     a {
       font: {
         weight: 600;
-        size: 3rem;
+        size: 2rem;
       }
       color: var(--text-primary-color);
       padding: 14px;
       display: inline-block;
+    }
+
+    a:first-child {
+      transition: 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        color: #fff;
+      }
     }
   }
 }
@@ -74,6 +92,12 @@ a {
     margin-left: 100px;
     background: hsl(236.79deg 53.04% 51.57%);
     border-radius: $btnBorderRadius;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      background: #f39c12;
+      transform: scale(1.1);
+    }
   }
 }
 
@@ -122,10 +146,84 @@ a {
       size: 2rem;
     }
     padding: 10px;
+    transition: 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+      color: #333;
+    }
   }
 }
 
 .hero-img {
   position: absolute;
   width: 60%;
+}
+
+.flight-query- {
+  &box {
+    position: relative;
+    z-index: 10;
+    height: 80%;
+  }
+
+  &form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: auto;
+    height: 250px;
+    border: 2px solid hsl(189.54deg 76.65% 38.63%);
+    border-radius: $btnBorderRadius;
+
+    button {
+      font-size: 2rem;
+      font-weight: 500;
+      padding: 20px 15px;
+      border: 1px solid #ccc;
+      border-radius: $btnBorderRadius;
+      background: #fff;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+
+      &:hover {
+        background: #8e44ad;
+        color: #fff;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.form-group {
+  label,
+  input {
+    display: block;
+  }
+
+  label {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--text-primary-color);
+    margin-bottom: 20px;
+  }
+
+  input {
+    font-size: 2rem;
+    padding: 5px 10px;
+    height: 50px;
+    border-radius: 10px;
+    outline: none;
+    border: {
+      width: 1px 1px 6px 1px;
+      color: hsl(336.79deg 59.55% 65.1%);
+      style: solid;
+    }
+    box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
+    -webkit-box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
+    -moz-box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
+  }
+
+  .custom-date {
+    color: var(--text-primary-color);
+  }
 }

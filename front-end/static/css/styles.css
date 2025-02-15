@@ -31,25 +31,38 @@ a {
   background: hsl(201.43, 76.36%, 78.43%);
   height: 100vh;
 }
-.header-container {
+.header-img-container {
   position: relative;
+}
+.header .container {
+  height: 100%;
 }
 
 .navbar {
-  padding: 10px 0;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  padding: 10px 10%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: hsl(201.43, 76.36%, 78.43%);
 }
 .navbar ul {
   display: flex;
 }
 .navbar ul a {
   font-weight: 600;
-  font-size: 3rem;
+  font-size: 2rem;
   color: var(--text-primary-color);
   padding: 14px;
   display: inline-block;
+}
+.navbar ul a:first-child {
+  transition: 0.3s ease, transform 0.2s ease;
+}
+.navbar ul a:first-child:hover {
+  color: #fff;
 }
 
 .support-btn {
@@ -59,6 +72,11 @@ a {
   margin-left: 100px;
   background: hsl(236.79, 53.04%, 51.57%);
   border-radius: 999px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.support-btn__wrapper:hover {
+  background: #f39c12;
+  transform: scale(1.1);
 }
 
 .logo {
@@ -100,11 +118,72 @@ a {
   font-weight: 500;
   font-size: 2rem;
   padding: 10px;
+  transition: 0.2s ease, transform 0.2s ease;
+}
+.actions a:hover {
+  color: #333;
 }
 
 .hero-img {
   position: absolute;
   width: 60%;
+}
+
+.flight-query-box {
+  position: relative;
+  z-index: 10;
+  height: 80%;
+}
+.flight-query-form {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: auto;
+  height: 250px;
+  border: 2px solid hsl(189.54, 76.65%, 38.63%);
+  border-radius: 999px;
+}
+.flight-query-form button {
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 20px 15px;
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  background: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.flight-query-form button:hover {
+  background: #8e44ad;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.form-group label,
+.form-group input {
+  display: block;
+}
+.form-group label {
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--text-primary-color);
+  margin-bottom: 20px;
+}
+.form-group input {
+  font-size: 2rem;
+  padding: 5px 10px;
+  height: 50px;
+  border-radius: 10px;
+  outline: none;
+  border-width: 1px 1px 6px 1px;
+  border-color: hsl(336.79, 59.55%, 65.1%);
+  border-style: solid;
+  box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
+  -webkit-box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
+  -moz-box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
+}
+.form-group .custom-date {
+  color: var(--text-primary-color);
 }
 
 /*# sourceMappingURL=styles.css.map */
