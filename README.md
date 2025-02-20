@@ -29,6 +29,7 @@
     - Update flight information (Flight ID, Airline, Time, Location, Ticket Price, Available Seats).
     - Automatically update seat status when booked.
     - Manage flight status (Open, Delayed, Canceled).
+    - Manage tickets.
 2. User Account Management:
     - Add, delete, and edit user accounts.
 3. Data Management & Reports:
@@ -56,6 +57,10 @@
     - Receive confirmation emails for successful bookings.
     - Get notifications if a flight is canceled or delayed.
 ```
+
+### Database
+
+![erd](images/ERD.png)
 
 ### GUI
 
@@ -98,6 +103,10 @@
 #### Flight List Management
 
 ![flightlistmanage](images/admin_dashboard.jpg)
+
+#### Ticket List Management (After clicking "View" button)
+
+![ticketlist](images/admin_ticketmana.png)
 
 #### Add Flight
 
