@@ -133,12 +133,15 @@ table {
   border-spacing: 0;
 }
 
-.row > *, .container-fluid, .container {
+.row > *,
+.container-fluid,
+.container {
   padding-left: calc(var(--grid-gutter-x) * 0.5);
   padding-right: calc(var(--grid-gutter-x) * 0.5);
 }
 
-.container-fluid, .container {
+.container-fluid,
+.container {
   --grid-gutter-x: 30px;
   --grid-gutter-y: 0;
   width: 1370px;
