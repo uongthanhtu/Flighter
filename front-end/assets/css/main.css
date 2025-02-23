@@ -133,15 +133,12 @@ table {
   border-spacing: 0;
 }
 
-.row > *,
-.container-fluid,
-.container {
+.row > *, .container-fluid, .container {
   padding-left: calc(var(--grid-gutter-x) * 0.5);
   padding-right: calc(var(--grid-gutter-x) * 0.5);
 }
 
-.container-fluid,
-.container {
+.container-fluid, .container {
   --grid-gutter-x: 30px;
   --grid-gutter-y: 0;
   width: 1370px;
@@ -1219,14 +1216,15 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: hsl(201.43, 76.36%, 78.43%);
+  background: rgba(244, 246, 247, 0.1);
+  backdrop-filter: blur(20px);
 }
 .navbar ul {
   display: flex;
 }
 .navbar ul a {
   font-weight: 600;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--text-primary-color);
   padding: 14px;
   display: inline-block;
@@ -1304,7 +1302,7 @@ a {
 
 .flight-query-box {
   position: relative;
-  z-index: 10;
+  z-index: 2;
   height: 80%;
 }
 .flight-query-form {
@@ -1357,6 +1355,77 @@ a {
 }
 .form-group .custom-date {
   color: var(--text-primary-color);
+}
+
+.feature {
+  height: 100vh;
+  color: var(--text-primary-color);
+}
+.feature--title {
+  position: relative;
+  font-size: 4rem;
+  font-weight: 600;
+  text-align: center;
+  margin: 100px 0px 150px;
+}
+.feature--title::before, .feature--title::after {
+  position: absolute;
+  top: 17px;
+  display: inline-block;
+  content: "";
+  width: 300px;
+  height: 6px;
+  background-color: #4158d0;
+  background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  border-radius: 999px;
+}
+.feature--title::before {
+  left: 150px;
+}
+.feature--title::after {
+  right: 150px;
+}
+.feature--article {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 350px;
+}
+.feature--block:nth-of-type(1) .article--img {
+  background: url(/front-end/assets/img/tourist-attraction.jpg) center/cover no-repeat;
+}
+.feature--block:nth-of-type(2) .article--img {
+  background: url(/front-end/assets/img/travel-guide.jpg) center/cover no-repeat;
+  background-position: 3% center;
+}
+.feature--block:nth-of-type(3) .article--img {
+  background: url(/front-end/assets/img/tour-review.jpg) center/cover no-repeat;
+}
+.feature--block:nth-of-type(4) .article--img {
+  background: orange url(/front-end/assets/img/flight-review.jpeg) center/cover no-repeat;
+  background-size: 120%;
+}
+
+.article--title {
+  position: absolute;
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px 25px;
+  background: #fff;
+  border-bottom: 1px solid black;
+  width: 100%;
+  z-index: 2;
+}
+.article--img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+.article--img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=main.css.map */
