@@ -1233,7 +1233,29 @@ a {
   transition: 0.3s ease, transform 0.2s ease;
 }
 .navbar ul a:first-child:hover {
-  color: #fff;
+  opacity: 0.8;
+}
+
+.booking-btn {
+  position: relative;
+}
+.booking-btn::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 32px;
+  width: 100px;
+  height: 4px;
+  border-radius: 999px;
+  background-color: #4158d0;
+  background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  opacity: 0;
+  transform: scaleX(0);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.booking-btn:hover::before {
+  opacity: 1;
+  transform: scaleX(1);
 }
 
 .support-btn {
@@ -1257,6 +1279,9 @@ a {
 .search-form {
   display: flex;
   align-items: center;
+  width: 100%;
+  min-width: 250px;
+  max-width: 350px;
   background: #fff;
   border-radius: 25px;
   padding: 5px;
@@ -1267,7 +1292,6 @@ a {
   outline: none;
   padding: 10px;
   font-size: 1.6rem;
-  width: 300px;
   border-radius: 25px 0 0 25px;
 }
 .search-form button {
@@ -1275,6 +1299,7 @@ a {
   border: none;
   color: #fff;
   padding: 10px 15px;
+  margin-left: auto;
   font-size: 1.6rem;
   cursor: pointer;
   border-radius: 0 25px 25px 0;
@@ -1316,9 +1341,9 @@ a {
 }
 .flight-query-form button {
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 600;
   padding: 20px 15px;
-  border: 1px solid #ccc;
+  border: 1px solid #555;
   border-radius: 999px;
   background: #fff;
   cursor: pointer;
@@ -1358,7 +1383,7 @@ a {
 }
 
 .feature {
-  height: 100vh;
+  height: calc(100vh - 126px);
   color: var(--text-primary-color);
 }
 .feature--title {
@@ -1426,6 +1451,113 @@ a {
 .article--img:hover {
   transform: scale(1.2);
   cursor: pointer;
+}
+
+.stats {
+  padding: 50px 0 75px;
+  background: #78beec url(/front-end/assets/img/sky.jpg) center/cover no-repeat;
+}
+.stats--title {
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.stats--title__left, .stats--title__right {
+  font-family: "Hornbill Personal Use";
+  font-weight: 800;
+  font-style: italic;
+}
+.stats--title__left {
+  font-size: 5rem;
+  color: #5002fc;
+  width: 300px;
+}
+.stats--title__right {
+  font-size: 10rem;
+  color: hsl(182.94, 76.47%, 63.33%);
+}
+.stats--num, .stats--desc {
+  display: block;
+  text-align: center;
+}
+.stats--num {
+  color: #5002fc;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+.stats--desc {
+  color: var(--text-primary-color);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.5em;
+  letter-spacing: 1px;
+  width: 150px;
+  margin: 20px auto 0;
+}
+
+.footer {
+  padding: 50px 0;
+}
+.footer--title {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.media {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+.media--icon {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+.media--icon + .media--icon {
+  margin-left: 10px;
+}
+
+.contact {
+  font-weight: 600;
+  margin-top: 7px;
+}
+.contact span {
+  font-weight: 400;
+}
+
+.download-logo {
+  margin-top: 10px;
+  width: 150px;
+  height: 90px;
+}
+
+.address {
+  margin-top: 10px;
+}
+
+.sponsorship {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+.sponsorship span {
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 1999px) {
+  .feature--title::before, .feature--title::after {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 991px) {
+  .feature--title::before, .feature--title::after {
+    width: 100px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .feature--title::before, .feature--title::after {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

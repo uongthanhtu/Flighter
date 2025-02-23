@@ -37,7 +37,7 @@ a {
   text-decoration: none;
 }
 
-// Header
+// Header  ----------------------------------------------------------------------------------------------------------------------------------------
 
 .header {
   background: hsl(201.43deg 76.36% 78.43%);
@@ -80,9 +80,38 @@ a {
       transition: 0.3s ease, transform 0.2s ease;
 
       &:hover {
-        color: #fff;
+        opacity: 0.8;
       }
     }
+  }
+}
+
+.booking-btn {
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 32px;
+    width: 100px;
+    height: 4px;
+    border-radius: 999px;
+    background-color: #4158d0;
+    background-image: linear-gradient(
+      43deg,
+      #4158d0 0%,
+      #c850c0 46%,
+      #ffcc70 100%
+    );
+    opacity: 0;
+    transform: scaleX(0);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  &:hover::before {
+    opacity: 1;
+    transform: scaleX(1);
   }
 }
 
@@ -109,6 +138,9 @@ a {
 .search-form {
   display: flex;
   align-items: center;
+  width: 100%;
+  min-width: 250px;
+  max-width: 350px;
   background: #fff;
   border-radius: 25px;
   padding: 5px;
@@ -119,7 +151,6 @@ a {
     outline: none;
     padding: 10px;
     font-size: 1.6rem;
-    width: 300px;
     border-radius: 25px 0 0 25px;
   }
 
@@ -128,6 +159,7 @@ a {
     border: none;
     color: #fff;
     padding: 10px 15px;
+    margin-left: auto;
     font-size: 1.6rem;
     cursor: pointer;
     border-radius: 0 25px 25px 0;
@@ -179,9 +211,9 @@ a {
 
     button {
       font-size: 2rem;
-      font-weight: 500;
+      font-weight: 600;
       padding: 20px 15px;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       border-radius: $btnBorderRadius;
       background: #fff;
       cursor: pointer;
@@ -230,8 +262,10 @@ a {
   }
 }
 
+// Feature ----------------------------------------------------------------------------------------------------------------------------------------
+
 .feature {
-  height: 100vh;
+  height: calc(100vh - 126px);
   color: var(--text-primary-color);
 
   &--title {
@@ -319,5 +353,142 @@ a {
   &--img:hover {
     transform: scale(1.2);
     cursor: pointer;
+  }
+}
+
+// Stats ----------------------------------------------------------------------------------------------------------------------------------------
+.stats {
+  padding: 50px 0 75px;
+  background: #78beec url(/front-end/assets/img/sky.jpg) center/cover no-repeat;
+
+  &--title {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 100px;
+
+    &__left,
+    &__right {
+      font: {
+        family: "Hornbill Personal Use";
+        weight: 800;
+        style: italic;
+      }
+    }
+
+    &__left {
+      font-size: 5rem;
+      color: #5002fc;
+      width: 300px;
+    }
+
+    &__right {
+      font-size: 10rem;
+      color: hsl(182.94deg 76.47% 63.33%);
+    }
+  }
+
+  &--num,
+  &--desc {
+    display: block;
+    text-align: center;
+  }
+
+  &--num {
+    color: #5002fc;
+    font-weight: 600;
+    font-size: 2.5rem;
+  }
+
+  &--desc {
+    color: var(--text-primary-color);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.5em;
+    letter-spacing: 1px;
+    width: 150px;
+    margin: 20px auto 0;
+  }
+}
+
+// Footer ----------------------------------------------------------------------------------------------------------------------------------------
+
+.footer {
+  padding: 50px 0;
+
+  &--title {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+}
+
+.media {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  &--icon {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+
+    + .media--icon {
+      margin-left: 10px;
+    }
+  }
+}
+
+.contact {
+  font-weight: 600;
+  margin-top: 7px;
+
+  span {
+    font-weight: 400;
+  }
+}
+
+.download-logo {
+  margin-top: 10px;
+  width: 150px;
+  height: 90px;
+}
+
+.address {
+  margin-top: 10px;
+}
+
+.sponsorship {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+
+  span {
+    margin-left: 10px;
+  }
+}
+//------------------- --------------- Custom responsive ------------------- --------------- ------------------- ---------------
+@media screen and (max-width: 1999px) {
+  .feature {
+    &--title::before,
+    &--title::after {
+      width: 200px;
+    }
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .feature {
+    &--title::before,
+    &--title::after {
+      width: 100px;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .feature {
+    &--title::before,
+    &--title::after {
+      display: none;
+    }
   }
 }

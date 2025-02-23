@@ -152,3 +152,40 @@
   font-style: italic;
   font-display: swap;
 }
+
+/* ----------- hornbill -------------- */
+@font-face {
+  font-family: "Hornbill Personal Use";
+  src: url("hornbill/HornbillPersonalUse-BlackIta.woff2") format("woff2"),
+    url("hornbill/HornbillPersonalUse-BlackIta.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hornbill Personal Use";
+  src: url("hornbill/HornbillPersonalUse-Bold.woff2") format("woff2"),
+    url("hornbill/HornbillPersonalUse-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hornbill Personal Use";
+  src: url("hornbill/HornbillPersonalUse-BoldIta.woff2") format("woff2"),
+    url("hornbill/HornbillPersonalUse-BoldIta.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Hornbill Personal Use";
+  src: url("hornbill/HornbillPersonalUse-Black.woff2") format("woff2"),
+    url("hornbill/HornbillPersonalUse-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
