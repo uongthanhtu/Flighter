@@ -1342,6 +1342,7 @@ a {
 .flight-query-form button {
   font-size: 2rem;
   font-weight: 600;
+  color: var(--text-primary-color);
   padding: 20px 15px;
   border: 1px solid #555;
   border-radius: 999px;
@@ -1558,6 +1559,30 @@ a {
   .feature--title::before, .feature--title::after {
     display: none;
   }
+}
+.flight {
+  padding: 10px 0;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+  margin-top: 30px;
+}
+.flight * {
+  color: var(--text-primary-color);
+}
+.flight--code {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.flight--time, .flight--location {
+  display: flex;
+  justify-content: space-around;
+  font-size: 2rem;
+  padding: 5px 0;
+  margin-bottom: 20px;
+}
+.flight--location, .flight--time__bold {
+  font-weight: 600;
 }
 
 /*# sourceMappingURL=main.css.map */
