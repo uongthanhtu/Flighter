@@ -60,7 +60,8 @@
 
 ### Database
 
-![erd](images/ERD.png)
+![erd](images/ERD.jpg)
+![diagrams](images/diagrams.png)
 
 ### GUI
 
@@ -88,6 +89,10 @@
 #### Seat Selection: After viewing flight details and selecting a fare class, the user will proceed to seat selection
 
 ![seat](images/bookingseat.jpg)
+
+#### Passenger information
+
+![passengerinfo](images/passengerInfo.jpg)
 
 #### Payment
 
