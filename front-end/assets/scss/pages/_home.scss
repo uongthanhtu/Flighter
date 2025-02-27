@@ -62,6 +62,7 @@ a {
   justify-content: space-between;
   background: rgba(244, 246, 247, 0.1);
   backdrop-filter: blur(20px);
+  border-bottom: 1px solid hsl(201.43deg 76.36% 78.43%);
 
   ul {
     display: flex;
@@ -212,6 +213,7 @@ a {
     button {
       font-size: 2rem;
       font-weight: 600;
+      color: var(--text-primary-color);
       padding: 20px 15px;
       border: 1px solid #555;
       border-radius: $btnBorderRadius;

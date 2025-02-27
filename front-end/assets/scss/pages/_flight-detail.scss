@@ -1,0 +1,102 @@
+.flight {
+  &--detail {
+    padding: 100px 0px;
+
+    &--code {
+      padding: 20px 0;
+    }
+    &--code,
+    &--component--header {
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--text-primary-color);
+    }
+
+    &--component {
+      padding: 10px 0px;
+      &--header {
+        font-size: 2rem;
+      }
+    }
+
+    &--ticket {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      input[type="radio"] {
+        display: none;
+      }
+
+      /* Create custom radio */
+      .custom-radio {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        border: 2px solid #007bff;
+        display: inline-block;
+        position: relative;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      /* Create checked state */
+      input[type="radio"]:checked + .custom-radio {
+        background-color: #007bff;
+        border: 2px solid #007bff;
+      }
+
+      input[type="radio"]:checked + .custom-radio::after {
+        content: "";
+        width: 8px;
+        height: 8px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      /* Make the label clickable */
+      .radio-label {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        gap: 10px;
+      }
+    }
+
+    &--btn {
+      display: inline-block;
+      color: var(--text-primary-color);
+      font-size: 2.5rem;
+      font-weight: 600;
+      padding: 20px 30px;
+      background: #80d954;
+      border-radius: 10px;
+      margin-top: 50px;
+      margin-left: auto;
+      text-align: center;
+      transition: scale 0.2s ease;
+
+      &:hover {
+        scale: 1.1;
+      }
+    }
+  }
+  &--ticket--price,
+  &--detail--component--value {
+    color: var(--text-primary-color);
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 6px;
+    background: #d9d9d9;
+    padding: 10px 0;
+  }
+
+  &--ticket--price {
+    padding: 10px 20px;
+  }
+}

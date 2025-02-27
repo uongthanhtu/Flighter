@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Details</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <main>
+      <nav class="navbar">
+        <!-- Logo -->
+        <a href="index.html">
+          <img
+            src="./assets/img/logo-removebg-preview.png"
+            alt="logo"
+            class="logo"
+          />
+        </a>
+        <!-- Navigation -->
+        <ul>
+          <li>
+            <a href="#!" class="booking-btn">My booking</a>
+          </li>
+          <li class="support-btn__wrapper">
+            <a href="#!" class="support-btn">Support</a>
+          </li>
+        </ul>
+        <form action="/search" method="GET" class="search-form">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search destinations ..."
+          />
+          <button type="submit">Search</button>
+        </form>
+        <!-- Action -->
+        <div class="actions">
+          <a href="#!">Sign in</a>
+          <a href="#!">Sign up</a>
+        </div>
+      </nav>
+      <section class="flight--detail">
+        <div class="container">
+          <h1 class="flight--detail--code">Flight No: FL802</h1>
+          <div class="flight--detail--component row">
+            <h2 class="flight--detail--component--header col-4">Airline:</h2>
+            <p class="flight--detail--component--value col-8">Flighter</p>
+          </div>
+
+          <div class="flight--detail--component row">
+            <h2 class="flight--detail--component--header col-4">
+              Departure Airport:
+            </h2>
+            <p class="flight--detail--component--value col-8">
+              Tan Son Nhat Airport - Ho Chi Minh City
+            </p>
+          </div>
+
+          <div class="flight--detail--component row">
+            <h2 class="flight--detail--component--header col-4">
+              Arrival Airport:
+            </h2>
+            <p class="flight--detail--component--value col-8">
+              Narita Airport - Tokyo
+            </p>
+          </div>
+
+          <div class="flight--detail--component row">
+            <h2 class="flight--detail--component--header col-4">
+              Departure Date & Time:
+            </h2>
+            <p class="flight--detail--component--value col-8">
+              23:55, 26/03/2025 (Local Time)
+            </p>
+          </div>
+
+          <div class="flight--detail--component row">
+            <h2 class="flight--detail--component--header col-4">
+              Arrival Date & Time:
+            </h2>
+            <p class="flight--detail--component--value col-8">
+              7:30, 27/03/2025 (Local Time)
+            </p>
+          </div>
+
+          <div class="flight--detail--component row">
+            <h2 class="flight--detail--component--header col-4">
+              Aircraft Type:
+            </h2>
+            <p class="flight--detail--component--value col-8">Boeing 767</p>
+          </div>
+
+          <div class="flight--detail--component row">
+            <h2 class="flight--detail--component--header col-4">
+              Baggage Allowance:
+            </h2>
+            <p class="flight--detail--component--value col-8">7kg</p>
+          </div>
+
+          <div class="flight--detail--component row">
+            <form action="" method="GET" class="flight--detail--ticket col-12">
+              <label class="flight--detail--component--header">
+                Business Class Ticket:
+              </label>
+              <label class="radio-label">
+                <input
+                  type="radio"
+                  name="ticket-price"
+                  id="business-class-ticket"
+                />
+                <span class="custom-radio"></span>
+                <span class="flight--ticket--price">15,455,000 VND</span>
+              </label>
+
+              <label class="flight--detail--component--header">
+                Economy Class Ticket:
+              </label>
+
+              <label class="radio-label">
+                <input
+                  type="radio"
+                  name="ticket-price"
+                  id="business-class-ticket"
+                />
+                <span class="custom-radio"></span>
+                <span class="flight--ticket--price">8,455,000 VND</span>
+              </label>
+            </form>
+          </div>
+
+          <div class="row">
+            <a href="#!" class="flight--detail--btn col-2">Continue</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

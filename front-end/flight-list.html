@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight list</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <main>
+      <nav class="navbar">
+        <!-- Logo -->
+        <a href="index.html">
+          <img
+            src="./assets/img/logo-removebg-preview.png"
+            alt="logo"
+            class="logo"
+          />
+        </a>
+        <!-- Navigation -->
+        <ul>
+          <li>
+            <a href="#!" class="booking-btn">My booking</a>
+          </li>
+          <li class="support-btn__wrapper">
+            <a href="#!" class="support-btn">Support</a>
+          </li>
+        </ul>
+        <form action="/search" method="GET" class="search-form">
+          <input
+            type="text"
+            name="search"
+            placeholder="Search destinations ..."
+          />
+          <button type="submit">Search</button>
+        </form>
+        <!-- Action -->
+        <div class="actions">
+          <a href="#!">Sign in</a>
+          <a href="#!">Sign up</a>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="flight-query-box row row-cols-1">
+          <form action="/flight-search" method="GET" class="flight-query-form">
+            <div class="form-group">
+              <label for="from">Point of departure</label>
+              <input
+                type="text"
+                id="departure"
+                name="from"
+                placeholder="From..."
+              />
+              <div id="departure-list" class="autocomplete-list"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="dest">Destination</label>
+              <input type="text" id="dest" name="dest" placeholder="To..." />
+              <div id="arrival-list" class="autocomplete-list"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="date">Departure date</label>
+              <input type="date" id="date" name="date" class="custom-date" />
+            </div>
+
+            <button type="submit">Search Flights</button>
+          </form>
+        </div>
+        <div class="flight row row-cols-1">
+          <a href="#!" class="flight--link">
+            <div class="flight--overview">
+              <h2 class="flight--code">Flight No: FL802</h2>
+              <div class="flight--time">
+                <p class="flight--time__departure">
+                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
+                  (Local time)
+                </p>
+                <p class="flight--time__arrival">
+                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
+                  time)
+                </p>
+              </div>
+              <div class="flight--location">
+                <p class="flight--location__departure">
+                  Ho Chi Minh - Tan Son Nhat Airport
+                </p>
+                <p class="flight--location__arrival">Tokyo - Narita Airport</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="flight row row-cols-1">
+          <a href="#!" class="flight--link">
+            <div class="flight--overview">
+              <h2 class="flight--code">Flight No: FL803</h2>
+              <div class="flight--time">
+                <p class="flight--time--departure">
+                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
+                  (Local time)
+                </p>
+                <p class="flight--time--arrival">
+                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
+                  time)
+                </p>
+              </div>
+              <div class="flight--location">
+                <p class="flight--location--departure">
+                  Ho Chi Minh - Tan Son Nhat Airport
+                </p>
+                <p class="flight--location--arrival">Tokyo - Narita Airport</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="flight row row-cols-1">
+          <a href="#!" class="flight--link">
+            <div class="flight--overview">
+              <h2 class="flight--code">Flight No: FL803</h2>
+              <div class="flight--time">
+                <p class="flight--time--departure">
+                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
+                  (Local time)
+                </p>
+                <p class="flight--time--arrival">
+                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
+                  time)
+                </p>
+              </div>
+              <div class="flight--location">
+                <p class="flight--location--departure">
+                  Ho Chi Minh - Tan Son Nhat Airport
+                </p>
+                <p class="flight--location--arrival">Tokyo - Narita Airport</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="flight row row-cols-1">
+          <a href="#!" class="flight--link">
+            <div class="flight--overview">
+              <h2 class="flight--code">Flight No: FL803</h2>
+              <div class="flight--time">
+                <p class="flight--time--departure">
+                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
+                  (Local time)
+                </p>
+                <p class="flight--time--arrival">
+                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
+                  time)
+                </p>
+              </div>
+              <div class="flight--location">
+                <p class="flight--location--departure">
+                  Ho Chi Minh - Tan Son Nhat Airport
+                </p>
+                <p class="flight--location--arrival">Tokyo - Narita Airport</p>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="flight row row-cols-1">
+          <a href="#!" class="flight--link">
+            <div class="flight--overview">
+              <h2 class="flight--code">Flight No: FL803</h2>
+              <div class="flight--time">
+                <p class="flight--time--departure">
+                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
+                  (Local time)
+                </p>
+                <p class="flight--time--arrival">
+                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
+                  time)
+                </p>
+              </div>
+              <div class="flight--location">
+                <p class="flight--location--departure">
+                  Ho Chi Minh - Tan Son Nhat Airport
+                </p>
+                <p class="flight--location--arrival">Tokyo - Narita Airport</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+    <script src="./assets/javascripts/script.js"></script>
+  </body>
+</html>
