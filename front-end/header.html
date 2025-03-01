@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <!-- Logo -->
+      <a href="index.html">
+        <img
+          src="./assets/img/logo-removebg-preview.png"
+          alt="logo"
+          class="logo"
+        />
+      </a>
+      <!-- Navigation -->
+      <ul>
+        <li>
+          <a href="#!" class="booking-btn">My booking</a>
+        </li>
+        <li class="support-btn__wrapper">
+          <a href="#!" class="support-btn">Support</a>
+        </li>
+      </ul>
+      <form action="/search" method="GET" class="search-form">
+        <input
+          type="text"
+          name="search"
+          placeholder="Search destinations ..."
+        />
+        <button type="submit">Search</button>
+      </form>
+      <!-- Action -->
+      <div class="header__user">
+        <a href="#!" class="header__user-name">Nguyễn Văn A</a>
+        <img
+          src="./assets/img/tourist-attraction.jpg"
+          alt=""
+          class="header__user-img"
+        />
+      </div>
+    </nav>
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-img-container">
+          <img src="./assets/img/plane.png" alt="hero-img" class="hero-img" />
+        </div>
+        <div class="flight-query-box row row-cols-1">
+          <form action="/flight-search" method="GET" class="flight-query-form">
+            <div class="form-group">
+              <label for="from">Point of departure</label>
+              <input
+                type="text"
+                id="departure"
+                name="from"
+                placeholder="From..."
+              />
+              <div id="departure-list" class="autocomplete-list"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="dest">Destination</label>
+              <input type="text" id="dest" name="dest" placeholder="To..." />
+              <div id="arrival-list" class="autocomplete-list"></div>
+            </div>
+
+            <div class="form-group">
+              <label for="date">Departure date</label>
+              <input type="date" id="date" name="date" class="custom-date" />
+            </div>
+
+            <button type="submit">Search Flights</button>
+          </form>
+        </div>
+      </div>
+    </header>
+  </body>
+</html>
