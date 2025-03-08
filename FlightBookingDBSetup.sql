@@ -70,20 +70,7 @@ CREATE TABLE payment(
 )
 
 
-BULK INSERT airport
-FROM 'D:\PRJ\Asm_Project\prj301-25sp-se1832-01\airports.csv'
-WITH (
-    FIELDTERMINATOR = ',',
-    ROWTERMINATOR = '\n',
-    FIRSTROW = 2,  -- Bỏ qua dòng tiêu đề
-    CODEPAGE = '65001' -- UTF-8
-);
-
-
-
-
-
-CREATE TABLE airportTemp1 (
+CREATE TABLE airportTemp (
     name NVARCHAR(255) NOT NULL,
     city NVARCHAR(100) NOT NULL,
     country NVARCHAR(50) NOT NULL
@@ -100,7 +87,7 @@ WITH (
 );
 
 INSERT INTO airport (name, city, country)
-SELECT name, city, country FROM airportTemp1;
+SELECT name, city, country FROM airportTemp;
 
 DROP TABLE airportTemp
 
