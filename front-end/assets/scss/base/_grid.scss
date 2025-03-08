@@ -1,5 +1,5 @@
 @use "sass:math";
-
+@use "sass:map";
 $grid-breakpoints: (
   xxl: 1400px,
   xl: 1200px,
@@ -117,7 +117,7 @@ $gutters: (
 @include make-gutters();
 
 @each $breakpoint, $dimension in $grid-breakpoints {
-  $max-width: map-get($container-max-widths, $breakpoint);
+  $max-width: map.get($container-max-widths, $breakpoint);
   $infix: "-#{$breakpoint}";
 
   @include make-media-query($dimension) {

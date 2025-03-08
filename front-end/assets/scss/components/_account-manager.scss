@@ -1,0 +1,110 @@
+.account-manager {
+  padding-top: 96px;
+  margin-top: 30px;
+  &__inner {
+    background: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+      rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  }
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 2.4;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    &::before {
+      content: "";
+      height: 18px;
+      width: 3px;
+      background: #77dae6;
+    }
+  }
+  &__table {
+    margin-top: 30px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+
+    & th,
+    & td {
+      padding: 20px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+      &:last-child {
+        white-space: nowrap;
+        gap: 2px;
+      }
+    }
+
+    & th {
+      background-color: #77dae6;
+      color: white;
+      font-weight: 600;
+    }
+    & tr:hover {
+      background-color: #f1f1f1;
+    }
+  }
+  &__btn {
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+    display: inline-block;
+    &--edit {
+      background: #007bff;
+      color: white;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    &--delete {
+      background: #e63946;
+      color: white;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    &--detail {
+      background: #28a745;
+      color: white;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  &__pagination {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+  }
+  &__pagenumber {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+  }
+  &__next-btn,
+  &__pre-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    &:hover {
+      background: #ddd;
+    }
+  }
+}

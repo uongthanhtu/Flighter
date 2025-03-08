@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sass FlightBooking/src/main/webapp/assets/scss/main.scss:FlightBooking/src/main/webapp/assets/css/main.css -w"
+    "start": "sass FlightBooking/src/main/webapp/assets/scss/main.scss:FlightBooking/src/main/webapp/assets/css/main.css -w",
+    "scss": "sass front-end/assets/scss/main.scss:front-end/assets/css/main.css -w"
   },
   "repository": {
     "type": "git",
