@@ -24,12 +24,11 @@ public class UserDTO {
         String role = "Customer";
     }
 
-    public UserDTO(String fullName, String password, String email, String phoneNumber, Date DOB) {
+    public UserDTO(String fullName, String password, String email, String phoneNumber) {
         this.fullName = fullName;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.DOB = DOB;
         this.role = "Customer" ;
     }
 

@@ -1,0 +1,16 @@
+14.0
+14
+1       SQLINT       0       12      ","     1   airportID       ""
+2       SQLNVARCHAR  0       100     ","     2   airportName     SQL_Latin1_General_CP1_CI_AS
+3       SQLNVARCHAR  0       100     ","     3   city            SQL_Latin1_General_CP1_CI_AS
+4       SQLNVARCHAR  0       100     ","     4   country         SQL_Latin1_General_CP1_CI_AS
+5       SQLCHAR      0       0       ","     0   dummy5          ""
+6       SQLCHAR      0       0       ","     0   dummy6          ""
+7       SQLCHAR      0       0       ","     0   dummy7          ""
+8       SQLCHAR      0       0       ","     0   dummy8          ""
+9       SQLCHAR      0       0       ","     0   dummy9          ""
+10      SQLCHAR      0       0       ","     0   dummy10         ""
+11      SQLCHAR      0       0       ","     0   dummy11         ""
+12      SQLCHAR      0       0       ","     0   dummy12         ""
+13      SQLCHAR      0       0       ","     0   dummy13         ""
+14      SQLCHAR      0       0       "\r\n"  0   dummy14         ""

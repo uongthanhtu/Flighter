@@ -5,13 +5,17 @@
  */
 package flightbooking.controller;
 
+import flightbooking.dao.UserDAO;
+import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -32,20 +36,66 @@ public class AuthController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AuthController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AuthController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String action = request.getParameter("action");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        if (action.equals("register")){
+            String firstName = request.getParameter("firstName");
+            String lastName = request.getParameter("lastName");
+            String fullName = firstName + " " + lastName;
+            String phoneNumber = request.getParameter("phoneNumber");
+            String passwordCon = request.getParameter("password-confirm");
+            UserDAO userDao = new UserDAO();
+            if(userDao.checkEmail(email)){
+                request.setAttribute("erroremail", "Email already exists. Please enter a different email.");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+                return;
+            }
+            if (!password.equals(passwordCon)) {
+                request.setAttribute("errorpassword", "Passwords do not match!");
+                request.getRequestDispatcher("register.jsp").forward(request, response);
+                return;
+            }
+            UserDTO user = new UserDTO(fullName, password, email, phoneNumber);
+            userDao.insertUser(user);
+            RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+            rd.forward(request, response); 
+            return;
+                 
+        }else if (action.equals("login")){
+            UserDAO userDao = new UserDAO();
+            if(email.isEmpty() || password.isEmpty() || email == null || password == null){
+                request.setAttribute("error", "Email or password is empty.");
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                rd.forward(request, response);
+                return;
+            }
+            UserDTO user = userDao.loginUser(email, password);
+            if(user != null && user.getRole().equals("Customer")) {
+                HttpSession session = request.getSession(true);
+                session.setAttribute("usersession", user);
+                response.sendRedirect("./BookingController");
+                return;
+            }else {
+                request.setAttribute("error", "Email or password is incorrect");
+                RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
+                rd.forward(request, response);
+                return;
+            }
+        }else if (action.equals("logout")){
+            HttpSession session = request.getSession(false);
+            if(session != null) {
+                session.invalidate();
+                request.setAttribute("logout", "Logout successfully");
+                request.setAttribute("action", "logout");
+                RequestDispatcher rd = request.getRequestDispatcher("AirportController");
+                rd.forward(request, response);
+            }
         }
     }
-
+    
+    
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
