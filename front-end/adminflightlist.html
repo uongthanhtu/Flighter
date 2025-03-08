@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Flight List</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,11 +26,11 @@
             <p class="admin-logo__title">Flighter</p>
           </a>
           <nav class="admin-navbar">
-            <a href="" class="admin-navbar__item">DashBoard</a>
-            <a href="" class="admin-navbar__item">Add Flight</a>
             <a href="" class="admin-navbar__item admin-navbar__item--active"
-              >Account</a
+              >DashBoard</a
             >
+            <a href="" class="admin-navbar__item">Add Flight</a>
+            <a href="" class="admin-navbar__item">Account</a>
             <a href="" class="admin-navbar__item">Reports & Analytics</a>
           </nav>
           <!-- Action -->
@@ -46,28 +46,30 @@
         </div>
       </div>
     </header>
-    <main>
+    <main style="height: 10000px">
       <!-- Account manager -->
       <section class="account-manager">
         <div class="container">
           <div class="account-manager__inner">
-            <h1 class="account-manager__title">Acount Manager</h1>
+            <h1 class="account-manager__title">Flight List</h1>
             <table class="account-manager__table">
               <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Email</th>
-                  <th>Role</th>
+                  <th>FlightID</th>
+                  <th>Flight Number</th>
+                  <th>Departure-Arrival Airport</th>
+                  <th>Departure-Arrival Time</th>
+                  <th>Flight Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Admin</td>
-                  <td>a@gmail.com</td>
-                  <td>Admin</td>
+                  <td>VN12345</td>
+                  <td>VN123</td>
+                  <td>Tân Sơn Nhất (SGN)-Đà Nẵng (DAD)</td>
+                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
+                  <td>Open</td>
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
@@ -80,14 +82,21 @@
                       href=""
                     >
                       <i class="fas fa-trash"></i> Delete
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--detail"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Detail
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>Trần Thị B</td>
-                  <td>b@gmail.com</td>
-                  <td>User</td>
+                  <td>VN12345</td>
+                  <td>VN123</td>
+                  <td>Tân Sơn Nhất (SGN)-Đà Nẵng (DAD)</td>
+                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
+                  <td>Open</td>
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
@@ -100,14 +109,21 @@
                       href=""
                     >
                       <i class="fas fa-trash"></i> Delete
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--detail"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Detail
                     </a>
                   </td>
                 </tr>
                 <tr>
-                  <td>3</td>
-                  <td>Phạm Văn C</td>
-                  <td>c@gmail.com</td>
-                  <td>User</td>
+                  <td>VN12345</td>
+                  <td>VN123</td>
+                  <td>Tân Sơn Nhất (SGN)-Đà Nẵng (DAD)</td>
+                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
+                  <td>Open</td>
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
@@ -120,6 +136,93 @@
                       href=""
                     >
                       <i class="fas fa-trash"></i> Delete
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--detail"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Detail
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>VN12345</td>
+                  <td>VN123</td>
+                  <td>Tân Sơn Nhất (SGN)-Đà Nẵng (DAD)</td>
+                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
+                  <td>Open</td>
+                  <td>
+                    <a
+                      class="account-manager__btn account-manager__btn--edit"
+                      href=""
+                    >
+                      <i class="fas fa-edit"></i> Update
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--delete"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Delete
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--detail"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Detail
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>VN12345</td>
+                  <td>VN123</td>
+                  <td>Tân Sơn Nhất (SGN)-Đà Nẵng (DAD)</td>
+                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
+                  <td>Open</td>
+                  <td>
+                    <a
+                      class="account-manager__btn account-manager__btn--edit"
+                      href=""
+                    >
+                      <i class="fas fa-edit"></i> Update
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--delete"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Delete
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--detail"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Detail
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>VN12345</td>
+                  <td>VN123</td>
+                  <td>Tân Sơn Nhất (SGN)-Đà Nẵng (DAD)</td>
+                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
+                  <td>Open</td>
+                  <td>
+                    <a
+                      class="account-manager__btn account-manager__btn--edit"
+                      href=""
+                    >
+                      <i class="fas fa-edit"></i> Update
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--delete"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Delete
+                    </a>
+                    <a
+                      class="account-manager__btn account-manager__btn--detail"
+                      href=""
+                    >
+                      <i class="fas fa-trash"></i> Detail
                     </a>
                   </td>
                 </tr>

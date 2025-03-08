@@ -1258,6 +1258,7 @@ strong {
   }
 }
 .flight-edit {
+  padding-top: 96px;
   margin-top: 30px;
 }
 .flight-edit__inner {
@@ -1269,7 +1270,7 @@ strong {
 .flight-edit__title {
   font-size: 2.4rem;
   font-weight: 700;
-  line-height: 2.4; /* 141.667% */
+  line-height: 2.4;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -1330,6 +1331,7 @@ strong {
 }
 
 .account-manager {
+  padding-top: 96px;
   margin-top: 30px;
 }
 .account-manager__inner {
@@ -1341,7 +1343,7 @@ strong {
 .account-manager__title {
   font-size: 2.4rem;
   font-weight: 700;
-  line-height: 2.4; /* 141.667% */
+  line-height: 2.4;
   display: flex;
   align-items: center;
   gap: 5px;
@@ -1359,9 +1361,13 @@ strong {
   margin-top: 10px;
 }
 .account-manager__table th, .account-manager__table td {
-  padding: 15px;
+  padding: 20px;
   border-bottom: 1px solid #ddd;
   text-align: center;
+}
+.account-manager__table th:last-child, .account-manager__table td:last-child {
+  white-space: nowrap;
+  gap: 2px;
 }
 .account-manager__table th {
   background-color: #77dae6;
@@ -1378,11 +1384,11 @@ strong {
   border-radius: 5px;
   font-size: 14px;
   transition: 0.3s;
+  display: inline-block;
 }
 .account-manager__btn--edit {
   background: #007bff;
   color: white;
-  margin-right: 5px;
 }
 .account-manager__btn--edit:hover {
   opacity: 0.8;
@@ -1392,6 +1398,13 @@ strong {
   color: white;
 }
 .account-manager__btn--delete:hover {
+  opacity: 0.8;
+}
+.account-manager__btn--detail {
+  background: #28a745;
+  color: white;
+}
+.account-manager__btn--detail:hover {
   opacity: 0.8;
 }
 .account-manager__pagination {
@@ -1423,7 +1436,74 @@ strong {
   background: #ddd;
 }
 
+.report-anal {
+  padding-top: 96px;
+  margin-top: 30px;
+}
+.report-anal__inner {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.report-anal__title {
+  color: rgb(92, 225, 230);
+  font-size: 42px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+.report-anal__container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.report-anal__box {
+  background: #daf7f6;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 400px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.report-anal__box:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+.report-anal__box-title {
+  font-size: 20px;
+  color: #05445e;
+  margin: 15px 0;
+  font-weight: bold;
+}
+.report-anal__box-desc {
+  font-size: 28px;
+  font-weight: bold;
+  color: #187498;
+}
+.report-anal__box-icon {
+  font-size: 38px;
+  color: #05445e;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .admin-header {
+  top: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  z-index: 20;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
@@ -1469,10 +1549,10 @@ strong {
 }
 .admin-logo__title {
   font-family: "Pacifico", cursive;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 700;
-  color: #1a162e;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  color: rgb(92, 225, 230);
+  text-shadow: 2px 2px 4px rgba(92, 225, 230, 0.3);
 }
 
 .admin-navbar {

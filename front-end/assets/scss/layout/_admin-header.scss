@@ -1,4 +1,9 @@
 .admin-header {
+  top: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  z-index: 20;
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
@@ -44,10 +49,10 @@
   }
   &__title {
     font-family: "Pacifico", cursive;
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    color: #1a162e;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    color: rgb(92, 225, 230);
+    text-shadow: 2px 2px 4px rgba(92, 225, 230, 0.3);
   }
 }
 

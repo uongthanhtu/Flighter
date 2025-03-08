@@ -1,4 +1,5 @@
 .account-manager {
+  padding-top: 96px;
   margin-top: 30px;
   &__inner {
     background: #fff;
@@ -10,7 +11,7 @@
   &__title {
     font-size: 2.4rem;
     font-weight: 700;
-    line-height: 2.4; /* 141.667% */
+    line-height: 2.4;
     display: flex;
     align-items: center;
     gap: 5px;
@@ -29,9 +30,13 @@
 
     & th,
     & td {
-      padding: 15px;
+      padding: 20px;
       border-bottom: 1px solid #ddd;
       text-align: center;
+      &:last-child {
+        white-space: nowrap;
+        gap: 2px;
+      }
     }
 
     & th {
@@ -50,16 +55,23 @@
     border-radius: 5px;
     font-size: 14px;
     transition: 0.3s;
+    display: inline-block;
     &--edit {
       background: #007bff;
       color: white;
-      margin-right: 5px;
       &:hover {
         opacity: 0.8;
       }
     }
     &--delete {
       background: #e63946;
+      color: white;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+    &--detail {
+      background: #28a745;
       color: white;
       &:hover {
         opacity: 0.8;
