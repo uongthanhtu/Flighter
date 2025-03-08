@@ -1,6 +1,8 @@
+flightbooking\controller\ProfileController.class
 flightbooking\dao\BookingDAO.class
 flightbooking\model\PaymentDTO.class
 flightbooking\controller\FlightController.class
+flightbooking\controller\AirportController.class
 flightbooking\dao\UserDAO.class
 flightbooking\controller\BookingController.class
 flightbooking\controller\PaymentController.class

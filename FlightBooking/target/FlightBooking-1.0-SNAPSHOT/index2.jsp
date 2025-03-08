@@ -1,3 +1,6 @@
+<%@page import="java.util.Map"%> <%@ page import="java.util.Map, java.util.List"
+%> <%@page import="java.util.List"%> <%@page
+import="flightbooking.model.UserDTO"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,77 +72,118 @@
     <meta name="theme-color" content="#ffffff" />
 
     <link rel="stylesheet" href="assets/css/main.css" />
+
+    <style>
+      .autocomplete-list {
+        position: absolute;
+        background: white;
+        border: 1px solid #ddd;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+      }
+      .autocomplete-item {
+        padding: 5px;
+        cursor: pointer;
+      }
+      .autocomplete-item:hover {
+        background: #f0f0f0;
+      }
+    </style>
   </head>
   <body>
     <main>
-      <!-- Navbar -->
-      <nav class="navbar">
-        <!-- Logo -->
-        <a href="index.html">
-          <img
-            src="./assets/img/logo-removebg-preview.png"
-            alt="logo"
-            class="logo" />
-        </a>
-        <!-- Navigation -->
-        <ul>
-          <li>
-            <a href="#!" class="booking-btn">My booking</a>
-          </li>
-          <li class="support-btn__wrapper">
-            <a href="#!" class="support-btn">Support</a>
-          </li>
-        </ul>
-        <form action="/search" method="GET" class="search-form">
-          <input
-            type="text"
-            name="search"
-            placeholder="Search destinations ..." />
-          <button type="submit">Search</button>
-        </form>
-        <!-- Action -->
-        <div class="actions">
-          <a href="#!">Sign in</a>
-          <a href="#!">Sign up</a>
-        </div>
-      </nav>
-      <!-- Header -->
       <header class="header">
         <div class="container">
-          <div class="header-img-container">
-            <img src="./assets/img/plane.png" alt="hero-img" class="hero-img" />
-          </div>
-          <div class="flight-query-box row row-cols-1">
+          <nav class="navbar">
+            <!-- Logo -->
+            <a href="AirportController" class="logo__link"
+              ><img
+                src="./assets/img/logo-removebg-preview.png"
+                alt="logo"
+                class="logo" />
+            </a>
+            <div class="navbar__actions">
+              <a href="#!" class="navbar__link">My booking</a>
+              <a href="#!" class="navbar__link">Flights</a>
+              <a href="#!" class="navbar__link">Support</a>
+              <% UserDTO usersession = (UserDTO)
+              session.getAttribute("usersession"); if(usersession == null){ %>
+              <a href="login.jsp" class="navbar__link">Sign in</a>
+              <a href="register.jsp" class="navbar__link">Sign up</a>
+              <% }else{%>
+
+              <a
+                href="ProfileController?action=profile_details"
+                class="user__avt">
+                <img src="./assets/img/user-avt.png" alt="User avt" /> </a
+              ><a
+                href="./AuthController?action=logout"
+                class="user__logout__btn"
+                >Log out</a
+              >
+              <%}%>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Header -->
+      <section class="hero">
+        <div class="container">
+          <img src="./assets/img/plane.png" alt="hero-img" class="hero__img" />
+          <div class="flight-search__box row row-cols-1">
             <form
-              action="/flight-search"
+              action="BookingController"
               method="GET"
-              class="flight-query-form">
-              <div class="form-group">
-                <label for="from">Point of departure</label>
+              class="flight-search__form">
+              <div class="flight-search__form-group">
+                <label class="flight-search__form__label" for="departure"
+                  >Point of departure</label
+                >
                 <input
+                  class="flight-search__form__input"
                   type="text"
                   id="departure"
-                  name="from"
-                  placeholder="From..." />
+                  name="departure"
+                  placeholder="From..." 
+                  autocomplete="off"/>
                 <div id="departure-list" class="autocomplete-list"></div>
               </div>
 
-              <div class="form-group">
-                <label for="dest">Destination</label>
-                <input type="text" id="dest" name="dest" placeholder="To..." />
+              <div class="flight-search__form-group">
+                <label class="flight-search__form__label" for="arrival"
+                  >Destination</label
+                >
+                <input
+                  class="flight-search__form__input"
+                  type="text"
+                  id="arrival"
+                  name="arrival"
+                  placeholder="To..."
+                  autocomplete="off"/>
                 <div id="arrival-list" class="autocomplete-list"></div>
               </div>
 
-              <div class="form-group">
-                <label for="date">Departure date</label>
-                <input type="date" id="date" name="date" class="custom-date" />
+              <div class="flight-search__form-group">
+                <label class="flight-search__form__label" for="date"
+                  >Departure date</label
+                >
+                <input
+                  class="flight-search__form__input"
+                  type="date"
+                  id="date"
+                  name="date"
+                  class="custom-date" />
               </div>
-
-              <button type="submit">Search Flights</button>
+              <input type="hidden" name="action" value="searchflight" />
+              <button class="flight-search__form-btn" type="submit">
+                Search Flights
+              </button>
             </form>
           </div>
         </div>
-      </header>
+      </section>
       <!-- Features -->
       <section class="feature">
         <div class="container">
@@ -268,6 +312,80 @@
         </div>
       </footer>
     </main>
-    <script src="../js/search-form.js"></script>
+    <!--    <script src="../js/search-form.js"></script>-->
+    <script>
+          document.addEventListener("DOMContentLoaded", function () {
+          let airports = [
+              <%
+                  List<Map<String, String>> airports = (List<Map<String, String>>) request.getAttribute("airports");
+                  if (airports != null) {
+                      for (Map<String, String> airport : airports) {
+              %>
+                  { name: "<%= airport.get("name")%>", country: "<%= airport.get("country")%>" },
+
+              <%
+                      }
+                  }
+              %>
+          ];
+          setupAutocomplete("departure", airports);
+          setupAutocomplete("arrival", airports);
+      });
+
+      function setupAutocomplete(inputId, airports) {
+
+          const input = document.getElementById(inputId);
+          const list = document.getElementById(inputId + "-list");
+
+          input.addEventListener("input", function () {
+              console.log("dada");
+              const query = input.value.trim().toLowerCase();
+              list.innerHTML = "";
+
+              if (query.length < 1) {
+                  return;
+              }
+
+              let filteredAirports = airports.filter(airport =>
+                  airport.name.toLowerCase().includes(query) || airport.country.toLowerCase().includes(query)
+              );
+
+              showAirportList(filteredAirports, input, list);
+          });
+
+          document.addEventListener("click", function (e) {
+              if (!list.contains(e.target) && e.target !== input) {
+                  list.innerHTML = "";
+              }
+          });
+      }
+
+      function showAirportList(airportList, input, list) {
+      list.innerHTML = "";
+
+      airportList.forEach(airport => {
+          let displayName = airport.name ? airport.name : "Unknown";
+          let displayCountry = airport.country ? airport.country : "Unknown";
+          console.log(displayName);
+          console.log(displayCountry);
+          const div = document.createElement("div");
+          div.classList.add("autocomplete-item");
+
+          if (displayCountry && displayCountry.trim() !== "" && displayCountry !== "undefined") {
+              div.innerHTML = displayName + " - " + displayCountry;
+
+          } else {
+              div.innerHTML = displayName;
+          }
+
+          div.onclick = function () {
+              input.value = displayName;
+              list.innerHTML = "";
+          };
+
+          list.appendChild(div);
+      });
+      }
+    </script>
   </body>
 </html>
