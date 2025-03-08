@@ -77,7 +77,7 @@ CREATE TABLE airportTemp (
 );
 
 BULK INSERT airportTemp
-FROM 'D:\PRJ\Asm_Project\prj301-25sp-se1832-01\airport.csv'
+FROM 'D:\PRJ\Asm_Project\prj301-25sp-se1832-01\data\airport.csv'
 WITH (
     FIELDTERMINATOR = ',',
     ROWTERMINATOR = '\n',
