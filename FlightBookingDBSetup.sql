@@ -87,7 +87,7 @@ WITH (
 );
 
 INSERT INTO airport (name, city, country)
-SELECT name, city, country FROM airportTemp1;
+SELECT name, city, country FROM airportTemp;
 
 DROP TABLE airportTemp
 
