@@ -29,7 +29,7 @@ CREATE TABLE flight(
 	flightStatus VARCHAR(20) NOT NULL CHECK (flightStatus IN ('Open', 'Delayed', 'Canceled')) DEFAULT 'Open',
 	adminID INT FOREIGN KEY REFERENCES users (userID),
 	departureId INT FOREIGN KEY REFERENCES airport(airportID) ,
-	arrivalAirport INT FOREIGN KEY REFERENCES airport(airportID)
+	arrivalId INT FOREIGN KEY REFERENCES airport(airportID)
 )
 
 CREATE TABLE seat (
