@@ -2,6 +2,7 @@ flightbooking\controller\ProfileController.class
 flightbooking\dao\BookingDAO.class
 flightbooking\model\PaymentDTO.class
 flightbooking\controller\FlightController.class
+flightbooking\dao\AirportDAO.class
 flightbooking\controller\AirportController.class
 flightbooking\dao\UserDAO.class
 flightbooking\controller\BookingController.class
@@ -13,6 +14,7 @@ flightbooking\controller\TicketController.class
 flightbooking\dao\TicketDAO.class
 flightbooking\model\FlightDTO.class
 flightbooking\controller\AdminController.class
+flightbooking\model\AirportDTO.class
 flightbooking\dao\FlightDAO.class
 flightbooking\model\SeatDTO.class
 flightbooking\controller\AuthController.class

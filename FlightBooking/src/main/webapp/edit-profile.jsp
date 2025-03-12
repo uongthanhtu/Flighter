@@ -1,15 +1,10 @@
-<%@page import="flightbooking.model.UserDTO"%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit Profile</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <title>Flight Details</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body>
     <!-- Navbar -->
@@ -19,8 +14,7 @@
         <img
           src="./assets/img/logo-removebg-preview.png"
           alt="logo"
-          class="logo"
-        />
+          class="logo" />
       </a>
       <!-- Navigation -->
       <ul>
@@ -35,8 +29,7 @@
         <input
           type="text"
           name="search"
-          placeholder="Search destinations ..."
-        />
+          placeholder="Search destinations ..." />
         <button type="submit">Search</button>
       </form>
       <!-- Action -->
@@ -51,15 +44,15 @@
         src="img/Airplane Travel.jpg"
         alt=""
         srcset=""
-        class="profile__img"
-      />
+        class="profile__img" />
       <div class="profile__forms">
         <h2 class="profile__title">Edit Details</h2>
         <p class="profile__introduction">
           Update your personal information and make
         </p>
         <p class="profile__introduction-1">your profile truly yours!</p>
-        <% UserDTO usersession = (UserDTO) session.getAttribute("usersession"); %> 
+        <% UserDTO usersession = (UserDTO) session.getAttribute("usersession");
+        %>
         <form action="ProfileController" class="profile__form">
           <div class="profile__group">
             <label class="profile__label">Email</label>
@@ -68,15 +61,13 @@
               class="profile__input"
               name="email"
               value="<%= usersession.getEmail() %>"
-              disabled
-            />
+              disabled />
             <input
-                type="hidden"
-                name="email"
-                value="<%= usersession.getEmail()%>"
-            />
+              type="hidden"
+              name="email"
+              value="<%= usersession.getEmail()%>" />
           </div>
-          
+
           <div class="profile__row">
             <div class="profile__group">
               <label class="profile__label">Full Name</label>
@@ -84,8 +75,7 @@
                 type="text"
                 class="profile__input"
                 name="fullName"
-                placeholder="<%= usersession.getFullName() %>"
-              />
+                placeholder="<%= usersession.getFullName() %>" />
             </div>
           </div>
 
@@ -135,8 +125,7 @@
               type="text"
               class="profile__input"
               name="phoneNumber"
-              placeholder="<%= usersession.getPhoneNumber()%>"
-            />
+              placeholder="<%= usersession.getPhoneNumber()%>" />
             <div class="profile__addNumber">
               <a href="#" id="openModal">+ Add Mobile Number</a>
             </div>
@@ -150,11 +139,10 @@
             <button
               type="button"
               class="profile__button profile__button--cancel"
-              onclick="window.location.href='personal-details.jsp';"
-            >
+              onclick="window.location.href='personal-details.jsp';">
               Cancel
             </button>
-              <input type="hidden" name="action" value="update_profile">
+            <input type="hidden" name="action" value="update_profile" />
             <button type="submit" class="profile__button profile__button--save">
               Save
             </button>
@@ -187,6 +175,6 @@
         </div>
       </div>
     </div>
-    <script src="scripts/profile.js"></script>
+    <script src="./assets/javascripts/profile.js"></script>
   </body>
 </html>
