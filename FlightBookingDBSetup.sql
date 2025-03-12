@@ -12,7 +12,7 @@ CREATE TABLE users (
 ) 
 
 CREATE TABLE airport (
-    airportID INT IDENTITY(1,1) Primary Key,
+    airportID int Primary Key,
     name NVARCHAR(255) NOT NULL,
     city NVARCHAR(100) NOT NULL,
     country NVARCHAR(50) NOT NULL
@@ -69,15 +69,8 @@ CREATE TABLE payment(
 	bookingID INT FOREIGN KEY REFERENCES booking (bookingID) ON DELETE CASCADE
 )
 
-
-CREATE TABLE airportTemp (
-    name NVARCHAR(255) NOT NULL,
-    city NVARCHAR(100) NOT NULL,
-    country NVARCHAR(50) NOT NULL
-);
-
-BULK INSERT airportTemp
-FROM 'D:\PRJ\Asm_Project\prj301-25sp-se1832-01\data\airport.csv'
+BULK INSERT airport
+FROM 'D:\PRJ\Asm_Project\prj301-25sp-se1832-01\data\airports_fixed.csv'
 WITH (
     FIELDTERMINATOR = ',',
     ROWTERMINATOR = '\n',
@@ -86,10 +79,4 @@ WITH (
     CODEPAGE = '65001'
 );
 
-INSERT INTO airport (name, city, country)
-SELECT name, city, country FROM airportTemp;
-
-DROP TABLE airportTemp
-
-
-SELECT * FROM airport
+SELECT * FROM airport WHERE country like 'VietNam'
