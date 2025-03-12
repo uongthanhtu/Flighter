@@ -1,0 +1,385 @@
+@use "../abstracts/mixins" as *;
+@use "../base" as *;
+.profile {
+  @include flex-center;
+  height: 95vh;
+  margin-top: 30px;
+  padding: auto;
+  &__img {
+    width: 40%;
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+    border: solid black;
+    border-width: 4px 0px 4px 4px;
+  }
+
+  &__picture {
+    width: 40%;
+    height: 86%;
+    border-radius: 20px 0 0 20px;
+    border: solid black;
+    border-width: 4px 0px 4px 4px;
+  }
+
+  &__container {
+    background: white;
+    padding: 60px 90px 50px 90px;
+    // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    height: 86%;
+    border-radius: 0 20px 20px 0;
+    border: solid black;
+    border-width: 4px 4px 4px 0px;
+  }
+
+  &__forms {
+    background: white;
+    padding: 60px 90px 50px 90px;
+    // box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 40%;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+    border: solid black;
+    border-width: 4px 4px 4px 0px;
+  }
+
+  &__back {
+    display: inline-block;
+    font-size: 17px;
+    color: #666;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+
+  &__title {
+    font-size: 29px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__introduction {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    color: gray;
+  }
+
+  &__introduction-1 {
+    display: flex;
+    justify-content: center;
+    font-size: 15px;
+    color: gray;
+  }
+
+  &__group {
+    margin-bottom: 15px;
+  }
+
+  &__label {
+    font-size: 17px;
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 30px;
+  }
+
+  &__input {
+    @extend .input;
+  }
+
+  &__addNumber {
+    margin-top: 15px;
+  }
+
+  &__password {
+    position: relative;
+
+    .profile__eye {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+  }
+}
+
+.profile__dob {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  .profile__select {
+    border: none;
+    border-bottom: 2px solid black;
+    background: transparent;
+    padding: 5px 10px;
+    font-size: 16px;
+    outline: none;
+    margin-top: 16px;
+  }
+}
+
+.profile__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.profile__redirect {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.profile__button {
+  @include button-style(black, white);
+
+  &--cancel {
+    @include button-style(white, black);
+    border: 2px solid black;
+  }
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid $border-color;
+  border-radius: 5px;
+  font-size: $font-size;
+}
+
+.input-group {
+  position: relative;
+
+  .input__eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+
+// personal-details
+.personal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(201.43deg 76.36% 78.43%);
+  padding: 25px;
+  border-bottom: 2px solid #f0f0f0;
+  gap: 40%;
+
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+
+  &__info p {
+    margin-top: 5px;
+    margin-left: 5px;
+  }
+
+  &__info h2 {
+    margin-top: 5px;
+    font-size: 30px;
+  }
+
+  &__left {
+    display: flex;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__logo {
+    width: 90px;
+    display: flex;
+    align-items: end;
+  }
+
+  &__flighter {
+    font-size: 25px;
+    font-style: italic;
+    font-weight: bold;
+    color: snow;
+  }
+}
+
+// account_details
+.account {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 20px;
+  align-items: flex-start;
+
+  &__menu {
+    width: 250px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    & ul {
+      list-style: none;
+    }
+
+    & ul li {
+      width: 100%;
+      margin-top: 15px;
+      padding: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    & ul li:hover {
+      background: hsl(201.43deg 76.36% 78.43%);
+    }
+  }
+
+  &__list {
+    width: 100%;
+  }
+
+  &__details {
+    flex: 0.6;
+    background: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  &__data {
+    margin-left: 15px;
+    margin-top: 10px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 200px;
+    margin-top: 25px;
+  }
+
+  &__dob {
+    margin-top: 25px;
+  }
+
+  &__phone {
+    margin-top: 25px;
+    margin-left: 92px;
+  }
+
+  &__info {
+    margin-top: 10px;
+  }
+
+  &__button {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: black;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    border: 2px solid black;
+    width: 12%;
+    border-radius: 20px;
+    padding: 7px;
+    position: relative;
+    left: 85%;
+    top: 10px;
+  }
+
+  &__button:hover {
+    opacity: 0.8;
+  }
+}
+
+// popup modal
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & label {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+
+  &__content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    width: 400px;
+    height: 240px;
+  }
+
+  &__title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  &__input {
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid black;
+    padding: 5px;
+    gap: 30px;
+    width: 100%;
+    margin-top: 12px;
+
+    & select {
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: transparent;
+      padding: 8px;
+      width: 30%;
+      min-width: 100px;
+    }
+
+    & input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 16px;
+      padding: 8px;
+      background: transparent;
+    }
+  }
+
+  &__button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    left: 25%;
+    top: 10px;
+    @include button-style(black, white);
+
+    &--cancel {
+      @include button-style(white, black);
+      border: 2px solid black;
+    }
+  }
+}

@@ -39,162 +39,103 @@ a {
 
 // Header  ----------------------------------------------------------------------------------------------------------------------------------------
 
-.header {
+.hero {
+  position: relative;
   background: hsl(201.43deg 76.36% 78.43%);
   height: 100vh;
 
-  &-img-container {
-    position: relative;
+  &__img {
+    position: absolute;
+    display: block;
+    max-width: 50%;
   }
-
   .container {
     height: 100%;
   }
 }
 
-.navbar {
+.header {
   z-index: 10;
   position: sticky;
   top: 0;
-  padding: 10px 10%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background: rgba(244, 246, 247, 0.1);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid hsl(201.43deg 76.36% 78.43%);
-
-  ul {
-    display: flex;
-
-    a {
-      font: {
-        weight: 600;
-        size: 2.5rem;
-      }
-      color: var(--text-primary-color);
-      padding: 14px;
-      display: inline-block;
-    }
-
-    a:first-child {
-      transition: 0.3s ease, transform 0.2s ease;
-
-      &:hover {
-        opacity: 0.8;
-      }
-    }
-  }
 }
 
-.booking-btn {
-  position: relative;
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 32px;
-    width: 100px;
-    height: 4px;
-    border-radius: 999px;
-    background-color: #4158d0;
-    background-image: linear-gradient(
-      43deg,
-      #4158d0 0%,
-      #c850c0 46%,
-      #ffcc70 100%
-    );
-    opacity: 0;
-    transform: scaleX(0);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
-
-  &:hover::before {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-}
-
-.support-btn {
-  color: #fff !important;
-
-  &__wrapper {
-    margin-left: 100px;
-    background: hsl(236.79deg 53.04% 51.57%);
-    border-radius: $btnBorderRadius;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+  &__link {
+    position: relative;
+    display: block;
+    font-weight: 600;
+    font-size: 2.5rem;
+    color: var(--text-primary-color);
+    padding: 39px 25px;
+    text-align: center;
+    transition: background 0.3s ease;
 
     &:hover {
-      background: #f39c12;
-      transform: scale(1.1);
+      background: hsl(201.43deg 76.36% 78.43%);
+    }
+
+    &__user {
+      display: flex;
+      align-items: center;
     }
   }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+}
+.logo__link {
+  display: block;
 }
 
 .logo {
   width: 100px;
+  height: 100px;
 }
 
-.search-form {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  min-width: 250px;
-  max-width: 350px;
-  background: #fff;
-  border-radius: 25px;
-  padding: 5px;
-  box-shadow: 0 2px 5px rgba(0 0 0 / 0.2);
-
-  input {
-    border: none;
-    outline: none;
-    padding: 10px;
-    font-size: 1.6rem;
-    border-radius: 25px 0 0 25px;
+.user {
+  &__avt,
+  &__logout__btn {
+    display: inline-block;
   }
 
-  button {
-    background: #3498db;
-    border: none;
-    color: #fff;
-    padding: 10px 15px;
-    margin-left: auto;
-    font-size: 1.6rem;
-    cursor: pointer;
-    border-radius: 0 25px 25px 0;
-    transition: background 0.3s ease;
+  &__logout__btn {
+    position: relative;
+    font-size: 2.5rem;
+    font-weight: 500;
+    padding: 20px 15px;
+    color: var(--text-primary-color);
+  }
 
-    &:hover {
-      background: #2980b9;
-    }
+  &__logout__btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: red;
+    transition: width 0.5s ease-in-out;
+  }
+
+  &__logout__btn:hover::after {
+    width: 100%;
   }
 }
 
-.actions {
-  a {
-    color: hsl(232.94deg 9.19% 36.27%);
-    font: {
-      weight: 500;
-      size: 2rem;
-    }
-    padding: 10px;
-    transition: 0.2s ease, transform 0.2s ease;
-
-    &:hover {
-      color: #333;
-    }
+.flight-search__ {
+  &container {
+    padding: 50px 0 100px 0;
   }
-}
-
-.hero-img {
-  position: absolute;
-  //   width: 60%;
-  max-width: 50%;
-}
-
-.flight-query- {
   &box {
     position: relative;
     z-index: 2;
@@ -209,8 +150,29 @@ a {
     height: 250px;
     border: 2px solid hsl(189.54deg 76.65% 38.63%);
     border-radius: $btnBorderRadius;
-
-    button {
+    &__label,
+    &__input {
+      display: block;
+    }
+    &__label {
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--text-primary-color);
+      margin-bottom: 20px;
+    }
+    &__input {
+      font-size: 2rem;
+      padding: 5px 10px;
+      height: 50px;
+      border-radius: 10px;
+      outline: none;
+      border: {
+        width: 1px 1px 6px 1px;
+        color: hsl(336.79deg 59.55% 65.1%);
+        style: solid;
+      }
+    }
+    &-btn {
       font-size: 2rem;
       font-weight: 600;
       color: var(--text-primary-color);
@@ -227,36 +189,6 @@ a {
         transform: scale(1.1);
       }
     }
-  }
-}
-
-.form-group {
-  label,
-  input {
-    display: block;
-  }
-
-  label {
-    font-size: 3rem;
-    font-weight: 600;
-    color: var(--text-primary-color);
-    margin-bottom: 20px;
-  }
-
-  input {
-    font-size: 2rem;
-    padding: 5px 10px;
-    height: 50px;
-    border-radius: 10px;
-    outline: none;
-    border: {
-      width: 1px 1px 6px 1px;
-      color: hsl(336.79deg 59.55% 65.1%);
-      style: solid;
-    }
-    box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
-    -webkit-box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
-    -moz-box-shadow: 0px 0px 0px 3px rgb(66, 47, 47);
   }
 
   .custom-date {
@@ -314,21 +246,17 @@ a {
   }
 
   &--block:nth-of-type(1) .article--img {
-    background: url(/front-end/assets/img/tourist-attraction.jpg) center/cover
-      no-repeat;
+    background: url(../img/tourist-attraction.jpg) center/cover no-repeat;
   }
   &--block:nth-of-type(2) .article--img {
-    background: url(/front-end/assets/img/travel-guide.jpg) center/cover
-      no-repeat;
+    background: url(../img/travel-guide.jpg) center/cover no-repeat;
     background-position: 3% center;
   }
   &--block:nth-of-type(3) .article--img {
-    background: url(/front-end/assets/img/tour-review.jpg) center/cover
-      no-repeat;
+    background: url(../img/tour-review.jpg) center/cover no-repeat;
   }
   &--block:nth-of-type(4) .article--img {
-    background: orange url(/front-end/assets/img/flight-review.jpeg)
-      center/cover no-repeat;
+    background: orange url(../img/flight-review.jpeg) center/cover no-repeat;
     background-size: 120%;
   }
 }
@@ -361,7 +289,7 @@ a {
 // Stats ----------------------------------------------------------------------------------------------------------------------------------------
 .stats {
   padding: 50px 0 75px;
-  background: #78beec url(/front-end/assets/img/sky.jpg) center/cover no-repeat;
+  background: #78beec url(../img/sky.jpg) center/cover no-repeat;
 
   &--title {
     justify-content: center;
@@ -492,11 +420,5 @@ a {
     &--title::after {
       display: none;
     }
-  }
-}
-
-header {
-  &__inner {
-    display: flex;
   }
 }
