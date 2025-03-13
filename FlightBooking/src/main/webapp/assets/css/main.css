@@ -2067,11 +2067,14 @@ a {
   padding: 200px 0;
 }
 .booking-history__ticket {
-  margin-top: 30px;
+  margin: 30px 0;
   padding: 15px;
   border-radius: 8px;
   border: 1px solid #666;
   display: flex;
+}
+.booking-history__ticket--empty {
+  display: none;
 }
 .booking-history__ticket__img {
   width: 250px;
