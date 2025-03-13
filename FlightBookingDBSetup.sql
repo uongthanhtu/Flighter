@@ -79,4 +79,14 @@ WITH (
     CODEPAGE = '65001'
 );
 
-SELECT * FROM airport WHERE country like 'VietNam'
+UPDATE airport
+SET name = REPLACE(name, '"', '');
+UPDATE airport
+SET city = REPLACE(city, '"', '');
+UPDATE airport
+SET country = REPLACE(country, '"', '');
+
+
+SELECT * FROM airport
+SELECT * FROM users
+INSERT INTO users (email, password, role) VALUES ('admin@gmail.com', 'admin123', 'Admin') 

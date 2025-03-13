@@ -39,7 +39,10 @@ public class AuthController extends HttpServlet {
         String action = request.getParameter("action");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if (action.equals("register")){
+        if(action == null){  
+            request.getRequestDispatcher("AirportController").forward(request, response);
+            return;
+        }else if (action.equals("register")){
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String fullName = firstName + " " + lastName;
@@ -60,8 +63,7 @@ public class AuthController extends HttpServlet {
             userDao.insertUser(user);
             RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.forward(request, response); 
-            return;
-                 
+            return;        
         }else if (action.equals("login")){
             UserDAO userDao = new UserDAO();
             if(email.isEmpty() || password.isEmpty() || email == null || password == null){
@@ -76,6 +78,10 @@ public class AuthController extends HttpServlet {
                 session.setAttribute("usersession", user);
                 response.sendRedirect("./BookingController");
                 return;
+            }else if (user != null && user.getRole().equals("Admin")){
+                HttpSession session = request.getSession(true);
+                session.setAttribute("adminsession", user);
+                response.sendRedirect("./AdminController");
             }else {
                 request.setAttribute("error", "Email or password is incorrect");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");

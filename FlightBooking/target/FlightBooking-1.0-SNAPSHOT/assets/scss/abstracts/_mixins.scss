@@ -6,29 +6,29 @@ $grid-breakpoints: (
   xxl: 1400px,
 );
 
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// @mixin flex-center {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-@mixin button-style($bg-color, $text-color) {
-  background-color: $bg-color;
-  color: $text-color;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  width: 22%;
-  padding: 5px;
-  font-size: 17px;
-  font-weight: bold;
+// @mixin button-style($bg-color, $text-color) {
+//   background-color: $bg-color;
+//   color: $text-color;
+//   border: none;
+//   border-radius: 8px;
+//   cursor: pointer;
+//   margin-top: 20px;
+//   margin-bottom: 10px;
+//   width: 22%;
+//   padding: 5px;
+//   font-size: 17px;
+//   font-weight: bold;
 
-  &:hover {
-    opacity: 0.8;
-  }
-}
+//   &:hover {
+//     opacity: 0.8;
+//   }
+// }
 
 @mixin screen($key) {
   $breakpoint: map-get($grid-breakpoints, $key);

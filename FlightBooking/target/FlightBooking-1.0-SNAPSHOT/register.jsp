@@ -91,11 +91,6 @@
                   name="day"
                   required>
                   <option value="" disabled selected hidden>Day</option>
-                  <script>
-                    for (let i = 1; i <= 31; i++) {
-                      document.write(`<option value="${i}">${i}</option>`);
-                    }
-                  </script>
                 </select>
                 <select
                   class="register-form__dob__value"
@@ -122,12 +117,6 @@
                   name="year"
                   required>
                   <option value="" disabled selected hidden>Year</option>
-                  <script>
-                    const currentYear = new Date().getFullYear();
-                    for (let i = currentYear; i >= 1900; i--) {
-                      document.write(`<option value="${i}">${i}</option>`);
-                    }
-                  </script>
                 </select>
               </div>
             </div>
@@ -213,5 +202,27 @@
       </div>
     </section>
     <script src="./assets/javascripts/register.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Thêm ngày
+          let daySelect = document.getElementById("day");
+          for (let i = 1; i <= 31; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            daySelect.appendChild(option);
+          }
+
+          // Thêm năm
+          let yearSelect = document.getElementById("year");
+          const currentYear = new Date().getFullYear();
+          for (let i = currentYear; i >= 1900; i--) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
+          }
+        });
+      </script>
   </body>
 </html>

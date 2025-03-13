@@ -1,0 +1,75 @@
+.admin-header {
+  top: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  z-index: 20;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+  }
+  &__avatar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  &__name {
+    color: #333;
+    font-size: 1.6rem;
+    font-weight: 600;
+  }
+  &__img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  &__btn {
+    padding: 12px 20px;
+    border-radius: 24.5px;
+    background: #171100;
+    color: #fff;
+    font-weight: 500;
+  }
+}
+
+.admin-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  &__img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  &__title {
+    font-family: "Pacifico", cursive;
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: rgb(92, 225, 230);
+    text-shadow: 2px 2px 4px rgba(92, 225, 230, 0.3);
+  }
+}
+
+.admin-navbar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  &__item {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #1a162e;
+    &:hover {
+      color: #58e2ee;
+      transition: 0.25s;
+    }
+    &--active {
+      color: #58e2ee;
+    }
+  }
+}

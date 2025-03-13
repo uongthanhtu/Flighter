@@ -40,10 +40,9 @@ public class BookingController extends HttpServlet {
         UserDTO userSession = (session != null) ? (UserDTO) session.getAttribute("usersession") : null;
         if(action == null ){
             if(userSession == null){
-                request.getRequestDispatcher("index2.jsp").forward(request, response);
+                request.getRequestDispatcher("AirportController").forward(request, response);
                 return;
             }
-            session.setAttribute("usersession", userSession);
             request.setAttribute("action", "index");
             request.getRequestDispatcher("AirportController").forward(request, response);
             return;
@@ -51,25 +50,12 @@ public class BookingController extends HttpServlet {
         else if(action.equals("searchflight")){
             String departure = request.getParameter("departure");
             String arrival = request.getParameter("arrival");
-            if(userSession == null){
-                request.setAttribute("departure", departure);
-                request.setAttribute("arrival", arrival);
-                request.setAttribute("action", "searchflight");
-                request.getRequestDispatcher("AirportController").forward(request, response);
-                return;
-            }
             request.setAttribute("departure", departure);
             request.setAttribute("arrival", arrival);
             request.setAttribute("action", "searchflight");
-            session.setAttribute("usersession", userSession);        
-            request.getRequestDispatcher("flight-list.jsp").forward(request, response);
+            request.getRequestDispatcher("AirportController").forward(request, response);
             return;
         }else if(action.equals("flightdetails")){
-            if(userSession == null){
-                request.getRequestDispatcher("flight-details.jsp").forward(request, response);
-                return;
-            }
-            session.setAttribute("usersession", userSession);
             request.getRequestDispatcher("flight-details.jsp").forward(request, response);
             return;
         }

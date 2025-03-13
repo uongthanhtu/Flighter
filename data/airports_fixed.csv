@@ -326,7 +326,7 @@
 329,Barth Airport,Barth,Germany
 330,Jena-Schöngleina Airfield,Jena,Germany
 331,Kyritz Airport,Kyritz,Germany
-332,"Magdeburg ""City"" Airport",Magdeburg,Germany
+332,Magdeburg City Airport,Magdeburg,Germany
 333,Rothenburg/Görlitz Airport,Rothenburg/ol,Germany
 334,Anklam Airfield,Anklam,Germany
 335,Cottbus-Drewitz Airport,Cottbus,Germany
@@ -663,7 +663,7 @@
 673,Mielec Airport,Mielec,Poland
 674,Poznań-Ławica Airport,Poznan,Poland
 675,Rzeszów-Jasionka Airport,Rzeszow,Poland
-676,"Szczecin-Goleniów ""Solidarność"" Airport",Szczecin,Poland
+676,Szczecin-Goleniów Solidarność Airport,Szczecin,Poland
 677,Redzikowo Air Base,Slupsk,Poland
 678,Swidwin Military Air Base,Shapaja,Poland
 679,Warsaw Chopin Airport,Warsaw,Poland
@@ -1307,7 +1307,7 @@
 1342,Valence-Chabeuil Airport,Valence,France
 1343,Vichy-Charmeil Airport,Vichy,France
 1344,Aurillac Airport,Aurillac,France
-1345,"Châteauroux-Déols ""Marcel Dassault"" Airport",Chateauroux,France
+1345,Châteauroux-Déols Marcel Dassault Airport,Chateauroux,France
 1346,Lyon-Bron Airport,Lyon,France
 1347,Aix-en-Provence (BA 114) Airport,Aix-les-milles,France
 1348,Le Luc-Le Cannet Airport,Le Luc,France
@@ -1449,7 +1449,7 @@
 1485,Tripolis Airport,Tripolis,Greece
 1486,Thessaloniki Macedonia International Airport,Thessaloniki,Greece
 1487,Tatoi Airport,Dekelia,Greece
-1488,"Zakynthos International Airport ""Dionysios Solomos""",Zakynthos,Greece
+1488,Zakynthos International Airport Dionysios Solomos,Zakynthos,Greece
 1489,Budapest Liszt Ferenc International Airport,Budapest,Hungary
 1490,Debrecen International Airport,Debrecen,Hungary
 1491,Kecskemét Airport,Kecskemet,Hungary
@@ -1460,8 +1460,8 @@
 1499,Amendola Air Base,Amendola,Italy
 1500,Crotone Airport,Crotone,Italy
 1501,Bari Karol Wojtyła Airport,Bari,Italy
-1502,"Foggia ""Gino Lisa"" Airport",Foggia,Italy
-1503,"Taranto-Grottaglie ""Marcello Arlotta"" Airport",Grottaglie,Italy
+1502,Foggia Gino Lisa Airport,Foggia,Italy
+1503,Taranto-Grottaglie Marcello Arlotta Airport,Grottaglie,Italy
 1504,Lecce Galatina Air Base,Lecce,Italy
 1505,Pescara International Airport,Pescara,Italy
 1506,Brindisi – Salento Airport,Brindisi,Italy
@@ -2681,7 +2681,7 @@
 2822,Barinas Airport,Barinas,Venezuela
 2823,El Libertador Airbase,Maracaibo,Venezuela
 2824,Barquisimeto International Airport,Barquisimeto,Venezuela
-2826,"Aeropuerto ""General Tomas de Heres"". Ciudad Bolivar",Ciudad Bolivar,Venezuela
+2826,Aeropuerto General Tomas de Heres. Ciudad Bolivar,Ciudad Bolivar,Venezuela
 2827,Caicara del Orinoco Airport,Caicara De Orinoco,Venezuela
 2828,San Carlos Airport,San Carlos,Venezuela
 2829,Calabozo Airport,Calabozo,Venezuela
@@ -3367,7 +3367,7 @@
 3566,William P Hobby Airport,Houston,United States
 3567,Buckley Air Force Base,Buckley,United States
 3568,Northway Airport,Northway,United States
-3569,"Warren ""Bud"" Woods Palmer Municipal Airport",Palmer,United States
+3569,Warren Bud Woods Palmer Municipal Airport,Palmer,United States
 3570,Pittsburgh International Airport,Pittsburgh,United States
 3571,Wiley Post Will Rogers Memorial Airport,Barrow,United States
 3572,Ellington Airport,Houston,United States

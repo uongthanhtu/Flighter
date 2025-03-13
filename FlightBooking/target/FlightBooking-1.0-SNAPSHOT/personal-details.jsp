@@ -1,37 +1,49 @@
-<%@page import="flightbooking.model.UserDTO"%>
-<%@ page import="flightbooking.model.UserDTO" %>
+<%@page import="flightbooking.model.UserDTO"%> 
+<%@page import="flightbooking.model.UserDTO" %>
+    
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal Details</title>
-    <link rel="stylesheet" href="css/main.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/main.css"  />
   </head>
   <body>
-     <% UserDTO usersession = (UserDTO) session.getAttribute("usersession");
-     %> 
-    <header class="personal">
-      <div class="personal__left">
-        <img
-          src="img/avatar.jpg"
-          alt="Personal avatar"
-          class="personal__avatar"
-        />
-        <div class="personal__info">
-          <h2><%= usersession.getFullName() %></h2>
-          <p class="personal__email"><%= usersession.getEmail()%></p>
+    <header class="header">
+        <div class="container">
+          <nav class="navbar">
+            <!-- Logo -->
+            <a href="index2.jsp" class="logo__link"
+              ><img
+                src="./assets/img/logo-removebg-preview.png"
+                alt="logo"
+                class="logo" />
+            </a>
+            <div class="navbar__actions">
+              <a href="#!" class="navbar__link">My booking</a>
+              <a href="#!" class="navbar__link">Flights</a>
+              <a href="#!" class="navbar__link">Support</a>
+              <% UserDTO usersession = (UserDTO)session.getAttribute("usersession"); 
+              if(usersession == null){ %>
+              <a href="login.jsp" class="navbar__link">Sign in</a>
+              <a href="register.jsp" class="navbar__link">Sign up</a>
+              <% }else{%>
+
+              <a
+                href="ProfileController?action=profile_details"
+                class="user__avt">
+                <img src="./assets/img/user-avt.png" alt="User avt" /> </a
+              ><a
+                href="./AuthController?action=logout"
+                class="user__logout__btn"
+                >Log out</a
+              >
+              <%}%>
+            </div>
+          </nav>
         </div>
-      </div>
-      <div class="personal__right">
-        <img src="img/logo-web.png" alt="Logo-web" class="personal__logo" />
-        <p class="personal__flighter"></p>
-      </div>
-    </header>
+      </header>
 
     <div class="account">
       <div class="account__menu">
@@ -70,13 +82,12 @@
           </div>
           <button
             class="account__button"
-            onclick="window.location.href='ProfileController?action=edit_profile';"
-          >
+            onclick="window.location.href='edit-profile.jsp';">
             Edit
           </button>
         </div>
       </div>
     </div>
-    <script src="scripts/profile.js"></script>
+    <script src="./assets/javascripts/profile.js"></script>
   </body>
 </html>
