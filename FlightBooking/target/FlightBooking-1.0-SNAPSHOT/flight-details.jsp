@@ -13,7 +13,7 @@
         <div class="container">
           <nav class="navbar">
             <!-- Logo -->
-            <a href="AirportController" class="logo__link"
+            <a href="index2.jsp" class="logo__link"
               ><img
                 src="./assets/img/logo-removebg-preview.png"
                 alt="logo"

@@ -5,6 +5,7 @@
  */
 package flightbooking.controller;
 
+import flightbooking.dao.AirportDAO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -37,12 +38,11 @@ public class AirportController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private static final String AIRPORTS_URL = "https://raw.githubusercontent.com/jpatokal/openflights/master/data/airports.dat";
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         String action = request.getParameter("action") ; 
-        List<Map<String, String>> airports = (List<Map<String, String>>) fetchAirportData();   
+        AirportDAO dao = new AirportDAO();
+        List<Map<String, String>> airports = (List<Map<String, String>>) dao.loadAllAirport();   
         request.setAttribute("airports", airports);
         if(action == null || action.equals("login") || action.equals("logout")){  
             request.getRequestDispatcher("index2.jsp").forward(request, response);
@@ -56,31 +56,6 @@ public class AirportController extends HttpServlet {
        
         return;
 }   
-    private List<Map<String, String>> fetchAirportData() throws IOException {
-        URL url = new URL(AIRPORTS_URL);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        
-        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        List<Map<String, String>> airportList = new ArrayList<>();
-        String line; 
-        
-        while ((line = reader.readLine()) != null) {
-            String[] parts = line.split(",");
-            if (parts.length > 3) {
-                String airportName = parts[1].replace("\"", "");
-                String airportCountry = parts[3].replace("\"", "");
-                if (!airportName.isEmpty() && !airportCountry.isEmpty()) {
-                    Map<String, String> airport = new HashMap<>();
-                    airport.put("name", airportName);
-                    airport.put("country", airportCountry);
-                    airportList.add(airport);
-                }
-            }
-        }
-        reader.close();
-        return airportList;
-    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.

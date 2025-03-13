@@ -1,4 +1,5 @@
 <%@page import="flightbooking.model.UserDTO"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,54 +9,53 @@
     <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <!-- Logo -->
-      <a href="AirportController">
-        <img
-          src="./assets/img/logo-removebg-preview.png"
-          alt="logo"
-          class="logo"
-        />
-      </a>
-      <!-- Navigation -->
-      <ul>
-        <li>
-          <a href="#!" class="booking-btn">My booking</a>
-        </li>
-        <li class="support-btn__wrapper">
-          <a href="#!" class="support-btn">Support</a>
-        </li>
-      </ul>
-      <form action="/search" method="GET" class="search-form">
-        <input
-          type="text"
-          name="search"
-          placeholder="Search destinations ..."
-        />
-        <button type="submit">Search</button>
-      </form>
-      <!-- Action -->
-      <div class="actions">
-        <a href="#!">Sign in</a>
-        <a href="#!">Sign up</a>
-      </div>
-    </nav>
+    <header class="header">
+        <div class="container">
+          <nav class="navbar">
+            <!-- Logo -->
+            <a href="index2.jsp" class="logo__link"
+              ><img
+                src="./assets/img/logo-removebg-preview.png"
+                alt="logo"
+                class="logo" />
+            </a>
+            <div class="navbar__actions">
+              <a href="#!" class="navbar__link">My booking</a>
+              <a href="#!" class="navbar__link">Flights</a>
+              <a href="#!" class="navbar__link">Support</a>
+              <% UserDTO usersession = (UserDTO)
+              session.getAttribute("usersession"); if(usersession == null){ %>
+              <a href="login.jsp" class="navbar__link">Sign in</a>
+              <a href="register.jsp" class="navbar__link">Sign up</a>
+              <% }else{%>
+
+              <a
+                href="ProfileController?action=profile_details"
+                class="user__avt">
+                <img src="./assets/img/user-avt.png" alt="User avt" /> </a
+              ><a
+                href="./AuthController?action=logout"
+                class="user__logout__btn"
+                >Log out</a
+              >
+              <%}%>
+            </div>
+          </nav>
+        </div>
+      </header>
 
     <div class="profile">
       <img
-        src="img/Airplane Travel.jpg"
+        src="./assets/img/airplanetravel.jpg"
         alt=""
         srcset=""
-        class="profile__img"
-      />
+        class="profile__img" />
       <div class="profile__forms">
         <h2 class="profile__title">Edit Details</h2>
         <p class="profile__introduction">
           Update your personal information and make
         </p>
         <p class="profile__introduction-1">your profile truly yours!</p>
-        <% UserDTO usersession = (UserDTO) session.getAttribute("usersession"); %> 
         <form action="ProfileController" class="profile__form">
           <div class="profile__group">
             <label class="profile__label">Email</label>
@@ -64,15 +64,13 @@
               class="profile__input"
               name="email"
               value="<%= usersession.getEmail() %>"
-              disabled
-            />
+              disabled />
             <input
-                type="hidden"
-                name="email"
-                value="<%= usersession.getEmail()%>"
-            />
+              type="hidden"
+              name="email"
+              value="<%= usersession.getEmail()%>" />
           </div>
-          
+
           <div class="profile__row">
             <div class="profile__group">
               <label class="profile__label">Full Name</label>
@@ -80,21 +78,15 @@
                 type="text"
                 class="profile__input"
                 name="fullName"
-                placeholder="<%= usersession.getFullName() %>"
-              />
+                placeholder="<%= usersession.getFullName() %>" />
             </div>
           </div>
 
           <div class="profile__group">
             <label class="profile__label">Date of Birth</label>
             <div class="profile__dob">
-              <select class="profile__select" name="day">
+                <select class="profile__select" id="day" name="day">
                 <option value="" disabled selected hidden>Day</option>
-                <script>
-                  for (let i = 1; i <= 31; i++) {
-                    document.write(`<option value="${i}">${i}</option>`);
-                  }
-                </script>
               </select>
 
               <select class="profile__select" name="month">
@@ -113,14 +105,8 @@
                 <option value="12">December</option>
               </select>
 
-              <select class="profile__select" name="year">
+                <select class="profile__select" id="year" name="year">
                 <option value="" disabled selected hidden>Year</option>
-                <script>
-                  const currentYear = new Date().getFullYear();
-                  for (let i = currentYear; i >= 1900; i--) {
-                    document.write(`<option value="${i}">${i}</option>`);
-                  }
-                </script>
               </select>
             </div>
           </div>
@@ -131,8 +117,7 @@
               type="text"
               class="profile__input"
               name="phoneNumber"
-              placeholder="<%= usersession.getPhoneNumber()%>"
-            />
+              placeholder="<%= usersession.getPhoneNumber()%>" />
             <div class="profile__addNumber">
               <a href="#" id="openModal">+ Add Mobile Number</a>
             </div>
@@ -146,11 +131,10 @@
             <button
               type="button"
               class="profile__button profile__button--cancel"
-              onclick="window.location.href='personal-details.jsp';"
-            >
+              onclick="window.location.href='personal-details.jsp';">
               Cancel
             </button>
-              <input type="hidden" name="action" value="update_profile">
+            <input type="hidden" name="action" value="update_profile" />
             <button type="submit" class="profile__button profile__button--save">
               Save
             </button>
@@ -170,7 +154,7 @@
             <option value="+1">+1 (USA)</option>
             <option value="+44">+44 (UK)</option>
             <option value="+84">+84 (Vietnam)</option>
-            <!-- có thể add thêm country vào đây nhá -->
+            <!-- cÃ³ thá» add thÃªm country vÃ o ÄÃ¢y nhÃ¡ -->
           </select>
 
           <input type="tel" required placeholder="Mobile Number" />
@@ -183,6 +167,28 @@
         </div>
       </div>
     </div>
-    <script src="scripts/profile.js"></script>
+    <script src="./assets/javascripts/profile.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          // Thêm ngày
+          let daySelect = document.getElementById("day");
+          for (let i = 1; i <= 31; i++) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            daySelect.appendChild(option);
+          }
+
+          // Thêm năm
+          let yearSelect = document.getElementById("year");
+          const currentYear = new Date().getFullYear();
+          for (let i = currentYear; i >= 1900; i--) {
+            let option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            yearSelect.appendChild(option);
+          }
+        });
+      </script>
   </body>
 </html>

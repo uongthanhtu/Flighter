@@ -151,7 +151,6 @@ body {
   font-size: 1.6rem;
   font-family: "Poppins", sans-serif;
   color: #1a162e;
-  background: #eeeeee;
 }
 
 a {
@@ -220,6 +219,10 @@ strong {
   margin: var(--margin) 0;
   height: 1px;
   background: var(--separate-color);
+}
+
+.admin-body {
+  background: #eeeeee;
 }
 
 .row > *, .container-fluid, .container {

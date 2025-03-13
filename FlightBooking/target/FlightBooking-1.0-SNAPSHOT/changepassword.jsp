@@ -1,5 +1,6 @@
+
 <%-- Document : login Created on : Feb 26, 2025, 6:11:30 PM Author : ADMIN --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
   <head>

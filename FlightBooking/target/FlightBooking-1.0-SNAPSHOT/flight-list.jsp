@@ -34,7 +34,7 @@
       <div class="container">
         <nav class="navbar">
           <!-- Logo -->
-          <a href="AirportController" class="logo__link"
+          <a href="index2.jsp" class="logo__link"
             ><img
               src="./assets/img/logo-removebg-preview.png"
               alt="logo"
@@ -250,7 +250,7 @@
                   if (airports != null) {
                       for (Map<String, String> airport : airports) {
               %>
-                  { name: "<%= airport.get("name")%>", country: "<%= airport.get("country")%>" },
+                  { name: "<%= airport.get("name")%>", city: "<%= airport.get("city")%>", country: "<%= airport.get("country")%>" },
 
               <%
                       }
@@ -276,7 +276,7 @@
               }
 
               let filteredAirports = airports.filter(airport =>
-                  airport.name.toLowerCase().includes(query) || airport.country.toLowerCase().includes(query)
+                  airport.name.toLowerCase().includes(query) || airport.city.toLowerCase().includes(query) || airport.country.toLowerCase().includes(query)
               );
 
               showAirportList(filteredAirports, input, list);
@@ -294,14 +294,16 @@
 
       airportList.forEach(airport => {
           let displayName = airport.name ? airport.name : "Unknown";
+          let displayCity = airport.city ? airport.city : "Unknown";
           let displayCountry = airport.country ? airport.country : "Unknown";
           console.log(displayName);
+          console.log(displayCity);
           console.log(displayCountry);
           const div = document.createElement("div");
           div.classList.add("autocomplete-item");
 
           if (displayCountry && displayCountry.trim() !== "" && displayCountry !== "undefined") {
-              div.innerHTML = displayName + " - " + displayCountry;
+              div.innerHTML = displayName + " - " + displayCity + " - " + displayCountry;
 
           } else {
               div.innerHTML = displayName;

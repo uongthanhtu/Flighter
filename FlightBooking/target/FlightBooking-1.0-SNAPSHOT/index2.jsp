@@ -97,7 +97,7 @@ import="flightbooking.model.UserDTO"%>
         <div class="container">
           <nav class="navbar">
             <!-- Logo -->
-            <a href="AirportController" class="logo__link"
+            <a href="index2.jsp" class="logo__link"
               ><img
                 src="./assets/img/logo-removebg-preview.png"
                 alt="logo"
@@ -107,8 +107,8 @@ import="flightbooking.model.UserDTO"%>
               <a href="#!" class="navbar__link">My booking</a>
               <a href="#!" class="navbar__link">Flights</a>
               <a href="#!" class="navbar__link">Support</a>
-              <% UserDTO usersession = (UserDTO)
-              session.getAttribute("usersession"); if(usersession == null){ %>
+              <% UserDTO usersession = (UserDTO)session.getAttribute("usersession"); 
+              if(usersession == null){ %>
               <a href="login.jsp" class="navbar__link">Sign in</a>
               <a href="register.jsp" class="navbar__link">Sign up</a>
               <% }else{%>
@@ -321,7 +321,7 @@ import="flightbooking.model.UserDTO"%>
                   if (airports != null) {
                       for (Map<String, String> airport : airports) {
               %>
-                  { name: "<%= airport.get("name")%>", country: "<%= airport.get("country")%>" },
+                  { name: "<%= airport.get("name")%>", city: "<%= airport.get("city")%>", country: "<%= airport.get("country")%>" },
 
               <%
                       }
@@ -347,7 +347,7 @@ import="flightbooking.model.UserDTO"%>
               }
 
               let filteredAirports = airports.filter(airport =>
-                  airport.name.toLowerCase().includes(query) || airport.country.toLowerCase().includes(query)
+                  airport.name.toLowerCase().includes(query) || airport.city.toLowerCase().includes(query) || airport.country.toLowerCase().includes(query)
               );
 
               showAirportList(filteredAirports, input, list);
@@ -365,14 +365,16 @@ import="flightbooking.model.UserDTO"%>
 
       airportList.forEach(airport => {
           let displayName = airport.name ? airport.name : "Unknown";
+          let displayCity = airport.city ? airport.city : "Unknown";
           let displayCountry = airport.country ? airport.country : "Unknown";
           console.log(displayName);
+          console.log(displayCity);
           console.log(displayCountry);
           const div = document.createElement("div");
           div.classList.add("autocomplete-item");
 
           if (displayCountry && displayCountry.trim() !== "" && displayCountry !== "undefined") {
-              div.innerHTML = displayName + " - " + displayCountry;
+              div.innerHTML = displayName + " - " + displayCity + " - " + displayCountry;
 
           } else {
               div.innerHTML = displayName;
