@@ -56,26 +56,34 @@
       <section class="flight-edit">
         <div class="container">
           <div class="flight-edit__inner">
-            <h1 class="flight-edit__title">Flight Edit</h1>
-            <form class="flight-edit__form" action="">
+            <h1 class="flight-edit__title">${requestScope.nextaction != null 
+                                             && requestScope.nextaction == 'addflight' 
+                                             ? 'Add Flight' : 'Edit Flight'}</h1>
+            <form action="FlightController" class="flight-edit__form" action="${requestScope.nextaction}">
               <div class="row">
                 <div class="flight-edit__form-group col-6">
-                  <label class="flight-edit__form-label" for=""
+                  <label class="flight-edit__form-label" for="flightId"
                     >Flight ID</label
                   >
                   <input
                     class="flight-edit__form-input"
                     type="text"
-                    placeholder="Enter Flight ID" />
+                    placeholder="Enter Flight ID" 
+                    name="flightId"
+                    id="flightId" readonly
+                    value="${requestScope.flightid}"/>
                 </div>
                 <div class="flight-edit__form-group col-6">
-                  <label class="flight-edit__form-label" for=""
+                  <label class="flight-edit__form-label" for="flightNumber"
                     >Flight Number</label
                   >
                   <input
                     class="flight-edit__form-input"
                     type="text"
-                    placeholder="Enter Flight Number" />
+                    id="flightNumber"
+                    name="flightNumber"
+                    placeholder="Enter Flight Number" 
+                    required/>
                 </div>
               </div>
               <div class="row">
@@ -86,7 +94,9 @@
                   <input
                     class="flight-edit__form-input"
                     type="text"
-                    placeholder="Enter Departure Airport" />
+                    placeholder="Enter Departure Airport" 
+                    name="departureAirport"
+                    required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
@@ -95,7 +105,9 @@
                   <input
                     class="flight-edit__form-input"
                     type="text"
-                    placeholder="Enter Arrival Airport" />
+                    placeholder="Enter Arrival Airport"
+                    name="arrivalAirport"
+                    required/>
                 </div>
               </div>
               <div class="row">
@@ -105,8 +117,10 @@
                   >
                   <input
                     class="flight-edit__form-input"
+                    name="departuredatetime"
                     type="text"
-                    placeholder="Enter Departure Date-Time" />
+                    placeholder="Enter Departure Date-Time"
+                    required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
@@ -114,8 +128,10 @@
                   >
                   <input
                     class="flight-edit__form-input"
+                    name="arrivaldatetime"
                     type="text"
-                    placeholder="Enter Arrival Date-Time" />
+                    placeholder="Enter Arrival Date-Time"
+                    required/>
                 </div>
               </div>
               <div class="row">
@@ -124,7 +140,9 @@
                   <input
                     class="flight-edit__form-input"
                     type="text"
-                    placeholder="Enter Airline" />
+                    placeholder="Enter Airline" 
+                    name="airline"
+                    required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
@@ -133,7 +151,9 @@
                   <input
                     class="flight-edit__form-input"
                     type="text"
-                    placeholder="Enter Aircraft Type" />
+                    placeholder="Enter Aircraft Type"
+                    name="aircraftType"
+                    required/>
                 </div>
               </div>
               <div class="row">
@@ -143,8 +163,11 @@
                   >
                   <input
                     class="flight-edit__form-input"
-                    type="text"
-                    placeholder="Enter Price" />
+                    min="0"
+                    type="number"
+                    name="businessPrice"
+                    placeholder="Enter Price" 
+                    required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
@@ -152,8 +175,11 @@
                   >
                   <input
                     class="flight-edit__form-input"
-                    type="text"
-                    placeholder="Enter Price" />
+                    min="0"
+                    type="number"
+                    name="economyPrice"
+                    placeholder="Enter Price" 
+                    required/>
                 </div>
               </div>
               <div class="row">
@@ -164,7 +190,9 @@
                   <input
                     class="flight-edit__form-input"
                     type="text"
-                    placeholder="Enter Flight Status" />
+                    name="flightStatus"
+                    placeholder="Enter Flight Status" 
+                    required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
@@ -172,8 +200,11 @@
                   >
                   <input
                     class="flight-edit__form-input"
-                    type="text"
-                    placeholder="Enter Price" />
+                    min="0"
+                    type="number"
+                    name="baggageAllow"
+                    placeholder="Enter Price" 
+                    required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
@@ -181,11 +212,17 @@
                   >
                   <input
                     class="flight-edit__form-input"
-                    type="text"
-                    placeholder="Enter Price" />
+                    min="1"
+                    type="number"
+                    name="totalSeat"
+                    placeholder="Enter Price" 
+                    required/>
                 </div>
               </div>
-              <button class="flight-edit__form-btn">Add Flight</button>
+                <input type="hidden" name="action" value="insert_flight">
+              <button class="flight-edit__form-btn">${requestScope.nextaction != null 
+                                             && requestScope.nextaction == 'addflight' 
+                                             ? 'Add Flight' : 'Edit'}</button>
             </form>
           </div>
         </div>

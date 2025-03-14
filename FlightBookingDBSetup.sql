@@ -26,6 +26,8 @@ CREATE TABLE flight(
 	totalSeats INT,
 	businessPrice DECIMAL(10,2),
 	economyPrice DECIMAL(10,2),
+	aircraftType VARCHAR(20),
+	baggageAllow FLOAT,
 	flightStatus VARCHAR(20) NOT NULL CHECK (flightStatus IN ('Open', 'Delayed', 'Canceled')) DEFAULT 'Open',
 	adminID INT FOREIGN KEY REFERENCES users (userID),
 	departureId INT FOREIGN KEY REFERENCES airport(airportID) ,

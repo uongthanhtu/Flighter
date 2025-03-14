@@ -46,7 +46,8 @@ public class AdminController extends HttpServlet {
             request.getRequestDispatcher("adminflightlist.jsp").forward(request, response);
             return;
         }else if(action.equals("addflight")){
-            request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
+            request.setAttribute("nextaction", "addflight");
+            request.getRequestDispatcher("FlightController").forward(request, response);
             return;
         }else if (action.equals("editaccount")){
             request.getRequestDispatcher("adminaccountmanager.jsp").forward(request, response);

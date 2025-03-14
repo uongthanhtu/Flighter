@@ -75,13 +75,16 @@ public class AuthController extends HttpServlet {
             UserDTO user = userDao.loginUser(email, password);
             if(user != null && user.getRole().equals("Customer")) {
                 HttpSession session = request.getSession(true);
+                user = userDao.loadUser(email);
                 session.setAttribute("usersession", user);
                 response.sendRedirect("./BookingController");
                 return;
             }else if (user != null && user.getRole().equals("Admin")){
                 HttpSession session = request.getSession(true);
+                user = userDao.loadUser(email);
                 session.setAttribute("adminsession", user);
                 response.sendRedirect("./AdminController");
+                return;
             }else {
                 request.setAttribute("error", "Email or password is incorrect");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");

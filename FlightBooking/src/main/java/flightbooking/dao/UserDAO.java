@@ -108,7 +108,7 @@ public class UserDAO {
         UserDTO user = null;
         try {
                 Connection con = DBUtils.getConnection();            
-                String sql = " SELECT email, fullName, phoneNumber, role FROM users ";
+                String sql = " SELECT userID , email, fullName, phoneNumber, role FROM users ";
                 sql += " WHERE email = ? ";
                                
                 PreparedStatement stmt = con.prepareStatement(sql);
@@ -118,7 +118,8 @@ public class UserDAO {
                 
                 while (rs.next()){
                     if (rs != null){
-                        user = new UserDTO();  
+                        user = new UserDTO(); 
+                        user.setUserID(rs.getInt("userID"));
                         user.setEmail(rs.getString("email"));
                         user.setFullName(rs.getString("fullName"));
                         user.setPhoneNumber(rs.getString("phoneNumber"));
