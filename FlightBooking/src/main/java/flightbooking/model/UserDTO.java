@@ -56,6 +56,10 @@ public class UserDTO {
         return email;
     }
 
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+    
     public void setEmail(String email) {
         this.email = email;
     }

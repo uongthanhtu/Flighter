@@ -9,6 +9,7 @@ import flightbooking.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,4 +40,23 @@ public class AirportDAO {
         }
         return airportList;
     }
+    
+    public int getAirportIdByAirportName (String airportName){
+        int id = -1;
+        try {
+            Connection conn = DBUtils.getConnection();
+            String sql = " SELECT airportID FROM airport WHERE name = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, airportName);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                id = rs.getInt("airportID");
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Get AirportId By AirportName - Error, Details: " + ex.getMessage());
+        }
+        return id;
+    }  
+    
 }
