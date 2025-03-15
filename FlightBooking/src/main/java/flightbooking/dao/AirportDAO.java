@@ -59,4 +59,22 @@ public class AirportDAO {
         return id;
     }  
     
+    public String getAirportNameByAirportId (int airportID){
+        String name = "";
+        try {
+            Connection conn = DBUtils.getConnection();
+            String sql = " SELECT name FROM airport WHERE airportID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, airportID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                name = rs.getString("name");
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Get AirportName By AirportId - Error, Details: " + ex.getMessage());
+        }
+        return name;
+    }  
+    
 }

@@ -42,8 +42,8 @@ public class AdminController extends HttpServlet {
             request.getRequestDispatcher("AirportController").forward(request, response);
             return;
         }
-        if(action == null){
-            request.getRequestDispatcher("adminflightlist.jsp").forward(request, response);
+        if(action == null || action.equals("flightlist")){
+            request.getRequestDispatcher("FlightController").forward(request, response);
             return;
         }else if(action.equals("addflight")){
             request.setAttribute("nextaction", "addflight");

@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,11 +51,30 @@ public class FlightController extends HttpServlet {
         }
         FlightDAO flightDao = new FlightDAO();
         AirportDAO airportDao = new AirportDAO();
-        if(action.equals("addflight")){
+        if(action == null  || action.equals("flightlist")){
+            List<FlightDTO> listFlight = flightDao.loadAllFlightList();
+            if(listFlight != null ) {
+                Map<Integer, String> listAirportName = new HashMap<> ();
+                for (FlightDTO flightDTO : listFlight) {
+                    listAirportName.put(flightDTO.getDepartureID(), 
+                        airportDao.getAirportNameByAirportId(flightDTO.getDepartureID()));
+                    listAirportName.put(flightDTO.getArrivalID(), 
+                        airportDao.getAirportNameByAirportId(flightDTO.getArrivalID()));
+                }
+                request.setAttribute("airportname", listAirportName);
+                request.setAttribute("flightlist", listFlight);
+            }else {
+                request.setAttribute("error", "No flights available.");
+            }
+            request.getRequestDispatcher("adminflightlist.jsp").forward(request, response);
+            return;
+        }
+        else if(action.equals("addflight")){
             request.setAttribute("flightid", flightDao.getMaxFlightID() + 1);
             request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
+            return;
         }
-        if(action.equals("insert_flight")){
+        else if(action.equals("insert_flight")){
             int flightId = Integer.parseInt(request.getParameter("flightId"));
             String flightNumber = request.getParameter("flightNumber");
             String departure = request.getParameter("departureAirport");
@@ -93,13 +115,15 @@ public class FlightController extends HttpServlet {
             int adminId = adminsession.getUserID();
             FlightDTO flight = new FlightDTO(flightId, flightNumber, airline, departureId, arrivalId, departureDateTime, arrivalDateTime, totalSeat, businessPrice, economyPrice, aircraftType, baggageAllow, flightStatus, adminId);
             if(flightDao.insertFlight(flight)){
-                response.sendRedirect("AdminController");
+                response.sendRedirect("AdminController?action=flightlist");
                 return;
             }else{
                 request.setAttribute("error", "Something went wrong, the server cannot insert.....");
                 request.getRequestDispatcher("adminflightedit.jsp");
+                return;
             }
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

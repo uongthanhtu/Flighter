@@ -20,6 +20,7 @@ CREATE TABLE airport (
 
 CREATE TABLE flight(
 	flightID INT IDENTITY(1,1) Primary Key,
+	flightNumber VARCHAR(20),
 	airline VARCHAR(20), 
 	departuretTime DATETIME,
 	arrivalTime DATETIME,
