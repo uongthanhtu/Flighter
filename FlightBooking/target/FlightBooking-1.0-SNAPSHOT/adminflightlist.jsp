@@ -1,4 +1,9 @@
+<%@page import="flightbooking.model.FlightDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70,12 +75,23 @@
                 </tr>
               </thead>
               <tbody>
+                  <% List <FlightDTO> flightlist = (List<FlightDTO>) request.getAttribute("flightlist");
+                  if(flightlist != null){
+                      for (FlightDTO flight : flightlist) {
+                          pageContext.setAttribute("flight", flight);
+                  %> 
+                      
+                   
                 <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
+                  <td>${flight.flightID}</td>
+                  <td>${flight.flightNumber}</td>
+                  <td>From ${requestScope.airportname[flight.departureID]} <br> to ${requestScope.airportname[flight.arrivalID]}</td>
+                  <% 
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");           
+                    %>
+                    <td>From <%= flight.getDepartureTime().format(formatter) %> <br> to
+                    <%= flight.getArrivalTime().format(formatter) %></td>
+                  <td>${flight.flightStatus}</td>
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
@@ -94,126 +110,10 @@
                     </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
+                <%   
+                      }
+                  }  
+                  %>
               </tbody>
             </table>
             <div class="account-manager__pagination">

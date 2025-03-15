@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -22,8 +24,8 @@ public class FlightDAO {
     public boolean insertFlight (FlightDTO flight) {
         try {
             String sql = " INSERT INTO flight "
-                    + "(airline, departureId, arrivalId, departuretTime, arrivalTime, totalSeats, businessPrice, economyPrice, aircraftType, baggageAllow ,flightStatus, adminID) "
-                    + "VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )  ";
+                    + "(airline, departureId, arrivalId, departuretTime, arrivalTime, totalSeats, businessPrice, economyPrice, aircraftType, baggageAllow ,flightStatus, flightNumber , adminID) "
+                    + " VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )  ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, flight.getAirline());
             ps.setInt(2, flight.getArrivalID());
@@ -36,7 +38,8 @@ public class FlightDAO {
             ps.setString(9, flight.getAircraftType());
             ps.setFloat(10, flight.getBaggageAllow());
             ps.setString(11, flight.getFlightStatus());
-            ps.setInt(12, flight.getAdminID());
+            ps.setString(12, flight.getFlightNumber());
+            ps.setInt(13, flight.getAdminID());
             ps.executeUpdate();
             conn.close();
         } catch (SQLException ex) {
@@ -64,6 +67,98 @@ public class FlightDAO {
         return maxID;
     }
     
+    public boolean updateFlight (FlightDTO flight) {
+        try {
+            String sql = " UPDATE flight SET airline = ? , departureId = ? , "
+                    + " arrivalId = ?, departuretTime = ? , arrivalTime = ?, "
+                    + " totalSeats = ?, businessPrice = ? , economyPrice = ?, "
+                    + " aircraftType = ?, baggageAllow = ? , flightStatus = ? , "
+                    + " flightNumber = ? , adminID = ? WHERE flightID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, flight.getAirline());
+            ps.setInt(2, flight.getArrivalID());
+            ps.setInt(3, flight.getDepartureID());
+            ps.setTimestamp(4, Timestamp.valueOf(flight.getDepartureTime()));
+            ps.setTimestamp(5, Timestamp.valueOf(flight.getArrivalTime()));
+            ps.setInt(6, flight.getTotalSeats());
+            ps.setDouble(7, flight.getBusinessPrice());
+            ps.setDouble(8, flight.getEconomyPrice());
+            ps.setString(9, flight.getAircraftType());
+            ps.setFloat(10, flight.getBaggageAllow());
+            ps.setString(11, flight.getFlightStatus());
+            ps.setString(12, flight.getFlightNumber());
+            ps.setInt(13, flight.getAdminID());
+            ps.setInt(14, flight.getFlightID());
+            ps.executeUpdate();
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Insert Flight Error, Details:" + ex.getMessage());
+            return false;
+        }
+        return true;
+    }
     
+    public FlightDTO loadFlightById (int flightId){
+        FlightDTO flight = null;
+        try {
+            String sql = " SELECT * FROM flight WHERE flightID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, flightId);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                flight = new FlightDTO();
+                flight.setFlightID(rs.getInt("flightID"));
+                flight.setAirline(rs.getString("airline"));
+                flight.setDepartureTime(rs.getTimestamp("departuretTime").toLocalDateTime());
+                flight.setArrivalTime(rs.getTimestamp("arrivalTime").toLocalDateTime());
+                flight.setTotalSeats(rs.getInt("totalSeats"));
+                flight.setBusinessPrice(rs.getDouble("businessPrice"));
+                flight.setEconomyPrice(rs.getDouble("economyPrice"));
+                flight.setAircraftType(rs.getString("aircraftType"));
+                flight.setBaggageAllow(rs.getFloat("baggageAllow"));
+                flight.setFlightStatus(rs.getString("flightStatus"));
+                flight.setDepartureID(rs.getInt("departureId"));
+                flight.setArrivalID(rs.getInt("arrivalId"));
+                flight.setFlightNumber(rs.getString("flightNumber"));
+            }
+            conn.close();
+        } catch (Exception ex) {
+            System.out.println("Load the flight by id is error, Details:" + ex.getMessage());
+            return null;
+        }
+        return flight;
+    }
+    
+    public List<FlightDTO> loadAllFlightList (){
+        List<FlightDTO> listFlight = new ArrayList<FlightDTO>();
+        FlightDTO flight = null;
+        try {
+            String sql = " SELECT * FROM flight ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                flight = new FlightDTO();
+                flight.setFlightID(rs.getInt("flightID"));
+                flight.setAirline(rs.getString("airline"));
+                flight.setFlightNumber(rs.getString("flightNumber"));
+                flight.setDepartureTime(rs.getTimestamp("departuretTime").toLocalDateTime());
+                flight.setArrivalTime(rs.getTimestamp("arrivalTime").toLocalDateTime());
+                flight.setTotalSeats(rs.getInt("totalSeats"));
+                flight.setBusinessPrice(rs.getDouble("businessPrice"));
+                flight.setEconomyPrice(rs.getDouble("economyPrice"));
+                flight.setAircraftType(rs.getString("aircraftType"));
+                flight.setBaggageAllow(rs.getFloat("baggageAllow"));
+                flight.setFlightStatus(rs.getString("flightStatus"));
+                flight.setDepartureID(rs.getInt("departureId"));
+                flight.setArrivalID(rs.getInt("arrivalId"));
+                listFlight.add(flight);
+            }
+            conn.close();
+        } catch (Exception ex) {
+            System.out.println("Load all flight is error, Details:" + ex.getMessage());
+            return null;
+        }
+        return listFlight;
+    }
     
 }
