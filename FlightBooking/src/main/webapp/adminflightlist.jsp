@@ -31,7 +31,7 @@
           </a>
           <nav class="admin-navbar">
             <a
-              href="AdminController"
+              href="AdminController?action=flightlist"
               class="admin-navbar__item admin-navbar__item--active"
               >DashBoard</a
             >
@@ -87,7 +87,7 @@
                   <td>${flight.flightNumber}</td>
                   <td>From ${requestScope.airportname[flight.departureID]} <br> to ${requestScope.airportname[flight.arrivalID]}</td>
                   <% 
-                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");           
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");           
                     %>
                     <td>From <%= flight.getDepartureTime().format(formatter) %> <br> to
                     <%= flight.getArrivalTime().format(formatter) %></td>
@@ -95,17 +95,17 @@
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
-                      href="">
+                      href="FlightController?action=editflight&flightid=${flight.flightID}">
                       <i class="fas fa-edit"></i> Update
                     </a>
                     <a
                       class="account-manager__btn account-manager__btn--delete"
-                      href="">
+                      href="FlightController?action=delete&flightid=${flight.flightID}">
                       <i class="fas fa-trash"></i> Delete
                     </a>
                     <a
                       class="account-manager__btn account-manager__btn--detail"
-                      href="">
+                      href="FlightController?action=details&flightid=${flight.flightID}">
                       <i class="fas fa-trash"></i> Detail
                     </a>
                   </td>
