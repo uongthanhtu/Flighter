@@ -5,6 +5,76 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Register Page</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./assets/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./assets/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./assets/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./assets/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./assets/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./assets/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./assets/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/favicon/manifest.json" />
     <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body>
@@ -16,7 +86,8 @@
             ><img
               src="./assets/img/logo-removebg-preview.png"
               alt="logo"
-              class="logo" />
+              class="logo"
+            />
           </a>
 
           <div class="navbar__actions">
@@ -49,18 +120,20 @@
                   class="register-form__name__input"
                   type="text"
                   required
-                  placeholder="Enter First Name" />
+                  placeholder="Enter First Name"
+                />
               </div>
             </div>
             <div>
               <label class="register-form__label">Last name</label>
               <div class="register-form__component--flex">
                 <input
-                  name="lastName"  
+                  name="lastName"
                   class="register-form__name__input"
                   type="text"
                   required
-                  placeholder="Enter Last Name" />
+                  placeholder="Enter Last Name"
+                />
               </div>
             </div>
           </div>
@@ -73,14 +146,15 @@
                 class="register-form__email__input"
                 type="email"
                 required
-                placeholder="Enter email" />
+                placeholder="Enter email"
+              />
               <i class="fa-regular fa-envelope"></i>
             </div>
           </div>
-          <% String error = (String) request.getAttribute("erroremail"); %> <% if
-            (error != null) { %>
-            <h4 style="color: red"><%= error %></h4>
-            <% } %>
+          <% String error = (String) request.getAttribute("erroremail"); %> <%
+          if (error != null) { %>
+          <h4 style="color: red"><%= error %></h4>
+          <% } %>
           <div class="register-form__dob-and-phone">
             <div class="register-form__dob">
               <label class="register-form__label">Date of Birth*</label>
@@ -89,14 +163,16 @@
                   class="register-form__dob__value"
                   id="day"
                   name="day"
-                  required>
+                  required
+                >
                   <option value="" disabled selected hidden>Day</option>
                 </select>
                 <select
                   class="register-form__dob__value"
                   id="month"
                   name="month"
-                  required>
+                  required
+                >
                   <option value="" disabled selected hidden>Month</option>
                   <option value="1">January</option>
                   <option value="2">February</option>
@@ -115,7 +191,8 @@
                   class="register-form__dob__value"
                   id="year"
                   name="year"
-                  required>
+                  required
+                >
                   <option value="" disabled selected hidden>Year</option>
                 </select>
               </div>
@@ -127,7 +204,8 @@
                   class="register-form__phone__country-code"
                   id="countryCode"
                   name="countryCode"
-                  required>
+                  required
+                >
                   <option value="+1">+1 (USA)</option>
                   <option value="+44">+44 (UK)</option>
                   <option value="+84">+84 (Vietnam)</option>
@@ -139,7 +217,8 @@
                   class="register-form__phone__number"
                   type="tel"
                   required
-                  placeholder="Mobile Number" />
+                  placeholder="Mobile Number"
+                />
                 <!-- </div> -->
               </div>
             </div>
@@ -150,15 +229,16 @@
               <label class="register-form__label">Password</label>
               <div class="register-form__password__detail">
                 <input
-                    name="password"
+                  name="password"
                   class="register-form__password__value"
                   type="password"
                   id="password"
-                  placeholder="Enter password" />
+                  placeholder="Enter password"
+                />
                 <i class="fa-regular fa-eye eye-icon" id="togglePassword1"></i>
               </div>
             </div>
-             <div class="register-form__password-confirm">
+            <div class="register-form__password-confirm">
               <label class="register-form__label">Confirm Password*</label>
               <div class="register-form__password__detail">
                 <input
@@ -166,13 +246,15 @@
                   class="register-form__password__value"
                   type="password"
                   id="password-confirm"
-                  placeholder="Enter password" />
+                  placeholder="Enter password"
+                />
                 <i class="fa-regular fa-eye eye-icon" id="togglePassword2"></i>
               </div>
-              <% String errorpass = (String) request.getAttribute("errorpassword"); %> <% if
-            (errorpass != null) { %>
-            <h4 style="color: red"><%= errorpass %></h4>
-            <% } %>
+              <% String errorpass = (String)
+              request.getAttribute("errorpassword"); %> <% if (errorpass !=
+              null) { %>
+              <h4 style="color: red"><%= errorpass %></h4>
+              <% } %>
             </div>
           </div>
 
@@ -180,7 +262,8 @@
             <input
               class="register-form__policy__checkbox"
               type="checkbox"
-              required />
+              required
+            />
             <label class="register-form__label"
               >I have read and agreed with
               <a href="#!">Flighter's terms and conditions</a>
@@ -190,7 +273,8 @@
             <input
               class="register-form__policy__checkbox"
               type="checkbox"
-              required />
+              required
+            />
             <label class="register-form__label"
               >I acknowledge and accept the terms of
               <a href="#!">Flighter's Privacy Policy</a>
@@ -203,26 +287,26 @@
     </section>
     <script src="./assets/javascripts/register.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-          // Thêm ngày
-          let daySelect = document.getElementById("day");
-          for (let i = 1; i <= 31; i++) {
-            let option = document.createElement("option");
-            option.value = i;
-            option.textContent = i;
-            daySelect.appendChild(option);
-          }
+      document.addEventListener("DOMContentLoaded", function () {
+        // Thêm ngày
+        let daySelect = document.getElementById("day");
+        for (let i = 1; i <= 31; i++) {
+          let option = document.createElement("option");
+          option.value = i;
+          option.textContent = i;
+          daySelect.appendChild(option);
+        }
 
-          // Thêm năm
-          let yearSelect = document.getElementById("year");
-          const currentYear = new Date().getFullYear();
-          for (let i = currentYear; i >= 1900; i--) {
-            let option = document.createElement("option");
-            option.value = i;
-            option.textContent = i;
-            yearSelect.appendChild(option);
-          }
-        });
-      </script>
+        // Thêm năm
+        let yearSelect = document.getElementById("year");
+        const currentYear = new Date().getFullYear();
+        for (let i = currentYear; i >= 1900; i--) {
+          let option = document.createElement("option");
+          option.value = i;
+          option.textContent = i;
+          yearSelect.appendChild(option);
+        }
+      });
+    </script>
   </body>
 </html>
