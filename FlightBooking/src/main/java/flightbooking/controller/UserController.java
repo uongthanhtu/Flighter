@@ -1,14 +1,15 @@
-package flightbooking.controller;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package flightbooking.controller;
 
+import flightbooking.dao.UserDAO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author ADMIN
  */
-@WebServlet(urlPatterns = {"/AdminController"})
-public class AdminController extends HttpServlet {
+@WebServlet(name = "UserController", urlPatterns = {"/UserController"})
+public class UserController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,9 +36,10 @@ public class AdminController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         String action = request.getParameter("action");
         HttpSession session = request.getSession(false);
-        
+        UserDAO userdao = new UserDAO();
         if(session != null){
             UserDTO adminsession =  (UserDTO) session.getAttribute("adminsession");
             if(adminsession == null){
@@ -48,24 +50,28 @@ public class AdminController extends HttpServlet {
             request.getRequestDispatcher("AirportController").forward(request, response);
             return;
         }
-        if(action == null || action.equals("flightlist")){
-            request.getRequestDispatcher("FlightController").forward(request, response);
-            return;
-        }else if(action.equals("addflight")){  
-            request.getRequestDispatcher("FlightController").forward(request, response);
-            return;
-        }else if (action.equals("editaccount")){
+        if(action.equals("accountlist")){
+            List<UserDTO> list = userdao.loadAllUser();
+            if(list != null){
+                request.setAttribute("userlist", list);
+            }
             request.getRequestDispatcher("adminaccountmanager.jsp").forward(request, response);
             return;
-        }else if(action.equals("reportflight")){
-            request.getRequestDispatcher("adminreportflight.jsp").forward(request, response);
-            return;
-        }else if(action.equals("accountlist")){
-            request.getRequestDispatcher("UserController").forward(request, response);
-            return;
         }
-        
-        
+        else if (action.equals("deleteaccount")){
+            Integer userid = null;
+            try {
+                userid = Integer.parseInt(request.getParameter("userid"));
+            } catch (Exception e) {
+                System.out.println("Can not get user id, Details: " + e.getMessage());
+                request.getRequestDispatcher("AdminController?action=accountlist").forward(request, response);
+                return;
+            }
+            if(userdao.deleteUser(userid)){
+                request.getRequestDispatcher("AdminController?action=accountlist").forward(request, response);
+                return;
+            }
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

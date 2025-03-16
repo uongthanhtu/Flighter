@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -134,4 +136,42 @@ public class UserDAO {
             return user;
     }
     
+    public List<UserDTO> loadAllUser (){
+        UserDTO user = null;
+        List<UserDTO> list = new ArrayList<>();
+        try {
+            Connection con = DBUtils.getConnection();            
+            String sql = " SELECT userID , email, fullName, phoneNumber, role FROM users ";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery();    
+            while (rs.next()){
+                user = new UserDTO(); 
+                user.setUserID(rs.getInt("userID"));
+                user.setEmail(rs.getString("email"));
+                user.setFullName(rs.getString("fullName"));
+                user.setPhoneNumber(rs.getString("phoneNumber"));
+                user.setRole(rs.getString("role"));
+                list.add(user);
+            }
+            con.close();
+        } catch (SQLException ex) {                
+            System.out.println("Error in servlet. Details:" + ex.getMessage());
+            ex.printStackTrace();
+        }
+        return list;
+    }
+    
+    public boolean deleteUser (int id){
+        try {
+            String sql = " DELETE FROM users WHERE userID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            ps.executeUpdate();
+            conn.close();
+        } catch (Exception ex) {
+            System.out.println("Error in servlet. Details:" + ex.getMessage());
+            return false;
+        }
+        return true;
+    }
 }

@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -104,7 +105,7 @@
               >Add Flight</a
             >
             <a
-              href="AdminController?action=editaccount"
+              href="AdminController?action=accountlist"
               class="admin-navbar__item admin-navbar__item--active"
               >Account</a
             >
@@ -146,66 +147,28 @@
                 </tr>
               </thead>
               <tbody>
+                  <c:forEach var="user" items="${requestScope.userlist}">
                 <tr>
-                  <td>1</td>
-                  <td>Admin</td>
-                  <td>a@gmail.com</td>
-                  <td>Admin</td>
+                  <td>${user.userID}</td>
+                  <td>${user.fullName}</td>
+                  <td>${user.email}</td>
+                  <td>${user.role}</td>
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
-                      href=""
+                      href="UserController?action=updateaccount&userid=${user.userID}"
                     >
                       <i class="fas fa-edit"></i> Update
                     </a>
                     <a
                       class="account-manager__btn account-manager__btn--delete"
-                      href=""
+                      href="UserController?action=deleteaccount&userid=${user.userID}"
                     >
                       <i class="fas fa-trash"></i> Delete
                     </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Tráº§n Thá» B</td>
-                  <td>b@gmail.com</td>
-                  <td>User</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href=""
-                    >
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href=""
-                    >
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Pháº¡m VÄn C</td>
-                  <td>c@gmail.com</td>
-                  <td>User</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href=""
-                    >
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href=""
-                    >
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                  </td>
-                </tr>
+                </c:forEach>
               </tbody>
             </table>
             <div class="account-manager__pagination">
