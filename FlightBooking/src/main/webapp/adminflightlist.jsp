@@ -108,7 +108,7 @@
             <a href="AdminController?action=addflight" class="admin-navbar__item"
               >Add Flight</a
             >
-            <a href="AdminController?action=accountlist" class="admin-navbar__item"
+            <a href="UserController?action=accountlist" class="admin-navbar__item"
               >Account</a
             >
             <a href="AdminController?action=reportflight" class="admin-navbar__item"
