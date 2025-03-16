@@ -62,9 +62,10 @@ public class AirportController extends HttpServlet {
             String arrival = (String) request.getAttribute("arrival");
             request.getRequestDispatcher("flight-list.jsp").forward(request, response);
             return;
+        }else {
+            request.getRequestDispatcher("index2.jsp").forward(request, response);
+            return;
         }
-       
-        return;
 }   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -57,7 +57,7 @@
         <div class="container">
           <div class="flight-edit__inner">
             <h1 class="flight-edit__title">${requestScope.nextaction != null 
-                                             && requestScope.nextaction == 'addflight' 
+                                             && requestScope.nextaction == 'insertflight' 
                                              ? 'Add Flight' : 'Edit Flight'}</h1>
             <form action="FlightController" class="flight-edit__form" action="${requestScope.nextaction}">
               <div class="row">
@@ -70,8 +70,9 @@
                     type="text"
                     placeholder="Enter Flight ID" 
                     name="flightId"
-                    id="flightId" readonly
-                    value="${requestScope.flightid}"/>
+                    id="flightId"
+                    value="${requestScope.flightid}"
+                    readonly/>
                 </div>
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for="flightNumber"
@@ -83,6 +84,7 @@
                     id="flightNumber"
                     name="flightNumber"
                     placeholder="Enter Flight Number" 
+                    value="${requestScope.flight.flightNumber}"
                     required/>
                 </div>
               </div>
@@ -96,6 +98,7 @@
                     type="text"
                     placeholder="Enter Departure Airport" 
                     name="departureAirport"
+                    value="${requestScope.departurename}"
                     required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
@@ -107,6 +110,7 @@
                     type="text"
                     placeholder="Enter Arrival Airport"
                     name="arrivalAirport"
+                    value="${requestScope.arrivalname}"
                     required/>
                 </div>
               </div>
@@ -120,6 +124,7 @@
                     name="departuredatetime"
                     type="text"
                     placeholder="Enter Departure Date-Time"
+                    value="${requestScope.departuretime}"
                     required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
@@ -131,6 +136,7 @@
                     name="arrivaldatetime"
                     type="text"
                     placeholder="Enter Arrival Date-Time"
+                    value="${requestScope.arrivaltime}"
                     required/>
                 </div>
               </div>
@@ -142,6 +148,7 @@
                     type="text"
                     placeholder="Enter Airline" 
                     name="airline"
+                    value="${requestScope.flight.airline}"
                     required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
@@ -153,6 +160,7 @@
                     type="text"
                     placeholder="Enter Aircraft Type"
                     name="aircraftType"
+                    value="${requestScope.flight.aircraftType}"
                     required/>
                 </div>
               </div>
@@ -167,6 +175,7 @@
                     type="number"
                     name="businessPrice"
                     placeholder="Enter Price" 
+                    value="${requestScope.flight.businessPrice}"
                     required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
@@ -179,6 +188,7 @@
                     type="number"
                     name="economyPrice"
                     placeholder="Enter Price" 
+                    value="${requestScope.flight.economyPrice}"
                     required/>
                 </div>
               </div>
@@ -192,6 +202,7 @@
                     type="text"
                     name="flightStatus"
                     placeholder="Enter Flight Status" 
+                    value="${requestScope.flight.flightStatus}"
                     required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
@@ -204,6 +215,7 @@
                     type="number"
                     name="baggageAllow"
                     placeholder="Enter Price" 
+                    value="${requestScope.flight.baggageAllow}"
                     required/>
                 </div>
                 <div class="flight-edit__form-group col-6">
@@ -216,12 +228,13 @@
                     type="number"
                     name="totalSeat"
                     placeholder="Enter Price" 
+                    value="${requestScope.flight.totalSeats}"
                     required/>
                 </div>
               </div>
-                <input type="hidden" name="action" value="insert_flight">
+                    <input type="hidden" name="action" value="${requestScope.nextaction}">
               <button class="flight-edit__form-btn">${requestScope.nextaction != null 
-                                             && requestScope.nextaction == 'addflight' 
+                                             && requestScope.nextaction == 'insertflight' 
                                              ? 'Add Flight' : 'Edit'}</button>
             </form>
           </div>
