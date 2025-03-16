@@ -104,7 +104,7 @@
               >Add Flight</a
             >
             <a
-              href="AdminController?action=accountlist"
+              href="UserController?action=accountlist"
               class="admin-navbar__item"
               >Account</a
             >
