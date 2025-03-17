@@ -193,7 +193,7 @@ import="flightbooking.model.UserDTO"%>
                   class="flight-search__form__input"
                   type="date"
                   id="date"
-                  name="date"
+                  name="departuredate"
                   class="custom-date"
                 />
               </div>
