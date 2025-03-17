@@ -95,8 +95,8 @@ public class FlightController extends HttpServlet {
                 if(arrivalId == -1){
                     request.setAttribute("errorarrival", "Please enter an existing arrival airport name.");    
                 }
-                request.setAttribute("nextaction", "addflight");
-                request.getRequestDispatcher("adminflightedit.jsp");
+                request.setAttribute("nextaction", "insertflight");
+                request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
                 return;
             }
             String departureDateTimeInput = request.getParameter("departuredatetime");
