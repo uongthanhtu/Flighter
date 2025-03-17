@@ -111,7 +111,7 @@ import="flightbooking.model.UserDTO"%>
         <div class="container">
           <nav class="navbar">
             <!-- Logo -->
-            <a href="index2.jsp" class="logo__link"
+            <a href="AirportController" class="logo__link"
               ><img
                 src="./assets/img/logo-removebg-preview.png"
                 alt="logo"
@@ -341,7 +341,7 @@ import="flightbooking.model.UserDTO"%>
         </div>
       </footer>
     </main>
-    <!--    <script src="../js/search-form.js"></script>-->
+        <script src="../js/search-form.js"></script>
     <script>
           document.addEventListener("DOMContentLoaded", function () {
           let airports = [
