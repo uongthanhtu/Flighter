@@ -58,8 +58,6 @@ public class AirportController extends HttpServlet {
             request.getRequestDispatcher("index2.jsp").forward(request, response);
             return;
         }else if(action.equals("searchflight")){
-            String departure = (String) request.getAttribute("departure");
-            String arrival = (String) request.getAttribute("arrival");
             request.getRequestDispatcher("flight-list.jsp").forward(request, response);
             return;
         }else {
