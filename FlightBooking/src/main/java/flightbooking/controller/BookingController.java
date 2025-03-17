@@ -5,9 +5,16 @@
  */
 package flightbooking.controller;
 
+import flightbooking.dao.AirportDAO;
+import flightbooking.dao.FlightDAO;
+import flightbooking.model.FlightDTO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -50,6 +57,36 @@ public class BookingController extends HttpServlet {
         else if(action.equals("searchflight")){
             String departure = request.getParameter("departure");
             String arrival = request.getParameter("arrival");
+            String departureDateInput = request.getParameter("departuredate");
+            Date departureDate = null;
+            if(departureDateInput != null && !departureDateInput.isEmpty() ){
+                departureDate = Date.valueOf(departureDateInput);
+            }
+            AirportDAO airportdao = new AirportDAO();
+            int departureId = airportdao.getAirportIdByAirportName(departure);
+            int arrivalId = airportdao.getAirportIdByAirportName(arrival);
+            FlightDAO flightDao = new FlightDAO();
+            AirportDAO airportDao = new AirportDAO();
+            List<FlightDTO> listFlight = flightDao.loadAllFlightListByAirportIDAndTime(departureId, arrivalId, departureDate);
+            if(listFlight != null ) {
+                Map<Integer, String> listAirportName = new HashMap<> ();
+                String departurename, departurecountry, arrivalname, arrivalcountry;
+                for (FlightDTO flightDTO : listFlight) {
+                    departurename = airportDao.getAirportNameByAirportId(flightDTO.getDepartureID());
+                    departurecountry = airportDao.getAirportCountryByAirportId(flightDTO.getDepartureID());
+                    arrivalname = airportDao.getAirportNameByAirportId(flightDTO.getArrivalID());
+                    arrivalcountry = airportDao.getAirportCountryByAirportId(flightDTO.getArrivalID());
+                    listAirportName.put(flightDTO.getDepartureID(), 
+                        departurename + " - " + departurecountry);
+                    listAirportName.put(flightDTO.getArrivalID(), 
+                        arrivalname + " - " + arrivalcountry);
+                }
+                request.setAttribute("airport", listAirportName);
+                request.setAttribute("flightlist", listFlight);
+            }else {
+                request.setAttribute("error", "No flights available.");
+            }
+            
             request.setAttribute("departure", departure);
             request.setAttribute("arrival", arrival);
             request.setAttribute("action", "searchflight");

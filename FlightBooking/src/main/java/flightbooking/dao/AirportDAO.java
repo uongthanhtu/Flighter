@@ -77,4 +77,21 @@ public class AirportDAO {
         return name;
     }  
     
+    public String getAirportCountryByAirportId (int airportID){
+        String country = "";
+        try {
+            Connection conn = DBUtils.getConnection();
+            String sql = " SELECT country FROM airport WHERE airportID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, airportID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                country = rs.getString("country");
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Get AirportCountry By AirportId - Error, Details: " + ex.getMessage());
+        }
+        return country;
+    }
 }

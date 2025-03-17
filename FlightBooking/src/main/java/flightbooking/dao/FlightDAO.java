@@ -8,10 +8,12 @@ package flightbooking.dao;
 import flightbooking.model.FlightDTO;
 import flightbooking.utils.DBUtils;
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,6 +137,59 @@ public class FlightDAO {
         try {
             String sql = " SELECT * FROM flight ";
             PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                flight = new FlightDTO();
+                flight.setFlightID(rs.getInt("flightID"));
+                flight.setAirline(rs.getString("airline"));
+                flight.setFlightNumber(rs.getString("flightNumber"));
+                flight.setDepartureTime(rs.getTimestamp("departuretTime").toLocalDateTime());
+                flight.setArrivalTime(rs.getTimestamp("arrivalTime").toLocalDateTime());
+                flight.setTotalSeats(rs.getInt("totalSeats"));
+                flight.setBusinessPrice(rs.getDouble("businessPrice"));
+                flight.setEconomyPrice(rs.getDouble("economyPrice"));
+                flight.setAircraftType(rs.getString("aircraftType"));
+                flight.setBaggageAllow(rs.getFloat("baggageAllow"));
+                flight.setFlightStatus(rs.getString("flightStatus"));
+                flight.setDepartureID(rs.getInt("departureId"));
+                flight.setArrivalID(rs.getInt("arrivalId"));
+                listFlight.add(flight);
+            }
+            conn.close();
+        } catch (Exception ex) {
+            System.out.println("Load all flight is error, Details:" + ex.getMessage());
+            return null;
+        }
+        return listFlight;
+    }
+    
+    public List<FlightDTO> loadAllFlightListByAirportIDAndTime (int departureID
+                                    , int arrivalID, Date departurtime){
+        List<FlightDTO> listFlight = new ArrayList<FlightDTO>();
+        FlightDTO flight = null;
+        int counindex = 1;
+        try {
+            
+            String sql = " SELECT * FROM flight WHERE 1=1 ";
+            if(departureID > 0){
+                sql += " AND departureId = ? ";
+            }
+            if(arrivalID > 0 ){
+                sql += " AND arrivalId = ? ";
+            }
+            if(departurtime != null){
+                sql += " AND CONVERT(DATE, departuretTime) = ? " ;
+            }
+            PreparedStatement ps = conn.prepareStatement(sql);
+            if(departureID > 0){
+                ps.setInt(counindex++, departureID);
+            }
+            if(arrivalID > 0 ){
+                ps.setInt(counindex++, arrivalID);
+            }
+            if(departurtime != null){
+                ps.setDate(counindex++, departurtime);
+            }
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 flight = new FlightDTO();
