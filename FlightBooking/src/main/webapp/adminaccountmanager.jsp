@@ -156,7 +156,7 @@
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
-                      href="UserController?action=updateaccount&userid=${user.userID}"
+                      href="UserController?action=editaccount&userid=${user.userID}"
                     >
                       <i class="fas fa-edit"></i> Update
                     </a>
