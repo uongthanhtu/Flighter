@@ -25,8 +25,8 @@ public class FlightDAO {
     public boolean insertFlight (FlightDTO flight) {
         try {
             String sql = " INSERT INTO flight "
-                    + "(airline, departureId, arrivalId, departuretTime, arrivalTime, totalSeats, businessPrice, economyPrice, aircraftType, baggageAllow ,flightStatus, flightNumber , adminID) "
-                    + " VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )  ";
+                    + "(airline, departureId, arrivalId, departuretTime, arrivalTime, totalSeats, businessPrice, economyPrice, aircraftType, baggageAllow ,flightStatus, flightNumber , adminID, flightID) "
+                    + " VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ? )  ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, flight.getAirline());
             ps.setInt(2, flight.getArrivalID());
@@ -41,6 +41,7 @@ public class FlightDAO {
             ps.setString(11, flight.getFlightStatus());
             ps.setString(12, flight.getFlightNumber());
             ps.setInt(13, flight.getAdminID());
+            ps.setInt(14, flight.getFlightID());
             ps.executeUpdate();
             conn.close();
         } catch (SQLException ex) {
