@@ -134,13 +134,13 @@ contentType="text/html;charset=UTF-8" language="java" %>
               type="email"
               class="profile__input"
               name="email"
-              value="<%= usersession.getEmail() %>"
+              value="${sessionScope.usersession.email}"
               disabled
             />
             <input
               type="hidden"
               name="email"
-              value="<%= usersession.getEmail()%>"
+              value="${sessionScope.usersession.email}"
             />
           </div>
 
@@ -151,7 +151,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 type="text"
                 class="profile__input"
                 name="fullName"
-                placeholder="<%= usersession.getFullName() %>"
+                value="${sessionScope.usersession.fullName}"
+                placeholder="${sessionScope.usersession.fullName}"
               />
             </div>
           </div>
@@ -191,7 +192,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
               type="text"
               class="profile__input"
               name="phoneNumber"
-              placeholder="<%= usersession.getPhoneNumber()%>"
+              value="${sessionScope.usersession.phoneNumber}"
+              placeholder="${sessionScope.usersession.phoneNumber}"
             />
             <div class="profile__addNumber">
               <a href="#" id="openModal">+ Add Mobile Number</a>
