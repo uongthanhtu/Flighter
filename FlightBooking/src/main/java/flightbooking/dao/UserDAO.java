@@ -21,16 +21,17 @@ import java.util.List;
 public class UserDAO {
     Connection conn = DBUtils.getConnection();
     public boolean insertUser(UserDTO user){
-        String sql = "INSERT INTO users( fullName, password, email, phoneNumber, role) "               
-                + " VALUES (?, ?, ?, ?, ?)";    
+        String sql = "INSERT INTO users(userID, fullName, password, email, phoneNumber, role, DOB) "               
+                + " VALUES (?, ?, ?, ?, ?, ?, ? )";    
         try {
             PreparedStatement ps = conn.prepareStatement(sql);                      
-            
-            ps.setString(1, user.getFullName());
-            ps.setString(2, user.getPassword());
-            ps.setString(3, user.getEmail());
-            ps.setString(4, user.getPhoneNumber());
-            ps.setString(5, user.getRole());
+            ps.setInt(1, user.getUserID());
+            ps.setString(2, user.getFullName());
+            ps.setString(3, user.getPassword());
+            ps.setString(4, user.getEmail());
+            ps.setString(5, user.getPhoneNumber());
+            ps.setString(6, user.getRole());
+            ps.setDate(7, user.getDob());
             ps.executeUpdate();
             conn.close();
             return true;
@@ -52,10 +53,25 @@ public class UserDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
         return false;
     }
     
+    public String getMailByUserId(int userid) {
+        String email = "";
+        String query = "SELECT email FROM users WHERE userID = ?";
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, userid);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                email = rs.getString("email");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return email;
+    }
     
     public UserDTO loginUser (String email, String password){
         UserDTO user = null;
@@ -88,14 +104,37 @@ public class UserDAO {
     }
     
     public boolean updateUser (UserDTO user){
-        String sql = " UPDATE users SET fullName = ? , phoneNumber = ? WHERE email = ? ";
+        String sql = " UPDATE users SET fullName = ? , phoneNumber = ? , DOB = ? WHERE email = ? ";
             try{
                 Connection connect = DBUtils.getConnection();
                 PreparedStatement ps = connect.prepareStatement(sql);
 
                 ps.setString(1, user.getFullName());
                 ps.setString(2, user.getPhoneNumber());
-                ps.setString(3, user.getEmail());
+                ps.setDate(3, user.getDob());
+                ps.setString(4, user.getEmail());
+                ps.executeUpdate();
+                connect.close();
+            }catch(SQLException ex){
+                System.out.println("Update user error: " + ex.getMessage()) ;
+                ex.printStackTrace();
+                return false;
+            }
+        return true;
+    }
+    
+    public boolean updateUserAdminSide (UserDTO user){
+        String sql = " UPDATE users SET fullName = ? , phoneNumber = ? , password = ? , DOB = ?, email = ? WHERE userID = ? ";
+            try{
+                Connection connect = DBUtils.getConnection();
+                PreparedStatement ps = connect.prepareStatement(sql);
+
+                ps.setString(1, user.getFullName());
+                ps.setString(2, user.getPhoneNumber());
+                ps.setString(3, user.getPassword());
+                ps.setDate(4, user.getDob());
+                ps.setString(5, user.getEmail());
+                ps.setInt(6, user.getUserID());
                 ps.executeUpdate();
                 connect.close();
             }catch(SQLException ex){
@@ -110,7 +149,7 @@ public class UserDAO {
         UserDTO user = null;
         try {
                 Connection con = DBUtils.getConnection();            
-                String sql = " SELECT userID , email, fullName, phoneNumber, role FROM users ";
+                String sql = " SELECT userID , email, fullName, phoneNumber, DOB , role FROM users ";
                 sql += " WHERE email = ? ";
                                
                 PreparedStatement stmt = con.prepareStatement(sql);
@@ -125,6 +164,7 @@ public class UserDAO {
                         user.setEmail(rs.getString("email"));
                         user.setFullName(rs.getString("fullName"));
                         user.setPhoneNumber(rs.getString("phoneNumber"));
+                        user.setDob(rs.getDate("DOB"));
                         user.setRole(rs.getString("role"));
                     }
                 }
@@ -173,5 +213,50 @@ public class UserDAO {
             return false;
         }
         return true;
+    }
+    
+    public UserDTO loadUserById (int id){
+        UserDTO user = null;
+        try {
+                Connection con = DBUtils.getConnection();            
+                String sql = " SELECT userID , email, fullName, phoneNumber, DOB , role FROM users ";
+                sql += " WHERE userID = ? ";
+                               
+                PreparedStatement stmt = con.prepareStatement(sql);
+                stmt.setInt(1, id);
+                
+                ResultSet rs = stmt.executeQuery();
+                
+                if (rs.next()){
+                    user = new UserDTO(); 
+                    user.setUserID(rs.getInt("userID"));
+                    user.setEmail(rs.getString("email"));
+                    user.setFullName(rs.getString("fullName"));
+                    user.setPhoneNumber(rs.getString("phoneNumber"));
+                    user.setDob(rs.getDate("DOB"));
+                    user.setRole(rs.getString("role"));
+                }
+                con.close();
+            } catch (SQLException ex) {                
+                System.out.println("Error in servlet. Details:" + ex.getMessage());
+                ex.printStackTrace();
+            }
+            return user;
+    }
+    
+    public int getMaxUserId(){
+        int id = 0;
+        try {
+            String sql = " SELECT MAX(userID) FROM users ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                id = rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            System.out.println("Error in servlet. Details:" + ex.getMessage());
+            ex.printStackTrace();
+        }
+        return id;
     }
 }

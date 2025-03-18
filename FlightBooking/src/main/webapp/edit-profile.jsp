@@ -157,14 +157,14 @@ contentType="text/html;charset=UTF-8" language="java" %>
           </div>
 
           <div class="profile__group">
-            <label class="profile__label">Date of Birth</label>
+              <label class="profile__label">Date of Birth: ${sessionScope.usersession.dob}</label>
             <div class="profile__dob">
               <select class="profile__select" id="day" name="day">
-                <option value="" disabled selected hidden>Day</option>
+                  <option value="" disabled selected hidden>Day</option>
               </select>
 
               <select class="profile__select" name="month">
-                <option value="" disabled selected hidden>Month</option>
+                  <option value="" disabled selected hidden>Month</option>
                 <option value="1">January</option>
                 <option value="2">February</option>
                 <option value="3">March</option>
@@ -180,7 +180,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
               </select>
 
               <select class="profile__select" id="year" name="year">
-                <option value="" disabled selected hidden>Year</option>
+                  <option value="" disabled selected hidden>Year</option>
               </select>
             </div>
           </div>

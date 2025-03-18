@@ -9,6 +9,8 @@ import flightbooking.dao.UserDAO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,11 +49,15 @@ public class ProfileController extends HttpServlet {
                 return;
             }
             if(action.equals("profile_details")){
-                session.setAttribute("usersession", userSession);        
                 request.getRequestDispatcher("personal-details.jsp").forward(request, response);
                 return;
             }else if(action.equals("edit_profile")){
-                session.setAttribute("usersession", userSession);        
+                if (userSession.getDob() != null) {
+                    LocalDate dob = userSession.getDob().toLocalDate(); 
+                    request.setAttribute("selectedDay", dob.getDayOfMonth());
+                    request.setAttribute("selectedMonth", dob.getMonthValue());
+                    request.setAttribute("selectedYear", dob.getYear());
+                }
                 request.getRequestDispatcher("edit-profile.jsp").forward(request, response);
                 return;
             }else if(action.equals("update_profile")){
@@ -60,11 +66,29 @@ public class ProfileController extends HttpServlet {
                 String email = request.getParameter("email");
                 String fullName = request.getParameter("fullName");
                 String phoneNumber = request.getParameter("phoneNumber");
+                int day, month, year;
+                Date dob= null;
+                try {
+                    String dayInput = request.getParameter("day");
+                    String monthInput = request.getParameter("month");
+                    String yearInput = request.getParameter("year");
+                    LocalDate dateTemp = null;
+                    if (userSession.getDob() != null) {
+                        dateTemp = userSession.getDob().toLocalDate(); 
+                    }
+                    day = (dayInput != null && !dayInput.isEmpty()) ? Integer.parseInt(dayInput) : dateTemp.getDayOfMonth();
+                    month = (monthInput != null && !monthInput.isEmpty()) ? Integer.parseInt(monthInput) : dateTemp.getMonthValue();
+                    year = (yearInput != null && !yearInput.isEmpty()) ? Integer.parseInt(yearInput) : dateTemp.getYear();
+                    dob = Date.valueOf(year+"-"+month+"-"+day);
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
                 if(email != null){
                     user = userDao.loadUser(email);
                     if (user != null){
                         user.setFullName(fullName);
                         user.setPhoneNumber(phoneNumber);
+                        user.setDob(dob);
                         userDao.updateUser(user);
                         session.setAttribute("usersession", user);
                         request.getRequestDispatcher("personal-details.jsp").forward(request, response);
@@ -73,9 +97,7 @@ public class ProfileController extends HttpServlet {
                 }else{
                     response.sendRedirect("login.jsp");
                 }
-                
                 return;
-                
             }else if(action.equals("edit_password")){
                 
             }

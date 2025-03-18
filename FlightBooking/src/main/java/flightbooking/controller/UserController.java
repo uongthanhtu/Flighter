@@ -9,6 +9,8 @@ import flightbooking.dao.UserDAO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -67,10 +69,82 @@ public class UserController extends HttpServlet {
                 request.getRequestDispatcher("AdminController?action=accountlist").forward(request, response);
                 return;
             }
-            if(userdao.deleteUser(userid)){
-                request.getRequestDispatcher("AdminController?action=accountlist").forward(request, response);
+            if(!userdao.deleteUser(userid)){
+                request.setAttribute("error", "Cannot delete account");
+            }
+            request.getRequestDispatcher("AdminController?action=accountlist").forward(request, response);
+            return;
+        }else if(action.equals("editaccount")){
+            String id = request.getParameter("userid");
+            int userid;
+            UserDTO user = null;
+            if(id != null && !id.isEmpty()){
+                userid = Integer.parseInt(id);
+                user = userdao.loadUserById(userid);
+            }
+            if (user != null){
+                request.setAttribute("userobject", user);
+                String formattedDob = "";
+                if (user.getDob() != null) {
+                    SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
+                    formattedDob = sdformat.format(user.getDob());
+                    request.setAttribute("userdob", formattedDob);
+                }
+                request.getRequestDispatcher("adminaccountedit.jsp").forward(request, response);
+                return;
+            }else{
+                request.getRequestDispatcher("adminaccountmanager.jsp").forward(request, response);
                 return;
             }
+        }else if(action.equals("updateaccount")){
+            UserDTO user = new UserDTO();
+            int id = Integer.parseInt(request.getParameter("userid")) ;
+            String fullName = request.getParameter("fullName");
+            String email = request.getParameter("email");
+            String phoneNumber = request.getParameter("phoneNumber");
+            Date dob = null; 
+            String dobInput = request.getParameter("dob");
+            if(dobInput != null && !dobInput.isEmpty()){
+                dob = Date.valueOf(dobInput);
+            }
+            if(!email.equals(userdao.getMailByUserId(id))){
+                if(userdao.checkEmail(email)){
+                    request.setAttribute("emailexits", "This email already exists, please enter a new email.");
+                    request.getRequestDispatcher("UserController?action=editaccount").forward(request, response);
+                    return;
+                }
+            }
+            String password = request.getParameter("password");
+            String confirmPassword = request.getParameter("confirmPassword");
+            if(password != null || confirmPassword != null){
+                if(!password.equals(confirmPassword)){
+                    request.setAttribute("passworderror", "Your passwords do not match.");
+                    request.getRequestDispatcher("UserController?action=editaccount").forward(request, response);
+                    return;
+                }
+                user.setPassword(password);
+            }
+            user.setUserID(id);
+            user.setFullName(fullName);
+            user.setEmail(email);
+            user.setPhoneNumber(phoneNumber);
+            user.setDob(dob);
+            if(userdao.updateUserAdminSide(user)){
+                user = userdao.loadUserById(id);
+                
+                if(user.getDob() != null){
+                    SimpleDateFormat sdformat = new SimpleDateFormat("MM-dd-yyyy");
+                    String formattedDob = sdformat.format(user.getDob());
+                    request.setAttribute("userdob", formattedDob);
+                }
+                request.setAttribute("userobject",user);
+                request.setAttribute("success", "Update successful.");
+                request.getRequestDispatcher("UserController?action=editaccount").forward(request, response);
+                return;
+            }
+            request.setAttribute("error", "Can not update user account");
+            request.getRequestDispatcher("UserController?action=editaccount").forward(request, response);
+            return;
         }
     }
 

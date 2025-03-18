@@ -217,6 +217,7 @@
                   class="register-form__phone__number"
                   type="tel"
                   required
+                  name="phoneNumber"
                   placeholder="Mobile Number"
                 />
                 <!-- </div> -->

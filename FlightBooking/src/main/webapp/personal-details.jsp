@@ -147,7 +147,7 @@ import="flightbooking.model.UserDTO" %>
           <div class="account__item">
             <div class="account__dob">
               <p>Date of Birth:</p>
-              <p class="account__info"><%= usersession.getDOB() %></p>
+              <p class="account__info"><%= usersession.getDob()%></p>
             </div>
             <div class="account__phone">
               <p>Mobile Number:</p>
