@@ -63,12 +63,12 @@ public class AuthController extends HttpServlet {
             }
             if(userDao.checkEmail(email)){
                 request.setAttribute("erroremail", "Email already exists. Please enter a different email.");
-                request.getRequestDispatcher("AuthController?action=register").forward(request, response);
+                request.getRequestDispatcher("register.jsp").forward(request, response);
                 return;
             }
             if (!password.equals(passwordCon)) {
                 request.setAttribute("errorpassword", "Passwords do not match!");
-                request.getRequestDispatcher("AuthController?action=register").forward(request, response);
+                request.getRequestDispatcher("register.jsp").forward(request, response);
                 return;
             }
             UserDTO user = new UserDTO(id, fullName, password, email, phoneNumber, dob);
