@@ -219,7 +219,7 @@ public class UserDAO {
         UserDTO user = null;
         try {
                 Connection con = DBUtils.getConnection();            
-                String sql = " SELECT userID , email, fullName, phoneNumber, DOB , role FROM users ";
+                String sql = " SELECT userID , email, fullName, phoneNumber, password , DOB , role FROM users ";
                 sql += " WHERE userID = ? ";
                                
                 PreparedStatement stmt = con.prepareStatement(sql);
@@ -233,6 +233,7 @@ public class UserDAO {
                     user.setEmail(rs.getString("email"));
                     user.setFullName(rs.getString("fullName"));
                     user.setPhoneNumber(rs.getString("phoneNumber"));
+                    user.setPassword(rs.getString("password"));
                     user.setDob(rs.getDate("DOB"));
                     user.setRole(rs.getString("role"));
                 }

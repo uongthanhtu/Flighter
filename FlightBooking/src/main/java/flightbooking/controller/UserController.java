@@ -116,13 +116,15 @@ public class UserController extends HttpServlet {
             }
             String password = request.getParameter("password");
             String confirmPassword = request.getParameter("confirmPassword");
-            if(password != null || confirmPassword != null){
+            if(password != null && !password.isEmpty() && confirmPassword != null && !confirmPassword.isEmpty()){
                 if(!password.equals(confirmPassword)){
                     request.setAttribute("passworderror", "Your passwords do not match.");
                     request.getRequestDispatcher("UserController?action=editaccount").forward(request, response);
                     return;
                 }
                 user.setPassword(password);
+            }else{
+                user.setPassword(userdao.loadUserById(id).getPassword());
             }
             user.setUserID(id);
             user.setFullName(fullName);
@@ -131,7 +133,6 @@ public class UserController extends HttpServlet {
             user.setDob(dob);
             if(userdao.updateUserAdminSide(user)){
                 user = userdao.loadUserById(id);
-                
                 if(user.getDob() != null){
                     SimpleDateFormat sdformat = new SimpleDateFormat("MM-dd-yyyy");
                     String formattedDob = sdformat.format(user.getDob());
