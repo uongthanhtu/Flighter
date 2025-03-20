@@ -170,7 +170,7 @@
                     </a>
                     <a
                       class="account-manager__btn account-manager__btn--delete"
-                      href="FlightController?action=delete&flightid=${flight.flightID}">
+                      href="FlightController?action=deleteflight&flightid=${flight.flightID}">
                       <i class="fas fa-trash"></i> Delete
                     </a>
                     <a

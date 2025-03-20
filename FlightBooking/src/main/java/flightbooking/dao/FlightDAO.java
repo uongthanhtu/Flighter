@@ -21,8 +21,9 @@ import java.util.List;
  * @author ADMIN
  */
 public class FlightDAO {
-    Connection conn = DBUtils.getConnection();
+    
     public boolean insertFlight (FlightDTO flight) {
+        Connection conn = DBUtils.getConnection();
         try {
             String sql = " INSERT INTO flight "
                     + "(airline, departureId, arrivalId, departuretTime, arrivalTime, totalSeats, businessPrice, economyPrice, aircraftType, baggageAllow ,flightStatus, flightNumber , adminID, flightID) "
@@ -52,6 +53,7 @@ public class FlightDAO {
     }
     
     public int getMaxFlightID(){
+        Connection conn = DBUtils.getConnection();
         int maxID = 0;
         try {
             String sql = " SELECT MAX(flightID) FROM flight ";
@@ -70,6 +72,7 @@ public class FlightDAO {
     }
     
     public boolean updateFlight (FlightDTO flight) {
+        Connection conn = DBUtils.getConnection();
         try {
             String sql = " UPDATE flight SET airline = ? , departureId = ? , "
                     + " arrivalId = ?, departuretTime = ? , arrivalTime = ?, "
@@ -101,6 +104,7 @@ public class FlightDAO {
     }
     
     public FlightDTO loadFlightById (int flightId){
+        Connection conn = DBUtils.getConnection();
         FlightDTO flight = null;
         try {
             String sql = " SELECT * FROM flight WHERE flightID = ? ";
@@ -132,6 +136,7 @@ public class FlightDAO {
     }
     
     public List<FlightDTO> loadAllFlightList (){
+        Connection conn = DBUtils.getConnection();
         List<FlightDTO> listFlight = new ArrayList<FlightDTO>();
         FlightDTO flight = null;
         try {
@@ -165,6 +170,7 @@ public class FlightDAO {
     
     public List<FlightDTO> loadAllFlightListByAirportIDAndTime (int departureID
                                     , int arrivalID, Date departurtime){
+        Connection conn = DBUtils.getConnection();
         List<FlightDTO> listFlight = new ArrayList<FlightDTO>();
         FlightDTO flight = null;
         int counindex = 1;
@@ -214,6 +220,21 @@ public class FlightDAO {
             return null;
         }
         return listFlight;
+    }
+    
+    public boolean deleteFlight (int flightID){
+        Connection conn = DBUtils.getConnection();
+        try {
+            String sql = " DELETE FROM flight WHERE flightID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, flightID);
+            ps.executeUpdate();
+            conn.close();
+        } catch (Exception e) {
+            e.getMessage();
+            return false;
+        }
+        return true;
     }
     
 }
