@@ -30,6 +30,9 @@ public class SeatDTO {
         return seatID;
     }
 
+    public void setSeatID(int seatID) {
+        this.seatID = seatID;
+    }
 
     public String getSeatNumber() {
         return seatNumber;

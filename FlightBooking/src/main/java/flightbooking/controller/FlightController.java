@@ -7,7 +7,9 @@ package flightbooking.controller;
 
 import flightbooking.dao.AirportDAO;
 import flightbooking.dao.FlightDAO;
+import flightbooking.dao.SeatDAO;
 import flightbooking.model.FlightDTO;
+import flightbooking.model.SeatDTO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -122,6 +124,26 @@ public class FlightController extends HttpServlet {
             int adminId = adminsession.getUserID();
             FlightDTO flight = new FlightDTO(flightId, flightNumber, airline, departureId, arrivalId, departureDateTime, arrivalDateTime, totalSeat, businessPrice, economyPrice, aircraftType, baggageAllow, flightStatus, adminId);
             if(flightDao.insertFlight(flight)){
+                SeatDAO seatDao = new SeatDAO();
+                SeatDTO seat = null;
+                int seatId = seatDao.getMaxSeatID();
+                char[] seatCol = {'A', 'B', 'C', 'D', 'E', 'F'};
+                for (int i = 1; i <= 20; i++) {
+                    for (char s : seatCol) {
+                        seatId++;
+                        seat = new SeatDTO();
+                        seat.setSeatID(seatId);
+                        seat.setSeatNumber(String.valueOf(s)+i);
+                        seat.setSeatStatus("Available");
+                        if(i <= 4){
+                            seat.setFareClass("Business");
+                        }else{
+                            seat.setFareClass("Economy");
+                        }
+                        seat.setFlightID(flightId);
+                        seatDao.insertSeat(seat);
+                    }
+                }
                 response.sendRedirect("AdminController?action=flightlist");
                 return;
             }else{
@@ -192,6 +214,27 @@ public class FlightController extends HttpServlet {
                 request.getRequestDispatcher("adminflightedit.jsp");
                 return;
             }
+        }else if(action.equals("deleteflight")){
+            int flightId = Integer.parseInt(request.getParameter("flightid"));
+            FlightDTO flight = null;
+            flight = flightDao.loadFlightById(flightId);
+            if(flight != null){
+                SeatDAO seatdao = new SeatDAO();
+                List<Integer> seatlist = seatdao.getListSeatByFlightID(flightId);
+                if(seatlist != null){
+                    seatdao.deleteSeat(seatlist);
+                }
+                if(flightDao.deleteFlight(flightId)){
+                    response.sendRedirect("AdminController?action=flightlist");
+                    return;
+                }else{
+                    request.setAttribute("error", "Something went wrong, the server cannot insert.....");
+                    request.getRequestDispatcher("adminflightlist.jsp");
+                    return;
+                }
+            }
+            request.getRequestDispatcher("AdminController?action=flightlist").forward(request, response);
+            return;
         } 
     }
 
