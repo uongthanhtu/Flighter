@@ -5,7 +5,7 @@
  */
 package flightbooking.model;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -15,35 +15,44 @@ public class FlightDTO {
     private int flightID;
     private String flightNumber;
     private String airline;
-    private String departureAirport;
-    private String arrivalAirport;
-    private Date departureTime;
-    private Date arrivalTime;
+    private int departureID;
+    private int arrivalID;
+    private LocalDateTime departureTime;
+    private LocalDateTime arrivalTime;
     private int totalSeats;
     private double businessPrice;
     private double economyPrice;
+    private String aircraftType;
+    private float baggageAllow;
     private String flightStatus;
     private int adminID;
 
     public FlightDTO() {
     }
 
-    public FlightDTO( String flightNumber, String airline, String departureAirport, String arrivalAirport, Date departureTime, Date arrivalTime, int totalSeats, double businessPrice, double economyPrice, String flightStatus, int adminID) {
+    public FlightDTO(int flightID, String flightNumber, String airline, int departureID, int arrivalID, LocalDateTime departureTime, LocalDateTime arrivalTime, int totalSeats, double businessPrice, double economyPrice, String aircraftType, float baggageAllow, String flightStatus, int adminID) {
+        this.flightID = flightID;
         this.flightNumber = flightNumber;
         this.airline = airline;
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
+        this.departureID = departureID;
+        this.arrivalID = arrivalID;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
         this.totalSeats = totalSeats;
         this.businessPrice = businessPrice;
         this.economyPrice = economyPrice;
+        this.aircraftType = aircraftType;
+        this.baggageAllow = baggageAllow;
         this.flightStatus = flightStatus;
         this.adminID = adminID;
     }
 
     public int getFlightID() {
         return flightID;
+    }
+
+    public void setFlightID(int flightID) {
+        this.flightID = flightID;
     }
 
     public String getFlightNumber() {
@@ -62,35 +71,35 @@ public class FlightDTO {
         this.airline = airline;
     }
 
-    public String getDepartureAirport() {
-        return departureAirport;
+    public int getDepartureID() {
+        return departureID;
     }
 
-    public void setDepartureAirport(String departureAirport) {
-        this.departureAirport = departureAirport;
+    public void setDepartureID(int departureID) {
+        this.departureID = departureID;
     }
 
-    public String getArrivalAirport() {
-        return arrivalAirport;
+    public int getArrivalID() {
+        return arrivalID;
     }
 
-    public void setArrivalAirport(String arrivalAirport) {
-        this.arrivalAirport = arrivalAirport;
+    public void setArrivalID(int arrivalID) {
+        this.arrivalID = arrivalID;
     }
 
-    public Date getDepartureTime() {
+    public LocalDateTime getDepartureTime() {
         return departureTime;
     }
 
-    public void setDepartureTime(Date departureTime) {
+    public void setDepartureTime(LocalDateTime departureTime) {
         this.departureTime = departureTime;
     }
 
-    public Date getArrivalTime() {
+    public LocalDateTime getArrivalTime() {
         return arrivalTime;
     }
 
-    public void setArrivalTime(Date arrivalTime) {
+    public void setArrivalTime(LocalDateTime arrivalTime) {
         this.arrivalTime = arrivalTime;
     }
 
@@ -118,6 +127,22 @@ public class FlightDTO {
         this.economyPrice = economyPrice;
     }
 
+    public String getAircraftType() {
+        return aircraftType;
+    }
+
+    public void setAircraftType(String aircraftType) {
+        this.aircraftType = aircraftType;
+    }
+
+    public float getBaggageAllow() {
+        return baggageAllow;
+    }
+
+    public void setBaggageAllow(float baggageAllow) {
+        this.baggageAllow = baggageAllow;
+    }
+
     public String getFlightStatus() {
         return flightStatus;
     }
@@ -128,7 +153,12 @@ public class FlightDTO {
 
     public int getAdminID() {
         return adminID;
-    }    
+    }
+
+    public void setAdminID(int adminID) {
+        this.adminID = adminID;
+    }
 
     
+
 }

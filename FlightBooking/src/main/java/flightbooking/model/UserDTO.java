@@ -17,23 +17,28 @@ public class UserDTO {
     private String password;
     private String email;
     private String phoneNumber;
-    private Date DOB;
+    private Date dob;
     private String role;
 
     public UserDTO() {
-        String role = "Customer";
     }
 
-    public UserDTO(String fullName, String password, String email, String phoneNumber) {
+    public UserDTO(int userID, String fullName, String password, String email, String phoneNumber, Date dob) {
+        this.userID = userID;
         this.fullName = fullName;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.role = "Customer" ;
+        this.dob = dob;
+        this.role = "Customer";
     }
 
     public int getUserID() {
         return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getFullName() {
@@ -68,12 +73,12 @@ public class UserDTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getDOB() {
-        return DOB;
+    public Date getDob() {
+        return dob;
     }
 
-    public void setDOB(Date DOB) {
-        this.DOB = DOB;
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     public String getRole() {
@@ -83,5 +88,7 @@ public class UserDTO {
     public void setRole(String role) {
         this.role = role;
     }
+
+    
        
 }

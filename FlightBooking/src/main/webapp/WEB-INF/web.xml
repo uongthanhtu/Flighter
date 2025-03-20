@@ -16,9 +16,17 @@
         <servlet-name>BookingController</servlet-name>
         <url-pattern>/BookingController</url-pattern>
     </servlet-mapping>
-    <mime-mapping>
-        <extension>css</extension>
-        <mime-type>text/css</mime-type>
+     <mime-mapping>    
+        <extension>js</extension>        
+        <mime-type>application/javascript</mime-type>        
+    </mime-mapping>
+    <mime-mapping>    
+        <extension>css</extension>        
+        <mime-type>text/css</mime-type>        
+    </mime-mapping>
+    <mime-mapping>    
+        <extension>jpg</extension>        
+        <mime-type>image/jpeg</mime-type>        
     </mime-mapping>
     <session-config>
         <session-timeout>

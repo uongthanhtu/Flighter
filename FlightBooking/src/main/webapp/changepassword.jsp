@@ -1,14 +1,85 @@
 <%-- Document : login Created on : Feb 26, 2025, 6:11:30 PM Author : ADMIN --%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Change Password</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./assets/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./assets/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./assets/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./assets/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./assets/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./assets/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./assets/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/favicon/manifest.json" />
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
   </head>
   <body>
     <header class="header">
@@ -19,7 +90,8 @@
             ><img
               src="./assets/img/logo-removebg-preview.png"
               alt="logo"
-              class="logo" />
+              class="logo"
+            />
           </a>
 
           <div class="navbar__actions">
@@ -42,10 +114,12 @@
               class="password-container__input"
               type="password"
               id="password"
-              placeholder="Enter password" />
+              placeholder="Enter password"
+            />
             <i
               class="icon--hover fa-regular fa-eye eye-icon"
-              id="togglePassword1"></i>
+              id="togglePassword1"
+            ></i>
           </div>
         </div>
 
@@ -58,10 +132,12 @@
               class="password-container__input"
               type="password"
               id="password-confirm"
-              placeholder="Enter password" />
+              placeholder="Enter password"
+            />
             <i
               class="icon--hover fa-regular fa-eye eye-icon"
-              id="togglePassword2"></i>
+              id="togglePassword2"
+            ></i>
           </div>
         </div>
         <p class="change-password__reminder">

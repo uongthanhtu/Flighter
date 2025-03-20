@@ -3,23 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD
     <title>Edit Profile</title>
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+=======
+    <title>Flight Details</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar">
       <!-- Logo -->
+<<<<<<< HEAD
       <a href="index.html">
         <img
           src="./assets/img/logo-removebg-preview.png"
           alt="logo"
           class="logo"
         />
+=======
+      <a href="AirportController">
+        <img
+          src="./assets/img/logo-removebg-preview.png"
+          alt="logo"
+          class="logo" />
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
       </a>
       <!-- Navigation -->
       <ul>
@@ -34,8 +47,12 @@
         <input
           type="text"
           name="search"
+<<<<<<< HEAD
           placeholder="Search destinations ..."
         />
+=======
+          placeholder="Search destinations ..." />
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
         <button type="submit">Search</button>
       </form>
       <!-- Action -->
@@ -50,25 +67,44 @@
         src="img/Airplane Travel.jpg"
         alt=""
         srcset=""
+<<<<<<< HEAD
         class="profile__img"
       />
+=======
+        class="profile__img" />
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
       <div class="profile__forms">
         <h2 class="profile__title">Edit Details</h2>
         <p class="profile__introduction">
           Update your personal information and make
         </p>
         <p class="profile__introduction-1">your profile truly yours!</p>
+<<<<<<< HEAD
 
         <form action="" class="profile__form">
+=======
+        <% UserDTO usersession = (UserDTO) session.getAttribute("usersession");
+        %>
+        <form action="ProfileController" class="profile__form">
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
           <div class="profile__group">
             <label class="profile__label">Email</label>
             <input
               type="email"
               class="profile__input"
               name="email"
+<<<<<<< HEAD
               value="..."
               disabled
             />
+=======
+              value="<%= usersession.getEmail() %>"
+              disabled />
+            <input
+              type="hidden"
+              name="email"
+              value="<%= usersession.getEmail()%>" />
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
           </div>
 
           <div class="profile__row">
@@ -77,9 +113,14 @@
               <input
                 type="text"
                 class="profile__input"
+<<<<<<< HEAD
                 name="first_name"
                 value="..."
               />
+=======
+                name="fullName"
+                placeholder="<%= usersession.getFullName() %>" />
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
             </div>
           </div>
 
@@ -128,27 +169,43 @@
             <input
               type="text"
               class="profile__input"
+<<<<<<< HEAD
               name="mobile-number"
               value="..."
               disabled
             />
+=======
+              name="phoneNumber"
+              placeholder="<%= usersession.getPhoneNumber()%>" />
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
             <div class="profile__addNumber">
               <a href="#" id="openModal">+ Add Mobile Number</a>
             </div>
           </div>
 
           <div class="profile__redirect">
+<<<<<<< HEAD
             <a href="edit-password.html">Change Password</a>
+=======
+            <a href="ProfileController?action=edit_password">Change Password</a>
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
           </div>
 
           <div class="profile__actions">
             <button
               type="button"
               class="profile__button profile__button--cancel"
+<<<<<<< HEAD
               onclick="window.location.href='personal-details.html';"
             >
               Cancel
             </button>
+=======
+              onclick="window.location.href='personal-details.jsp';">
+              Cancel
+            </button>
+            <input type="hidden" name="action" value="update_profile" />
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
             <button type="submit" class="profile__button profile__button--save">
               Save
             </button>
@@ -181,6 +238,10 @@
         </div>
       </div>
     </div>
+<<<<<<< HEAD
     <script src="./assets/javascripts/script.js"></script>
+=======
+    <script src="./assets/javascripts/profile.js"></script>
+>>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
   </body>
 </html>

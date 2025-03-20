@@ -2,7 +2,7 @@
 USE FlightBookingWebApp
 
 CREATE TABLE users (
-	userID INT IDENTITY(1,1) Primary Key ,
+	userID INT Primary Key ,
 	fullName NVARCHAR (20),
 	password VARCHAR (255),
 	email VARCHAR (50),
@@ -19,13 +19,16 @@ CREATE TABLE airport (
 );
 
 CREATE TABLE flight(
-	flightID INT IDENTITY(1,1) Primary Key,
+	flightID INT Primary Key,
+	flightNumber VARCHAR(20),
 	airline VARCHAR(20), 
 	departuretTime DATETIME,
 	arrivalTime DATETIME,
 	totalSeats INT,
 	businessPrice DECIMAL(10,2),
 	economyPrice DECIMAL(10,2),
+	aircraftType VARCHAR(20),
+	baggageAllow FLOAT,
 	flightStatus VARCHAR(20) NOT NULL CHECK (flightStatus IN ('Open', 'Delayed', 'Canceled')) DEFAULT 'Open',
 	adminID INT FOREIGN KEY REFERENCES users (userID),
 	departureId INT FOREIGN KEY REFERENCES airport(airportID) ,
@@ -33,7 +36,7 @@ CREATE TABLE flight(
 )
 
 CREATE TABLE seat (
-	seatID INT IDENTITY(1,1) PRIMARY KEY,
+	seatID INT PRIMARY KEY,
 	seatNumber VARCHAR(10) NOT NULL,
 	fareClass VARCHAR(20) NOT NULL CHECK (fareClass IN ('Economy', 'Business')) DEFAULT 'Economy',
 	seatStatus VARCHAR(20) NOT NULL CHECK (seatStatus IN ('Available', 'Booked')) DEFAULT 'Available',
@@ -42,7 +45,7 @@ CREATE TABLE seat (
 )
 
 CREATE TABLE booking (
-	bookingID INT IDENTITY(1,1) PRIMARY KEY,
+	bookingID int PRIMARY KEY,
 	bookingStatus VARCHAR(20) NOT NULL CHECK (bookingStatus IN ('Pending', 'Confirmed', 'Canceled')) DEFAULT 'Pending',
 	bookingDate DATE NOT NULL,
 	TotalPrice DECIMAL(10,2) NOT NULL,
@@ -50,7 +53,7 @@ CREATE TABLE booking (
 )
 
 CREATE TABLE ticket(
-	ticketID INT IDENTITY(1,1) PRIMARY KEY,
+	ticketID int PRIMARY KEY,
 	issuedDate DATE,
 	TicketCode VARCHAR(10) UNIQUE NOT NULL,
 	ticketPrice DECIMAL(10,2) NOT NULL,
@@ -62,7 +65,7 @@ CREATE TABLE ticket(
 )
 
 CREATE TABLE payment(
-	paymentID INT IDENTITY(1,1) PRIMARY KEY,
+	paymentID int PRIMARY KEY,
 	amount DECIMAL(10,2) NOT NULL,
 	paymentMethod VARCHAR(20) NOT NULL CHECK (paymentMethod IN ('Momo', 'VNPay')) DEFAULT 'Momo',
 	paymentStatus VARCHAR(20) NOT NULL CHECK (paymentStatus IN('Pending', 'Completed', 'Failed')) DEFAULT 'Pending',
@@ -79,4 +82,14 @@ WITH (
     CODEPAGE = '65001'
 );
 
-SELECT * FROM airport WHERE country like 'VietNam'
+UPDATE airport
+SET name = REPLACE(name, '"', '');
+UPDATE airport
+SET city = REPLACE(city, '"', '');
+UPDATE airport
+SET country = REPLACE(country, '"', '');
+
+
+SELECT * FROM airport
+SELECT * FROM users
+INSERT INTO users (userID , email, password, role) VALUES (1 ,'admin@gmail.com', 'admin123', 'Admin') 

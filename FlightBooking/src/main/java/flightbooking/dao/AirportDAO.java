@@ -5,10 +5,93 @@
  */
 package flightbooking.dao;
 
+import flightbooking.utils.DBUtils;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  *
  * @author ADMIN
  */
 public class AirportDAO {
+    public List<Map<String, String>> loadAllAirport (){
+        List<Map<String, String>> airportList = new ArrayList<>();
+        try {
+            Connection conn = DBUtils.getConnection();
+            String sql = " SELECT name, city, country FROM airport ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Map<String, String> airport = new HashMap<>();
+                airport.put("name", rs.getString("name") );
+                airport.put("city", rs.getString("city"));
+                airport.put("country", rs.getString("country"));
+                airportList.add(airport);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.err.println("Load airport error , " + e.getMessage() );
+        }
+        return airportList;
+    }
     
+    public int getAirportIdByAirportName (String airportName){
+        int id = -1;
+        try {
+            Connection conn = DBUtils.getConnection();
+            String sql = " SELECT airportID FROM airport WHERE name = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, airportName);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                id = rs.getInt("airportID");
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Get AirportId By AirportName - Error, Details: " + ex.getMessage());
+        }
+        return id;
+    }  
+    
+    public String getAirportNameByAirportId (int airportID){
+        String name = "";
+        try {
+            Connection conn = DBUtils.getConnection();
+            String sql = " SELECT name FROM airport WHERE airportID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, airportID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                name = rs.getString("name");
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Get AirportName By AirportId - Error, Details: " + ex.getMessage());
+        }
+        return name;
+    }  
+    
+    public String getAirportCountryByAirportId (int airportID){
+        String country = "";
+        try {
+            Connection conn = DBUtils.getConnection();
+            String sql = " SELECT country FROM airport WHERE airportID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, airportID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                country = rs.getString("country");
+            }
+            conn.close();
+        } catch (SQLException ex) {
+            System.out.println("Get AirportCountry By AirportId - Error, Details: " + ex.getMessage());
+        }
+        return country;
+    }
 }

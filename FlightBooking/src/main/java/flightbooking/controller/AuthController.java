@@ -9,6 +9,7 @@ import flightbooking.dao.UserDAO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,13 +40,27 @@ public class AuthController extends HttpServlet {
         String action = request.getParameter("action");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        if (action.equals("register")){
+        UserDAO userDao = new UserDAO();
+        if(action == null){  
+            request.getRequestDispatcher("AirportController").forward(request, response);
+            return;
+        }else if (action.equals("register")){
+            int id = userDao.getMaxUserId() + 1;
             String firstName = request.getParameter("firstName");
             String lastName = request.getParameter("lastName");
             String fullName = firstName + " " + lastName;
             String phoneNumber = request.getParameter("phoneNumber");
             String passwordCon = request.getParameter("password-confirm");
-            UserDAO userDao = new UserDAO();
+            int day, month, year;
+            Date dob= null;
+            try {
+                day = Integer.parseInt(request.getParameter("day")) ;
+                month = Integer.parseInt(request.getParameter("month"));
+                year = Integer.parseInt(request.getParameter("year"));
+                dob = Date.valueOf(year+"-"+month+"-"+day);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
             if(userDao.checkEmail(email)){
                 request.setAttribute("erroremail", "Email already exists. Please enter a different email.");
                 request.getRequestDispatcher("register.jsp").forward(request, response);
@@ -56,14 +71,12 @@ public class AuthController extends HttpServlet {
                 request.getRequestDispatcher("register.jsp").forward(request, response);
                 return;
             }
-            UserDTO user = new UserDTO(fullName, password, email, phoneNumber);
+            UserDTO user = new UserDTO(id, fullName, password, email, phoneNumber, dob);
             userDao.insertUser(user);
             RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.forward(request, response); 
-            return;
-                 
+            return;        
         }else if (action.equals("login")){
-            UserDAO userDao = new UserDAO();
             if(email.isEmpty() || password.isEmpty() || email == null || password == null){
                 request.setAttribute("error", "Email or password is empty.");
                 RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
@@ -73,8 +86,15 @@ public class AuthController extends HttpServlet {
             UserDTO user = userDao.loginUser(email, password);
             if(user != null && user.getRole().equals("Customer")) {
                 HttpSession session = request.getSession(true);
-                session.setAttribute("usersession", user);
+                user = userDao.loadUser(email);
+            session.setAttribute("usersession", user);
                 response.sendRedirect("./BookingController");
+                return;
+            }else if (user != null && user.getRole().equals("Admin")){
+                HttpSession session = request.getSession(true);
+                user = userDao.loadUser(email);
+                session.setAttribute("adminsession", user);
+                response.sendRedirect("./AdminController");
                 return;
             }else {
                 request.setAttribute("error", "Email or password is incorrect");
