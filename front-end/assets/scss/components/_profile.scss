@@ -137,8 +137,8 @@
   @include button-style(black, white);
 
   &--cancel {
-    @include button-style(white, black);
     border: 2px solid black;
+    @include button-style(white, black);
   }
 }
 
@@ -378,8 +378,8 @@
     @include button-style(black, white);
 
     &--cancel {
-      @include button-style(white, black);
       border: 2px solid black;
+      @include button-style(white, black);
     }
   }
 }

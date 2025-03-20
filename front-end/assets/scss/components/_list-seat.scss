@@ -1,0 +1,35 @@
+.seat-info {
+  position: relative;
+  width: 400px;
+  padding: 40px;
+  font-size: 22px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+
+  &__title {
+    font-weight: 600;
+    font-size: 23px;
+    text-align: left;
+    margin-bottom: 20px;
+  }
+}
+
+.seat-info__detail {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+.seat-info__detail strong {
+  font-weight: 700;
+}
+.seat-info__summary {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+  &-title {
+    margin-top: 20px;
+    font-weight: 700;
+  }
+}
