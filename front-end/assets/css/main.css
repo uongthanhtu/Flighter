@@ -222,21 +222,23 @@ strong {
   background: var(--separate-color);
 }
 
-<<<<<<< HEAD
 .hidden {
   display: none;
-=======
-.admin-body {
-  background: #eeeeee;
->>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
 }
 
-.row > *, .container-fluid, .container {
+.admin-body {
+  background: #eeeeee;
+}
+
+.row > *,
+.container-fluid,
+.container {
   padding-left: calc(var(--grid-gutter-x) * 0.5);
   padding-right: calc(var(--grid-gutter-x) * 0.5);
 }
 
-.container-fluid, .container {
+.container-fluid,
+.container {
   --grid-gutter-x: 30px;
   --grid-gutter-y: 0;
   width: 1370px;
@@ -1369,12 +1371,14 @@ strong {
   border-collapse: collapse;
   margin-top: 10px;
 }
-.account-manager__table th, .account-manager__table td {
+.account-manager__table th,
+.account-manager__table td {
   padding: 20px;
   border-bottom: 1px solid #ddd;
   text-align: center;
 }
-.account-manager__table th:last-child, .account-manager__table td:last-child {
+.account-manager__table th:last-child,
+.account-manager__table td:last-child {
   white-space: nowrap;
   gap: 2px;
 }
@@ -1432,7 +1436,8 @@ strong {
   width: 40px;
   height: 40px;
 }
-.account-manager__next-btn, .account-manager__pre-btn {
+.account-manager__next-btn,
+.account-manager__pre-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1441,7 +1446,8 @@ strong {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-.account-manager__next-btn:hover, .account-manager__pre-btn:hover {
+.account-manager__next-btn:hover,
+.account-manager__pre-btn:hover {
   background: #ddd;
 }
 
@@ -1657,7 +1663,8 @@ strong {
   opacity: 0.8;
 }
 
-.input, .profile__input {
+.input,
+.profile__input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -1937,7 +1944,8 @@ strong {
   position: fixed;
   z-index: 20;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 .admin-header__inner {
   display: flex;
@@ -2096,7 +2104,8 @@ a {
   height: 100px;
 }
 
-.user__avt, .user__logout__btn {
+.user__avt,
+.user__logout__btn {
   display: inline-block;
 }
 .user__logout__btn {
@@ -2137,7 +2146,8 @@ a {
   border: 2px solid hsl(189.54, 76.65%, 38.63%);
   border-radius: 999px;
 }
-.flight-search__form__label, .flight-search__form__input {
+.flight-search__form__label,
+.flight-search__form__input {
   display: block;
 }
 .flight-search__form__label {
@@ -2187,7 +2197,8 @@ a {
   text-align: center;
   margin: 100px 0px 150px;
 }
-.feature--title::before, .feature--title::after {
+.feature--title::before,
+.feature--title::after {
   position: absolute;
   top: 17px;
   display: inline-block;
@@ -2195,7 +2206,12 @@ a {
   width: 300px;
   height: 6px;
   background-color: #4158d0;
-  background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
   border-radius: 999px;
 }
 .feature--title::before {
@@ -2256,7 +2272,8 @@ a {
   align-items: center;
   margin-bottom: 100px;
 }
-.stats--title__left, .stats--title__right {
+.stats--title__left,
+.stats--title__right {
   font-family: "Hornbill Personal Use";
   font-weight: 800;
   font-style: italic;
@@ -2270,7 +2287,8 @@ a {
   font-size: 10rem;
   color: hsl(182.94, 76.47%, 63.33%);
 }
-.stats--num, .stats--desc {
+.stats--num,
+.stats--desc {
   display: block;
   text-align: center;
 }
@@ -2339,17 +2357,20 @@ a {
 }
 
 @media screen and (max-width: 1999px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     width: 200px;
   }
 }
 @media screen and (max-width: 991px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     width: 100px;
   }
 }
 @media screen and (max-width: 767px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     display: none;
   }
 }
@@ -2367,14 +2388,16 @@ a {
   font-weight: 600;
   margin-bottom: 20px;
 }
-.flight--time, .flight--location {
+.flight--time,
+.flight--location {
   display: flex;
   justify-content: space-around;
   font-size: 2rem;
   padding: 5px 0;
   margin-bottom: 20px;
 }
-.flight--location, .flight--time__bold {
+.flight--location,
+.flight--time__bold {
   font-weight: 600;
 }
 
@@ -2384,7 +2407,8 @@ a {
 .flight--detail--code {
   padding: 20px 0;
 }
-.flight--detail--code, .flight--detail--component--header {
+.flight--detail--code,
+.flight--detail--component--header {
   font-size: 3rem;
   font-weight: 600;
   color: var(--text-primary-color);
@@ -2403,7 +2427,7 @@ a {
   /* Create checked state */
   /* Make the label clickable */
 }
-.flight--detail--ticket input[type=radio] {
+.flight--detail--ticket input[type="radio"] {
   display: none;
 }
 .flight--detail--ticket .custom-radio {
@@ -2416,11 +2440,11 @@ a {
   margin-right: 10px;
   cursor: pointer;
 }
-.flight--detail--ticket input[type=radio]:checked + .custom-radio {
+.flight--detail--ticket input[type="radio"]:checked + .custom-radio {
   background-color: #007bff;
   border: 2px solid #007bff;
 }
-.flight--detail--ticket input[type=radio]:checked + .custom-radio::after {
+.flight--detail--ticket input[type="radio"]:checked + .custom-radio::after {
   content: "";
   width: 8px;
   height: 8px;
@@ -2453,7 +2477,8 @@ a {
 .flight--detail--btn:hover {
   scale: 1.1;
 }
-.flight--ticket--price, .flight--detail--component--value {
+.flight--ticket--price,
+.flight--detail--component--value {
   color: var(--text-primary-color);
   font-size: 2rem;
   font-weight: 500;
@@ -2784,7 +2809,8 @@ a {
   font-size: 1.6rem;
   width: 250px;
 }
-.register-form__policy-1, .register-form__policy-2 {
+.register-form__policy-1,
+.register-form__policy-2 {
   margin-left: 15px;
   margin-top: 30px;
   display: flex;
@@ -2813,7 +2839,6 @@ a {
   opacity: 0.8;
 }
 
-<<<<<<< HEAD
 .booking-seat {
   margin-top: 120px;
 }
@@ -2921,7 +2946,8 @@ a {
 .seat__btn--prev:hover {
   background: #ccc;
   opacity: 0.9;
-=======
+}
+
 /* Admin Account Edit - BEM naming convention */
 .admin__account-edit {
   background-color: #fff;
@@ -3036,7 +3062,6 @@ a {
   .admin__account-edit-title {
     font-size: 1.5rem;
   }
->>>>>>> d3758763f24fb9d240237364a006e2ddc0a06d22
 }
 
 /*# sourceMappingURL=main.css.map */
