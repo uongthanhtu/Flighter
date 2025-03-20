@@ -1,0 +1,178 @@
+// Variables
+$primary-color: #4a6cf7;
+$secondary-color: #f5f7ff;
+$text-color: #333;
+$border-color: #e1e5ee;
+$shadow-color: rgba(0, 0, 0, 0.05);
+$border-radius: 8px;
+$transition: all 0.3s ease;
+
+// Customer Booking Section
+.customer-booking {
+  padding: 60px 0;
+  background-color: #fff;
+
+  &__title {
+    font-size: 28px;
+    font-weight: 600;
+    color: $text-color;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  &__info-block {
+    background-color: $secondary-color;
+    border-radius: $border-radius;
+    padding: 30px;
+    box-shadow: 0 5px 15px $shadow-color;
+    margin-bottom: 30px;
+  }
+
+  &__top-bar {
+    border-bottom: 1px solid $border-color;
+    display: flex;
+  }
+
+  &__top-label {
+    font-size: 18px;
+    font-weight: 500;
+    color: $text-color;
+    margin-bottom: 25px;
+    margin-right: 40px;
+    padding-bottom: 15px;
+
+    span {
+      font-weight: 600;
+      color: $primary-color;
+      background-color: rgba($primary-color, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-left: 8px;
+    }
+  }
+
+  &__info {
+    margin-top: 20px;
+  }
+
+  &__info-component {
+    padding: 0 15px;
+    margin-bottom: 20px;
+
+    // Column layout for children as requested
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: $text-color;
+    margin-bottom: 8px;
+    transition: $transition;
+  }
+
+  &__info-input {
+    width: 100%;
+    height: 48px;
+    padding: 0 15px;
+    font-size: 15px;
+    color: $text-color;
+    background-color: #fff;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    transition: $transition;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.15);
+    }
+
+    &::placeholder {
+      color: lighten($text-color, 30%);
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    background-color: $primary-color;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: $border-radius;
+    border: 2px solid $primary-color;
+    transition: $transition;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba($primary-color, 0.2);
+    margin-left: auto;
+    margin-top: 20px;
+
+    &-wrap {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: darken($primary-color, 8%);
+      border-color: darken($primary-color, 8%);
+      box-shadow: 0 6px 12px rgba($primary-color, 0.25);
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 4px rgba($primary-color, 0.2);
+    }
+
+    // Focus state for accessibility
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.3),
+        0 4px 6px rgba($primary-color, 0.2);
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 768px) {
+    &__btn {
+      display: block;
+      width: 100%;
+      padding: 14px 20px;
+      font-size: 15px;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .customer-booking {
+    padding: 40px 0;
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__seat {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .customer-booking {
+    &__info-block {
+      padding: 20px;
+    }
+
+    &__info-component {
+      margin-bottom: 15px;
+    }
+  }
+}
