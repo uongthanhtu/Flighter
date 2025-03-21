@@ -7,6 +7,7 @@ package flightbooking.controller;
 
 import flightbooking.dao.AirportDAO;
 import flightbooking.dao.FlightDAO;
+import flightbooking.dao.SeatDAO;
 import flightbooking.model.FlightDTO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
@@ -42,10 +43,13 @@ public class BookingController extends HttpServlet {
             throws ServletException, IOException {
         
         String action = request.getParameter("action");
-         
         HttpSession session = request.getSession(false);
         UserDTO userSession = (session != null) ? (UserDTO) session.getAttribute("usersession") : null;
-        if(action == null ){
+        String actionseat = (String) request.getAttribute("actionseat");
+        if(actionseat != null && !actionseat.isEmpty() && actionseat.equals("selecteseat")){
+            action = "selecteseat";
+        }
+        if(action == null){
             if(userSession == null){
                 request.getRequestDispatcher("AirportController").forward(request, response);
                 return;
@@ -93,7 +97,33 @@ public class BookingController extends HttpServlet {
             request.getRequestDispatcher("AirportController").forward(request, response);
             return;
         }else if(action.equals("flightdetails")){
+            FlightDAO flightdao = new FlightDAO();
+            int flightid = Integer.parseInt(request.getParameter("flightid"));
+            FlightDTO flight = flightdao.loadFlightById(flightid);
+            AirportDAO airdao = new AirportDAO();
+            String departurename = airdao.getAirportNameByAirportId(flight.getDepartureID()) 
+                                    + " - " + airdao.getAirportCountryByAirportId(flight.getDepartureID());
+            String arrivalname = airdao.getAirportNameByAirportId(flight.getArrivalID())
+                                    + " - " + airdao.getAirportCountryByAirportId(flight.getArrivalID());
+            
+            request.setAttribute("flightobject", flight);
+            request.setAttribute("departurename", departurename);
+            request.setAttribute("arrivalname", arrivalname);
             request.getRequestDispatcher("flight-details.jsp").forward(request, response);
+            return;
+        }else if(action.equals("selecteseat")){
+            int flightid = Integer.parseInt(request.getParameter("flightid")) ;
+            if(userSession == null){
+                request.setAttribute("nextaction", "selecteseat");
+                request.setAttribute("flightid", flightid); 
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
+            FlightDAO flightdao = new FlightDAO();
+            SeatDAO seatdao = new  SeatDAO();
+            request.setAttribute("flightnumber", flightdao.loadFlightById(flightid).getFlightNumber());
+            request.setAttribute("seats", seatdao.getListSeatByFlightID(flightid));
+            request.getRequestDispatcher("seat-selected.jsp").forward(request, response);
             return;
         }
         

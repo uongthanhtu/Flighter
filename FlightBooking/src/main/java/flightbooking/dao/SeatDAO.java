@@ -56,7 +56,7 @@ public class SeatDAO {
         return maxID;
     }
     
-    public List<Integer> getListSeatByFlightID (int flightID ) {
+    public List<Integer> getListSeatIDByFlightID (int flightID ) {
         Connection conn = DBUtils.getConnection();
         SeatDTO seat = null;
         List<Integer> seatlistid = new ArrayList<Integer>();
@@ -66,7 +66,6 @@ public class SeatDAO {
             ps.setInt(1, flightID);
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                seat = new SeatDTO();
                 seatlistid.add(rs.getInt("seatID"));
             }
             conn.close();
@@ -74,6 +73,39 @@ public class SeatDAO {
             System.out.println(e.getMessage());
         }
         return seatlistid;
+    }
+    
+    public List<SeatDTO> getListSeatByFlightID (int flightID ) {
+        Connection conn = DBUtils.getConnection();
+        SeatDTO seat = null;
+        List<SeatDTO> seatlist = new ArrayList<SeatDTO>();
+        try {
+            String sql = "SELECT s.seatID, s.seatNumber, s.fareClass, s.seatStatus, s.flightID , " +
+                     "CASE WHEN s.fareClass = 'Business' THEN f.businessPrice " +
+                     " WHEN s.fareClass = 'Economy' THEN f.economyPrice " +
+                     " END AS price " +
+                     " FROM seat s " +
+                     " JOIN flight f ON s.flightID = f.flightID " +
+                     " WHERE s.flightID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);;
+            ps.setInt(1, flightID);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                seat = new SeatDTO();
+                seat.setSeatID(rs.getInt("seatID"))  ;
+                seat.setSeatNumber(rs.getString("seatNumber"));
+                seat.setFareClass(rs.getString("fareClass"));
+                seat.setSeatStatus(rs.getString("seatStatus"));
+                seat.setFlightID(rs.getInt("flightID"));
+                seat.setPrice(rs.getDouble("price"));
+                seatlist.add(seat);
+                System.out.println(seat.getSeatID() + " - " + seat.getPrice());
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println( "Get list seat by flightID is error: " + e.getMessage());
+        }
+        return seatlist;
     }
     
     public boolean deleteSeat (List<Integer> listid) {
