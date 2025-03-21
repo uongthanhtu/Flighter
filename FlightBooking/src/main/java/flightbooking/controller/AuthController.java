@@ -85,9 +85,17 @@ public class AuthController extends HttpServlet {
             }
             UserDTO user = userDao.loginUser(email, password);
             if(user != null && user.getRole().equals("Customer")) {
+                String nextaction = request.getParameter("nextaction");
                 HttpSession session = request.getSession(true);
                 user = userDao.loadUser(email);
-            session.setAttribute("usersession", user);
+                session.setAttribute("usersession", user);
+                if(nextaction != null && nextaction.equals("selecteseat")){
+                    String flightid = request.getParameter("flightid");
+                    request.setAttribute("actionseat", "selecteseat");
+                    request.setAttribute("flightid", flightid);
+                    request.getRequestDispatcher("BookingController").forward(request, response);
+                    return;
+                }
                 response.sendRedirect("./BookingController");
                 return;
             }else if (user != null && user.getRole().equals("Admin")){

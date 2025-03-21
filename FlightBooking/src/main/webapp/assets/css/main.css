@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -219,6 +220,10 @@ strong {
   margin: var(--margin) 0;
   height: 1px;
   background: var(--separate-color);
+}
+
+.hidden {
+  display: none;
 }
 
 .admin-body {
@@ -1641,6 +1646,7 @@ strong {
   opacity: 0.8;
 }
 .profile__button--cancel {
+  border: 2px solid black;
   background-color: white;
   color: black;
   border: none;
@@ -1652,7 +1658,6 @@ strong {
   padding: 5px;
   font-size: 17px;
   font-weight: bold;
-  border: 2px solid black;
 }
 .profile__button--cancel:hover {
   opacity: 0.8;
@@ -1878,6 +1883,7 @@ strong {
   opacity: 0.8;
 }
 .modal__button--cancel {
+  border: 2px solid black;
   background-color: white;
   color: black;
   border: none;
@@ -1889,10 +1895,46 @@ strong {
   padding: 5px;
   font-size: 17px;
   font-weight: bold;
-  border: 2px solid black;
 }
 .modal__button--cancel:hover {
   opacity: 0.8;
+}
+
+.seat-info {
+  position: relative;
+  width: 400px;
+  padding: 40px;
+  font-size: 22px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+.seat-info__title {
+  font-weight: 600;
+  font-size: 23px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.seat-info__detail {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.seat-info__detail strong {
+  font-weight: 700;
+}
+
+.seat-info__summary {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+}
+.seat-info__summary-title {
+  margin-top: 20px;
+  font-weight: 700;
 }
 
 .admin-header {
@@ -1933,6 +1975,9 @@ strong {
   background: #171100;
   color: #fff;
   font-weight: 500;
+}
+.admin-header__btn:hover {
+  opacity: 0.8;
 }
 
 .admin-logo {
@@ -2792,6 +2837,115 @@ a {
 }
 .register-form__btn:hover {
   opacity: 0.8;
+}
+
+.booking-seat {
+  margin-top: 120px;
+}
+.booking-seat__container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.booking-seat__wrapper {
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+.booking-seat__flight-title {
+  font-weight: 600;
+  font-size: 23px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.seats__container {
+  padding-right: 8px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 52vh;
+  display: grid;
+  grid-template-columns: repeat(6, 60px);
+  gap: 15px;
+}
+
+.seat {
+  margin-top: 2px;
+  position: relative;
+}
+.seat__select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #77dae6;
+  border: 2px solid #0077b6;
+  transition: all 0.3s;
+}
+.seat__select:hover:not(.booked .seat__select) {
+  scale: 1.05;
+  opacity: 0.8;
+}
+.seat input:checked + .seat__select {
+  background-color: #ffd166;
+  border-color: #ff9f1c;
+}
+.seat__selected {
+  color: #0077b6;
+  font-weight: 600;
+}
+.seat__total-price {
+  font-family: monospace; /* Font dễ đọc */
+  color: #ff6b6b;
+  letter-spacing: 1px;
+}
+
+.business .seat__select {
+  background-color: rgb(138, 238, 23);
+}
+
+.booked .seat__select {
+  background-color: #ff6b6b;
+  cursor: not-allowed;
+  color: white;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.seat__btn {
+  padding: 10px 20px;
+  font-size: 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.seat__btn:hover {
+  background: #77dae6;
+}
+.seat__btn--submit {
+  background: #0077b6;
+  color: white;
+}
+.seat__btn--prev {
+  border: 1px solid #333;
+  background: #eee;
+  color: #333;
+}
+.seat__btn--prev:hover {
+  background: #ccc;
+  opacity: 0.9;
 }
 
 /* Admin Account Edit - BEM naming convention */

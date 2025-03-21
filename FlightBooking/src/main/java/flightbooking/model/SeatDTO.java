@@ -14,6 +14,7 @@ public class SeatDTO {
     private String seatNumber;
     private String fareClass;
     private String seatStatus;
+    private double price;
     private int flightID;
 
     public SeatDTO() {
@@ -65,6 +66,16 @@ public class SeatDTO {
     public void setFlightID(int flightID) {
         this.flightID = flightID;
     }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+    
+    
 
     
 }

@@ -147,6 +147,12 @@
             >
           </div>
           <input type="hidden" value="login" name="action" />
+          <% String nextaction = (String) request.getAttribute("nextaction");
+            if(nextaction != null && !nextaction.isEmpty() && nextaction.equals("selecteseat")){%>
+            <input type="hidden" name="nextaction" value="selecteseat">
+            <input type="hidden" name="flightid" value="${requestScope.flightid}">
+            <%}
+          %>
           <button class="login-form__btn" type="submit">Login</button>
           <p class="login-form__register-prompt">
             Don't have an account ?

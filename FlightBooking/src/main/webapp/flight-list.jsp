@@ -200,7 +200,7 @@
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");           
                     %>   
           <div class="flight row row-cols-1">
-          <a href="BookingController?action=flightdetails" class="flight--link">
+          <a href="BookingController?action=flightdetails&flightid=${flight.flightID}" class="flight--link">
               <div class="flight--overview">
               <h2 class="flight--code">Flight No: ${flight.flightNumber}</h2>
               <div class="flight--time">

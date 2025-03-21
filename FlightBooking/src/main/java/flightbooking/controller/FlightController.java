@@ -220,7 +220,7 @@ public class FlightController extends HttpServlet {
             flight = flightDao.loadFlightById(flightId);
             if(flight != null){
                 SeatDAO seatdao = new SeatDAO();
-                List<Integer> seatlist = seatdao.getListSeatByFlightID(flightId);
+                List<Integer> seatlist = seatdao.getListSeatIDByFlightID(flightId);
                 if(seatlist != null){
                     seatdao.deleteSeat(seatlist);
                 }
