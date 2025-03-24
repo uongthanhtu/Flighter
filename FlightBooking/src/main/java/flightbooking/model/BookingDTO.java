@@ -6,6 +6,7 @@
 package flightbooking.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -14,19 +15,22 @@ import java.sql.Date;
 public class BookingDTO {
     private int bookingID;
     private String bookingStatus;
-    private Date bookingDate;
+    private LocalDateTime bookingDate;
     private double totalPrice;
     private int customerID;
 
     public BookingDTO() {
     }
 
-    public BookingDTO( String bookingStatus, Date bookingDate, double totalPrice, int customerID) {
+    public BookingDTO(int bookingID, String bookingStatus, LocalDateTime bookingDate, double totalPrice, int customerID) {
+        this.bookingID = bookingID;
         this.bookingStatus = bookingStatus;
         this.bookingDate = bookingDate;
         this.totalPrice = totalPrice;
         this.customerID = customerID;
     }
+
+    
 
     public int getBookingID() {
         return bookingID;
@@ -40,11 +44,11 @@ public class BookingDTO {
         this.bookingStatus = bookingStatus;
     }
 
-    public Date getBookingDate() {
+    public LocalDateTime getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(Date bookingDate) {
+    public void setBookingDate(LocalDateTime bookingDate) {
         this.bookingDate = bookingDate;
     }
 
@@ -64,4 +68,7 @@ public class BookingDTO {
         this.customerID = customerID;
     }
 
+    public void setBookingID(int bookingID) {
+        this.bookingID = bookingID;
+    }
 }

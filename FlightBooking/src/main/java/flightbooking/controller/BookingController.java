@@ -6,13 +6,20 @@
 package flightbooking.controller;
 
 import flightbooking.dao.AirportDAO;
+import flightbooking.dao.BookingDAO;
 import flightbooking.dao.FlightDAO;
 import flightbooking.dao.SeatDAO;
+import flightbooking.dao.TicketDAO;
+import flightbooking.model.BookingDTO;
 import flightbooking.model.FlightDTO;
+import flightbooking.model.SeatDTO;
+import flightbooking.model.TicketDTO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -123,9 +130,67 @@ public class BookingController extends HttpServlet {
             SeatDAO seatdao = new  SeatDAO();
             request.setAttribute("flightnumber", flightdao.loadFlightById(flightid).getFlightNumber());
             request.setAttribute("seats", seatdao.getListSeatByFlightID(flightid));
+            request.setAttribute("flightid", flightid);
             request.getRequestDispatcher("seat-selected.jsp").forward(request, response);
             return;
+        }else if(action.equals("customer_booking_info")){
+            int flightid = Integer.parseInt(request.getParameter("flightid"));
+            SeatDAO seatdao = new SeatDAO();
+            String[] listSeadID = request.getParameterValues("selectedSeats");
+            if(listSeadID == null){
+                request.setAttribute("errorseat", "No seat selected");
+                request.getRequestDispatcher("BookingController?action=selecteseat").forward(request, response);
+                return;
+            }
+            List<SeatDTO> listseat = new ArrayList<SeatDTO>();
+            int minseatid = seatdao.getMinSeatIDByFlightID(flightid);
+            for (String seatid : listSeadID) {
+                if(seatdao.getSeatBySeatID(Integer.parseInt(seatid) + minseatid - 1) != null){
+                    listseat.add(seatdao.getSeatBySeatID(Integer.parseInt(seatid) + minseatid - 1));
+                }
+            }
+            request.setAttribute("listselectseat", listseat);
+            request.getRequestDispatcher("customer-booking-info.jsp").forward(request, response);
+        }else if(action.equals("submit_ticket")){
+            String[] seatIDs = request.getParameterValues("seatid");
+            String[] fNames = request.getParameterValues("fname");
+            String[] lNames = request.getParameterValues("lname");
+            String[] phoneNumber = request.getParameterValues("phone");
+            String[] ticketPrices = request.getParameterValues("ticketprice");
+            
+            SeatDAO seatDao = new SeatDAO();
+            LocalDateTime arrivalTime = seatDao.getArrivalTimeBySeatId(Integer.parseInt(seatIDs[0]));
+            FlightDAO flightDao = new FlightDAO();
+            BookingDAO bookingDao = new BookingDAO();
+            int bookingID = bookingDao.getMaxBookingID() + 1;
+            
+            TicketDAO ticketDAO = new TicketDAO();
+            double totalPrice = 0;
+            LocalDateTime timeNow = LocalDateTime.now();
+            BookingDTO booking = new BookingDTO(bookingID, "Pending", 
+                    timeNow, totalPrice, userSession.getUserID());
+            bookingDao.insertBooking(booking);
+            for (int i = 0; i < seatIDs.length ; i ++) {
+                int seadID = Integer.parseInt(seatIDs[i]);
+                double price = Double.parseDouble(ticketPrices[i]);
+                String pName = fNames[i] + " " + lNames[i];
+                String pPhone = phoneNumber[i];
+
+                String flightseat = seatDao.getFlightNumberAndSeatNumber(seadID);
+                TicketDTO ticket = new TicketDTO(ticketDAO.getMaxTicketID() + 1, 
+                        arrivalTime, flightseat, price, "Booked", bookingID, seadID, pName, pPhone );
+                ticketDAO.insertTicket(ticket);
+                seatDao.updateSeatStatus(Integer.parseInt(seatIDs[i]), "Booked");
+                totalPrice += price;
+            }
+            
+            bookingDao.updateTotalPrice(bookingID, totalPrice);
+            
+            
+            response.sendRedirect("payment.jsp");
+            return;
         }
+        
         
     }
 

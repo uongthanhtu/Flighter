@@ -71,6 +71,8 @@
             </div>
           </div>
         </div>
+            <input type="hidden" name="action" value="customer_booking_info">
+            <input type="hidden" name="flightid" value="${requestScope.flightid}">
         <div class="controls">
           <button id="prev-btn" class="seat__btn seat__btn--prev">Back</button>
           <button type="submit" class="seat__btn seat__btn--submit">
