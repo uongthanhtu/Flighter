@@ -133,9 +133,7 @@ a {
 }
 
 .flight-search__ {
-  &container {
-    padding: 50px 0 100px 0;
-  }
+  
   &box {
     position: relative;
     z-index: 2;
@@ -147,9 +145,10 @@ a {
     justify-content: space-around;
     align-items: center;
     margin-top: auto;
-    height: 250px;
+    padding: 50px;
     border: 2px solid hsl(189.54deg 76.65% 38.63%);
-    border-radius: $btnBorderRadius;
+    border-radius: 20px;
+    background: #fff;
     &__label,
     &__input {
       display: block;

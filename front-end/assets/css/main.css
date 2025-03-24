@@ -2077,7 +2077,7 @@ a {
   position: relative;
   display: block;
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 1.8rem; 
   color: var(--text-primary-color);
   padding: 39px 25px;
   text-align: center;
@@ -2128,10 +2128,6 @@ a {
 .user__logout__btn:hover::after {
   width: 100%;
 }
-
-.flight-search__container {
-  padding: 50px 0 100px 0;
-}
 .flight-search__box {
   position: relative;
   z-index: 2;
@@ -2142,9 +2138,11 @@ a {
   justify-content: space-around;
   align-items: center;
   margin-top: auto;
-  height: 250px;
-  border: 2px solid hsl(189.54, 76.65%, 38.63%);
-  border-radius: 999px;
+  padding: 50px;
+  border: 1px solid hsl(189.54, 76.65%, 38.63%);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .flight-search__form__label,
 .flight-search__form__input {
