@@ -68,6 +68,10 @@ a {
   align-items: center;
   justify-content: space-between;
 
+  &__users {
+    display: flex;
+    align-items: center;
+  }
   &__link {
     position: relative;
     display: block;
@@ -134,6 +138,9 @@ a {
 
 .flight-search__ {
   
+  &container {
+    padding: 50px 0 25px;
+  }
   &box {
     position: relative;
     z-index: 2;
@@ -149,6 +156,8 @@ a {
     border: 2px solid hsl(189.54deg 76.65% 38.63%);
     border-radius: 20px;
     background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    
     &__label,
     &__input {
       display: block;

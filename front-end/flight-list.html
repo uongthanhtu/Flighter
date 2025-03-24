@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -8,65 +8,97 @@
   </head>
   <body>
     <main>
-      <nav class="navbar">
-        <!-- Logo -->
-        <a href="index.html">
-          <img
-            src="./assets/img/logo-removebg-preview.png"
-            alt="logo"
-            class="logo"
-          />
-        </a>
-        <!-- Navigation -->
-        <ul>
-          <li>
-            <a href="#!" class="booking-btn">My booking</a>
-          </li>
-          <li class="support-btn__wrapper">
-            <a href="#!" class="support-btn">Support</a>
-          </li>
-        </ul>
-        <form action="/search" method="GET" class="search-form">
-          <input
-            type="text"
-            name="search"
-            placeholder="Search destinations ..."
-          />
-          <button type="submit">Search</button>
-        </form>
-        <!-- Action -->
-        <div class="actions">
-          <a href="#!">Sign in</a>
-          <a href="#!">Sign up</a>
-        </div>
-      </nav>
-      <div class="container">
-        <div class="flight-query-box row row-cols-1">
-          <form action="/flight-search" method="GET" class="flight-query-form">
-            <div class="form-group">
-              <label for="from">Point of departure</label>
-              <input
-                type="text"
-                id="departure"
-                name="from"
-                placeholder="From..."
+      <header class="header">
+        <div class="container">
+          <nav class="navbar">
+            <!-- Logo -->
+            <a href="AirportController" class="admin-logo"
+              ><img
+                src="./assets/img/airplane-flight.png"
+                alt="logo"
+                class="logo"
               />
-              <div id="departure-list" class="autocomplete-list"></div>
+              <p class="admin-logo__title">Flighter</p>
+            </a>
+            <div class="navbar__actions">
+              <a href="#!" class="navbar__link">My booking</a>
+              <a href="#!" class="navbar__link">Flights</a>
+              <a href="#!" class="navbar__link">Support</a>
+              <a href="login.jsp" class="navbar__link">Sign in</a>
+              <a href="register.jsp" class="navbar__link">Sign up</a>
             </div>
-
-            <div class="form-group">
-              <label for="dest">Destination</label>
-              <input type="text" id="dest" name="dest" placeholder="To..." />
-              <div id="arrival-list" class="autocomplete-list"></div>
+            <div class="navbar__users">
+              <a
+                href="ProfileController?action=profile_details"
+                class="user__avt"
+              >
+                <img src="./assets/img/user-avt.png" alt="User avt" /> </a
+              ><a
+                href="./AuthController?action=logout"
+                class="user__logout__btn"
+                >Log out</a
+              >
             </div>
+          </nav>
+        </div>
+      </header>
 
-            <div class="form-group">
-              <label for="date">Departure date</label>
-              <input type="date" id="date" name="date" class="custom-date" />
-            </div>
+      <div class="container">
+        <div class="flight-search__container">
+          <div class="flight-search__box row row-cols-1">
+            <form
+              action="BookingController"
+              method="GET"
+              class="flight-search__form"
+            >
+              <div class="flight-search__form-group">
+                <label class="flight-search__form__label" for="departure"
+                  >Point of departure</label
+                >
+                <input
+                  class="flight-search__form__input"
+                  type="text"
+                  id="departure"
+                  name="departure"
+                  placeholder="From..."
+                  autocomplete="off"
+                />
+                <div id="departure-list" class="autocomplete-list"></div>
+              </div>
 
-            <button type="submit">Search Flights</button>
-          </form>
+              <div class="flight-search__form-group">
+                <label class="flight-search__form__label" for="arrival"
+                  >Destination</label
+                >
+                <input
+                  class="flight-search__form__input"
+                  type="text"
+                  id="arrival"
+                  name="arrival"
+                  placeholder="To..."
+                  autocomplete="off"
+                />
+                <div id="arrival-list" class="autocomplete-list"></div>
+              </div>
+
+              <div class="flight-search__form-group">
+                <label class="flight-search__form__label" for="date"
+                  >Departure date</label
+                >
+                <input
+                  class="flight-search__form__input"
+                  type="date"
+                  id="date"
+                  name="departuredate"
+                  class="custom-date"
+                />
+              </div>
+              <input type="hidden" name="action" value="searchflight" />
+              <button class="flight-search__form-btn" type="submit">
+                Search Flights
+              </button>
+            </form>
+          </div>
         </div>
         <div class="flight row row-cols-1">
           <a href="#!" class="flight--link">

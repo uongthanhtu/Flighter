@@ -2073,6 +2073,10 @@ a {
   align-items: center;
   justify-content: space-between;
 }
+.navbar__users {
+    display: flex;
+    align-items: center;
+}
 .navbar__link {
   position: relative;
   display: block;
@@ -2128,6 +2132,11 @@ a {
 .user__logout__btn:hover::after {
   width: 100%;
 }
+
+.flight-search__container {
+  padding: 50px 0 25px;
+}
+
 .flight-search__box {
   position: relative;
   z-index: 2;
@@ -2376,7 +2385,8 @@ a {
   padding: 10px 0;
   border: 1px solid #aaa;
   border-radius: 10px;
-  margin-top: 30px;
+  margin: 30px 0;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .flight * {
   color: var(--text-primary-color);
