@@ -10,6 +10,7 @@ import flightbooking.utils.DBUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,6 +109,56 @@ public class SeatDAO {
         return seatlist;
     }
     
+    public SeatDTO getSeatBySeatID (int seatID ) {
+        Connection conn = DBUtils.getConnection();
+        SeatDTO seat = null;
+        try {
+            String sql = "SELECT s.seatID, s.seatNumber, s.fareClass, s.seatStatus, s.flightID , " +
+                     "CASE WHEN s.fareClass = 'Business' THEN f.businessPrice " +
+                     " WHEN s.fareClass = 'Economy' THEN f.economyPrice " +
+                     " END AS price " +
+                     " FROM seat s " +
+                     " JOIN flight f ON s.flightID = f.flightID " +
+                     " WHERE s.seatID = ? ";;
+            PreparedStatement ps = conn.prepareStatement(sql);;
+            ps.setInt(1, seatID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                seat = new SeatDTO();
+                seat.setSeatID(seatID);
+                seat.setSeatNumber(rs.getString("seatNumber"));
+                seat.setFareClass(rs.getString("fareClass"));
+                seat.setSeatStatus(rs.getString("seatStatus"));
+                seat.setFlightID(rs.getInt("flightID"));
+                seat.setPrice(rs.getDouble("price"));
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Get seat by seatid , Details : " + e.getMessage());
+        }
+        return seat;
+    }
+    
+    public int getMinSeatIDByFlightID (int flightID){
+        Connection conn = DBUtils.getConnection();
+        int minID = 0;
+        try {
+            String sql = " SELECT MIN(seatID) FROM seat WHERE flightID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, flightID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                if(!rs.wasNull()){
+                    minID = rs.getInt(1);
+                }
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return minID;
+    }
+    
     public boolean deleteSeat (List<Integer> listid) {
         Connection conn = DBUtils.getConnection();
         try {
@@ -131,5 +182,55 @@ public class SeatDAO {
             return false;
         }
         return true;
+    }
+    
+    public LocalDateTime getArrivalTimeBySeatId (int seatID){
+        Connection conn = DBUtils.getConnection();
+        LocalDateTime time = null;
+        try {
+            String sql  = " SELECT arrivalTime from flight f JOIN seat s ON f.flightID = s.flightID WHERE seatID = ?  ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, seatID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                time = rs.getTimestamp(1).toLocalDateTime();
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Get Arrival Time is error, Details : " + e.getMessage());
+        }
+        return time;
+    }
+    
+    public String getFlightNumberAndSeatNumber (int seatID){
+        Connection conn = DBUtils.getConnection();
+        String flightseat = null;
+        try {
+            String sql = " SELECT flightNumber + seatNumber from flight f JOIN seat s ON f.flightID = s.flightID WHERE seatID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, seatID);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                flightseat = rs.getString(1);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Get Flight, Seat number is error, Details : " + e.getMessage());
+        }
+        return flightseat;
+    }
+    
+    public void updateSeatStatus (int seatID, String status){
+        Connection conn = DBUtils.getConnection();
+        try {
+            String sql = " UPDATE seat SET seatStatus = ? WHERE seatID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setInt(2, seatID);
+            ps.executeUpdate();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Update status is error, Details: " + e.getMessage());
+        }
     }
 }

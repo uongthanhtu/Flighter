@@ -3158,7 +3158,8 @@ a {
   display: flex;
   justify-content: flex-end;
 }
-.customer-booking__btn:hover, .customer-booking__btn:focus {
+.customer-booking__btn:hover,
+.customer-booking__btn:focus {
   background-color: rgb(34.926984127, 76.2666666667, 245.273015873);
   border-color: rgb(34.926984127, 76.2666666667, 245.273015873);
   box-shadow: 0 6px 12px rgba(74, 108, 247, 0.25);
@@ -3171,7 +3172,8 @@ a {
 }
 .customer-booking__btn:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.3), 0 4px 6px rgba(74, 108, 247, 0.2);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.3),
+    0 4px 6px rgba(74, 108, 247, 0.2);
 }
 @media (max-width: 768px) {
   .customer-booking__btn {
@@ -3201,7 +3203,6 @@ a {
     margin-bottom: 15px;
   }
 }
-
 
 .payment {
   padding: 30px 0;
@@ -3338,6 +3339,4 @@ a {
   justify-content: flex-end;
 }
 
-
 /*# sourceMappingURL=main.css.map */
-
