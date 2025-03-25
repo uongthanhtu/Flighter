@@ -60,4 +60,19 @@ public class TicketDAO {
         }
         return maxid;
     }
+    
+    public void updateTicketStatus (int ticketID, String status){
+        Connection conn = DBUtils.getConnection();
+        try {
+            String sql = " UPDATE ticket SET ticketStatus = ? WHERE ticketID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setInt(2, ticketID);
+            ps.executeUpdate();
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Update ticket status is error, Details: " + e.getMessage());
+        }
+    }
+    
 }

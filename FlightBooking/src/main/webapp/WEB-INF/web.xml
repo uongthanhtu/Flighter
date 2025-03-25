@@ -16,6 +16,14 @@
         <servlet-name>BookingController</servlet-name>
         <url-pattern>/BookingController</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>ajaxServlet</servlet-name>
+        <servlet-class>flightbooking.vnpay.ajaxServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ajaxServlet</servlet-name>
+        <url-pattern>/payment</url-pattern>
+    </servlet-mapping>
      <mime-mapping>    
         <extension>js</extension>        
         <mime-type>application/javascript</mime-type>        
