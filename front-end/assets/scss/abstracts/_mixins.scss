@@ -13,6 +13,10 @@ $grid-breakpoints: (
   align-items: center;
 }
 
+@mixin hover-transition {
+  transition: all 0.3s ease;
+}
+
 @mixin button-style($bg-color, $text-color) {
   background-color: $bg-color;
   color: $text-color;

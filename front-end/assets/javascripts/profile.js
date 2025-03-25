@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("mobileModal");
   const openModalBtn = document.getElementById("openModal");
   const cancelBtn = document.querySelector(".modal__button--cancel");
+  const stayOnSiteBtn = document.querySelector(".modal__button-logout--stay");
   modal.style.display = "none";
 
   openModalBtn.addEventListener("click", function (event) {
