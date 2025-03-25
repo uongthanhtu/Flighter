@@ -1,7 +1,5 @@
-<%@page import="java.util.Map"%> <%@ page import="java.util.Map, java.util.List"
-%> <%@page import="java.util.List"%> <%@page
-import="flightbooking.model.UserDTO"%>
-<!DOCTYPE html>
+<%@page import="flightbooking.model.UserDTO"%>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -344,82 +342,6 @@ import="flightbooking.model.UserDTO"%>
         </div>
       </footer>
     </main>
-        <script src="../js/search-form.js"></script>
-    <script>
-          document.addEventListener("DOMContentLoaded", function () {
-          let airports = [
-              <%
-                  List<Map<String, String>> airports = (List<Map<String, String>>) request.getAttribute("airports");
-                  if (airports != null) {
-                      for (Map<String, String> airport : airports) {
-              %>
-                  { name: "<%= airport.get("name")%>", city: "<%= airport.get("city")%>", country: "<%= airport.get("country")%>" },
-
-              <%
-                      }
-                  }
-              %>
-          ];
-          setupAutocomplete("departure", airports);
-          setupAutocomplete("arrival", airports);
-      });
-
-      function setupAutocomplete(inputId, airports) {
-
-          const input = document.getElementById(inputId);
-          const list = document.getElementById(inputId + "-list");
-
-          input.addEventListener("input", function () {
-              console.log("dada");
-              const query = input.value.trim().toLowerCase();
-              list.innerHTML = "";
-
-              if (query.length < 1) {
-                  return;
-              }
-
-              let filteredAirports = airports.filter(airport =>
-                  airport.name.toLowerCase().includes(query) || airport.city.toLowerCase().includes(query) || airport.country.toLowerCase().includes(query)
-              );
-
-              showAirportList(filteredAirports, input, list);
-          });
-
-          document.addEventListener("click", function (e) {
-              if (!list.contains(e.target) && e.target !== input) {
-                  list.innerHTML = "";
-              }
-          });
-      }
-
-      function showAirportList(airportList, input, list) {
-      list.innerHTML = "";
-
-      airportList.forEach(airport => {
-          let displayName = airport.name ? airport.name : "Unknown";
-          let displayCity = airport.city ? airport.city : "Unknown";
-          let displayCountry = airport.country ? airport.country : "Unknown";
-          console.log(displayName);
-          console.log(displayCity);
-          console.log(displayCountry);
-          const div = document.createElement("div");
-          div.classList.add("autocomplete-item");
-
-          if (displayCountry && displayCountry.trim() !== "" && displayCountry !== "undefined") {
-              div.innerHTML = displayName + " - " + displayCity + " - " + displayCountry;
-
-          } else {
-              div.innerHTML = displayName;
-          }
-
-          div.onclick = function () {
-              input.value = displayName;
-              list.innerHTML = "";
-          };
-
-          list.appendChild(div);
-      });
-      }
-    </script>
+    <script src="../js/search-form.js"></script>
   </body>
 </html>

@@ -97,7 +97,6 @@ public class BookingController extends HttpServlet {
             }else {
                 request.setAttribute("error", "No flights available.");
             }
-            
             request.setAttribute("departure", departure);
             request.setAttribute("arrival", arrival);
             request.setAttribute("action", "searchflight");
@@ -134,6 +133,10 @@ public class BookingController extends HttpServlet {
             request.getRequestDispatcher("seat-selected.jsp").forward(request, response);
             return;
         }else if(action.equals("customer_booking_info")){
+            if(userSession == null){ 
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
             int flightid = Integer.parseInt(request.getParameter("flightid"));
             SeatDAO seatdao = new SeatDAO();
             String[] listSeadID = request.getParameterValues("selectedSeats");
@@ -152,6 +155,10 @@ public class BookingController extends HttpServlet {
             request.setAttribute("listselectseat", listseat);
             request.getRequestDispatcher("customer-booking-info.jsp").forward(request, response);
         }else if(action.equals("submit_ticket")){
+            if(userSession == null){
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
             String[] seatIDs = request.getParameterValues("seatid");
             String[] fNames = request.getParameterValues("fname");
             String[] lNames = request.getParameterValues("lname");
@@ -188,6 +195,11 @@ public class BookingController extends HttpServlet {
             request.setAttribute("booking", booking);
             request.getRequestDispatcher("payment.jsp").forward(request, response);
             return;
+        }else if(action.equals("mybooking")){
+            if(userSession == null){
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
         }
         
         

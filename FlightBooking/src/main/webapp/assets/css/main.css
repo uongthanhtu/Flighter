@@ -1741,6 +1741,10 @@ strong {
   border-radius: 20px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
+.account__menu h3 {
+  font-weight: bold;
+  font-size: 18px;
+}
 .account__menu ul {
   list-style: none;
 }
@@ -1769,6 +1773,10 @@ strong {
   margin-left: 15px;
   margin-top: 10px;
 }
+.account__data h2 {
+  font-size: 25px;
+  font-weight: bold;
+}
 .account__item {
   display: flex;
   gap: 200px;
@@ -1779,7 +1787,7 @@ strong {
 }
 .account__phone {
   margin-top: 25px;
-  margin-left: 92px;
+  margin-left: 20px;
 }
 .account__info {
   margin-top: 10px;
@@ -1900,6 +1908,357 @@ strong {
   opacity: 0.8;
 }
 
+.support-page,
+.refund-support,
+.payment-support,
+.flight-support,
+.checkin-support,
+.booking-support,
+.baggage-support,
+.support-page *,
+.refund-support *,
+.payment-support *,
+.flight-support *,
+.checkin-support *,
+.booking-support *,
+.baggage-support * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.support,
+.baggage,
+.book-flight,
+.checkin,
+.flight-tracking,
+.payment-detail,
+.refund {
+  font-family: "Arial", sans-serif;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-support {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.help {
+  background: linear-gradient(
+    rgba(76, 185, 231, 0.95),
+    rgba(76, 185, 231, 0.85)
+  );
+  background-size: cover;
+  background-position: center;
+  color: #ffffff;
+  padding: 100px 0;
+  text-align: center;
+}
+.help__title {
+  font-size: 5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+.help__text {
+  font-size: 2rem;
+  opacity: 0.95;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.faq {
+  padding: 80px 0;
+  background-color: #f5f6fa;
+}
+.faq__title {
+  font-size: 27px;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+.faq__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.faq__item {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: #333;
+}
+.faq__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+}
+.faq__item::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: #3498db;
+  transform: scaleX(0);
+  transition: all 0.3s ease;
+}
+.faq__item:hover::after {
+  transform: scaleX(1);
+}
+.faq__item-title {
+  font-size: 18px;
+  color: #3498db;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.support-contact {
+  padding: 80px 0;
+}
+.support-contact__title {
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 50px;
+  color: #2c3e50;
+  font-weight: bold;
+}
+.support-contact__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+.support-contact__info-title {
+  font-size: 2.4rem;
+  margin-bottom: 20px;
+  color: #3498db;
+  font-weight: bold;
+}
+.support-contact__info-list {
+  list-style: none;
+}
+.support-contact__info-item {
+  margin-bottom: 15px;
+  font-size: 1.9rem;
+}
+.support-contact__form-group {
+  margin-bottom: 20px;
+}
+.support-contact__form-label {
+  display: block;
+  margin-bottom: 5px;
+  color: #2c3e50;
+  font-weight: 500;
+  font-size: 1.8rem;
+}
+.support-contact__form-input,
+.support-contact__form-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  background-color: #ffffff;
+}
+.support-contact__form-input::placeholder,
+.support-contact__form-textarea::placeholder {
+  color: #999;
+  font-size: 1.5rem;
+}
+.support-contact__form-input:focus,
+.support-contact__form-textarea:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+.support-contact__form-textarea {
+  height: 200px;
+  resize: vertical;
+  line-height: 1.5;
+}
+.support-contact__form-submit {
+  background-color: #3498db;
+  color: #ffffff;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 2rem;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+.support-contact__form-submit:hover {
+  background-color: #2980b9;
+}
+
+.baggage,
+.book-flight,
+.checkin,
+.flight-tracking,
+.payment-detail,
+.refund {
+  background-color: #f5f6fa;
+  min-height: 100vh;
+  padding: 40px 0;
+}
+.baggage__section,
+.book-flight__section,
+.checkin__section,
+.flight-tracking__section,
+.payment-detail__section,
+.refund__section {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin: 20px auto;
+  max-width: 900px;
+}
+.baggage__back,
+.book-flight__back,
+.checkin__back,
+.flight-tracking__back,
+.payment-detail__back,
+.refund__back {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #3498db;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.baggage__back:hover,
+.book-flight__back:hover,
+.checkin__back:hover,
+.flight-tracking__back:hover,
+.payment-detail__back:hover,
+.refund__back:hover {
+  color: #2980b9;
+}
+.baggage__title,
+.book-flight__title,
+.checkin__title,
+.flight-tracking__title,
+.payment-detail__title,
+.refund__title {
+  color: #2c3e50;
+  margin-bottom: 30px;
+  font-size: 25px;
+  font-weight: bold;
+}
+.baggage__content-subtitle,
+.book-flight__content-subtitle,
+.checkin__content-subtitle,
+.flight-tracking__content-subtitle,
+.payment-detail__content-subtitle,
+.refund__content-subtitle {
+  color: #3498db;
+  margin-bottom: 20px;
+  font-size: 23px;
+}
+.baggage__content-list,
+.book-flight__content-list,
+.checkin__content-list,
+.flight-tracking__content-list,
+.payment-detail__content-list,
+.refund__content-list {
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+.baggage__content-item,
+.book-flight__content-item,
+.checkin__content-item,
+.flight-tracking__content-item,
+.payment-detail__content-item,
+.refund__content-item {
+  margin-bottom: 20px;
+  list-style: decimal;
+}
+.baggage__content-item-title,
+.book-flight__content-item-title,
+.checkin__content-item-title,
+.flight-tracking__content-item-title,
+.payment-detail__content-item-title,
+.refund__content-item-title {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 19px;
+}
+.baggage__grid,
+.book-flight__grid,
+.checkin__grid,
+.flight-tracking__grid,
+.payment-detail__grid,
+.refund__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+.baggage__item,
+.book-flight__item,
+.checkin__item,
+.flight-tracking__item,
+.payment-detail__item,
+.refund__item {
+  background: #f5f6fa;
+  padding: 20px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.baggage__item:hover,
+.book-flight__item:hover,
+.checkin__item:hover,
+.flight-tracking__item:hover,
+.payment-detail__item:hover,
+.refund__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+.baggage__item-title,
+.book-flight__item-title,
+.checkin__item-title,
+.flight-tracking__item-title,
+.payment-detail__item-title,
+.refund__item-title {
+  color: #3498db;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+@media (max-width: 768px) {
+  .help {
+    padding: 60px 0;
+  }
+  .faq,
+  .support-contact {
+    padding: 60px 0;
+  }
+  .support-contact__grid {
+    grid-template-columns: 1fr;
+  }
+  .baggage__section,
+  .book-flight__section,
+  .checkin__section,
+  .flight-tracking__section,
+  .payment-detail__section,
+  .refund__section {
+    padding: 20px;
+    margin: 10px;
+  }
+}
 .seat-info {
   position: relative;
   width: 400px;
@@ -2073,11 +2432,15 @@ a {
   align-items: center;
   justify-content: space-between;
 }
+.navbar__users {
+  display: flex;
+  align-items: center;
+}
 .navbar__link {
   position: relative;
   display: block;
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: var(--text-primary-color);
   padding: 39px 25px;
   text-align: center;
@@ -2130,8 +2493,9 @@ a {
 }
 
 .flight-search__container {
-  padding: 50px 0 100px 0;
+  padding: 50px 0 25px;
 }
+
 .flight-search__box {
   position: relative;
   z-index: 2;
@@ -2142,9 +2506,11 @@ a {
   justify-content: space-around;
   align-items: center;
   margin-top: auto;
-  height: 250px;
-  border: 2px solid hsl(189.54, 76.65%, 38.63%);
-  border-radius: 999px;
+  padding: 50px;
+  border: 1px solid hsl(189.54, 76.65%, 38.63%);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .flight-search__form__label,
 .flight-search__form__input {
@@ -2178,8 +2544,9 @@ a {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .flight-search__form-btn:hover {
-  background: #8e44ad;
-  color: #fff;
+  background: lightgreen;
+  border: 1px solid lightgreen;
+  color: var(--text-primary-color);
   transform: scale(1.1);
 }
 .flight-search__ .custom-date {
@@ -2378,7 +2745,16 @@ a {
   padding: 10px 0;
   border: 1px solid #aaa;
   border-radius: 10px;
-  margin-top: 30px;
+  margin: 30px 0;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: all 0.3s ease;
+}
+
+.flight:hover {
+  scale: 1.1;
+}
+.flight:hover .flight--code {
+  color: lightgreen;
 }
 .flight * {
   color: var(--text-primary-color);
