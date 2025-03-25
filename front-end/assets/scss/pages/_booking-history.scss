@@ -23,7 +23,14 @@
     border-radius: 8px;
     border: 1px solid #666;
     display: flex;
+    transition: all 0.3s ease;
 
+    &:hover {
+      box-shadow:rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      &-class {
+        color: lightgreen;
+      }
+    }
     &__img {
       width: 250px;
       height: 250px;
@@ -40,11 +47,11 @@
       font-size: 2rem;
       font-weight: 600;
       color: var(--text-primary-color);
+      transition: all 0.3s ease;
     }
 
     &__info {
       padding: 0 15px;
-      flex-grow: 2;
       &__row {
         display: flex;
         gap: 30px;
@@ -54,9 +61,6 @@
         flex-grow: 1;
       }
 
-      &__col:first-child {
-        flex-grow: 2;
-      }
     }
 
     &__label {
