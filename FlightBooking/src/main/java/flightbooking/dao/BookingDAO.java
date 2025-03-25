@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -66,6 +68,56 @@ public class BookingDAO {
         } catch (Exception e) {
             System.out.println("Update total price, details: " + e.getMessage());
         }
+    }
+    
+    public void updateBookingStatus (int bookingID, String status) {
+        Connection conn = DBUtils.getConnection();
+        try {
+            String sql = " UPDATE booking SET bookingStatus = ? WHERE bookingID = ? " ;
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, status);
+            ps.setInt(2, bookingID);
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Update flight status is error, Details: " + e.getMessage());
+        }
+    }
+    
+    public List<Integer> getAllSeatIDByBookingID (int bookingid){
+        Connection conn = DBUtils.getConnection();
+        List<Integer> list = new ArrayList<>();
+        try {
+            String sql = " SELECT  s.seatID FROM booking b JOIN ticket t ON b.bookingID = t.bookingID "
+                    + "JOIN seat s ON t.seatID = s.seatID WHERE b.bookingID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, bookingid);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(rs.getInt(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Get all seatID by bookingID is error. Details: " + e.getMessage());
+        }
+        return list;
+    }
+    
+    
+    public List<Integer> getAllTicketIDByBookingID (int bookingid){
+        Connection conn = DBUtils.getConnection();
+        List<Integer> list = new ArrayList<>();
+        try {
+            String sql = " SELECT  s.seatID FROM booking b JOIN ticket t ON b.bookingID = t.bookingID "
+                    + " WHERE b.bookingID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, bookingid);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                list.add(rs.getInt(1));
+            }
+        } catch (Exception e) {
+            System.out.println("Get all seatID by bookingID is error. Details: " + e.getMessage());
+        }
+        return list;
     }
     
 }

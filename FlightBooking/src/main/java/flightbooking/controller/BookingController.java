@@ -180,14 +180,13 @@ public class BookingController extends HttpServlet {
                 TicketDTO ticket = new TicketDTO(ticketDAO.getMaxTicketID() + 1, 
                         arrivalTime, flightseat, price, "Booked", bookingID, seadID, pName, pPhone );
                 ticketDAO.insertTicket(ticket);
-                seatDao.updateSeatStatus(Integer.parseInt(seatIDs[i]), "Booked");
                 totalPrice += price;
             }
-            
+            booking.setTotalPrice(totalPrice);
             bookingDao.updateTotalPrice(bookingID, totalPrice);
             
-            
-            response.sendRedirect("payment.jsp");
+            request.setAttribute("booking", booking);
+            request.getRequestDispatcher("payment.jsp").forward(request, response);
             return;
         }
         
