@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -221,16 +222,23 @@ strong {
   background: var(--separate-color);
 }
 
+.hidden {
+  display: none;
+}
+
 .admin-body {
   background: #eeeeee;
 }
 
-.row > *, .container-fluid, .container {
+.row > *,
+.container-fluid,
+.container {
   padding-left: calc(var(--grid-gutter-x) * 0.5);
   padding-right: calc(var(--grid-gutter-x) * 0.5);
 }
 
-.container-fluid, .container {
+.container-fluid,
+.container {
   --grid-gutter-x: 30px;
   --grid-gutter-y: 0;
   width: 1370px;
@@ -1363,12 +1371,14 @@ strong {
   border-collapse: collapse;
   margin-top: 10px;
 }
-.account-manager__table th, .account-manager__table td {
+.account-manager__table th,
+.account-manager__table td {
   padding: 20px;
   border-bottom: 1px solid #ddd;
   text-align: center;
 }
-.account-manager__table th:last-child, .account-manager__table td:last-child {
+.account-manager__table th:last-child,
+.account-manager__table td:last-child {
   white-space: nowrap;
   gap: 2px;
 }
@@ -1426,7 +1436,8 @@ strong {
   width: 40px;
   height: 40px;
 }
-.account-manager__next-btn, .account-manager__pre-btn {
+.account-manager__next-btn,
+.account-manager__pre-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1435,7 +1446,8 @@ strong {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-.account-manager__next-btn:hover, .account-manager__pre-btn:hover {
+.account-manager__next-btn:hover,
+.account-manager__pre-btn:hover {
   background: #ddd;
 }
 
@@ -1634,6 +1646,7 @@ strong {
   opacity: 0.8;
 }
 .profile__button--cancel {
+  border: 2px solid black;
   background-color: white;
   color: black;
   border: none;
@@ -1645,13 +1658,13 @@ strong {
   padding: 5px;
   font-size: 17px;
   font-weight: bold;
-  border: 2px solid black;
 }
 .profile__button--cancel:hover {
   opacity: 0.8;
 }
 
-.input, .profile__input {
+.input,
+.profile__input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -1878,6 +1891,7 @@ strong {
   opacity: 0.8;
 }
 .modal__button--cancel {
+  border: 2px solid black;
   background-color: white;
   color: black;
   border: none;
@@ -1889,7 +1903,6 @@ strong {
   padding: 5px;
   font-size: 17px;
   font-weight: bold;
-  border: 2px solid black;
 }
 .modal__button--cancel:hover {
   opacity: 0.8;
@@ -1936,7 +1949,10 @@ strong {
 }
 
 .help {
-  background: linear-gradient(rgba(76, 185, 231, 0.95), rgba(76, 185, 231, 0.85));
+  background: linear-gradient(
+    rgba(76, 185, 231, 0.95),
+    rgba(76, 185, 231, 0.85)
+  );
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -2046,7 +2062,8 @@ strong {
   font-weight: 500;
   font-size: 1.8rem;
 }
-.support-contact__form-input, .support-contact__form-textarea {
+.support-contact__form-input,
+.support-contact__form-textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
@@ -2054,11 +2071,13 @@ strong {
   font-size: 1.4rem;
   background-color: #ffffff;
 }
-.support-contact__form-input::placeholder, .support-contact__form-textarea::placeholder {
+.support-contact__form-input::placeholder,
+.support-contact__form-textarea::placeholder {
   color: #999;
   font-size: 1.5rem;
 }
-.support-contact__form-input:focus, .support-contact__form-textarea:focus {
+.support-contact__form-input:focus,
+.support-contact__form-textarea:focus {
   outline: none;
   border-color: #3498db;
   box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
@@ -2240,6 +2259,43 @@ strong {
     margin: 10px;
   }
 }
+.seat-info {
+  position: relative;
+  width: 400px;
+  padding: 40px;
+  font-size: 22px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+.seat-info__title {
+  font-weight: 600;
+  font-size: 23px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.seat-info__detail {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.seat-info__detail strong {
+  font-weight: 700;
+}
+
+.seat-info__summary {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  right: 40px;
+}
+.seat-info__summary-title {
+  margin-top: 20px;
+  font-weight: 700;
+}
+
 .admin-header {
   top: 0;
   right: 0;
@@ -2247,7 +2303,8 @@ strong {
   position: fixed;
   z-index: 20;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 .admin-header__inner {
   display: flex;
@@ -2277,6 +2334,9 @@ strong {
   background: #171100;
   color: #fff;
   font-weight: 500;
+}
+.admin-header__btn:hover {
+  opacity: 0.8;
 }
 
 .admin-logo {
@@ -2372,11 +2432,15 @@ a {
   align-items: center;
   justify-content: space-between;
 }
+.navbar__users {
+  display: flex;
+  align-items: center;
+}
 .navbar__link {
   position: relative;
   display: block;
   font-weight: 600;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   color: var(--text-primary-color);
   padding: 39px 25px;
   text-align: center;
@@ -2403,7 +2467,8 @@ a {
   height: 100px;
 }
 
-.user__avt, .user__logout__btn {
+.user__avt,
+.user__logout__btn {
   display: inline-block;
 }
 .user__logout__btn {
@@ -2428,8 +2493,9 @@ a {
 }
 
 .flight-search__container {
-  padding: 50px 0 100px 0;
+  padding: 50px 0 25px;
 }
+
 .flight-search__box {
   position: relative;
   z-index: 2;
@@ -2440,11 +2506,14 @@ a {
   justify-content: space-around;
   align-items: center;
   margin-top: auto;
-  height: 250px;
-  border: 2px solid hsl(189.54, 76.65%, 38.63%);
-  border-radius: 999px;
+  padding: 50px;
+  border: 1px solid hsl(189.54, 76.65%, 38.63%);
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-.flight-search__form__label, .flight-search__form__input {
+.flight-search__form__label,
+.flight-search__form__input {
   display: block;
 }
 .flight-search__form__label {
@@ -2475,8 +2544,9 @@ a {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 .flight-search__form-btn:hover {
-  background: #8e44ad;
-  color: #fff;
+  background: lightgreen;
+  border: 1px solid lightgreen;
+  color: var(--text-primary-color);
   transform: scale(1.1);
 }
 .flight-search__ .custom-date {
@@ -2494,7 +2564,8 @@ a {
   text-align: center;
   margin: 100px 0px 150px;
 }
-.feature--title::before, .feature--title::after {
+.feature--title::before,
+.feature--title::after {
   position: absolute;
   top: 17px;
   display: inline-block;
@@ -2502,7 +2573,12 @@ a {
   width: 300px;
   height: 6px;
   background-color: #4158d0;
-  background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
   border-radius: 999px;
 }
 .feature--title::before {
@@ -2563,7 +2639,8 @@ a {
   align-items: center;
   margin-bottom: 100px;
 }
-.stats--title__left, .stats--title__right {
+.stats--title__left,
+.stats--title__right {
   font-family: "Hornbill Personal Use";
   font-weight: 800;
   font-style: italic;
@@ -2577,7 +2654,8 @@ a {
   font-size: 10rem;
   color: hsl(182.94, 76.47%, 63.33%);
 }
-.stats--num, .stats--desc {
+.stats--num,
+.stats--desc {
   display: block;
   text-align: center;
 }
@@ -2646,17 +2724,20 @@ a {
 }
 
 @media screen and (max-width: 1999px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     width: 200px;
   }
 }
 @media screen and (max-width: 991px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     width: 100px;
   }
 }
 @media screen and (max-width: 767px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     display: none;
   }
 }
@@ -2664,7 +2745,16 @@ a {
   padding: 10px 0;
   border: 1px solid #aaa;
   border-radius: 10px;
-  margin-top: 30px;
+  margin: 30px 0;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  transition: all 0.3s ease;
+}
+
+.flight:hover {
+  scale: 1.1;
+}
+.flight:hover .flight--code {
+  color: lightgreen;
 }
 .flight * {
   color: var(--text-primary-color);
@@ -2674,14 +2764,16 @@ a {
   font-weight: 600;
   margin-bottom: 20px;
 }
-.flight--time, .flight--location {
+.flight--time,
+.flight--location {
   display: flex;
   justify-content: space-around;
   font-size: 2rem;
   padding: 5px 0;
   margin-bottom: 20px;
 }
-.flight--location, .flight--time__bold {
+.flight--location,
+.flight--time__bold {
   font-weight: 600;
 }
 
@@ -2691,7 +2783,8 @@ a {
 .flight--detail--code {
   padding: 20px 0;
 }
-.flight--detail--code, .flight--detail--component--header {
+.flight--detail--code,
+.flight--detail--component--header {
   font-size: 3rem;
   font-weight: 600;
   color: var(--text-primary-color);
@@ -2710,7 +2803,7 @@ a {
   /* Create checked state */
   /* Make the label clickable */
 }
-.flight--detail--ticket input[type=radio] {
+.flight--detail--ticket input[type="radio"] {
   display: none;
 }
 .flight--detail--ticket .custom-radio {
@@ -2723,11 +2816,11 @@ a {
   margin-right: 10px;
   cursor: pointer;
 }
-.flight--detail--ticket input[type=radio]:checked + .custom-radio {
+.flight--detail--ticket input[type="radio"]:checked + .custom-radio {
   background-color: #007bff;
   border: 2px solid #007bff;
 }
-.flight--detail--ticket input[type=radio]:checked + .custom-radio::after {
+.flight--detail--ticket input[type="radio"]:checked + .custom-radio::after {
   content: "";
   width: 8px;
   height: 8px;
@@ -2760,7 +2853,8 @@ a {
 .flight--detail--btn:hover {
   scale: 1.1;
 }
-.flight--ticket--price, .flight--detail--component--value {
+.flight--ticket--price,
+.flight--detail--component--value {
   color: var(--text-primary-color);
   font-size: 2rem;
   font-weight: 500;
@@ -3091,7 +3185,8 @@ a {
   font-size: 1.6rem;
   width: 250px;
 }
-.register-form__policy-1, .register-form__policy-2 {
+.register-form__policy-1,
+.register-form__policy-2 {
   margin-left: 15px;
   margin-top: 30px;
   display: flex;
@@ -3118,6 +3213,506 @@ a {
 }
 .register-form__btn:hover {
   opacity: 0.8;
+}
+
+.booking-seat {
+  margin-top: 120px;
+}
+.booking-seat__container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+.booking-seat__wrapper {
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+}
+.booking-seat__flight-title {
+  font-weight: 600;
+  font-size: 23px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.seats__container {
+  padding-right: 8px;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 52vh;
+  display: grid;
+  grid-template-columns: repeat(6, 60px);
+  gap: 15px;
+}
+
+.seat {
+  margin-top: 2px;
+  position: relative;
+}
+.seat__select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #77dae6;
+  border: 2px solid #0077b6;
+  transition: all 0.3s;
+}
+.seat__select:hover:not(.booked .seat__select) {
+  scale: 1.05;
+  opacity: 0.8;
+}
+.seat input:checked + .seat__select {
+  background-color: #ffd166;
+  border-color: #ff9f1c;
+}
+.seat__selected {
+  color: #0077b6;
+  font-weight: 600;
+}
+.seat__total-price {
+  font-family: monospace; /* Font dễ đọc */
+  color: #ff6b6b;
+  letter-spacing: 1px;
+}
+
+.business .seat__select {
+  background-color: rgb(138, 238, 23);
+}
+
+.booked .seat__select {
+  background-color: #ff6b6b;
+  cursor: not-allowed;
+  color: white;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.seat__btn {
+  padding: 10px 20px;
+  font-size: 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.seat__btn:hover {
+  background: #77dae6;
+}
+.seat__btn--submit {
+  background: #0077b6;
+  color: white;
+}
+.seat__btn--prev {
+  border: 1px solid #333;
+  background: #eee;
+  color: #333;
+}
+.seat__btn--prev:hover {
+  background: #ccc;
+  opacity: 0.9;
+}
+
+/* Admin Account Edit - BEM naming convention */
+.admin__account-edit {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin-top: 150px;
+}
+
+.admin__account-edit-title {
+  color: #333;
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.admin__account-edit-subtitle {
+  font-size: 1.5rem;
+}
+
+.admin__account-edit-content {
+  margin-top: 2rem;
+}
+
+.admin__account-edit-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.admin__account-edit-label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  width: 40%;
+}
+
+.admin__account-edit-input {
+  border: 1px solid #ced4da;
+  padding: 0.625rem;
+  flex-grow: 1;
+  border-radius: 10px;
+}
+
+.admin__account-edit-input:read-only {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+}
+
+.admin__account-edit-hint {
+  display: block;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.admin__account-edit-actions {
+  border-top: 1px solid #e9ecef;
+  padding-top: 1.5rem;
+  text-align: right;
+}
+
+.admin__account-edit-submit,
+.admin__account-edit-cancel {
+  min-width: 120px;
+  font-size: 1.8rem;
+  padding: 13px 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.admin__account-edit-submit {
+  background: #0d6efd;
+  color: #fff;
+}
+
+.admin__account-edit-submit:hover {
+  background: #0b5ed7;
+}
+
+.admin__account-edit-cancel {
+  color: var(--text-primary-color);
+}
+
+.admin__account-edit-cancel:hover {
+  background: #ccc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin__account-edit {
+    padding: 1.5rem;
+  }
+  .admin__account-edit-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .admin__account-edit-submit,
+  .admin__account-edit-cancel {
+    width: 100%;
+  }
+  .admin__account-edit-cancel {
+    margin-left: 0 !important;
+    margin-top: 0.5rem;
+  }
+}
+@media (max-width: 576px) {
+  .admin__account-edit {
+    padding: 1rem;
+  }
+  .admin__account-edit-title {
+    font-size: 1.5rem;
+  }
+}
+.customer-booking {
+  padding: 60px 0;
+  background-color: #fff;
+}
+.customer-booking__title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 40px;
+  position: relative;
+}
+.customer-booking__info-block {
+  background-color: #f5f7ff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+}
+.customer-booking__top-bar {
+  border-bottom: 1px solid #e1e5ee;
+  display: flex;
+}
+.customer-booking__top-label {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 25px;
+  margin-right: 40px;
+  padding-bottom: 15px;
+}
+.customer-booking__top-label span {
+  font-weight: 600;
+  color: #4a6cf7;
+  background-color: rgba(74, 108, 247, 0.1);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-left: 8px;
+}
+.customer-booking__info {
+  margin-top: 20px;
+}
+.customer-booking__info-component {
+  padding: 0 15px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.customer-booking__info-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+  transition: all 0.3s ease;
+}
+.customer-booking__info-input {
+  width: 100%;
+  height: 48px;
+  padding: 0 15px;
+  font-size: 15px;
+  color: #333;
+  background-color: #fff;
+  border: 1px solid #e1e5ee;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.customer-booking__info-input:focus {
+  outline: none;
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
+}
+.customer-booking__info-input::placeholder {
+  color: rgb(127.5, 127.5, 127.5);
+}
+.customer-booking__btn {
+  display: inline-block;
+  background-color: #4a6cf7;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 8px;
+  border: 2px solid #4a6cf7;
+  transition: all 0.3s ease;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(74, 108, 247, 0.2);
+  margin-left: auto;
+  margin-top: 20px;
+}
+.customer-booking__btn-wrap {
+  display: flex;
+  justify-content: flex-end;
+}
+.customer-booking__btn:hover,
+.customer-booking__btn:focus {
+  background-color: rgb(34.926984127, 76.2666666667, 245.273015873);
+  border-color: rgb(34.926984127, 76.2666666667, 245.273015873);
+  box-shadow: 0 6px 12px rgba(74, 108, 247, 0.25);
+  transform: translateY(-2px);
+  color: #fff;
+}
+.customer-booking__btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(74, 108, 247, 0.2);
+}
+.customer-booking__btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.3),
+    0 4px 6px rgba(74, 108, 247, 0.2);
+}
+@media (max-width: 768px) {
+  .customer-booking__btn {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 992px) {
+  .customer-booking {
+    padding: 40px 0;
+  }
+  .customer-booking__title {
+    font-size: 24px;
+  }
+  .customer-booking__seat {
+    font-size: 16px;
+  }
+}
+@media (max-width: 768px) {
+  .customer-booking__info-block {
+    padding: 20px;
+  }
+  .customer-booking__info-component {
+    margin-bottom: 15px;
+  }
+}
+
+.payment {
+  padding: 30px 0;
+}
+.payment__title {
+  padding: 10px 0;
+  margin-bottom: 20px;
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--text-primary-color);
+}
+.payment__content {
+  padding-left: 20px;
+  border-left: 8px solid greenyellow;
+  border-radius: 2px 15px 15px 2px;
+}
+.payment__summary {
+  padding: 5px 15px;
+}
+.payment__summary__info {
+  padding: 15px;
+  border-radius: 15px;
+  background: #f2f2f2;
+}
+.payment__summary__flight {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #444;
+  padding: 7px 0;
+}
+.payment__summary__class--row {
+  display: flex;
+  justify-content: space-between;
+}
+.payment__summary__departure-and-arrival,
+.payment__summary__time,
+.payment__summary__baggage,
+.payment__summary__class--row > * {
+  font-size: 1.8rem;
+  color: var(--text-primary-color);
+  padding: 7px 0;
+}
+.payment__summary__class--row > * {
+  display: inline-block;
+}
+.payment-method {
+  margin-top: 50px;
+}
+.payment-method__warning,
+.payment-method__title {
+  padding: 12px 0;
+}
+.payment-method__warning {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: red;
+}
+.payment-method__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #444;
+}
+.payment-method__options {
+  display: flex;
+  gap: 30px;
+}
+.payment-method__option {
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.payment-method__option-icon {
+  width: 50px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 8px;
+}
+.payment-method__option-icon img {
+  width: 100%;
+  height: 100%;
+}
+.payment__price {
+  padding: 15px;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+.payment__price--style {
+  display: flex;
+  justify-content: space-between;
+}
+.payment__price--style > * {
+  display: inline-block;
+}
+.payment__price-ticket {
+  border: 1px solid #666;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+.payment__price-ticket__temp,
+.payment__price-ticket-list {
+  padding: 15px;
+}
+.payment__price-ticket__temp {
+  border-bottom: 1px solid #666;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-primary-color);
+  background: #d9d9d9;
+}
+.payment__fees-list {
+  padding: 15px;
+}
+.payment__fees__item {
+  padding: 10px 0;
+}
+.payment__total {
+  border: 1px solid #666;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.payment__total-price {
+  padding: 15px;
+  background: red;
+}
+.payment__total-price * {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #fff;
+}
+.payment__btn-wrap {
+  display: flex;
+  justify-content: flex-end;
 }
 
 /*# sourceMappingURL=main.css.map */

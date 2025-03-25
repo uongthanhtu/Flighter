@@ -5,8 +5,19 @@
  */
 package flightbooking.controller;
 
+import flightbooking.dao.BookingDAO;
+import flightbooking.dao.SeatDAO;
+import flightbooking.dao.TicketDAO;
+import flightbooking.model.BookingDTO;
+import flightbooking.vnpay.Config;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,17 +43,62 @@ public class PaymentController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PaymentController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PaymentController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try ( PrintWriter out = response.getWriter()) {
+            Map fields = new HashMap();
+            for (Enumeration params = request.getParameterNames(); params.hasMoreElements();) {
+                String fieldName = URLEncoder.encode((String) params.nextElement(), StandardCharsets.US_ASCII.toString());
+                String fieldValue = URLEncoder.encode(request.getParameter(fieldName), StandardCharsets.US_ASCII.toString());
+                if ((fieldValue != null) && (fieldValue.length() > 0)) {
+                    fields.put(fieldName, fieldValue);
+                }
+            }
+
+            String vnp_SecureHash = request.getParameter("vnp_SecureHash");
+            if (fields.containsKey("vnp_SecureHashType")) {
+                fields.remove("vnp_SecureHashType");
+            }
+            if (fields.containsKey("vnp_SecureHash")) {
+                fields.remove("vnp_SecureHash");
+            }
+            String signValue = Config.hashAllFields(fields);
+            if (signValue.equals(vnp_SecureHash)) {
+                String paymentCode = request.getParameter("vnp_TransactionNo");
+                
+                String bookingID = request.getParameter("vnp_TxnRef");
+                
+                BookingDTO booking = new BookingDTO();
+                booking.setBookingID(Integer.parseInt(bookingID));
+                BookingDAO bookingDao = new  BookingDAO();
+                boolean transSuccess = false;
+                List<Integer> listticketid = bookingDao.getAllTicketIDByBookingID(booking.getBookingID());
+                TicketDAO ticketDao = new TicketDAO();
+                if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
+                    //update banking system
+                    booking.setBookingStatus("Confirmed");
+                    List<Integer> listseatid = bookingDao.getAllSeatIDByBookingID(booking.getBookingID());
+                    SeatDAO seatDao = new SeatDAO();
+                    for (Integer seatid : listseatid) {
+                        seatDao.updateSeatStatus(seatid, "Booked");
+                    }
+                   
+                    for (Integer ticketid : listticketid) {
+                        ticketDao.updateTicketStatus(ticketid, "Checked-in");
+                    }
+                    transSuccess = true;
+                } else {
+                    booking.setBookingStatus("Canceled");
+                    for (Integer ticketid : listticketid) {
+                        ticketDao.updateTicketStatus(ticketid, "Canceled");
+                    }
+                }
+                
+                bookingDao.updateBookingStatus(booking.getBookingID(), booking.getBookingStatus() );
+                request.setAttribute("transResult", transSuccess);
+                request.setAttribute("booking", booking);
+                request.getRequestDispatcher("paymentResult.jsp").forward(request, response);
+            } else {
+                System.out.println("Transaction error(invalid signature)");
+            }
         }
     }
 
@@ -84,5 +140,4 @@ public class PaymentController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

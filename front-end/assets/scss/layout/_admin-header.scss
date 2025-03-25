@@ -35,6 +35,9 @@
     background: #171100;
     color: #fff;
     font-weight: 500;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 

@@ -6,6 +6,7 @@
 package flightbooking.controller;
 
 import flightbooking.dao.AirportDAO;
+import flightbooking.model.UserDTO;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -21,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -40,6 +42,14 @@ public class AirportController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
+        HttpSession session = request.getSession(false);
+        if(session != null){
+            UserDTO adminsession =  (UserDTO) session.getAttribute("adminsession");
+            if(adminsession != null){
+                request.getRequestDispatcher("AdminController").forward(request, response);
+                return;
+            }
+        }
         String action = request.getParameter("action") ; 
         AirportDAO dao = new AirportDAO();
         List<Map<String, String>> airports = (List<Map<String, String>>) dao.loadAllAirport();   
@@ -48,13 +58,12 @@ public class AirportController extends HttpServlet {
             request.getRequestDispatcher("index2.jsp").forward(request, response);
             return;
         }else if(action.equals("searchflight")){
-            String departure = (String) request.getAttribute("departure");
-            String arrival = (String) request.getAttribute("arrival");
             request.getRequestDispatcher("flight-list.jsp").forward(request, response);
             return;
+        }else {
+            request.getRequestDispatcher("index2.jsp").forward(request, response);
+            return;
         }
-       
-        return;
 }   
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

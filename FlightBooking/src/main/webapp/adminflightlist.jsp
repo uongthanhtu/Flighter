@@ -1,10 +1,85 @@
+<%@page import="flightbooking.model.FlightDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flight List</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./assets/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./assets/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./assets/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./assets/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./assets/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./assets/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./assets/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/favicon/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,14 +101,14 @@
           </a>
           <nav class="admin-navbar">
             <a
-              href="AdminController"
+              href="AdminController?action=flightlist"
               class="admin-navbar__item admin-navbar__item--active"
               >DashBoard</a
             >
             <a href="AdminController?action=addflight" class="admin-navbar__item"
               >Add Flight</a
             >
-            <a href="AdminController?action=editaccount" class="admin-navbar__item"
+            <a href="UserController?action=accountlist" class="admin-navbar__item"
               >Account</a
             >
             <a href="AdminController?action=reportflight" class="admin-navbar__item"
@@ -70,150 +145,45 @@
                 </tr>
               </thead>
               <tbody>
+                  <% List <FlightDTO> flightlist = (List<FlightDTO>) request.getAttribute("flightlist");
+                  if(flightlist != null){
+                      for (FlightDTO flight : flightlist) {
+                          pageContext.setAttribute("flight", flight);
+                  %> 
+                      
+                   
                 <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
+                  <td>${flight.flightID}</td>
+                  <td>${flight.flightNumber}</td>
+                  <td>From ${requestScope.airportname[flight.departureID]} <br> to ${requestScope.airportname[flight.arrivalID]}</td>
+                  <% 
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");           
+                    %>
+                    <td>From <%= flight.getDepartureTime().format(formatter) %> <br> to
+                    <%= flight.getArrivalTime().format(formatter) %></td>
+                  <td>${flight.flightStatus}</td>
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
-                      href="">
+                      href="FlightController?action=editflight&flightid=${flight.flightID}">
                       <i class="fas fa-edit"></i> Update
                     </a>
                     <a
                       class="account-manager__btn account-manager__btn--delete"
-                      href="">
+                      href="FlightController?action=deleteflight&flightid=${flight.flightID}">
                       <i class="fas fa-trash"></i> Delete
                     </a>
                     <a
                       class="account-manager__btn account-manager__btn--detail"
-                      href="">
+                      href="FlightController?action=details&flightid=${flight.flightID}">
                       <i class="fas fa-trash"></i> Detail
                     </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>VN12345</td>
-                  <td>VN123</td>
-                  <td>TÃ¢n SÆ¡n Nháº¥t (SGN)-ÄÃ  Náºµng (DAD)</td>
-                  <td>2025-04-01 07:50 PM - 2025-04-01 07:50 PM</td>
-                  <td>Open</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--detail"
-                      href="">
-                      <i class="fas fa-trash"></i> Detail
-                    </a>
-                  </td>
-                </tr>
+                <%   
+                      }
+                  }  
+                  %>
               </tbody>
             </table>
             <div class="account-manager__pagination">

@@ -1,3 +1,5 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="flightbooking.model.FlightDTO"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.List"%>
 <%@page import="flightbooking.model.UserDTO"%>
@@ -7,6 +9,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Flight list</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./assets/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./assets/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./assets/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./assets/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./assets/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./assets/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./assets/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/favicon/manifest.json" />
     <link rel="stylesheet" href="./assets/css/main.css" />
     
     <style>
@@ -34,7 +106,7 @@
       <div class="container">
         <nav class="navbar">
           <!-- Logo -->
-          <a href="index2.jsp" class="logo__link"
+          <a href="AirportController" class="logo__link"
             ><img
               src="./assets/img/logo-removebg-preview.png"
               alt="logo"
@@ -107,7 +179,7 @@
                   class="flight-search__form__input"
                   type="date"
                   id="date"
-                  name="departure"
+                  name="departuredate"
                   class="custom-date"
                 />
               </div>
@@ -121,121 +193,45 @@
       </div>
       <section class="flight-list">
         <div class="container">
+            <% List<FlightDTO> flightlist = (List<FlightDTO>) request.getAttribute("flightlist");
+                if(flightlist != null){
+                    for (FlightDTO flight : flightlist) {
+                        pageContext.setAttribute("flight", flight);
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");           
+                    %>   
           <div class="flight row row-cols-1">
-          <a href="BookingController?action=flightdetails" class="flight--link">
-            <div class="flight--overview">
-              <h2 class="flight--code">Flight No: FL802</h2>
+          <a href="BookingController?action=flightdetails&flightid=${flight.flightID}" class="flight--link">
+              <div class="flight--overview">
+              <h2 class="flight--code">Flight No: ${flight.flightNumber}</h2>
               <div class="flight--time">
                 <p class="flight--time__departure">
-                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
+                    
+                  <b class="flight--time__bold">From: </b> 
+                  <%= flight.getDepartureTime().format(formatter) %>
                   (Local time)
                 </p>
                 <p class="flight--time__arrival">
-                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
-                  time)
+                  <b class="flight--time__bold">To: </b>
+                  <%= flight.getArrivalTime().format(formatter) %>
+                  (Local time)
                 </p>
               </div>
               <div class="flight--location">
                 <p class="flight--location__departure">
-                  Ho Chi Minh - Tan Son Nhat Airport
+                    ${requestScope.airport[flight.departureID]}
                 </p>
-                <p class="flight--location__arrival">Tokyo - Narita Airport</p>
+                <p class="flight--location__arrival">
+                    ${requestScope.airport[flight.arrivalID]}
+                </p>
               </div>
             </div>
-          </a>
+            
+        </a>
+ 
         </div>
-        <div class="flight row row-cols-1">
-          <a href="#!" class="flight--link">
-            <div class="flight--overview">
-              <h2 class="flight--code">Flight No: FL803</h2>
-              <div class="flight--time">
-                <p class="flight--time--departure">
-                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
-                  (Local time)
-                </p>
-                <p class="flight--time--arrival">
-                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
-                  time)
-                </p>
-              </div>
-              <div class="flight--location">
-                <p class="flight--location--departure">
-                  Ho Chi Minh - Tan Son Nhat Airport
-                </p>
-                <p class="flight--location--arrival">Tokyo - Narita Airport</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="flight row row-cols-1">
-          <a href="#!" class="flight--link">
-            <div class="flight--overview">
-              <h2 class="flight--code">Flight No: FL803</h2>
-              <div class="flight--time">
-                <p class="flight--time--departure">
-                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
-                  (Local time)
-                </p>
-                <p class="flight--time--arrival">
-                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
-                  time)
-                </p>
-              </div>
-              <div class="flight--location">
-                <p class="flight--location--departure">
-                  Ho Chi Minh - Tan Son Nhat Airport
-                </p>
-                <p class="flight--location--arrival">Tokyo - Narita Airport</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="flight row row-cols-1">
-          <a href="#!" class="flight--link">
-            <div class="flight--overview">
-              <h2 class="flight--code">Flight No: FL803</h2>
-              <div class="flight--time">
-                <p class="flight--time--departure">
-                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
-                  (Local time)
-                </p>
-                <p class="flight--time--arrival">
-                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
-                  time)
-                </p>
-              </div>
-              <div class="flight--location">
-                <p class="flight--location--departure">
-                  Ho Chi Minh - Tan Son Nhat Airport
-                </p>
-                <p class="flight--location--arrival">Tokyo - Narita Airport</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <div class="flight row row-cols-1">
-          <a href="#!" class="flight--link">
-            <div class="flight--overview">
-              <h2 class="flight--code">Flight No: FL803</h2>
-              <div class="flight--time">
-                <p class="flight--time--departure">
-                  <b class="flight--time__bold">From: </b>23:55, 26/03/2025
-                  (Local time)
-                </p>
-                <p class="flight--time--arrival">
-                  <b class="flight--time__bold">To: </b>7:00, 27/03/2025 (Local
-                  time)
-                </p>
-              </div>
-              <div class="flight--location">
-                <p class="flight--location--departure">
-                  Ho Chi Minh - Tan Son Nhat Airport
-                </p>
-                <p class="flight--location--arrival">Tokyo - Narita Airport</p>
-              </div>
-            </div>
-          </a>
-        </div>
+        <%}
+            }
+        %>
       </div>
       </section>
       </div>

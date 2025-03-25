@@ -37,16 +37,21 @@ public class AdminController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String action = request.getParameter("action");
         HttpSession session = request.getSession(false);
-        UserDTO adminsession =  (UserDTO) session.getAttribute("adminsession");
-        if(adminsession == null){
+        
+        if(session != null){
+            UserDTO adminsession =  (UserDTO) session.getAttribute("adminsession");
+            if(adminsession == null){
+                request.getRequestDispatcher("AirportController").forward(request, response);
+                return;
+            }
+        }else{
             request.getRequestDispatcher("AirportController").forward(request, response);
             return;
         }
-        if(action == null){
-            request.getRequestDispatcher("adminflightlist.jsp").forward(request, response);
+        if(action == null || action.equals("flightlist")){
+            request.getRequestDispatcher("FlightController").forward(request, response);
             return;
-        }else if(action.equals("addflight")){
-            request.setAttribute("nextaction", "addflight");
+        }else if(action.equals("addflight")){  
             request.getRequestDispatcher("FlightController").forward(request, response);
             return;
         }else if (action.equals("editaccount")){
@@ -54,6 +59,9 @@ public class AdminController extends HttpServlet {
             return;
         }else if(action.equals("reportflight")){
             request.getRequestDispatcher("adminreportflight.jsp").forward(request, response);
+            return;
+        }else if(action.equals("accountlist")){
+            request.getRequestDispatcher("UserController").forward(request, response);
             return;
         }
         

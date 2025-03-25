@@ -1,6 +1,3 @@
-<%@page import="flightbooking.model.UserDTO"%> <%@page
-import="flightbooking.model.UserDTO" %>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,39 +11,25 @@ import="flightbooking.model.UserDTO" %>
     />
   </head>
   <body>
-    <header class="header">
-      <div class="container">
-        <nav class="navbar">
-          <!-- Logo -->
-          <a href="index2.jsp" class="logo__link"
-            ><img
-              src="./assets/img/logo-removebg-preview.png"
-              alt="logo"
-              class="logo"
-            />
-          </a>
-          <div class="navbar__actions">
-            <a href="#!" class="navbar__link">My booking</a>
-            <a href="#!" class="navbar__link">Flights</a>
-            <a href="#!" class="navbar__link">Support</a>
-            <% UserDTO usersession =
-            (UserDTO)session.getAttribute("usersession"); if(usersession ==
-            null){ %>
-            <a href="login.jsp" class="navbar__link">Sign in</a>
-            <a href="register.jsp" class="navbar__link">Sign up</a>
-            <% }else{%>
-
-            <a
-              href="ProfileController?action=profile_details"
-              class="user__avt"
-            >
-              <img src="./assets/img/user-avt.png" alt="User avt" /> </a
-            ><a href="./AuthController?action=logout" class="user__logout__btn"
-              >Log out</a
-            >
-            <%}%>
-          </div>
-        </nav>
+    <header class="personal">
+      <div class="personal__left">
+        <img
+          src="img/avatar.jpg"
+          alt="Personal avatar"
+          class="personal__avatar"
+        />
+        <div class="personal__info">
+          <h2>Quan Pham</h2>
+          <p class="personal__email">hello123@gmail.com</p>
+        </div>
+      </div>
+      <div class="personal__right">
+        <img
+          src="./assets/img/airplane-flight.png"
+          alt="Logo-web"
+          class="personal__logo"
+        />
+        <p class="personal__flighter">Flighter member</p>
       </div>
     </header>
 
@@ -58,9 +41,7 @@ import="flightbooking.model.UserDTO" %>
             <i class="fa-solid fa-user"></i> Profile
           </li>
           <li><i class="fa-solid fa-users"></i> Saved Travellers</li>
-          <li id="openModal">
-            <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
-          </li>
+          <li><i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out</li>
         </ul>
       </div>
 
@@ -70,32 +51,32 @@ import="flightbooking.model.UserDTO" %>
           <div class="account__item">
             <div class="account__email">
               <p>Email (For account log in):</p>
-              <p class="account__info"><%= usersession.getEmail() %></p>
+              <p class="account__info">hello123@gmail.com</p>
             </div>
             <div class="account_name">
               <p>Full Name:</p>
-              <p class="account__info"><%= usersession.getFullName() %></p>
+              <p class="account__info">Quan Pham</p>
             </div>
           </div>
           <div class="account__item">
             <div class="account__dob">
               <p>Date of Birth:</p>
-              <p class="account__info"><%= usersession.getDOB() %></p>
+              <p class="account__info">03 Feb 1997</p>
             </div>
             <div class="account__phone">
               <p>Mobile Number:</p>
-              <p class="account__info"><%= usersession.getPhoneNumber()%></p>
+              <p class="account__info">VN (+84) 0912345678</p>
             </div>
           </div>
           <button
             class="account__button"
-            onclick="window.location.href='edit-profile.jsp';"
+            onclick="window.location.href='edit-profile.html';"
           >
             Edit
           </button>
         </div>
       </div>
     </div>
-    <script src="./assets/javascripts/profile.js"></script>
+    <script src="./assets/javascripts/script.js"></script>
   </body>
 </html>

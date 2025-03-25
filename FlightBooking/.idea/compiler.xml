@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="FlightBooking" options="-endorseddirs D:\PRJ\FlightBooking\target/endorsed" />
+      <module name="FlightBooking" options="-endorseddirs D:\PRJ\Asm_Project\prj301-25sp-se1832-01\FlightBooking\target/endorsed" />
     </option>
   </component>
 </project>

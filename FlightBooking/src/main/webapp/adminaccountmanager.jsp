@@ -1,15 +1,87 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./assets/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./assets/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./assets/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./assets/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./assets/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./assets/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./assets/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/favicon/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body class="admin-body">
@@ -21,22 +93,25 @@
             <img
               src="./assets/img/airplane-flight.png"
               alt=""
-              class="admin-logo__img" />
+              class="admin-logo__img"
+            />
             <p class="admin-logo__title">Flighter</p>
           </a>
           <nav class="admin-navbar">
+            <a href="AdminController" class="admin-navbar__item">DashBoard</a>
             <a
-              href="AdminController"
+              href="AdminController?action=addflight"
               class="admin-navbar__item"
-              >DashBoard</a
-            >
-            <a href="AdminController?action=addflight" class="admin-navbar__item"
               >Add Flight</a
             >
-            <a href="AdminController?action=editaccount" class="admin-navbar__item admin-navbar__item--active"
+            <a
+              href="UserController?action=accountlist"
+              class="admin-navbar__item admin-navbar__item--active"
               >Account</a
             >
-            <a href="AdminController?action=reportflight" class="admin-navbar__item"
+            <a
+              href="AdminController?action=reportflight"
+              class="admin-navbar__item"
               >Reports & Analytics</a
             >
           </nav>
@@ -46,8 +121,11 @@
             <img
               src="./assets/img/tourist-attraction.jpg"
               alt=""
-              class="admin-header__img" />
-            <a class="admin-header__btn" href="AuthController?action=logout">Logout</a>
+              class="admin-header__img"
+            />
+            <a class="admin-header__btn" href="AuthController?action=logout"
+              >Logout</a
+            >
           </div>
         </div>
       </div>
@@ -69,60 +147,28 @@
                 </tr>
               </thead>
               <tbody>
+                  <c:forEach var="user" items="${requestScope.userlist}">
                 <tr>
-                  <td>1</td>
-                  <td>Admin</td>
-                  <td>a@gmail.com</td>
-                  <td>Admin</td>
+                  <td>${user.userID}</td>
+                  <td>${user.fullName}</td>
+                  <td>${user.email}</td>
+                  <td>${user.role}</td>
                   <td>
                     <a
                       class="account-manager__btn account-manager__btn--edit"
-                      href="">
+                      href="UserController?action=editaccount&userid=${user.userID}"
+                    >
                       <i class="fas fa-edit"></i> Update
                     </a>
                     <a
                       class="account-manager__btn account-manager__btn--delete"
-                      href="">
+                      href="UserController?action=deleteaccount&userid=${user.userID}"
+                    >
                       <i class="fas fa-trash"></i> Delete
                     </a>
                   </td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Tráº§n Thá» B</td>
-                  <td>b@gmail.com</td>
-                  <td>User</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Pháº¡m VÄn C</td>
-                  <td>c@gmail.com</td>
-                  <td>User</td>
-                  <td>
-                    <a
-                      class="account-manager__btn account-manager__btn--edit"
-                      href="">
-                      <i class="fas fa-edit"></i> Update
-                    </a>
-                    <a
-                      class="account-manager__btn account-manager__btn--delete"
-                      href="">
-                      <i class="fas fa-trash"></i> Delete
-                    </a>
-                  </td>
-                </tr>
+                </c:forEach>
               </tbody>
             </table>
             <div class="account-manager__pagination">
@@ -132,13 +178,15 @@
                   width="32"
                   height="32"
                   viewBox="0 0 32 32"
-                  fill="none">
+                  fill="none"
+                >
                   <path
                     d="M19 8.5L11.5 16L19 23.5"
                     stroke="#6E7491"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round" />
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </a>
               <span class="account-manager__pagenumber">1</span>
@@ -150,13 +198,15 @@
                   width="32"
                   height="32"
                   viewBox="0 0 32 32"
-                  fill="none">
+                  fill="none"
+                >
                   <path
                     d="M12 8.5L19.5 16L12 23.5"
                     stroke="#6E7491"
                     stroke-width="2"
                     stroke-linecap="round"
-                    stroke-linejoin="round" />
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </a>
             </div>
