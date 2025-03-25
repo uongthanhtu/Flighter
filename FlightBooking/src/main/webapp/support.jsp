@@ -62,42 +62,42 @@
         <div class="container-support">
           <h2 class="faq__title">Frequently Asked Questions</h2>
           <div class="faq__grid">
-            <a href="booking-detail.html" class="faq__item">
+            <a href="booking-detail.jsp" class="faq__item">
               <h3 class="faq__item-title">How to book a flight ?</h3>
               <p>
                 You can book flights directly on our website or call our hotline
                 for assistance.
               </p>
             </a>
-            <a href="refund-detail.html" class="faq__item">
+            <a href="refund-detail.jsp" class="faq__item">
               <h3 class="faq__item-title">Refund Policy</h3>
               <p>
                 We offer flexible refund policies depending on the ticket type
                 and refund timing.
               </p>
             </a>
-            <a href="payment-detail.html" class="faq__item">
+            <a href="payment-detail.jsp" class="faq__item">
               <h3 class="faq__item-title">Payment Methods</h3>
               <p>
                 We accept various payment methods: credit cards, bank transfers,
                 and e-wallets.
               </p>
             </a>
-            <a href="flight-tracking.html" class="faq__item">
+            <a href="flight-tracking.jsp" class="faq__item">
               <h3 class="faq__item-title">Flight Tracking</h3>
               <p>
                 Track your flight status, check real-time updates, and get
                 notifications about any changes.
               </p>
             </a>
-            <a href="baggage-info.html" class="faq__item">
+            <a href="baggage-info.jsp" class="faq__item">
               <h3 class="faq__item-title">Baggage Information</h3>
               <p>
                 Learn about baggage allowance, restrictions, and special
                 handling requirements.
               </p>
             </a>
-            <a href="checkin-docs.html" class="faq__item">
+            <a href="checkin-docs.jsp" class="faq__item">
               <h3 class="faq__item-title">Check-in & Documents</h3>
               <p>
                 Information about check-in procedures and required travel
