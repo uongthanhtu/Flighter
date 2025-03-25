@@ -3365,9 +3365,6 @@ a {
   font-weight: 600;
   color: var(--text-primary-color);
 }
-.booking-history__message {
-  display: none;
-}
 .booking-history__message--empty {
   text-align: center;
   font-size: 5rem;
@@ -3381,9 +3378,6 @@ a {
   border-radius: 8px;
   border: 1px solid #666;
   display: flex;
-}
-.booking-history__ticket--empty {
-  display: none;
 }
 .booking-history__ticket__img {
   width: 250px;
