@@ -40,7 +40,11 @@
                     Transaction failed!
                 </h3>
                 <p style="font-size: 18px; margin-top: 15px;">
-                    <a href="payment?totalBill=${requestScope.booking.totalPrice}&bookingID=${requestScope.booking.bookingID}">Return to the payment page.</a></p>
+                    <form class="payment__btn-wrap" action="payment" method="POST">
+                        <input type="hidden" name="totalBill" value="<%= Long.parseLong(request.getParameter("vnp_Amount")) /100 %>">
+                        <input type="hidden" name="bookingID" value="${requestScope.booking.bookingID}">
+                        <input class="flight--detail--btn" type="submit" value="Return to the payment page.">
+                    </form>
                 <p style="font-size: 18px; margin-top: 15px;">
                     <a href="BookingController?action=mybooking">Return to your flight ticket management page.</a></p>
             </div>
