@@ -159,7 +159,7 @@
                   type="text"
                   id="departure"
                   name="departure"
-                  placeholder="<%=(String)request.getAttribute("departure")%>"
+                  value="<%=(String)request.getAttribute("departure")%>"
                   autocomplete="off"
                 />
                 <div id="departure-list" class="autocomplete-list"></div>
@@ -174,7 +174,7 @@
                   type="text"
                   id="arrival"
                   name="arrival"
-                  placeholder="<%=(String)request.getAttribute("arrival")%>"
+                  value="<%=(String)request.getAttribute("arrival")%>"
                   autocomplete="off"
                 />
                 <div id="arrival-list" class="autocomplete-list"></div>
@@ -189,6 +189,7 @@
                   type="date"
                   id="date"
                   name="departuredate"
+                  value="<%=request.getAttribute("date")%>"
                   class="custom-date"
                 />
               </div>

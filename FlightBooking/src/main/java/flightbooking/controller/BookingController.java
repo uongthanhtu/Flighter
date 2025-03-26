@@ -100,6 +100,7 @@ public class BookingController extends HttpServlet {
             }
             request.setAttribute("departure", departure);
             request.setAttribute("arrival", arrival);
+            request.setAttribute("date", departureDate);
             request.setAttribute("action", "searchflight");
             request.getRequestDispatcher("AirportController").forward(request, response);
             return;
