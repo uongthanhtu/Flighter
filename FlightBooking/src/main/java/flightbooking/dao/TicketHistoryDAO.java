@@ -25,7 +25,7 @@ public class TicketHistoryDAO {
         try {
             String sql = "  SELECT t.passengerName, f.departuretTime, ad.name + ', ' + ad.city + ', ' + ad.country, \n" +
                             " aa.name + ', ' + aa.city + ', ' + aa.country,  \n" +
-                            " s.seatNumber, f.flightNumber, t.ticketPrice, t.ticketStatus, s.fareClass\n" +
+                            " s.seatNumber, f.flightNumber, t.ticketPrice, t.ticketStatus, s.fareClass, t.TicketCode\n" +
                             " FROM users u\n" +
                             " JOIN booking b ON u.userID = b.customerID \n" +
                             " JOIN ticket t ON b.bookingID = t.bookingID\n" +
@@ -47,6 +47,7 @@ public class TicketHistoryDAO {
                 ticketHis.setPrice(rs.getDouble(7));
                 ticketHis.setStatus(rs.getString(8));
                 ticketHis.setFareClass(rs.getString(9));
+                ticketHis.setTicketCode(rs.getString(10));
                 lists.add(ticketHis);
             }
             conn.close();
@@ -63,7 +64,7 @@ public class TicketHistoryDAO {
         try {
             String sql = "  SELECT t.passengerName, f.departuretTime, ad.name + ', ' + ad.city + ', ' + ad.country, \n" +
                             " aa.name + ', ' + aa.city + ', ' + aa.country,  \n" +
-                            " s.seatNumber, f.flightNumber, t.ticketPrice, t.ticketStatus, s.fareClass, f.arrivalTime\n" +
+                            " s.seatNumber, f.flightNumber, t.ticketPrice, t.ticketStatus, s.fareClass, f.arrivalTime, t.TicketCode\n" +
                             " FROM users u\n" +
                             " JOIN booking b ON u.userID = b.customerID \n" +
                             " JOIN ticket t ON b.bookingID = t.bookingID\n" +
@@ -86,6 +87,7 @@ public class TicketHistoryDAO {
                 ticketHis.setStatus(rs.getString(8));
                 ticketHis.setFareClass(rs.getString(9));
                 ticketHis.setArrivalDate(rs.getTimestamp(10).toLocalDateTime());
+                ticketHis.setTicketCode(rs.getString(11));
                 lists.add(ticketHis);
             }
             conn.close();

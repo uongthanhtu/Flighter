@@ -21,7 +21,8 @@ public class TicketHistoryDTO {
     private double price;
     private String status;
     private String fareClass;
-
+    private String ticketCode;
+    
     public TicketHistoryDTO() {
     }
 
@@ -106,6 +107,14 @@ public class TicketHistoryDTO {
 
     public void setArrivalDate(LocalDateTime arrivalDate) {
         this.arrivalDate = arrivalDate;
+    }
+
+    public String getTicketCode() {
+        return ticketCode;
+    }
+
+    public void setTicketCode(String ticketCode) {
+        this.ticketCode = ticketCode;
     }
     
     
