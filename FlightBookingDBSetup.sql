@@ -57,7 +57,7 @@ CREATE TABLE ticket(
 	issuedDate DATE,
 	TicketCode VARCHAR(10) UNIQUE NOT NULL,
 	ticketPrice DECIMAL(10,2) NOT NULL,
-	ticketStatus VARCHAR(20) NOT NULL CHECK (ticketStatus IN ('Booked', 'Canceled', 'Checked-in', 'Completed')) DEFAULT 'Booked',
+	ticketStatus VARCHAR(20) NOT NULL CHECK (ticketStatus IN ('Pending' ,'Booked', 'Canceled', 'Checked-in', 'Completed')) DEFAULT 'Pending',
 	bookingID INT FOREIGN KEY REFERENCES booking (bookingID),
 	seatID INT FOREIGN KEY REFERENCES seat (seatID),
 	passengerName NVARCHAR(50),
@@ -92,4 +92,4 @@ SET country = REPLACE(country, '"', '');
 
 SELECT * FROM airport
 SELECT * FROM users
-INSERT INTO users (userID , email, password, role) VALUES (1 ,'admin@gmail.com', 'admin123', 'Admin') 
+INSERT INTO users (userID , fullName , email, password, role) VALUES (1 , 'Admin' ,'admin@gmail.com', 'admin123', 'Admin') 

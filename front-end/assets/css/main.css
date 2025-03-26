@@ -2751,10 +2751,10 @@ a {
 }
 
 .flight:hover {
-    scale: 1.1;
+  scale: 1.1;
 }
 .flight:hover .flight--code {
-    color: lightgreen;
+  color: lightgreen;
   scale: 1.1;
 }
 .flight * {
@@ -3716,7 +3716,6 @@ a {
   justify-content: flex-end;
 }
 
-
 .booking-history {
   padding: 50px 0;
 }
@@ -3741,10 +3740,10 @@ a {
   transition: all 0.3s ease;
 }
 .booking-history__ticket:hover {
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 .booking-history__ticket:hover .booking-history__ticket-class {
-    color: lightgreen;
+  color: lightgreen;
 }
 .booking-history__ticket__img {
   width: 250px;
