@@ -7,6 +7,8 @@ package flightbooking.vnpay;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import flightbooking.dao.FlightDAO;
+import flightbooking.dao.SeatDAO;
 import java.io.IOException;import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
@@ -33,7 +35,13 @@ public class ajaxServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String totalBill = req.getParameter("totalBill");
         int bookingID =  Integer.parseInt(req.getParameter("bookingID"));
-        
+        SeatDAO seatDao = new  SeatDAO();
+        if("Booked".equals(seatDao.getSeatSatatusByBookingID(bookingID))){
+            FlightDAO flightdao = new FlightDAO();
+            int flightid = flightdao.getFlightIDByBookingID(bookingID);
+            req.setAttribute("seaterror", "The seat you selected has already been booked by another passenger. Please choose a different seat.");
+            req.getRequestDispatcher("BookingController?action=selecteseat&flightid="+flightid).forward(req, resp);
+        }
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";

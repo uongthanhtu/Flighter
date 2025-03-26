@@ -6,6 +6,7 @@
 package flightbooking.controller;
 
 import flightbooking.dao.BookingDAO;
+import flightbooking.dao.PaymentDAO;
 import flightbooking.dao.SeatDAO;
 import flightbooking.dao.TicketDAO;
 import flightbooking.model.BookingDTO;
@@ -72,9 +73,11 @@ public class PaymentController extends HttpServlet {
                 boolean transSuccess = false;
                 List<Integer> listticketid = bookingDao.getAllTicketIDByBookingID(booking.getBookingID());
                 TicketDAO ticketDao = new TicketDAO();
+                PaymentDAO paymentDao = new PaymentDAO();
                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
                     //update banking system
                     booking.setBookingStatus("Confirmed");
+                    paymentDao.updatePaymentStatusByBookingID(booking.getBookingID(), "Completed");
                     List<Integer> listseatid = bookingDao.getAllSeatIDByBookingID(booking.getBookingID());
                     SeatDAO seatDao = new SeatDAO();
                     for (Integer seatid : listseatid) {
@@ -86,6 +89,7 @@ public class PaymentController extends HttpServlet {
                     transSuccess = true;
                 } else {
                     booking.setBookingStatus("Canceled");
+                    paymentDao.updatePaymentStatusByBookingID(booking.getBookingID(), "Failed");
                     for (Integer ticketid : listticketid) {
                         ticketDao.updateTicketStatus(ticketid, "Canceled");
                     }

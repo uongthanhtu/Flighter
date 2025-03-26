@@ -233,4 +233,25 @@ public class SeatDAO {
             System.out.println("Update status is error, Details: " + e.getMessage());
         }
     }
+    
+    public String getSeatSatatusByBookingID (int bookingid){
+        Connection conn = DBUtils.getConnection();
+        String status = null;
+        try {
+            String sql = "select s.seatStatus from seat s \n" +
+                            "JOIN ticket t ON s.seatID = t.ticketID \n" +
+                            "JOIN booking b ON b.bookingID = t.bookingID\n" +
+                            "WHERE b.bookingID = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, bookingid);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                status = rs.getString(1);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Get seat status by bookingID is error, Details: " + e.getMessage());
+        }
+        return status;
+    }
 }
