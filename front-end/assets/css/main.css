@@ -3854,6 +3854,7 @@ a {
 }
 .booking-history__ticket__info {
   padding: 0 15px;
+  flex-grow: 1;
 }
 .booking-history__ticket__info__row {
   display: flex;
