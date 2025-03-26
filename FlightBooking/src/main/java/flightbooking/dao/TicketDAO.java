@@ -9,9 +9,14 @@ import flightbooking.model.TicketDTO;
 import flightbooking.utils.DBUtils;
 import java.net.ConnectException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  *
@@ -28,7 +33,7 @@ public class TicketDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, ticket.getTicketID());
             ps.setTimestamp(2, Timestamp.valueOf(ticket.getIssuedDate()));
-            ps.setString(3, ticket.getTicketCode());
+            ps.setString(3, generateTicketCode());
             ps.setDouble(4, ticket.getTicketPrice());
             ps.setString(5, ticket.getTicketStatus());
             ps.setInt(6, ticket.getBookingID());
@@ -73,6 +78,15 @@ public class TicketDAO {
         } catch (Exception e) {
             System.out.println("Update ticket status is error, Details: " + e.getMessage());
         }
+    }
+        
+    public static String generateTicketCode() {
+        Date currentime = new Date(System.currentTimeMillis());
+        Calendar caltime = Calendar.getInstance();
+        caltime.setTime(currentime);
+        String secondMilli = String.format("%02d%02d", caltime.get(Calendar.SECOND), caltime.get(Calendar.MILLISECOND));
+        String letter = UUID.randomUUID().toString().replaceAll("[^A-Za-z]", "").toUpperCase().substring(0, 3);
+        return letter + secondMilli;
     }
     
 }

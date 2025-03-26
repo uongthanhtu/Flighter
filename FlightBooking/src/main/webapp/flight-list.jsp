@@ -159,7 +159,7 @@
                   type="text"
                   id="departure"
                   name="departure"
-                  value="<%=(String)request.getAttribute("departure")%>"
+                  value="<%=(request.getAttribute("departure") != null) ? (String)request.getAttribute("departure") : "" %>"
                   autocomplete="off"
                 />
                 <div id="departure-list" class="autocomplete-list"></div>
@@ -174,7 +174,7 @@
                   type="text"
                   id="arrival"
                   name="arrival"
-                  value="<%=(String)request.getAttribute("arrival")%>"
+                  value="<%=(request.getAttribute("arrival") != null) ? (String)request.getAttribute("arrival") : "" %>"
                   autocomplete="off"
                 />
                 <div id="arrival-list" class="autocomplete-list"></div>

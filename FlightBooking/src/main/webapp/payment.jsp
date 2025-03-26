@@ -1,3 +1,6 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
+<%@page import="java.util.List"%>
+<%@page import="flightbooking.model.TicketHistoryDTO"%>
 <%@page import="flightbooking.model.UserDTO"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,71 +57,67 @@
         <div class="payment__content row">
           <div
             class="payment__summary col-8 col-sm-12 col-md-12 col-lg-6 col-xl-8 col-xxl-8">
+            <% List<TicketHistoryDTO> ticketlist = (List<TicketHistoryDTO>) request.getAttribute("ticketlist");
+                if(ticketlist != null && !ticketlist.isEmpty()){
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
+                    for (TicketHistoryDTO ticket : ticketlist) {%>
             <div class="payment__summary__info">
-              <h3 class="payment__summary__flight">FL9583478</h3>
+              <h3 class="payment__summary__flight">Flight Number: <%= ticket.getFlightNumber() %></h3>
               <p class="payment__summary__departure-and-arrival">
-                <span>Tan Son Nhat, Ho Chi Minh</span>
-                -
-                <span>Narita, Tokyo</span>
+                <span><%= ticket.getDepartureArrival() %></span>
               </p>
               <p class="payment__summary__time">
-                <span>23:55, 26/03/2025</span>
+                <span><%= ticket.getDepartureDate().format(formatter) %></span>
                 -
-                <span>7:30, 27/03/2025</span>
+                <span><%= ticket.getArrivalDate().format(formatter) %></span>
               </p>
               <p class="payment__summary__baggage">
-                7 <span>kg baggage allowed</span>
+                <span>Seat number: <%= ticket.getSeatNumber() %></span>
               </p>
               <div class="payment__summary__class--row">
-                <span class="payment__summary__class">Economy</span>
+                <span class="payment__summary__class">Fare class: <%= ticket.getFareClass() %></span>
                 <span>x1</span>
               </div>
             </div>
-            <div class="payment-method">
-              <p class="payment-method__warning">
-                Please choose one of the payment methods below.
-              </p>
-            </div>
+                <br>
+                    <%}
+                }
+            %>         
           </div>
           <div
             class="payment__price col-4 col-sm-12 col-md-12 col-lg-6 col-xl-4 col-xxl-4">
             <div class="payment__price-ticket">
-              <div class="payment__price--style payment__price-ticket__temp">
+                <div class="payment__price--style payment__price-ticket__temp">
+                <span>Fare Class</span>
                 <span>Price</span>
-                <span>8,455,000 VND</span>
               </div>
+              <%long totalPrice = 0;
+                  if(ticketlist != null && !ticketlist.isEmpty()){
+                  for (TicketHistoryDTO ticket : ticketlist) {
+                      totalPrice += ticket.getPrice();
+              %>
+              
               <ul class="payment__price-ticket-list">
                 <li class="payment__price--style payment__price__ticket__item">
-                  <span>Eco</span>
-                  <span>8,455,000 VND</span>
+                  <span><%= ticket.getFareClass() %> (x1)</span>
+                  <span><%= ticket.getPrice() %> VND</span>
                 </li>
               </ul>
-            </div>
-            <div class="payment__total">
-              <div class="payment__price--style payment__price-ticket__temp">
-                <span>Taxes and fees</span>
-                <span>1,000,000 VND</span>
+           
+            <%}
+              }
+             %>
               </div>
-              <ul class="payment__fees-list">
-                <li class="payment__price--style payment__fees__item">
-                  <span>Airport tax international</span><span>500,000 VND</span>
-                </li>
-                <li class="payment__price--style payment__fees__item">
-                  <span>Airport security</span><span>50,000 VND</span>
-                </li>
-                <li class="payment__price--style payment__fees__item">
-                  <span>Fuel Surcharge</span><span>450,000 VND</span>
-                </li>
-              </ul>
+            <div class="payment__total">       
               <div class="payment__price--style payment__total-price">
                 <span>Total</span>
-                <span>9,455,000 VND</span>
+                <span><%= totalPrice %> VND</span>
               </div>
             </div>
           </div>
         </div>
         <form class="payment__btn-wrap" action="payment" method="POST">
-            <input type="hidden" name="totalBill" value="${requestScope.booking.totalPrice}">
+            <input type="hidden" name="totalBill" value="<%= totalPrice %>">
             <input type="hidden" name="bookingID" value="${requestScope.booking.bookingID}">
             <input class="flight--detail--btn" type="submit" value="Continue">
         </form>

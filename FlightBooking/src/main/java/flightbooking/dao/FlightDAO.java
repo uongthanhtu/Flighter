@@ -236,5 +236,28 @@ public class FlightDAO {
         }
         return true;
     }
+    
+    
+    public int getFlightIDByBookingID (int bookingid){
+        Connection conn = DBUtils.getConnection();
+        int flightid = 0;
+        try {
+            String sql = " select f.flightID from seat s \n" +
+                            "JOIN ticket t ON s.seatID = t.ticketID \n" +
+                            "JOIN booking b ON b.bookingID = t.bookingID\n" +
+                            "JOIN flight f ON f.flightID = s.flightID\n" +
+                            "WHERE b.bookingID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, bookingid);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                flightid = rs.getInt(1);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Get FlightID By BookingID is error, Details : " + e.getMessage());
+        }
+        return flightid;
+    }
    
 }

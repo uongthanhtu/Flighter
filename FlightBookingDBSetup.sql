@@ -67,7 +67,7 @@ CREATE TABLE ticket(
 CREATE TABLE payment(
 	paymentID int PRIMARY KEY,
 	amount DECIMAL(10,2) NOT NULL,
-	paymentMethod VARCHAR(20) NOT NULL CHECK (paymentMethod IN ('Momo', 'VNPay')) DEFAULT 'Momo',
+	paymentMethod VARCHAR(20) NOT NULL CHECK (paymentMethod IN ('Momo', 'VNPay')) DEFAULT 'VNPay',
 	paymentStatus VARCHAR(20) NOT NULL CHECK (paymentStatus IN('Pending', 'Completed', 'Failed')) DEFAULT 'Pending',
 	bookingID INT FOREIGN KEY REFERENCES booking (bookingID) ON DELETE CASCADE
 )

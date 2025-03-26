@@ -230,12 +230,15 @@ strong {
   background: #eeeeee;
 }
 
-.row > *, .container-fluid, .container {
+.row > *,
+.container-fluid,
+.container {
   padding-left: calc(var(--grid-gutter-x) * 0.5);
   padding-right: calc(var(--grid-gutter-x) * 0.5);
 }
 
-.container-fluid, .container {
+.container-fluid,
+.container {
   --grid-gutter-x: 30px;
   --grid-gutter-y: 0;
   width: 1370px;
@@ -1368,12 +1371,14 @@ strong {
   border-collapse: collapse;
   margin-top: 10px;
 }
-.account-manager__table th, .account-manager__table td {
+.account-manager__table th,
+.account-manager__table td {
   padding: 20px;
   border-bottom: 1px solid #ddd;
   text-align: center;
 }
-.account-manager__table th:last-child, .account-manager__table td:last-child {
+.account-manager__table th:last-child,
+.account-manager__table td:last-child {
   white-space: nowrap;
   gap: 2px;
 }
@@ -1431,7 +1436,8 @@ strong {
   width: 40px;
   height: 40px;
 }
-.account-manager__next-btn, .account-manager__pre-btn {
+.account-manager__next-btn,
+.account-manager__pre-btn {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1440,7 +1446,8 @@ strong {
   border: 1px solid #ccc;
   border-radius: 8px;
 }
-.account-manager__next-btn:hover, .account-manager__pre-btn:hover {
+.account-manager__next-btn:hover,
+.account-manager__pre-btn:hover {
   background: #ddd;
 }
 
@@ -1656,7 +1663,8 @@ strong {
   opacity: 0.8;
 }
 
-.input, .profile__input {
+.input,
+.profile__input {
   width: 100%;
   padding: 10px;
   border: 1px solid #ddd;
@@ -1941,7 +1949,10 @@ strong {
 }
 
 .help {
-  background: linear-gradient(rgba(76, 185, 231, 0.95), rgba(76, 185, 231, 0.85));
+  background: linear-gradient(
+    rgba(76, 185, 231, 0.95),
+    rgba(76, 185, 231, 0.85)
+  );
   background-size: cover;
   background-position: center;
   color: #ffffff;
@@ -2051,7 +2062,8 @@ strong {
   font-weight: 500;
   font-size: 1.8rem;
 }
-.support-contact__form-input, .support-contact__form-textarea {
+.support-contact__form-input,
+.support-contact__form-textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
@@ -2059,11 +2071,13 @@ strong {
   font-size: 1.4rem;
   background-color: #ffffff;
 }
-.support-contact__form-input::placeholder, .support-contact__form-textarea::placeholder {
+.support-contact__form-input::placeholder,
+.support-contact__form-textarea::placeholder {
   color: #999;
   font-size: 1.5rem;
 }
-.support-contact__form-input:focus, .support-contact__form-textarea:focus {
+.support-contact__form-input:focus,
+.support-contact__form-textarea:focus {
   outline: none;
   border-color: #3498db;
   box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
@@ -2289,7 +2303,8 @@ strong {
   position: fixed;
   z-index: 20;
   background: #fff;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
 .admin-header__inner {
   display: flex;
@@ -2452,7 +2467,8 @@ a {
   height: 100px;
 }
 
-.user__avt, .user__logout__btn {
+.user__avt,
+.user__logout__btn {
   display: inline-block;
 }
 .user__logout__btn {
@@ -2495,7 +2511,8 @@ a {
   background: #fff;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
-.flight-search__form__label, .flight-search__form__input {
+.flight-search__form__label,
+.flight-search__form__input {
   display: block;
 }
 .flight-search__form__label {
@@ -2545,7 +2562,8 @@ a {
   text-align: center;
   margin: 100px 0px 150px;
 }
-.feature--title::before, .feature--title::after {
+.feature--title::before,
+.feature--title::after {
   position: absolute;
   top: 17px;
   display: inline-block;
@@ -2553,7 +2571,12 @@ a {
   width: 300px;
   height: 6px;
   background-color: #4158d0;
-  background-image: linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
   border-radius: 999px;
 }
 .feature--title::before {
@@ -2614,7 +2637,8 @@ a {
   align-items: center;
   margin-bottom: 100px;
 }
-.stats--title__left, .stats--title__right {
+.stats--title__left,
+.stats--title__right {
   font-family: "Hornbill Personal Use";
   font-weight: 800;
   font-style: italic;
@@ -2628,7 +2652,8 @@ a {
   font-size: 10rem;
   color: hsl(182.94, 76.47%, 63.33%);
 }
-.stats--num, .stats--desc {
+.stats--num,
+.stats--desc {
   display: block;
   text-align: center;
 }
@@ -2697,17 +2722,20 @@ a {
 }
 
 @media screen and (max-width: 1999px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     width: 200px;
   }
 }
 @media screen and (max-width: 991px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     width: 100px;
   }
 }
 @media screen and (max-width: 767px) {
-  .feature--title::before, .feature--title::after {
+  .feature--title::before,
+  .feature--title::after {
     display: none;
   }
 }
@@ -2733,14 +2761,16 @@ a {
   font-weight: 600;
   margin-bottom: 20px;
 }
-.flight--time, .flight--location {
+.flight--time,
+.flight--location {
   display: flex;
   justify-content: space-around;
   font-size: 2rem;
   padding: 5px 0;
   margin-bottom: 20px;
 }
-.flight--location, .flight--time__bold {
+.flight--location,
+.flight--time__bold {
   font-weight: 600;
 }
 
@@ -2750,7 +2780,8 @@ a {
 .flight--detail--code {
   padding: 20px 0;
 }
-.flight--detail--code, .flight--detail--component--header {
+.flight--detail--code,
+.flight--detail--component--header {
   font-size: 3rem;
   font-weight: 600;
   color: var(--text-primary-color);
@@ -2769,7 +2800,7 @@ a {
   /* Create checked state */
   /* Make the label clickable */
 }
-.flight--detail--ticket input[type=radio] {
+.flight--detail--ticket input[type="radio"] {
   display: none;
 }
 .flight--detail--ticket .custom-radio {
@@ -2782,11 +2813,11 @@ a {
   margin-right: 10px;
   cursor: pointer;
 }
-.flight--detail--ticket input[type=radio]:checked + .custom-radio {
+.flight--detail--ticket input[type="radio"]:checked + .custom-radio {
   background-color: #007bff;
   border: 2px solid #007bff;
 }
-.flight--detail--ticket input[type=radio]:checked + .custom-radio::after {
+.flight--detail--ticket input[type="radio"]:checked + .custom-radio::after {
   content: "";
   width: 8px;
   height: 8px;
@@ -2819,7 +2850,8 @@ a {
 .flight--detail--btn:hover {
   scale: 1.1;
 }
-.flight--ticket--price, .flight--detail--component--value {
+.flight--ticket--price,
+.flight--detail--component--value {
   color: var(--text-primary-color);
   font-size: 2rem;
   font-weight: 500;
@@ -3150,7 +3182,8 @@ a {
   font-size: 1.6rem;
   width: 250px;
 }
-.register-form__policy-1, .register-form__policy-2 {
+.register-form__policy-1,
+.register-form__policy-2 {
   margin-left: 15px;
   margin-top: 30px;
   display: flex;
@@ -3436,7 +3469,10 @@ a {
   display: flex;
   justify-content: space-between;
 }
-.payment__summary__departure-and-arrival, .payment__summary__time, .payment__summary__baggage, .payment__summary__class--row > * {
+.payment__summary__departure-and-arrival,
+.payment__summary__time,
+.payment__summary__baggage,
+.payment__summary__class--row > * {
   font-size: 1.8rem;
   color: var(--text-primary-color);
   padding: 7px 0;
@@ -3447,7 +3483,8 @@ a {
 .payment-method {
   margin-top: 50px;
 }
-.payment-method__warning, .payment-method__title {
+.payment-method__warning,
+.payment-method__title {
   padding: 12px 0;
 }
 .payment-method__warning {
@@ -3498,7 +3535,8 @@ a {
   margin-bottom: 30px;
   overflow: hidden;
 }
-.payment__price-ticket__temp, .payment__price-ticket-list {
+.payment__price-ticket__temp,
+.payment__price-ticket-list {
   padding: 15px;
 }
 .payment__price-ticket__temp {
@@ -3628,7 +3666,8 @@ a {
   display: flex;
   justify-content: flex-end;
 }
-.customer-booking__btn:hover, .customer-booking__btn:focus {
+.customer-booking__btn:hover,
+.customer-booking__btn:focus {
   background-color: rgb(34.926984127, 76.2666666667, 245.273015873);
   border-color: rgb(34.926984127, 76.2666666667, 245.273015873);
   box-shadow: 0 6px 12px rgba(74, 108, 247, 0.25);
@@ -3641,7 +3680,8 @@ a {
 }
 .customer-booking__btn:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.3), 0 4px 6px rgba(74, 108, 247, 0.2);
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.3),
+    0 4px 6px rgba(74, 108, 247, 0.2);
 }
 @media (max-width: 768px) {
   .customer-booking__btn {
