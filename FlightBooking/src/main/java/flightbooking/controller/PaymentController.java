@@ -9,7 +9,12 @@ import flightbooking.dao.BookingDAO;
 import flightbooking.dao.PaymentDAO;
 import flightbooking.dao.SeatDAO;
 import flightbooking.dao.TicketDAO;
+import flightbooking.dao.TicketHistoryDAO;
 import flightbooking.model.BookingDTO;
+import flightbooking.model.TicketHistoryDTO;
+import flightbooking.model.UserDTO;
+import flightbooking.utils.EmailContent;
+import flightbooking.utils.EmailUtils;
 import flightbooking.vnpay.Config;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -19,11 +24,13 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -44,6 +51,8 @@ public class PaymentController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession(false);
+        UserDTO userSession = (session != null) ? (UserDTO) session.getAttribute("usersession") : null;
         try ( PrintWriter out = response.getWriter()) {
             Map fields = new HashMap();
             for (Enumeration params = request.getParameterNames(); params.hasMoreElements();) {
@@ -53,7 +62,6 @@ public class PaymentController extends HttpServlet {
                     fields.put(fieldName, fieldValue);
                 }
             }
-
             String vnp_SecureHash = request.getParameter("vnp_SecureHash");
             if (fields.containsKey("vnp_SecureHashType")) {
                 fields.remove("vnp_SecureHashType");
@@ -63,10 +71,7 @@ public class PaymentController extends HttpServlet {
             }
             String signValue = Config.hashAllFields(fields);
             if (signValue.equals(vnp_SecureHash)) {
-                String paymentCode = request.getParameter("vnp_TransactionNo");
-                
                 String bookingID = request.getParameter("vnp_TxnRef");
-                
                 BookingDTO booking = new BookingDTO();
                 booking.setBookingID(Integer.parseInt(bookingID));
                 BookingDAO bookingDao = new  BookingDAO();
@@ -75,7 +80,6 @@ public class PaymentController extends HttpServlet {
                 TicketDAO ticketDao = new TicketDAO();
                 PaymentDAO paymentDao = new PaymentDAO();
                 if ("00".equals(request.getParameter("vnp_TransactionStatus"))) {
-                    //update banking system
                     booking.setBookingStatus("Confirmed");
                     paymentDao.updatePaymentStatusByBookingID(booking.getBookingID(), "Completed");
                     List<Integer> listseatid = bookingDao.getAllSeatIDByBookingID(booking.getBookingID());
@@ -86,6 +90,10 @@ public class PaymentController extends HttpServlet {
                     for (Integer ticketid : listticketid) {
                         ticketDao.updateTicketStatus(ticketid, "Booked");
                     }
+                    TicketHistoryDAO ticketHisDao = new TicketHistoryDAO();
+                    List<TicketHistoryDTO> ticketList = ticketHisDao.getAllTicketHistoryByBookingID(booking.getBookingID());
+                    String emailContent = EmailContent.emailContent(ticketList);
+                    EmailUtils.sendEmail(userSession.getEmail(), "Booking Successful" , emailContent);
                     transSuccess = true;
                 } else {
                     booking.setBookingStatus("Canceled");
@@ -143,4 +151,5 @@ public class PaymentController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 }
