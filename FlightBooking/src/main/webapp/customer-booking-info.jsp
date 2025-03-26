@@ -81,34 +81,39 @@ contentType="text/html;charset=UTF-8" language="java" %>
         <div class="container">
           <nav class="navbar">
             <!-- Logo -->
-            <a href="AirportController" class="logo__link"
+            <a href="AirportController" class="admin-logo"
               ><img
-                src="./assets/img/logo-removebg-preview.png"
+                src="./assets/img/airplane-flight.png"
                 alt="logo"
-                class="logo" />
+                class="logo"
+              />
+              <p class="admin-logo__title">Flighter</p>
             </a>
+            
             <div class="navbar__actions">
-              <a href="#!" class="navbar__link">My booking</a>
-              <a href="#!" class="navbar__link">Flights</a>
-              <a href="#!" class="navbar__link">Support</a>
-              <% UserDTO usersession
-              =(UserDTO)session.getAttribute("usersession"); if(usersession
-              ==null){ %>
+              <a href="BookingController?action=mybooking" class="navbar__link">My booking</a>
+              <a href="BookingController?action=searchflight" class="navbar__link">Flights</a>
+              <a href="support.jsp" class="navbar__link">Support</a>
+              <% UserDTO usersession =
+              (UserDTO)session.getAttribute("usersession"); if(usersession ==
+              null){ %>
               <a href="login.jsp" class="navbar__link">Sign in</a>
               <a href="register.jsp" class="navbar__link">Sign up</a>
               <% }else{%>
-
+            </div>
+            <div class="navbar__users">
               <a
                 href="ProfileController?action=profile_details"
-                class="user__avt">
+                class="user__avt"
+              >
                 <img src="./assets/img/user-avt.png" alt="User avt" /> </a
               ><a
                 href="./AuthController?action=logout"
                 class="user__logout__btn"
                 >Log out</a
               >
-              <%}%>
             </div>
+            <%}%>
           </nav>
         </div>
       </header>
@@ -118,18 +123,17 @@ contentType="text/html;charset=UTF-8" language="java" %>
           <form action="BookingController">
             <% List<SeatDTO> listselectseat = (List<SeatDTO>) request.getAttribute("listselectseat");
             for (SeatDTO seat : listselectseat) {
-                pageContext.setAttribute("seat", seat);
             %>
             <div class="customer-booking__info-block">
               <div class="customer-booking__top-bar">
                 <h3 class="customer-booking__top-label">
-                  Seat On Plane: <span>${ seat.seatNumber }</span>
+                  Seat On Plane: <span><%= seat.getSeatNumber()%></span>
                 </h3>
                 <h3 class="customer-booking__top-label">
-                  Class: <span> ${seat.fareClass} </span>
+                  Class: <span> <%= seat.getFareClass()%> </span>
                 </h3>
                 <h3 class="customer-booking__top-label">
-                  Ticket Price: <span> ${seat.price} VND</span>
+                  Ticket Price: <span> <%= seat.getPrice() %> VND</span>
                 </h3>
               </div>
                 <input type="hidden" name="seatid" value="<%= seat.getSeatID() %>" />
@@ -153,8 +157,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 <%}
             %>
             <input type="hidden" name="action" value="submit_ticket">
-            <div class="customer-booking__btn-wrap">
-                <button class="customer-booking__btn">Go to payment</button>
+            <div  class="customer-booking__btn-wrap">
+                <button type="Submit" class="customer-booking__btn">Go to payment</button>
           </div>
           </form>
           </div>

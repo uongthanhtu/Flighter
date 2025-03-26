@@ -80,9 +80,8 @@ public class PaymentController extends HttpServlet {
                     for (Integer seatid : listseatid) {
                         seatDao.updateSeatStatus(seatid, "Booked");
                     }
-                   
                     for (Integer ticketid : listticketid) {
-                        ticketDao.updateTicketStatus(ticketid, "Checked-in");
+                        ticketDao.updateTicketStatus(ticketid, "Booked");
                     }
                     transSuccess = true;
                 } else {

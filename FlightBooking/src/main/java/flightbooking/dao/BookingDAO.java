@@ -106,7 +106,7 @@ public class BookingDAO {
         Connection conn = DBUtils.getConnection();
         List<Integer> list = new ArrayList<>();
         try {
-            String sql = " SELECT  s.seatID FROM booking b JOIN ticket t ON b.bookingID = t.bookingID "
+            String sql = " SELECT t.ticketID FROM booking b JOIN ticket t ON b.bookingID = t.bookingID "
                     + " WHERE b.bookingID = ? ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, bookingid);
@@ -115,7 +115,7 @@ public class BookingDAO {
                 list.add(rs.getInt(1));
             }
         } catch (Exception e) {
-            System.out.println("Get all seatID by bookingID is error. Details: " + e.getMessage());
+            System.out.println("Get all ticketid by bookingID is error. Details: " + e.getMessage());
         }
         return list;
     }

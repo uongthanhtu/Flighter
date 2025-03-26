@@ -10,6 +10,7 @@ import flightbooking.dao.BookingDAO;
 import flightbooking.dao.FlightDAO;
 import flightbooking.dao.SeatDAO;
 import flightbooking.dao.TicketDAO;
+import flightbooking.dao.TicketHistoryDAO;
 import flightbooking.model.BookingDTO;
 import flightbooking.model.FlightDTO;
 import flightbooking.model.SeatDTO;
@@ -97,7 +98,6 @@ public class BookingController extends HttpServlet {
             }else {
                 request.setAttribute("error", "No flights available.");
             }
-            
             request.setAttribute("departure", departure);
             request.setAttribute("arrival", arrival);
             request.setAttribute("action", "searchflight");
@@ -134,6 +134,10 @@ public class BookingController extends HttpServlet {
             request.getRequestDispatcher("seat-selected.jsp").forward(request, response);
             return;
         }else if(action.equals("customer_booking_info")){
+            if(userSession == null){ 
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
             int flightid = Integer.parseInt(request.getParameter("flightid"));
             SeatDAO seatdao = new SeatDAO();
             String[] listSeadID = request.getParameterValues("selectedSeats");
@@ -143,15 +147,20 @@ public class BookingController extends HttpServlet {
                 return;
             }
             List<SeatDTO> listseat = new ArrayList<SeatDTO>();
-            int minseatid = seatdao.getMinSeatIDByFlightID(flightid);
             for (String seatid : listSeadID) {
-                if(seatdao.getSeatBySeatID(Integer.parseInt(seatid) + minseatid - 1) != null){
-                    listseat.add(seatdao.getSeatBySeatID(Integer.parseInt(seatid) + minseatid - 1));
+                if(seatdao.getSeatBySeatID(Integer.parseInt(seatid)) != null){
+                    listseat.add(seatdao.getSeatBySeatID(Integer.parseInt(seatid)));
+                }else{
+                    System.out.println("Somthing wrong in BookingController with action = 'customer_booking_info '");
                 }
             }
             request.setAttribute("listselectseat", listseat);
             request.getRequestDispatcher("customer-booking-info.jsp").forward(request, response);
         }else if(action.equals("submit_ticket")){
+            if(userSession == null){
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
             String[] seatIDs = request.getParameterValues("seatid");
             String[] fNames = request.getParameterValues("fname");
             String[] lNames = request.getParameterValues("lname");
@@ -178,15 +187,23 @@ public class BookingController extends HttpServlet {
 
                 String flightseat = seatDao.getFlightNumberAndSeatNumber(seadID);
                 TicketDTO ticket = new TicketDTO(ticketDAO.getMaxTicketID() + 1, 
-                        arrivalTime, flightseat, price, "Booked", bookingID, seadID, pName, pPhone );
+                        arrivalTime, flightseat, price, "Pending", bookingID, seadID, pName, pPhone );
                 ticketDAO.insertTicket(ticket);
                 totalPrice += price;
             }
             booking.setTotalPrice(totalPrice);
             bookingDao.updateTotalPrice(bookingID, totalPrice);
-            
             request.setAttribute("booking", booking);
             request.getRequestDispatcher("payment.jsp").forward(request, response);
+            return;
+        }else if(action.equals("mybooking")){
+            if(userSession == null){
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+                return;
+            }
+            TicketHistoryDAO tickethisDao = new TicketHistoryDAO();
+            request.setAttribute("listtickethis", tickethisDao.getAllTicketHistoryByUserID(userSession.getUserID()) );
+            request.getRequestDispatcher("booking-history.jsp").forward(request, response);
             return;
         }
         

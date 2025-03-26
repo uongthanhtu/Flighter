@@ -1,3 +1,4 @@
+<%@page import="flightbooking.model.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -13,7 +14,6 @@
 </head>
 
 <body style="background-color: #f4f4f4; font-family: Arial, sans-serif; margin: 0; padding: 20px;">
-
 
     <section style="margin-top: 50px; text-align: center;">
         <div>
