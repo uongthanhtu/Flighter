@@ -1,0 +1,44 @@
+.payment-result {
+  margin-top: 50px;
+  text-align: center;
+
+  &__img {
+    display: block;
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  &__case {
+    padding: 20px 0;
+  }
+
+  &__status {
+    font-weight: bold;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    &--success {
+      color: #28a745;
+    }
+
+    &--failed {
+      color: #dc3545;
+    }
+  }
+
+  &__navigate-link {
+    display: inline-block;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.8rem;
+    margin: 15px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      scale: 1.1;
+      color: #fff;
+    }
+  }
+}

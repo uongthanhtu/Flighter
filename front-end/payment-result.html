@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The transaction result</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+
+  <body
+    style="
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    "
+  >
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <!-- Logo -->
+          <a href="AirportController" class="admin-logo"
+            ><img
+              src="./assets/img/airplane-flight.png"
+              alt="logo"
+              class="logo"
+            />
+            <p class="admin-logo__title">Flighter</p>
+          </a>
+
+          <div class="navbar__actions">
+            <a href="BookingController?action=mybooking" class="navbar__link"
+              >My booking</a
+            >
+            <a href="BookingController?action=searchflight" class="navbar__link"
+              >Flights</a
+            >
+            <a href="support.jsp" class="navbar__link">Support</a>
+            <a href="login.jsp" class="navbar__link">Sign in</a>
+            <a href="register.jsp" class="navbar__link">Sign up</a>
+          </div>
+          <div class="navbar__users">
+            <a
+              href="ProfileController?action=profile_details"
+              class="user__avt"
+            >
+              <img src="./assets/img/user-avt.png" alt="User avt" /> </a
+            ><a href="./AuthController?action=logout" class="user__logout__btn"
+              >Log out</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section class="payment-result">
+      <img
+        class="payment-result__img"
+        src="https://cdn2.cellphones.com.vn/insecure/rs:fill:150:0/q:90/plain/https://cellphones.com.vn/media/wysiwyg/Review-empty.png"
+        alt="Transaction Image"
+      />
+
+      <div class="payment-result__case">
+        <h3 class="payment-result__status payment-result__status--success">
+          You have successfully completed the transaction!
+          <i class="fas fa-check-circle"></i>
+        </h3>
+        <a
+          class="payment-result__navigate-link"
+          href="BookingController?action=mybooking"
+          style="background: #28a745"
+          >Back To Booking</a
+        >
+      </div>
+      <div class="payment-result__case">
+        <h3 class="payment-result__status payment-result__status--failed">
+          Transaction failed!
+        </h3>
+        <a
+          class="payment-result__navigate-link"
+          href="payment?totalBill=${requestScope.booking.totalPrice}&bookingID=${requestScope.booking.bookingID}"
+          style="background: #28a745"
+          >Back To Payment</a
+        >
+        <a
+          class="payment-result__navigate-link"
+          href="BookingController?action=mybooking"
+          style="background: #dc3545"
+          >Back To Booking</a
+        >
+      </div>
+    </section>
+  </body>
+</html>
