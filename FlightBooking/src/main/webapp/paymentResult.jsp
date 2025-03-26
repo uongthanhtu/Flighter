@@ -14,6 +14,7 @@ uri="http://java.sun.com/jsp/jstl/core" %>
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
 
   <body
