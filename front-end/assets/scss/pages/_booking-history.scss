@@ -26,7 +26,8 @@
     transition: all 0.3s ease;
 
     &:hover {
-      box-shadow:rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+        rgba(0, 0, 0, 0.23) 0px 6px 6px;
       &-class {
         color: lightgreen;
       }
@@ -52,6 +53,7 @@
 
     &__info {
       padding: 0 15px;
+      flex-grow: 1;
       &__row {
         display: flex;
         gap: 30px;
@@ -60,7 +62,6 @@
       &__col {
         flex-grow: 1;
       }
-
     }
 
     &__label {
@@ -80,4 +81,3 @@
     }
   }
 }
-
