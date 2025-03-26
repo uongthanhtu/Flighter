@@ -123,18 +123,17 @@ contentType="text/html;charset=UTF-8" language="java" %>
           <form action="BookingController">
             <% List<SeatDTO> listselectseat = (List<SeatDTO>) request.getAttribute("listselectseat");
             for (SeatDTO seat : listselectseat) {
-                pageContext.setAttribute("seat", seat);
             %>
             <div class="customer-booking__info-block">
               <div class="customer-booking__top-bar">
                 <h3 class="customer-booking__top-label">
-                  Seat On Plane: <span>${ seat.seatNumber }</span>
+                  Seat On Plane: <span><%= seat.getSeatNumber()%></span>
                 </h3>
                 <h3 class="customer-booking__top-label">
-                  Class: <span> ${seat.fareClass} </span>
+                  Class: <span> <%= seat.getFareClass()%> </span>
                 </h3>
                 <h3 class="customer-booking__top-label">
-                  Ticket Price: <span> ${seat.price} VND</span>
+                  Ticket Price: <span> <%= seat.getPrice() %> VND</span>
                 </h3>
               </div>
                 <input type="hidden" name="seatid" value="<%= seat.getSeatID() %>" />
@@ -158,8 +157,8 @@ contentType="text/html;charset=UTF-8" language="java" %>
                 <%}
             %>
             <input type="hidden" name="action" value="submit_ticket">
-            <div class="customer-booking__btn-wrap">
-                <button class="customer-booking__btn">Go to payment</button>
+            <div  class="customer-booking__btn-wrap">
+                <button type="Submit" class="customer-booking__btn">Go to payment</button>
           </div>
           </form>
           </div>
