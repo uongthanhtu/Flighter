@@ -1,6 +1,135 @@
 .booking-history {
   padding: 50px 0;
 
+  &__header,
+  &__form {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  &__form {
+    max-width: 800px;
+    align-items: center;
+  }
+
+  &__form-component {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 250px;
+  }
+
+  &__form__label {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #4b5563;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s ease;
+  }
+
+  &__form-input {
+    padding: 1rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    font-size: 1.6rem;
+    transition: all 0.2s ease;
+    background-color: #f9fafb;
+
+    &:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      background-color: #fff;
+    }
+
+    &:hover:not(:focus) {
+      border-color: #d1d5db;
+    }
+  }
+
+  .custom-select {
+    position: relative;
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      padding: 1rem 1rem;
+      padding-right: 2.5rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      font-size: 1.6rem;
+      transition: all 0.2s ease;
+      background-color: #f9fafb;
+      width: 100%;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+        border-color: #6366f1;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        background-color: #fff;
+      }
+
+      &:hover:not(:focus) {
+        border-color: #d1d5db;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      right: 1rem;
+      top: 65%;
+      width: 0.8rem;
+      height: 0.8rem;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+    }
+  }
+
+  input[type="submit"] {
+    background-color: #6366f1;
+    color: white;
+    font-weight: 500;
+    font-size: 1.6rem;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    align-self: flex-end;
+    margin-top: 1.5rem;
+
+    &:hover {
+      background-color: #4f46e5;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+
+  // Responsive adjustments
+  @media (max-width: 640px) {
+    &__form {
+      padding: 1.5rem;
+    }
+
+    &__form-component {
+      min-width: 100%;
+    }
+
+    input[type="submit"] {
+      width: 100%;
+    }
+  }
+
   &__title {
     font-size: 3rem;
     font-weight: 600;

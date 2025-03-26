@@ -41,7 +41,37 @@
     </header>
     <section class="booking-history">
       <div class="container">
-        <h2 class="booking-history__title">Booking History</h2>
+        <div class="booking-history__header">
+          <h2 class="booking-history__title">Booking History</h2>
+          <form action="" method="GET" class="booking-history__form">
+            <input type="hidden" name="action" value="booking-history-search" />
+            <div class="booking-history__form-component">
+              <label for="name" class="booking-history__form__label"
+                >Customer Name</label
+              ><input
+                type="text"
+                class="booking-history__form-input"
+                name="name"
+                id="name"
+              />
+            </div>
+            <div class="booking-history__form-component custom-select">
+              <label for="status" class="booking-history__form__label"
+                >Status</label
+              >
+              <select
+                class="booking-history__form-input"
+                id="status"
+                name="status"
+              >
+                <option value="">Select status</option>
+                <option value="Pending">Pending</option>
+                <option value="Booked">Booked</option>
+              </select>
+            </div>
+            <input type="submit" value="Search" />
+          </form>
+        </div>
         <div class="row">
           <div class="col col-12">
             <p class="booking-history__message--empty">
