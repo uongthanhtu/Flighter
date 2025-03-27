@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -138,32 +139,32 @@
               <div class="report-anal__box">
                 <i class="fas fa-user report-anal__box-icon"></i>
                 <h2 class="report-anal__box-title">Registered Users</h2>
-                <p class="report-anal__box-desc">120</p>
+                <p class="report-anal__box-desc">${requestScope.countuser}</p>
               </div>
               <div class="report-anal__box">
                 <i class="fas fa-ticket-alt report-anal__box-icon"></i>
                 <h2 class="report-anal__box-title">Tickets Booked</h2>
-                <p class="report-anal__box-desc">100</p>
+                <p class="report-anal__box-desc">${requestScope.coutnticketbooked}</p>
               </div>
               <div class="report-anal__box">
                 <i class="fas fa-dollar-sign report-anal__box-icon"></i>
                 <h2 class="report-anal__box-title">Revenue</h2>
-                <p class="report-anal__box-desc">xxx.xxx.xxx VND</p>
+                <p class="report-anal__box-desc"><fmt:formatNumber value="${requestScope.revenue}" type="number" groupingUsed="true" /> VND</p>
               </div>
               <div class="report-anal__box">
                 <i class="fas fa-plane report-anal__box-icon"></i>
                 <h2 class="report-anal__box-title">Flights Scheduled</h2>
-                <p class="report-anal__box-desc">20</p>
+                <p class="report-anal__box-desc">${requestScope.countflight}</p>
               </div>
               <div class="report-anal__box">
                 <i class="fas fa-ban report-anal__box-icon"></i>
-                <h2 class="report-anal__box-title">Cancelled Flights</h2>
-                <p class="report-anal__box-desc">2</p>
+                <h2 class="report-anal__box-title">Tickets Pending</h2>
+                <p class="report-anal__box-desc">${requestScope.coutnticketpending}</p>
               </div>
               <div class="report-anal__box">
                 <i class="fas fa-clock report-anal__box-icon"></i>
-                <h2 class="report-anal__box-title">Delayed Flights</h2>
-                <p class="report-anal__box-desc">10</p>
+                <h2 class="report-anal__box-title">Seat Occupancy Rate</h2>
+                <p class="report-anal__box-desc">${requestScope.seatrate} %</p>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@page import="flightbooking.model.TicketHistoryDTO"%>
 <%@page import="flightbooking.model.UserDTO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -100,7 +101,7 @@
               <ul class="payment__price-ticket-list">
                 <li class="payment__price--style payment__price__ticket__item">
                   <span><%= ticket.getFareClass() %> (x1)</span>
-                  <span><%= ticket.getPrice() %> VND</span>
+                  <span><fmt:formatNumber value="<%= ticket.getPrice() %>" type="number" groupingUsed="true" /> VND</span>
                 </li>
               </ul>
            
@@ -111,7 +112,7 @@
             <div class="payment__total">       
               <div class="payment__price--style payment__total-price">
                 <span>Total</span>
-                <span><%= totalPrice %> VND</span>
+                <span><fmt:formatNumber value="<%= totalPrice %>" type="number" groupingUsed="true" /> VND</span>
               </div>
             </div>
           </div>
