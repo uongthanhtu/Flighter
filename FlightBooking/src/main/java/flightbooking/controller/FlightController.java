@@ -80,7 +80,7 @@ public class FlightController extends HttpServlet {
         else if(action.equals("addflight")){
             request.setAttribute("nextaction", "insertflight");
             request.setAttribute("flightid", flightDao.getMaxFlightID() + 1);
-            request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
+            request.getRequestDispatcher("AirportController").forward(request, response);
             return;
         }
         else if(action.equals("insertflight")){
@@ -111,7 +111,7 @@ public class FlightController extends HttpServlet {
             } catch (Exception e) {
                 System.out.println("Details : "+ e.getMessage());
                 request.setAttribute("errortime", "Please enter the correct time format.");
-                request.getRequestDispatcher("adminflightedit.jsp");
+                request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
                 return;
             }
             String airline = request.getParameter("airline");
@@ -148,7 +148,7 @@ public class FlightController extends HttpServlet {
                 return;
             }else{
                 request.setAttribute("error", "Something went wrong, the server cannot insert.....");
-                request.getRequestDispatcher("adminflightedit.jsp");
+                request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
                 return;
             }
         }
@@ -163,7 +163,7 @@ public class FlightController extends HttpServlet {
             request.setAttribute("departuretime", flight.getDepartureTime().format(formatter));
             request.setAttribute("arrivaltime", flight.getArrivalTime().format(formatter));
             request.setAttribute("flight", flight);
-            request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
+            request.getRequestDispatcher("AirportController").forward(request, response);
             return;
         }
         else if(action.equals("updateflight")){
