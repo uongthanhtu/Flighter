@@ -2296,6 +2296,309 @@ strong {
   font-weight: 700;
 }
 
+.header-flight-details {
+  margin-top: 120px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+.header-flight-details__title {
+  font-size: 24px;
+  font-weight: 700;
+  color: rgb(92, 225, 230);
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f8f9fa;
+  padding-bottom: 20px;
+}
+
+.flight-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.flight-info-item {
+  flex: 1;
+  min-width: 200px;
+}
+.flight-info-item__title {
+  font-size: 20px;
+  color: #212529;
+  margin-bottom: 20px;
+}
+.flight-info-item__desc {
+  margin: 10px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+:root {
+  --primary: ;
+  --secondary: #8338ec;
+  --success: #38b000;
+  --danger: #ff006e;
+  --warning: #ffbe0b;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --economy: #8ecae6;
+  --premium: #219ebc;
+  --business: #023047;
+  --first: #ffb703;
+}
+
+.seat-ticket-list {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+.seat-ticket-list__title {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(92, 225, 230);
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f8f9fa;
+  padding-bottom: 10px;
+}
+.seat-ticket-list__filter {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.seat-ticket-list__search-box {
+  flex: 1;
+  min-width: 250px;
+}
+.seat-ticket-list__search-box-input {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.seat-ticket-list__form-btn {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: rgb(92, 225, 230);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.filter-box {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filter-box select {
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: white;
+}
+
+:root {
+  --primary: ;
+  --secondary: #8338ec;
+  --success: #38b000;
+  --danger: #ff006e;
+  --warning: #ffbe0b;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --economy: #8ecae6;
+  --premium: #219ebc;
+  --business: #023047;
+  --first: #ffb703;
+}
+
+.seat-ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+.seat-ticket-table th,
+.seat-ticket-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+.seat-ticket-table th {
+  background-color: var(--light);
+  font-weight: bold;
+  color: var(--dark);
+}
+.seat-ticket-table tr:hover {
+  background-color: #f5f5f5;
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-booked {
+  background-color: #38b000;
+  color: white;
+}
+
+.status-available {
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #ddd;
+}
+
+.class-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.class-economy {
+  background-color: #219ebc;
+  color: white;
+}
+
+.class-business {
+  background-color: #ffb703;
+  color: white;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.seat-ticket-list__btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+.seat-ticket-list__btn--edit {
+  background-color: rgb(92, 225, 230);
+  color: white;
+}
+.seat-ticket-list__btn--edit:hover {
+  background-color: #2a75e0;
+}
+.seat-ticket-list__btn--delete {
+  background-color: #ff006e;
+  color: white;
+}
+.seat-ticket-list__btn--delete:hover {
+  background-color: #d90057;
+}
+
+.seat-ticket-list__pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+.seat-ticket-list__pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.seat-ticket-list__pagination-btn--active {
+  background-color: rgb(92, 225, 230);
+  color: white;
+  border-color: rgb(92, 225, 230);
+}
+.seat-ticket-list__pagination-btn:hover:not(
+    .seat-ticket-list__pagination-btn--active
+  ) {
+  background-color: var(--light);
+}
+
+.seat-form {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.seat-form__title {
+  font-size: 24px;
+  font-weight: 600;
+  color: rgb(92, 225, 230);
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--light);
+  padding-bottom: 10px;
+}
+.seat-form__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.seat-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.seat-form__group label {
+  font-weight: bold;
+  color: #333;
+}
+.seat-form__group input,
+.seat-form__group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+.seat-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.seat-form__btn {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.seat-form__btn-large {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.seat-form__btn--primary {
+  background-color: rgb(92, 225, 230);
+  color: white;
+}
+.seat-form__btn--primary:hover {
+  background-color: #2a75e0;
+}
+.seat-form__btn--secondary {
+  background-color: white;
+  color: #333;
+  border: 1px solid #ddd;
+}
+.seat-form__btn--secondary:hover {
+  background-color: #e9ecef;
+}
+
 .admin-header {
   top: 0;
   right: 0;
@@ -3643,7 +3946,7 @@ a {
   box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.15);
 }
 .customer-booking__info-input::placeholder {
-  color: rgb(127.5, 127.5, 127.5);
+  color: gray;
 }
 .customer-booking__btn {
   display: inline-block;
@@ -3668,8 +3971,8 @@ a {
 }
 .customer-booking__btn:hover,
 .customer-booking__btn:focus {
-  background-color: rgb(34.926984127, 76.2666666667, 245.273015873);
-  border-color: rgb(34.926984127, 76.2666666667, 245.273015873);
+  background-color: #234cf5;
+  border-color: #234cf5;
   box-shadow: 0 6px 12px rgba(74, 108, 247, 0.25);
   transform: translateY(-2px);
   color: #fff;
@@ -3713,6 +4016,7 @@ a {
 }
 .booking-history {
   padding: 50px 0;
+
 }
 .booking-history__header,
 .booking-history__form {
@@ -3868,6 +4172,7 @@ a {
 }
 .booking-history__ticket__info {
   padding: 0 15px;
+
   flex-grow: 1;
 }
 .booking-history__ticket__info__row {
