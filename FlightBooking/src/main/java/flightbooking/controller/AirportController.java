@@ -48,7 +48,7 @@ public class AirportController extends HttpServlet {
             UserDTO adminsession =  (UserDTO) session.getAttribute("adminsession");
             if(adminsession != null){
                 String nextaction = (String) request.getAttribute("nextaction");
-                if("insertflight".equals(nextaction) || "updateflight".equals(nextaction)){
+                if("insertflight".equals(nextaction) || "updateflight".equals(nextaction) || "insertflight".equals(nextaction)){
                     AirportDAO dao = new AirportDAO();
                     List<Map<String, String>> airports = (List<Map<String, String>>) dao.loadAllAirport();   
                     request.setAttribute("airports", airports);

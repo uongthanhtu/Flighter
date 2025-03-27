@@ -187,11 +187,10 @@
               </label>
               <label class="radio-label">
                 <input
-                  type="radio"
+                  type="text"
                   name="ticket-price"
                   id="business-class-ticket"
                 />
-                <span class="custom-radio"></span>
                 <span class="flight--ticket--price">${requestScope.flightobject.businessPrice} VND</span>
               </label>
 
@@ -201,11 +200,10 @@
 
               <label class="radio-label">
                 <input
-                  type="radio"
+                  type="text"
                   name="ticket-price"
                   id="business-class-ticket"
                 />
-                <span class="custom-radio"></span>
                 <span class="flight--ticket--price">${requestScope.flightobject.economyPrice} VND</span>
               </label>
             </form>

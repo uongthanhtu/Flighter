@@ -81,8 +81,8 @@ public class FlightDAO {
                     + " flightNumber = ? , adminID = ? WHERE flightID = ? ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, flight.getAirline());
-            ps.setInt(2, flight.getArrivalID());
-            ps.setInt(3, flight.getDepartureID());
+            ps.setInt(2, flight.getDepartureID());
+            ps.setInt(3, flight.getArrivalID());
             ps.setTimestamp(4, Timestamp.valueOf(flight.getDepartureTime()));
             ps.setTimestamp(5, Timestamp.valueOf(flight.getArrivalTime()));
             ps.setInt(6, flight.getTotalSeats());
@@ -186,6 +186,7 @@ public class FlightDAO {
             if(departurtime != null){
                 sql += " AND CONVERT(DATE, departuretTime) = ? " ;
             }
+            sql += " AND flightStatus = 'Open' ";
             PreparedStatement ps = conn.prepareStatement(sql);
             if(departureID > 0){
                 ps.setInt(counindex++, departureID);
@@ -222,12 +223,13 @@ public class FlightDAO {
         return listFlight;
     }
     
-    public boolean deleteFlight (int flightID){
+    public boolean deleteFlight (int flightID, String flightStatus){
         Connection conn = DBUtils.getConnection();
         try {
-            String sql = " DELETE FROM flight WHERE flightID = ? ";
+            String sql = " UPDATE flight SET flightStatus = ? WHERE flightID = ? ";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, flightID);
+            ps.setString(1, flightStatus);
+            ps.setInt(2, flightID);
             ps.executeUpdate();
             conn.close();
         } catch (Exception e) {

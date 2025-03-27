@@ -85,8 +85,12 @@
     />
     <link rel="stylesheet" href="./assets/css/main.css" />
     <style>
+        .flight-edit__form-group {
+            position: relative;
+        }
       .autocomplete-list {
         position: absolute;
+        top: 37px;
         background: white;
         border: 1px solid #ddd;
         max-height: 200px;
@@ -94,7 +98,7 @@
         z-index: 1000;
       }
       .autocomplete-item {
-        padding: 5px;
+        padding: 7px;
         cursor: pointer;
       }
       .autocomplete-item:hover {
@@ -205,8 +209,9 @@
                     value="${requestScope.departurename}"
                     required
                   />
+                  <div id="departure-list" class="autocomplete-list"></div>
                 </div>
-                <div id="departure-list" class="autocomplete-list"></div>
+                
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
                     >Arrival Airport</label
@@ -220,9 +225,9 @@
                     value="${requestScope.arrivalname}"
                     required
                   />
-                  
+                  <div id="arrival-list" class="autocomplete-list"></div>
                 </div>
-                    <div id="arrival-list" class="autocomplete-list"></div>
+                
               </div>
               <div class="row">
                 <div class="flight-edit__form-group col-6">
@@ -273,8 +278,8 @@
                     type="text"
                     placeholder="Enter Aircraft Type"
                     name="aircraftType"
-                    value="${requestScope.flight.aircraftType}"
-                    required
+                    value="Flighter 878"
+                    readonly
                   />
                 </div>
               </div>
@@ -331,7 +336,7 @@
                     min="0"
                     type="number"
                     name="baggageAllow"
-                    placeholder="Enter Price"
+                    placeholder="Enter Baggage"
                     value="${requestScope.flight.baggageAllow}"
                     required
                   />
@@ -345,9 +350,8 @@
                     min="1"
                     type="number"
                     name="totalSeat"
-                    placeholder="Enter Price"
-                    value="${requestScope.flight.totalSeats}"
-                    required
+                    value ="120"
+                    readonly
                   />
                 </div>
               </div>

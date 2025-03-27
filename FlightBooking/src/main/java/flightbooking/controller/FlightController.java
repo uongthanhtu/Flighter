@@ -98,7 +98,7 @@ public class FlightController extends HttpServlet {
                     request.setAttribute("errorarrival", "Please enter an existing arrival airport name.");    
                 }
                 request.setAttribute("nextaction", "insertflight");
-                request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
+                request.getRequestDispatcher("AirportController").forward(request, response);
                 return;
             }
             String departureDateTimeInput = request.getParameter("departuredatetime");
@@ -110,8 +110,9 @@ public class FlightController extends HttpServlet {
                 arrivalDateTime = LocalDateTime.parse(arrivalDateTimeInput , formatter);
             } catch (Exception e) {
                 System.out.println("Details : "+ e.getMessage());
+                request.setAttribute("nextaction", "insertflight");
                 request.setAttribute("errortime", "Please enter the correct time format.");
-                request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
+                request.getRequestDispatcher("AirportController").forward(request, response);
                 return;
             }
             String airline = request.getParameter("airline");
@@ -224,7 +225,7 @@ public class FlightController extends HttpServlet {
                 if(seatlist != null){
                     seatdao.deleteSeat(seatlist);
                 }
-                if(flightDao.deleteFlight(flightId)){
+                if(flightDao.deleteFlight(flightId, "Canceled")){
                     response.sendRedirect("AdminController?action=flightlist");
                     return;
                 }else{

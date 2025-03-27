@@ -53,13 +53,13 @@
         </div>
       </header>
     <section class="booking-seat">
-      <form action="BookingController" method="GET">
-        <div class="booking-seat__container">
-            <% String seaterror = (String) request.getAttribute("seaterror");
+        <% String seaterror = (String) request.getAttribute("seaterror");
                 if(seaterror != null && !seaterror.isEmpty()){%>
                 <h5 style="color: red"> <%= seaterror %> </h5>
                 <%}
             %>
+      <form action="BookingController" method="GET">
+        <div class="booking-seat__container">
           <div class="booking-seat__wrapper">
               <h3 class="booking-seat__flight-title">FLIGHT: ${requestScope.flightnumber}</h3>
             <div class="seats__container" id="seat-container"></div>

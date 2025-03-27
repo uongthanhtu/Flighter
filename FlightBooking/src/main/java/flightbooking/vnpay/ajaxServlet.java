@@ -41,6 +41,7 @@ public class ajaxServlet extends HttpServlet {
             int flightid = flightdao.getFlightIDByBookingID(bookingID);
             req.setAttribute("seaterror", "The seat you selected has already been booked by another passenger. Please choose a different seat.");
             req.getRequestDispatcher("BookingController?action=selecteseat&flightid="+flightid).forward(req, resp);
+            return;
         }
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
