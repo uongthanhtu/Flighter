@@ -5,25 +5,26 @@
  */
 package flightbooking.controller;
 
-import flightbooking.dao.AirportDAO;
-import flightbooking.dao.FlightDAO;
-import flightbooking.dao.SeatDAO;
-import flightbooking.model.FlightDTO;
-import flightbooking.model.SeatDTO;
-import flightbooking.model.UserDTO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import flightbooking.dao.AirportDAO;
+import flightbooking.dao.FlightDAO;
+import flightbooking.dao.SeatDAO;
+import flightbooking.model.FlightDTO;
+import flightbooking.model.SeatDTO;
+import flightbooking.model.UserDTO;
 
 /**
  *
@@ -235,21 +236,12 @@ public class FlightController extends HttpServlet {
             int flightId = Integer.parseInt(request.getParameter("flightid"));
             FlightDTO flight = null;
             flight = flightDao.loadFlightById(flightId);
-
             if (flight != null) {
                 SeatDAO seatdao = new SeatDAO();
                 List<Integer> seatlist = seatdao.getListSeatIDByFlightID(flightId);
-                if (seatlist != null) {
-                    seatdao.deleteSeat(seatlist);
-                }
-                if (flightDao.deleteFlight(flightId)) {
-                    response.sendRedirect("AdminController?action=flightlist");
-                    return;
-                } else {
-                    request.setAttribute("error", "Something went wrong, the server cannot insert.....");
-                    request.getRequestDispatcher("adminflightlist.jsp");
-                    return;
-                }
+                request.setAttribute("seatlist", seatlist);
+                request.setAttribute("flight", flight);
+                request.getRequestDispatcher("ticket-list.jsp").forward(request, response);
             }
 
         }

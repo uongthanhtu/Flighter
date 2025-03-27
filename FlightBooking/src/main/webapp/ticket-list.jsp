@@ -1,3 +1,5 @@
+<%@ page import="flightbooking.model.SeatDTO" %>
+<%@ page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -56,23 +58,23 @@
           <div class="flight-info">
             <div class="flight-info-item">
               <h3 class="flight-info-item__title">Flight ID</h3>
-              <p class="flight-info-item__desc">FL-1234</p>
+              <p class="flight-info-item__desc">${requestScope.flight.flightID}</p>
             </div>
             <div class="flight-info-item">
               <h3 class="flight-info-item__title">From</h3>
-              <p class="flight-info-item__desc">New York (JFK)</p>
+              <p class="flight-info-item__desc">${requestScope.flight.departureID}</p>
             </div>
             <div class="flight-info-item">
               <h3 class="flight-info-item__title">To</h3>
-              <p class="flight-info-item__desc">London (LHR)</p>
+              <p class="flight-info-item__desc">${requestScope.flight.arrivalID}</p>
             </div>
             <div class="flight-info-item">
               <h3 class="flight-info-item__title">Date</h3>
-              <p class="flight-info-item__desc">March 25, 2025</p>
+              <p class="flight-info-item__desc">${requestScope.flight.departureTime}</p>
             </div>
             <div class="flight-info-item">
               <h3 class="flight-info-item__title">Time</h3>
-              <p class="flight-info-item__desc">10:00 AM</p>
+              <p class="flight-info-item__desc">${requestScope.flight.departureTime}</p>
             </div>
           </div>
         </section>
@@ -80,7 +82,7 @@
       <div class="container">
         <section class="seat-ticket-list">
           <h2 class="seat-ticket-list__title">Seat List</h2>
-          <form class="seat-ticket-list__form" action="">
+          <form class="seat-ticket-list__form" action="SeatController">
             <div class="seat-ticket-list__filter">
               <div class="seat-ticket-list__search-box">
                 <input
@@ -122,44 +124,58 @@
               </tr>
             </thead>
             <tbody>
+              <%
+                List<SeatDTO> seatlist = (List<SeatDTO>)request.getAttribute("seatlist");
+                if(seatlist != null || seatlist.isEmpty()){
+                  for (SeatDTO seat : seatlist) {
+                    pageContext.setAttribute("seat",seat);
+
+              %>
               <tr>
-                <td>FL-1234</td>
-                <td>1A</td>
-                <td>John Smith</td>
+                <td>${seat.seatID}</td>
+                <td>${seat.seatNumber}</td>
+                <td>HUHU</td>
                 <td>
-                  <span class="class-badge class-business">Business</span>
+                  <span class="class-badge ${seat.fareClass.equals("business")?"class-business": "class-economy" } ">${seat.fareClass}</span>
                 </td>
                 <td>
-                  <span class="status-badge status-booked">Booked</span>
+                  <span class="status-badge  ${seat.seatStatus.equals("booked")?"status-booked": "status-available" }">${seat.seatStatus}</span>
                 </td>
                 <td>
                   <div class="action-buttons">
-                    <button
-                      class="seat-ticket-list__btn seat-ticket-list__btn--edit"
+                    <a
+                            class="seat-ticket-list__btn seat-ticket-list__btn--edit"
+                            href=""
                     >
                       Edit
-                    </button>
-                    <button
-                      class="seat-ticket-list__btn seat-ticket-list__btn--delete"
+                    </a>
+                    <a
+                            class="seat-ticket-list__btn seat-ticket-list__btn--delete"
+                            href=""
                     >
                       Delete
-                    </button>
+                    </a>
                   </div>
                 </td>
               </tr>
+            <%
+              }
+              }
+            %>
             </tbody>
           </table>
 
           <div class="seat-ticket-list__pagination">
-            <button class="seat-ticket-list__pagination-btn">Previous</button>
-            <button
+            <a href="seat-ticket-list__pagination-btn">Previous</a>
+            <a
+              href=""
               class="seat-ticket-list__pagination-btn seat-ticket-list__pagination-btn--active"
             >
               1
-            </button>
-            <button class="seat-ticket-list__pagination-btn">2</button>
-            <button class="seat-ticket-list__pagination-btn">3</button>
-            <button class="seat-ticket-list__pagination-btn">Next</button>
+            </a>
+            <a href="" class="seat-ticket-list__pagination-btn">2</a>
+            <a href="" class="seat-ticket-list__pagination-btn">3</a>
+            <a href="" class="seat-ticket-list__pagination-btn">Next</a>
           </div>
         </section>
       </div>

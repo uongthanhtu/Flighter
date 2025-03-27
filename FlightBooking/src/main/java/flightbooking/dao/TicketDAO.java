@@ -8,10 +8,7 @@ package flightbooking.dao;
 import flightbooking.model.TicketDTO;
 import flightbooking.utils.DBUtils;
 import java.net.ConnectException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.Timestamp;
+import java.sql.*;
 
 /**
  *
@@ -73,6 +70,21 @@ public class TicketDAO {
         } catch (Exception e) {
             System.out.println("Update ticket status is error, Details: " + e.getMessage());
         }
+    }
+    public String getPassegerBySeatID (String seatID){
+        Connection conn = DBUtils.getConnection();
+        try {
+            String sql = " SELECT passengerName FROM ticket WHERE seatID = ? ";
+            PreparedStatement ptm = conn.prepareStatement(sql);
+            ptm.setString(1,seatID);
+            ResultSet rs = ptm.executeQuery();
+            if(rs.next()){
+                return rs.getString("passengerName");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return "";
     }
     
 }
