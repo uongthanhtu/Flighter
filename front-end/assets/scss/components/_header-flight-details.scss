@@ -1,0 +1,37 @@
+.header-flight-details {
+  margin-top: 120px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    color: rgb(92, 225, 230);
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f8f9fa;
+    padding-bottom: 20px;
+  }
+}
+
+.flight-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  &-item {
+    flex: 1;
+    min-width: 200px;
+    &__title {
+      font-size: 20px;
+      color: #212529;
+      margin-bottom: 20px;
+    }
+    &__desc {
+      margin: 10px 0;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  }
+}

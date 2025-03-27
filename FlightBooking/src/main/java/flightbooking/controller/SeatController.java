@@ -1,11 +1,11 @@
-package flightbooking.controller;
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+package flightbooking.controller;
 
+import flightbooking.dao.FlightDAO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,10 +18,10 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author ADMIN
+ * @author PC
  */
-@WebServlet(urlPatterns = {"/AdminController"})
-public class AdminController extends HttpServlet {
+@WebServlet(name = "SeatController", urlPatterns = {"/SeatController"})
+public class SeatController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,35 +35,28 @@ public class AdminController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String action = request.getParameter("action");
-        HttpSession session = request.getSession(false);
-        
-        if(session != null){
-            UserDTO adminsession =  (UserDTO) session.getAttribute("adminsession");
-            if(adminsession == null){
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            String action = request.getParameter("action");
+            HttpSession session = request.getSession(false);
+            UserDTO adminsession = null;
+            if (session != null) {
+                adminsession = (UserDTO) session.getAttribute("adminsession");
+                if (adminsession == null) {
+                    request.getRequestDispatcher("AirportController").forward(request, response);
+                    return;
+                }
+            } else {
                 request.getRequestDispatcher("AirportController").forward(request, response);
                 return;
             }
-        }else{
-            request.getRequestDispatcher("AirportController").forward(request, response);
-            return;
+            if(action == null || action.equals("detailflight")){
+                action
+                FlightDAO flightdao = new FlightDAO();
+                
+                
+            }
         }
-        if(action == null || action.equals("flightlist")){
-            request.getRequestDispatcher("FlightController").forward(request, response);
-            return;
-        }else if(action.equals("addflight")){  
-            request.getRequestDispatcher("FlightController").forward(request, response);
-            return;
-        }else if (action.equals("editaccount")){
-            request.getRequestDispatcher("adminaccountmanager.jsp").forward(request, response);
-            return;
-        }else if(action.equals("reportflight")){
-            request.getRequestDispatcher("adminreportflight.jsp").forward(request, response);
-            return;
-        }else if(action.equals("accountlist")){
-            request.getRequestDispatcher("UserController").forward(request, response);
-            return;
-        }    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

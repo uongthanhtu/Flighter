@@ -1,0 +1,147 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="container">
+        <div class="admin-header__inner">
+          <a href="" class="admin-logo">
+            <img
+              src="./assets/img/airplane-flight.png"
+              alt=""
+              class="admin-logo__img"
+            />
+            <p class="admin-logo__title">Flighter</p>
+          </a>
+          <nav class="admin-navbar">
+            <a
+              href="./adminflightlist.html"
+              class="admin-navbar__item admin-navbar__item--active"
+              >DashBoard</a
+            >
+            <a href="./adminflightedit.html" class="admin-navbar__item"
+              >Add Flight</a
+            >
+            <a href="./adminaccountmanager.html" class="admin-navbar__item"
+              >Account</a
+            >
+            <a href="./adminreportflight.html" class="admin-navbar__item"
+              >Reports & Analytics</a
+            >
+          </nav>
+          <!-- Action -->
+          <div class="admin-header__avatar">
+            <a href="#!" class="admin-header__name">Admin</a>
+            <img
+              src="./assets/img/tourist-attraction.jpg"
+              alt=""
+              class="admin-header__img"
+            />
+            <a class="admin-header__btn" href="">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <section class="header-flight-details">
+          <h2 class="header-flight-details__title">Flight Information</h2>
+          <div class="flight-info">
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">Flight ID</h3>
+              <p class="flight-info-item__desc">FL-1234</p>
+            </div>
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">From</h3>
+              <p class="flight-info-item__desc">New York (JFK)</p>
+            </div>
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">To</h3>
+              <p class="flight-info-item__desc">London (LHR)</p>
+            </div>
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">Date</h3>
+              <p class="flight-info-item__desc">March 25, 2025</p>
+            </div>
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">Time</h3>
+              <p class="flight-info-item__desc">10:00 AM</p>
+            </div>
+          </div>
+        </section>
+        <section>
+          <form class="seat-form">
+            <h2 class="seat-form__title">Edit Seat</h2>
+            <input type="hidden" name="flightID" value="FL-1234" />
+            <div class="seat-form__grid">
+              <div class="seat-form__group">
+                <label for="seatID">Seat ID</label>
+                <input
+                  type="text"
+                  name="seatID"
+                  id="seatID"
+                  value="FL-1234A1"
+                  readonly
+                />
+              </div>
+              <div class="seat-form__group">
+                <label for="seatNumber">Seat Number</label>
+                <input type="text" id="seatNumber" value="A1" readonly />
+              </div>
+              <div class="seat-form__group">
+                <label for="passengerName">Passenger Name</label>
+                <input
+                  type="text"
+                  id="passengerName"
+                  name="passengerName"
+                  value="John Smith"
+                />
+              </div>
+              <div class="seat-form__group">
+                <label for="ticketClass">Ticket Class</label>
+                <select id="ticketClass" readonly>
+                  <option value="business" selected>Business</option>
+                  <option value="economy">Economy</option>
+                </select>
+              </div>
+              <div class="seat-form__group">
+                <label for="status">Status</label>
+                <select id="status" readonly>
+                  <option value="booked" selected>Booked</option>
+                  <option value="available">Available</option>
+                </select>
+              </div>
+            </div>
+            <div class="seat-form__actions">
+              <button
+                class="seat-form__btn seat-form__btn-large seat-form__btn--secondary"
+                id="seat-edit-cancel-btn"
+              >
+                Cancel
+              </button>
+              <button
+                class="seat-form__btn seat-form__btn-large seat-form__btn--primary"
+              >
+                Save Changes
+              </button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+    <script>
+      const seatEditCanCelBtn = document.getElementById("seat-edit-cancel-btn");
+      seatEditCanCelBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.history.back();
+      });
+    </script>
+  </body>
+</html>

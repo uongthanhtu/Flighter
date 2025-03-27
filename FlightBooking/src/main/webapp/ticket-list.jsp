@@ -1,0 +1,168 @@
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="admin-header">
+      <div class="container">
+        <div class="admin-header__inner">
+          <a href="" class="admin-logo">
+            <img
+              src="./assets/img/airplane-flight.png"
+              alt=""
+              class="admin-logo__img"
+            />
+            <p class="admin-logo__title">Flighter</p>
+          </a>
+          <nav class="admin-navbar">
+            <a
+              href="./adminflightlist.html"
+              class="admin-navbar__item admin-navbar__item--active"
+              >DashBoard</a
+            >
+            <a href="./adminflightedit.html" class="admin-navbar__item"
+              >Add Flight</a
+            >
+            <a href="./adminaccountmanager.html" class="admin-navbar__item"
+              >Account</a
+            >
+            <a href="./adminreportflight.html" class="admin-navbar__item"
+              >Reports & Analytics</a
+            >
+          </nav>
+          <!-- Action -->
+          <div class="admin-header__avatar">
+            <a href="#!" class="admin-header__name">Admin</a>
+            <img
+              src="./assets/img/tourist-attraction.jpg"
+              alt=""
+              class="admin-header__img"
+            />
+            <a class="admin-header__btn" href="">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <section class="header-flight-details">
+          <h2 class="header-flight-details__title">Flight Information</h2>
+          <div class="flight-info">
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">Flight ID</h3>
+              <p class="flight-info-item__desc">FL-1234</p>
+            </div>
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">From</h3>
+              <p class="flight-info-item__desc">New York (JFK)</p>
+            </div>
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">To</h3>
+              <p class="flight-info-item__desc">London (LHR)</p>
+            </div>
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">Date</h3>
+              <p class="flight-info-item__desc">March 25, 2025</p>
+            </div>
+            <div class="flight-info-item">
+              <h3 class="flight-info-item__title">Time</h3>
+              <p class="flight-info-item__desc">10:00 AM</p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="container">
+        <section class="seat-ticket-list">
+          <h2 class="seat-ticket-list__title">Seat List</h2>
+          <form class="seat-ticket-list__form" action="">
+            <div class="seat-ticket-list__filter">
+              <div class="seat-ticket-list__search-box">
+                <input
+                  class="seat-ticket-list__search-box-input"
+                  type="text"
+                  name="passengerName"
+                  placeholder="Search by seat number or Passenger Name..."
+                />
+              </div>
+              <div class="filter-box">
+                <select name="status">
+                  <option value="">All Statuses</option>
+                  <option value="booked">Booked</option>
+                  <option value="available">Available</option>
+                </select>
+                <select name="fareClass">
+                  <option value="">All Classes</option>
+                  <option value="economy">Economy</option>
+                  <option value="business">Business</option>
+                </select>
+              </div>
+              <input
+                class="seat-ticket-list__form-btn"
+                type="submit"
+                value="Search"
+              />
+            </div>
+          </form>
+
+          <table class="seat-ticket-table">
+            <thead>
+              <tr>
+                <th>Seat ID</th>
+                <th>Seat Number</th>
+                <th>Passenger Name</th>
+                <th>Ticket Class</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>FL-1234</td>
+                <td>1A</td>
+                <td>John Smith</td>
+                <td>
+                  <span class="class-badge class-business">Business</span>
+                </td>
+                <td>
+                  <span class="status-badge status-booked">Booked</span>
+                </td>
+                <td>
+                  <div class="action-buttons">
+                    <button
+                      class="seat-ticket-list__btn seat-ticket-list__btn--edit"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="seat-ticket-list__btn seat-ticket-list__btn--delete"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="seat-ticket-list__pagination">
+            <button class="seat-ticket-list__pagination-btn">Previous</button>
+            <button
+              class="seat-ticket-list__pagination-btn seat-ticket-list__pagination-btn--active"
+            >
+              1
+            </button>
+            <button class="seat-ticket-list__pagination-btn">2</button>
+            <button class="seat-ticket-list__pagination-btn">3</button>
+            <button class="seat-ticket-list__pagination-btn">Next</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

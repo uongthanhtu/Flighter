@@ -1,0 +1,123 @@
+:root {
+  --primary: ;
+  --secondary: #8338ec;
+  --success: #38b000;
+  --danger: #ff006e;
+  --warning: #ffbe0b;
+  --light: #f8f9fa;
+  --dark: #212529;
+  --economy: #8ecae6;
+  --premium: #219ebc;
+  --business: #023047;
+  --first: #ffb703;
+}
+.seat-ticket-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  & th,
+  & td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  & th {
+    background-color: var(--light);
+    font-weight: bold;
+    color: var(--dark);
+  }
+
+  & tr:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.status-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.status-booked {
+  background-color: #38b000;
+  color: white;
+}
+
+.status-available {
+  background-color: #f8f9fa;
+  color: #212529;
+  border: 1px solid #ddd;
+}
+
+.class-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.class-economy {
+  background-color: #219ebc;
+  color: white;
+}
+
+.class-business {
+  background-color: #ffb703;
+  color: white;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 5px;
+}
+
+.seat-ticket-list__btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  &--edit {
+    background-color: rgb(92, 225, 230);
+    color: white;
+    &:hover {
+      background-color: #2a75e0;
+    }
+  }
+  &--delete {
+    background-color: #ff006e;
+    color: white;
+    &:hover {
+      background-color: #d90057;
+    }
+  }
+}
+
+.seat-ticket-list__pagination {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 20px;
+
+  &-btn {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    &--active {
+      background-color: rgb(92, 225, 230);
+      color: white;
+      border-color: rgb(92, 225, 230);
+    }
+  }
+
+  &-btn:hover:not(&-btn--active) {
+    background-color: var(--light);
+  }
+}

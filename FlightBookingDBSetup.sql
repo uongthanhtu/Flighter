@@ -73,7 +73,7 @@ CREATE TABLE payment(
 )
 
 BULK INSERT airport
-FROM 'D:\PRJ\Asm_Project\prj301-25sp-se1832-01\data\airports_fixed.csv'
+FROM 'D:\HoaiPhuongCoder\AssignmentPRJ\prj301-25sp-se1832-01\data\airports_fixed.csv'
 WITH (
     FIELDTERMINATOR = ',',
     ROWTERMINATOR = '\n',
@@ -90,6 +90,6 @@ UPDATE airport
 SET country = REPLACE(country, '"', '');
 
 
-SELECT * FROM airport
+SELECT * FROM airport WHERE country LIKE 'VietNam'
 SELECT * FROM users
 INSERT INTO users (userID , fullName , email, password, role) VALUES (1 , 'Admin' ,'admin@gmail.com', 'admin123', 'Admin') 
