@@ -126,31 +126,31 @@
 
 #### Self Evaluation
 
-**_Project Overview_**
+**_1.Project Overview_**
 
 - Allows users to easily book flights, receive emails and conduct payment.
 - Allows admin to perform operations on flights (create, modify info, delete ...), manage flight list, user list, be aware of statistics and report.
 
-  **_Accomplishments_**
+**_2.Accomplishments_**
 
 - User-friendly UI/UX
 - Automatically sending email to user's email
 - Integrate payment
 
-  **_Challenges Faced_**
+**_3.Challenges Faced_**
 
 - Face difficulties when trying to design a good-looking user interface
 - Faced problems with integrating payment service
 - Facing problems when working with Git, mostly with merge conflicts
 
-  **_Skills Learned & Improved_**
+**_4.Skills Learned & Improved_**
 
 - Improve proficiency in Java by implementing complex backend logic
 - Learned how to use SQL Server for managing relational data
 - Improved Git workflow when working in a team
 - Improved team work skills
 
-  **_Future Improvements_**
+**_5.Future Improvements_**
 
 - Refactor the project to keep track of every step in the booking process
 - Implement Front-end frameworks such as ReactJS to make UI/UX more user-friendly
