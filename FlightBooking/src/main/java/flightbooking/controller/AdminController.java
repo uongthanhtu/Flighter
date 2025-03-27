@@ -6,6 +6,11 @@ package flightbooking.controller;
  * and open the template in the editor.
  */
 
+import flightbooking.dao.FlightDAO;
+import flightbooking.dao.PaymentDAO;
+import flightbooking.dao.SeatDAO;
+import flightbooking.dao.TicketDAO;
+import flightbooking.dao.UserDAO;
 import flightbooking.model.UserDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -58,6 +63,17 @@ public class AdminController extends HttpServlet {
             request.getRequestDispatcher("adminaccountmanager.jsp").forward(request, response);
             return;
         }else if(action.equals("reportflight")){
+            UserDAO userdao = new UserDAO();
+            TicketDAO ticketdao = new TicketDAO();
+            PaymentDAO paymentdao = new PaymentDAO();
+            FlightDAO flightdao = new FlightDAO();
+            SeatDAO seatdao = new SeatDAO();
+            request.setAttribute("countflight", flightdao.countFlightScheduled());
+            request.setAttribute("revenue", paymentdao.getRevenue());
+            request.setAttribute("countuser", userdao.countAccountUser());
+            request.setAttribute("coutnticketbooked", ticketdao.countTicketBooked());
+            request.setAttribute("coutnticketpending", ticketdao.countTicketPending());
+            request.setAttribute("seatrate", (seatdao.countSeatBooked() / seatdao.countAllSeat()) * 100);
             request.getRequestDispatcher("adminreportflight.jsp").forward(request, response);
             return;
         }else if(action.equals("accountlist")){

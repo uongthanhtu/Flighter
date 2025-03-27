@@ -254,4 +254,37 @@ public class SeatDAO {
         }
         return status;
     }
+    
+    public float countSeatBooked (){
+        Connection conn = DBUtils.getConnection();
+        float count = 0;
+        try {
+            String sql = " SELECT COUNT(*) FROM seat WHERE seatStatus = 'Booked' ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getFloat(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Count seat booked error, Details: " + e.getMessage());
+        }
+        return count;
+    }
+    
+    public float countAllSeat (){
+        Connection conn = DBUtils.getConnection();
+        float count = 0;
+        try {
+            String sql = " SELECT COUNT(*) FROM seat ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getFloat(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Count seat booked error, Details: " + e.getMessage());
+        }
+        return count;
+    }
+    
 }

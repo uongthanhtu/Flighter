@@ -71,4 +71,22 @@ public class PaymentDAO {
         }
         return maxID;
     }
+    
+    public long getRevenue (){
+        Connection conn = DBUtils.getConnection();
+        long revenue = 0;
+        try {
+            String sql = " SELECT SUM(amount) FROM payment WHERE paymentStatus = 'Completed' ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                revenue = rs.getLong(1);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Get Renvenue error, Details: " + e.getMessage());
+        }
+        return revenue;
+    } 
+    
 }

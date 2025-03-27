@@ -79,8 +79,42 @@ public class TicketDAO {
             System.out.println("Update ticket status is error, Details: " + e.getMessage());
         }
     }
+    
+    public int countTicketBooked (){
+        Connection conn = DBUtils.getConnection();
+        int count = 0;
+        try {
+            String sql = " SELECT COUNT(*) FROM ticket WHERE ticketStatus = 'Booked' ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Count ticket booked error. Details: " + e.getMessage());
+        }
+        return count;
+    }
+    
+    public int countTicketPending (){
+        Connection conn = DBUtils.getConnection();
+        int count = 0;
+        try {
+            String sql = " SELECT COUNT(*) FROM ticket WHERE ticketStatus = 'Pending' ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Count ticket booked error. Details: " + e.getMessage());
+        }
+        return count;
+    }
         
-    public static String generateTicketCode() {
+    public String generateTicketCode() {
         Date currentime = new Date(System.currentTimeMillis());
         Calendar caltime = Calendar.getInstance();
         caltime.setTime(currentime);
