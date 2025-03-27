@@ -205,8 +205,8 @@
                     value="${requestScope.departurename}"
                     required
                   />
-                  <div id="departure-list" class="autocomplete-list"></div>
                 </div>
+                <div id="departure-list" class="autocomplete-list"></div>
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
                     >Arrival Airport</label
@@ -220,8 +220,9 @@
                     value="${requestScope.arrivalname}"
                     required
                   />
-                  <div id="arrival-list" class="autocomplete-list"></div>
+                  
                 </div>
+                    <div id="arrival-list" class="autocomplete-list"></div>
               </div>
               <div class="row">
                 <div class="flight-edit__form-group col-6">
