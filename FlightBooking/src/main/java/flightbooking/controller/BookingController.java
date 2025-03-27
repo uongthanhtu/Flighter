@@ -212,8 +212,12 @@ public class BookingController extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             }
+            String pname = request.getParameter("pname");
+            String ticketstatus = request.getParameter("status");
             TicketHistoryDAO tickethisDao = new TicketHistoryDAO();
-            request.setAttribute("listtickethis", tickethisDao.getAllTicketHistoryByUserID(userSession.getUserID()) );
+            request.setAttribute("pname", pname);
+            request.setAttribute("status", ticketstatus);
+            request.setAttribute("listtickethis", tickethisDao.getAllTicketHistoryByUserID(userSession.getUserID(), pname, ticketstatus ));
             request.getRequestDispatcher("booking-history.jsp").forward(request, response);
             return;
         }

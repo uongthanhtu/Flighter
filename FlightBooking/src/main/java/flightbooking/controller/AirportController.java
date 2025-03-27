@@ -43,14 +43,24 @@ public class AirportController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
         HttpSession session = request.getSession(false);
+        String action = request.getParameter("action") ;
         if(session != null){
             UserDTO adminsession =  (UserDTO) session.getAttribute("adminsession");
             if(adminsession != null){
-                request.getRequestDispatcher("AdminController").forward(request, response);
-                return;
+                String nextaction = (String) request.getAttribute("nextaction");
+                if("insertflight".equals(nextaction) || "updateflight".equals(nextaction)){
+                    AirportDAO dao = new AirportDAO();
+                    List<Map<String, String>> airports = (List<Map<String, String>>) dao.loadAllAirport();   
+                    request.setAttribute("airports", airports);
+                    request.getRequestDispatcher("adminflightedit.jsp").forward(request, response);
+                    return;
+                }else{
+                    request.getRequestDispatcher("AdminController").forward(request, response);
+                    return;
+                }
             }
         }
-        String action = request.getParameter("action") ; 
+         
         AirportDAO dao = new AirportDAO();
         List<Map<String, String>> airports = (List<Map<String, String>>) dao.loadAllAirport();   
         request.setAttribute("airports", airports);

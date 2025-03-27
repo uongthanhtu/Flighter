@@ -1,3 +1,4 @@
+<%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="flightbooking.model.UserDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="flightbooking.model.TicketHistoryDTO"%>
@@ -53,6 +54,35 @@
     <section class="booking-history">
       <div class="container">
         <h2 class="booking-history__title">Booking History</h2>
+        <form action="BookingController" method="GET" class="booking-history__form">
+            <div class="booking-history__form-component">
+              <label for="name" class="booking-history__form__label"
+                >Passenger Name</label
+              ><input
+                type="text"
+                class="booking-history__form-input"
+                name="pname"
+                id="name"
+                value="<%= request.getAttribute("pname") != null ? request.getAttribute("pname") : "" %>"
+              />
+            </div>
+            <div class="booking-history__form-component custom-select">
+              <label for="status" class="booking-history__form__label"
+                >Status</label
+              >
+              <select
+                class="booking-history__form-input"
+                id="status"
+                name="status"
+              >
+                  <option value="" <%= (request.getAttribute("status") == null || request.getAttribute("status").equals("")) ? "selected" : "" %>>Select status</option>
+                <option value="Pending" <%= "Pending".equals(request.getAttribute("status")) ? "selected" : "" %>>Pending</option>
+                <option value="Booked" <%= "Booked".equals(request.getAttribute("status")) ? "selected" : "" %>>Booked</option>
+              </select>
+            </div>
+            <input type="hidden" name="action" value="mybooking">
+            <input type="submit" value="Search" />
+          </form>
         <div class="row">
           <div class="col col-12">
               <% List<TicketHistoryDTO> lists = (List<TicketHistoryDTO>) request.getAttribute("listtickethis");
@@ -61,6 +91,7 @@
                     No tickets booked yet.
                   </p>
               <%}else{ 
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss dd-MM-yyyy");
                 for (TicketHistoryDTO tickethis : lists) {%>
             <div class="booking-history__ticket">
               <div class="booking-history__ticket__img">
@@ -80,8 +111,12 @@
                   <div class="booking-history__ticket__info__col">
                     <p class="booking-history__ticket__label">Date & Time</p>
                     <p class="booking-history__ticket__value">
-                      <%= tickethis.getDepartureDate()%>
+                      <%= tickethis.getDepartureDate().format(formatter) %>
                     </p>
+                  </div>
+                    <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">Ticket Code</p>
+                    <p class="booking-history__ticket__value"> <%= tickethis.getTicketCode()%></p>
                   </div>
                 </div>
                 <div class="booking-history__ticket__info__row">
