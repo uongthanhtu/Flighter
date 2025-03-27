@@ -173,8 +173,6 @@
             >
               1
             </a>
-            <a href="" class="seat-ticket-list__pagination-btn">2</a>
-            <a href="" class="seat-ticket-list__pagination-btn">3</a>
             <a href="" class="seat-ticket-list__pagination-btn">Next</a>
           </div>
         </section>

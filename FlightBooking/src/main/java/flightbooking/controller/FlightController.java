@@ -232,7 +232,7 @@ public class FlightController extends HttpServlet {
             }
             request.getRequestDispatcher("AdminController?action=flightlist").forward(request, response);
             return;
-        } else if (action.equals("detailflight")) {
+        } else if (action.equals("details")) {
             int flightId = Integer.parseInt(request.getParameter("flightid"));
             FlightDTO flight = null;
             flight = flightDao.loadFlightById(flightId);
@@ -242,8 +242,10 @@ public class FlightController extends HttpServlet {
                 request.setAttribute("seatlist", seatlist);
                 request.setAttribute("flight", flight);
                 request.getRequestDispatcher("ticket-list.jsp").forward(request, response);
+                return;
             }
-
+            request.getRequestDispatcher("adminflightlist.jsp").forward(request, response);
+            
         }
     }
 

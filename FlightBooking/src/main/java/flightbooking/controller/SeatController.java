@@ -36,26 +36,26 @@ public class SeatController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            String action = request.getParameter("action");
-            HttpSession session = request.getSession(false);
-            UserDTO adminsession = null;
-            if (session != null) {
-                adminsession = (UserDTO) session.getAttribute("adminsession");
-                if (adminsession == null) {
-                    request.getRequestDispatcher("AirportController").forward(request, response);
-                    return;
-                }
-            } else {
-                request.getRequestDispatcher("AirportController").forward(request, response);
-                return;
-            }
-            if(action == null || action.equals("detailflight")){
-                action
-                FlightDAO flightdao = new FlightDAO();
-                
-                
-            }
+//            /* TODO output your page here. You may use following sample code. */
+//            String action = request.getParameter("action");
+//            HttpSession session = request.getSession(false);
+//            UserDTO adminsession = null;
+//            if (session != null) {
+//                adminsession = (UserDTO) session.getAttribute("adminsession");
+//                if (adminsession == null) {
+//                    request.getRequestDispatcher("AirportController").forward(request, response);
+//                    return;
+//                }
+//            } else {
+//                request.getRequestDispatcher("AirportController").forward(request, response);
+//                return;
+//            }
+//            if(action == null || action.equals("detailflight")){
+//                action
+//                FlightDAO flightdao = new FlightDAO();
+//                
+//                
+//            }
         }
     }
 
