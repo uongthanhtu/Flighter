@@ -233,4 +233,58 @@ public class SeatDAO {
             System.out.println("Update status is error, Details: " + e.getMessage());
         }
     }
+    
+    public String getSeatSatatusByBookingID (int bookingid){
+        Connection conn = DBUtils.getConnection();
+        String status = null;
+        try {
+            String sql = "select s.seatStatus from seat s \n" +
+                            "JOIN ticket t ON s.seatID = t.ticketID \n" +
+                            "JOIN booking b ON b.bookingID = t.bookingID\n" +
+                            "WHERE b.bookingID = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, bookingid);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                status = rs.getString(1);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Get seat status by bookingID is error, Details: " + e.getMessage());
+        }
+        return status;
+    }
+    
+    public float countSeatBooked (){
+        Connection conn = DBUtils.getConnection();
+        float count = 0;
+        try {
+            String sql = " SELECT COUNT(*) FROM seat WHERE seatStatus = 'Booked' ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getFloat(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Count seat booked error, Details: " + e.getMessage());
+        }
+        return count;
+    }
+    
+    public float countAllSeat (){
+        Connection conn = DBUtils.getConnection();
+        float count = 0;
+        try {
+            String sql = " SELECT COUNT(*) FROM seat ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getFloat(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Count seat booked error, Details: " + e.getMessage());
+        }
+        return count;
+    }
+    
 }

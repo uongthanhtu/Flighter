@@ -1,3 +1,5 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -82,6 +84,27 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/css/main.css" />
+    <style>
+        .flight-edit__form-group {
+            position: relative;
+        }
+      .autocomplete-list {
+        position: absolute;
+        top: 37px;
+        background: white;
+        border: 1px solid #ddd;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+      }
+      .autocomplete-item {
+        padding: 7px;
+        cursor: pointer;
+      }
+      .autocomplete-item:hover {
+        background: #f0f0f0;
+      }
+    </style>
   </head>
   <body class="admin-body">
     <!-- Header -->
@@ -179,13 +202,16 @@
                   >
                   <input
                     class="flight-edit__form-input"
+                    id="departure"
                     type="text"
                     placeholder="Enter Departure Airport"
                     name="departureAirport"
                     value="${requestScope.departurename}"
                     required
                   />
+                  <div id="departure-list" class="autocomplete-list"></div>
                 </div>
+                
                 <div class="flight-edit__form-group col-6">
                   <label class="flight-edit__form-label" for=""
                     >Arrival Airport</label
@@ -193,12 +219,15 @@
                   <input
                     class="flight-edit__form-input"
                     type="text"
+                    id="arrival"
                     placeholder="Enter Arrival Airport"
                     name="arrivalAirport"
                     value="${requestScope.arrivalname}"
                     required
                   />
+                  <div id="arrival-list" class="autocomplete-list"></div>
                 </div>
+                
               </div>
               <div class="row">
                 <div class="flight-edit__form-group col-6">
@@ -249,8 +278,8 @@
                     type="text"
                     placeholder="Enter Aircraft Type"
                     name="aircraftType"
-                    value="${requestScope.flight.aircraftType}"
-                    required
+                    value="Flighter 878"
+                    readonly
                   />
                 </div>
               </div>
@@ -307,7 +336,7 @@
                     min="0"
                     type="number"
                     name="baggageAllow"
-                    placeholder="Enter Price"
+                    placeholder="Enter Baggage"
                     value="${requestScope.flight.baggageAllow}"
                     required
                   />
@@ -321,9 +350,8 @@
                     min="1"
                     type="number"
                     name="totalSeat"
-                    placeholder="Enter Price"
-                    value="${requestScope.flight.totalSeats}"
-                    required
+                    value ="120"
+                    readonly
                   />
                 </div>
               </div>
@@ -341,5 +369,82 @@
         </div>
       </section>
     </main>
+              
+   <script>
+          document.addEventListener("DOMContentLoaded", function () {
+          let airports = [
+              <%
+                  List<Map<String, String>> airports = (List<Map<String, String>>) request.getAttribute("airports");
+                  if (airports != null) {
+                      for (Map<String, String> airport : airports) {
+              %>
+                  { name: "<%= airport.get("name")%>", city: "<%= airport.get("city")%>", country: "<%= airport.get("country")%>" },
+
+              <%
+                      }
+                  }
+              %>
+          ];
+          setupAutocomplete("departure", airports);
+          setupAutocomplete("arrival", airports);
+      });
+
+      function setupAutocomplete(inputId, airports) {
+
+          const input = document.getElementById(inputId);
+          const list = document.getElementById(inputId + "-list");
+
+          input.addEventListener("input", function () {
+              console.log("dada");
+              const query = input.value.trim().toLowerCase();
+              list.innerHTML = "";
+
+              if (query.length < 1) {
+                  return;
+              }
+
+              let filteredAirports = airports.filter(airport =>
+                  airport.name.toLowerCase().includes(query) || airport.city.toLowerCase().includes(query) || airport.country.toLowerCase().includes(query)
+              );
+
+              showAirportList(filteredAirports, input, list);
+          });
+
+          document.addEventListener("click", function (e) {
+              if (!list.contains(e.target) && e.target !== input) {
+                  list.innerHTML = "";
+              }
+          });
+      }
+
+      function showAirportList(airportList, input, list) {
+      list.innerHTML = "";
+
+      airportList.forEach(airport => {
+          let displayName = airport.name ? airport.name : "Unknown";
+          let displayCity = airport.city ? airport.city : "Unknown";
+          let displayCountry = airport.country ? airport.country : "Unknown";
+          console.log(displayName);
+          console.log(displayCity);
+          console.log(displayCountry);
+          const div = document.createElement("div");
+          div.classList.add("autocomplete-item");
+
+          if (displayCountry && displayCountry.trim() !== "" && displayCountry !== "undefined") {
+              div.innerHTML = displayName + " - " + displayCity + " - " + displayCountry;
+
+          } else {
+              div.innerHTML = displayName;
+          }
+
+          div.onclick = function () {
+              input.value = displayName;
+              list.innerHTML = "";
+          };
+
+          list.appendChild(div);
+      });
+      }
+    </script>           
   </body>
 </html>

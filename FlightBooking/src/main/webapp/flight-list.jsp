@@ -82,21 +82,26 @@
     <link rel="stylesheet" href="./assets/css/main.css" />
     
     <style>
-        .autocomplete-list {
-            position: absolute;
-            background: white;
-            border: 1px solid #ddd;
-            max-height: 200px;
-            overflow-y: auto;
-            z-index: 1000;
+        .flight-edit__form-group {
+            position: relative;
         }
-        .autocomplete-item {
-            padding: 5px;
-            cursor: pointer;
-        }
-        .autocomplete-item:hover {
-            background: #f0f0f0;
-        }
+      .autocomplete-list {
+        position: absolute;
+        top: 152px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        z-index: 1000;
+      }
+      .autocomplete-item {
+        padding: 7px;
+        cursor: pointer;
+      }
+      .autocomplete-item:hover {
+        background: #f0f0f0;
+      }
     </style>
     
   </head>
@@ -159,7 +164,7 @@
                   type="text"
                   id="departure"
                   name="departure"
-                  placeholder="<%=(String)request.getAttribute("departure")%>"
+                  value="<%=(request.getAttribute("departure") != null) ? (String)request.getAttribute("departure") : "" %>"
                   autocomplete="off"
                 />
                 <div id="departure-list" class="autocomplete-list"></div>
@@ -174,7 +179,7 @@
                   type="text"
                   id="arrival"
                   name="arrival"
-                  placeholder="<%=(String)request.getAttribute("arrival")%>"
+                  value="<%=(request.getAttribute("arrival") != null) ? (String)request.getAttribute("arrival") : "" %>"
                   autocomplete="off"
                 />
                 <div id="arrival-list" class="autocomplete-list"></div>

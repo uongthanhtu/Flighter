@@ -88,16 +88,21 @@ import="flightbooking.model.UserDTO"%>
     <link rel="stylesheet" href="assets/css/main.css" />
 
     <style>
+        .flight-search__form-group {
+            position: relative;
+        }
       .autocomplete-list {
         position: absolute;
+        top: 100px;
         background: white;
         border: 1px solid #ddd;
+        border-radius: 10px;
         max-height: 200px;
         overflow-y: auto;
         z-index: 1000;
       }
       .autocomplete-item {
-        padding: 5px;
+        padding: 7px;
         cursor: pointer;
       }
       .autocomplete-item:hover {

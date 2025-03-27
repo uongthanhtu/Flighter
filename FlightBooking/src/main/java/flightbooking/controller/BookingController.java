@@ -8,11 +8,13 @@ package flightbooking.controller;
 import flightbooking.dao.AirportDAO;
 import flightbooking.dao.BookingDAO;
 import flightbooking.dao.FlightDAO;
+import flightbooking.dao.PaymentDAO;
 import flightbooking.dao.SeatDAO;
 import flightbooking.dao.TicketDAO;
 import flightbooking.dao.TicketHistoryDAO;
 import flightbooking.model.BookingDTO;
 import flightbooking.model.FlightDTO;
+import flightbooking.model.PaymentDTO;
 import flightbooking.model.SeatDTO;
 import flightbooking.model.TicketDTO;
 import flightbooking.model.UserDTO;
@@ -120,6 +122,7 @@ public class BookingController extends HttpServlet {
             return;
         }else if(action.equals("selecteseat")){
             int flightid = Integer.parseInt(request.getParameter("flightid")) ;
+            String seaterror = (String) request.getAttribute("seaterror");
             if(userSession == null){
                 request.setAttribute("nextaction", "selecteseat");
                 request.setAttribute("flightid", flightid); 
@@ -128,6 +131,9 @@ public class BookingController extends HttpServlet {
             }
             FlightDAO flightdao = new FlightDAO();
             SeatDAO seatdao = new  SeatDAO();
+            if(seaterror != null && !seaterror.isEmpty()){
+                request.setAttribute("seaterror", seaterror);
+            }
             request.setAttribute("flightnumber", flightdao.loadFlightById(flightid).getFlightNumber());
             request.setAttribute("seats", seatdao.getListSeatByFlightID(flightid));
             request.setAttribute("flightid", flightid);
@@ -191,9 +197,14 @@ public class BookingController extends HttpServlet {
                 ticketDAO.insertTicket(ticket);
                 totalPrice += price;
             }
+            PaymentDAO paymentDao = new PaymentDAO();
+            PaymentDTO payment = new PaymentDTO(paymentDao.getMaxPaymentID() + 1, totalPrice , "VNPay" , "Pending", bookingID);
+            paymentDao.insert(payment);
             booking.setTotalPrice(totalPrice);
             bookingDao.updateTotalPrice(bookingID, totalPrice);
+            TicketHistoryDAO ticketHisDao = new TicketHistoryDAO();
             request.setAttribute("booking", booking);
+            request.setAttribute("ticketlist", ticketHisDao.getAllTicketHistoryByBookingID(booking.getBookingID()));
             request.getRequestDispatcher("payment.jsp").forward(request, response);
             return;
         }else if(action.equals("mybooking")){
@@ -201,8 +212,12 @@ public class BookingController extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").forward(request, response);
                 return;
             }
+            String pname = request.getParameter("pname");
+            String ticketstatus = request.getParameter("status");
             TicketHistoryDAO tickethisDao = new TicketHistoryDAO();
-            request.setAttribute("listtickethis", tickethisDao.getAllTicketHistoryByUserID(userSession.getUserID()) );
+            request.setAttribute("pname", pname);
+            request.setAttribute("status", ticketstatus);
+            request.setAttribute("listtickethis", tickethisDao.getAllTicketHistoryByUserID(userSession.getUserID(), pname, ticketstatus ));
             request.getRequestDispatcher("booking-history.jsp").forward(request, response);
             return;
         }

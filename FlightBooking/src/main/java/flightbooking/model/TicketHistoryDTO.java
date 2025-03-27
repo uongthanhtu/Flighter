@@ -14,13 +14,15 @@ import java.time.LocalDateTime;
 public class TicketHistoryDTO {
     private String name;
     private LocalDateTime departureDate;
+    private LocalDateTime arrivalDate;
     private String departureArrival;
     private String seatNumber;
     private String flightNumber;
     private double price;
     private String status;
     private String fareClass;
-
+    private String ticketCode;
+    
     public TicketHistoryDTO() {
     }
 
@@ -97,6 +99,22 @@ public class TicketHistoryDTO {
 
     public void setFareClass(String fareClass) {
         this.fareClass = fareClass;
+    }
+
+    public LocalDateTime getArrivalDate() {
+        return arrivalDate;
+    }
+
+    public void setArrivalDate(LocalDateTime arrivalDate) {
+        this.arrivalDate = arrivalDate;
+    }
+
+    public String getTicketCode() {
+        return ticketCode;
+    }
+
+    public void setTicketCode(String ticketCode) {
+        this.ticketCode = ticketCode;
     }
     
     

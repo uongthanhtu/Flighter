@@ -150,8 +150,7 @@
                       for (FlightDTO flight : flightlist) {
                           pageContext.setAttribute("flight", flight);
                   %> 
-                      
-                   
+
                 <tr>
                   <td>${flight.flightID}</td>
                   <td>${flight.flightNumber}</td>

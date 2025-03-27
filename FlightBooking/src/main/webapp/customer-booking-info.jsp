@@ -3,6 +3,7 @@
 <%@page import="java.util.List"%>
 <%@page import="flightbooking.model.UserDTO"%> <%@ page
 contentType="text/html;charset=UTF-8" language="java" %>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -133,7 +134,7 @@ contentType="text/html;charset=UTF-8" language="java" %>
                   Class: <span> <%= seat.getFareClass()%> </span>
                 </h3>
                 <h3 class="customer-booking__top-label">
-                  Ticket Price: <span> <%= seat.getPrice() %> VND</span>
+                  Ticket Price: <span><fmt:formatNumber value="<%= seat.getPrice() %>" type="number" groupingUsed="true" />  VND</span>
                 </h3>
               </div>
                 <input type="hidden" name="seatid" value="<%= seat.getSeatID() %>" />

@@ -191,10 +191,8 @@
                   name="ticket-price"
                   id="business-class-ticket"
                 />
-                <span class="custom-radio"></span>
                 <span class="flight--ticket--price">${requestScope.flightobject.businessPrice} VND</span>
               </label>
-
               <label class="flight--detail--component--header">
                 Economy Class Ticket:
               </label>
@@ -205,7 +203,6 @@
                   name="ticket-price"
                   id="business-class-ticket"
                 />
-                <span class="custom-radio"></span>
                 <span class="flight--ticket--price">${requestScope.flightobject.economyPrice} VND</span>
               </label>
             </form>

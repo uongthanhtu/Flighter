@@ -81,8 +81,8 @@ public class FlightDAO {
                     + " flightNumber = ? , adminID = ? WHERE flightID = ? ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, flight.getAirline());
-            ps.setInt(2, flight.getArrivalID());
-            ps.setInt(3, flight.getDepartureID());
+            ps.setInt(2, flight.getDepartureID());
+            ps.setInt(3, flight.getArrivalID());
             ps.setTimestamp(4, Timestamp.valueOf(flight.getDepartureTime()));
             ps.setTimestamp(5, Timestamp.valueOf(flight.getArrivalTime()));
             ps.setInt(6, flight.getTotalSeats());
@@ -186,6 +186,7 @@ public class FlightDAO {
             if(departurtime != null){
                 sql += " AND CONVERT(DATE, departuretTime) = ? " ;
             }
+            sql += " AND flightStatus = 'Open' ";
             PreparedStatement ps = conn.prepareStatement(sql);
             if(departureID > 0){
                 ps.setInt(counindex++, departureID);
@@ -222,12 +223,13 @@ public class FlightDAO {
         return listFlight;
     }
     
-    public boolean deleteFlight (int flightID){
+    public boolean deleteFlight (int flightID, String flightStatus){
         Connection conn = DBUtils.getConnection();
         try {
-            String sql = " DELETE FROM flight WHERE flightID = ? ";
+            String sql = " UPDATE flight SET flightStatus = ? WHERE flightID = ? ";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, flightID);
+            ps.setString(1, flightStatus);
+            ps.setInt(2, flightID);
             ps.executeUpdate();
             conn.close();
         } catch (Exception e) {
@@ -235,6 +237,45 @@ public class FlightDAO {
             return false;
         }
         return true;
+    }
+    
+    
+    public int getFlightIDByBookingID (int bookingid){
+        Connection conn = DBUtils.getConnection();
+        int flightid = 0;
+        try {
+            String sql = " select f.flightID from seat s \n" +
+                            "JOIN ticket t ON s.seatID = t.ticketID \n" +
+                            "JOIN booking b ON b.bookingID = t.bookingID\n" +
+                            "JOIN flight f ON f.flightID = s.flightID\n" +
+                            "WHERE b.bookingID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, bookingid);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                flightid = rs.getInt(1);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.out.println("Get FlightID By BookingID is error, Details : " + e.getMessage());
+        }
+        return flightid;
+    }
+    
+    public int countFlightScheduled (){
+        Connection conn = DBUtils.getConnection();
+        int count = 0;
+        try {
+            String sql = " SELECT COUNT(*) FROM flight ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.out.println("Count flight scheduled error, Details : " + e.getMessage());
+        }
+        return count;
     }
    
 }

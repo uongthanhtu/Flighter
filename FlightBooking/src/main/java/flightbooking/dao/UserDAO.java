@@ -19,8 +19,9 @@ import java.util.List;
  * @author ADMIN
  */
 public class UserDAO {
-    Connection conn = DBUtils.getConnection();
+    
     public boolean insertUser(UserDTO user){
+        Connection conn = DBUtils.getConnection();
         String sql = "INSERT INTO users(userID, fullName, password, email, phoneNumber, role, DOB) "               
                 + " VALUES (?, ?, ?, ?, ?, ?, ? )";    
         try {
@@ -44,6 +45,7 @@ public class UserDAO {
     }
     
     public boolean checkEmail(String email) {
+        Connection conn = DBUtils.getConnection();
         String query = "SELECT COUNT(*) FROM users WHERE email = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setString(1, email);
@@ -51,6 +53,7 @@ public class UserDAO {
             if (rs.next() && rs.getInt(1) > 0) {
                 return true;
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
@@ -59,6 +62,7 @@ public class UserDAO {
     }
     
     public String getMailByUserId(int userid) {
+        Connection conn = DBUtils.getConnection();
         String email = "";
         String query = "SELECT email FROM users WHERE userID = ?";
         try (PreparedStatement ps = conn.prepareStatement(query)) {
@@ -67,6 +71,7 @@ public class UserDAO {
             if (rs.next()) {
                 email = rs.getString("email");
             }
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -74,13 +79,13 @@ public class UserDAO {
     }
     
     public UserDTO loginUser (String email, String password){
+        Connection conn = DBUtils.getConnection();
         UserDTO user = null;
         try {
-            Connection con = DBUtils.getConnection();            
             String sql = " SELECT email, fullName, phoneNumber, role FROM users ";
             sql += " WHERE email = ?  AND password = ?";
                                
-            PreparedStatement stmt = con.prepareStatement(sql);
+            PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, email);
             stmt.setString(2, password);
                 
@@ -95,7 +100,7 @@ public class UserDAO {
                 user.setRole(rs.getString("role"));
                 }
             }
-            con.close();
+            conn.close();
         } catch (SQLException ex) {                
             System.out.println("Error in servlet. Details:" + ex.getMessage());
             ex.printStackTrace();
@@ -104,17 +109,16 @@ public class UserDAO {
     }
     
     public boolean updateUser (UserDTO user){
+        Connection conn = DBUtils.getConnection();
         String sql = " UPDATE users SET fullName = ? , phoneNumber = ? , DOB = ? WHERE email = ? ";
             try{
-                Connection connect = DBUtils.getConnection();
-                PreparedStatement ps = connect.prepareStatement(sql);
-
+                PreparedStatement ps = conn.prepareStatement(sql);
                 ps.setString(1, user.getFullName());
                 ps.setString(2, user.getPhoneNumber());
                 ps.setDate(3, user.getDob());
                 ps.setString(4, user.getEmail());
                 ps.executeUpdate();
-                connect.close();
+                conn.close();
             }catch(SQLException ex){
                 System.out.println("Update user error: " + ex.getMessage()) ;
                 ex.printStackTrace();
@@ -202,6 +206,7 @@ public class UserDAO {
     }
     
     public boolean deleteUser (int id){
+        Connection conn = DBUtils.getConnection();   
         try {
             String sql = " DELETE FROM users WHERE userID = ? ";
             PreparedStatement ps = conn.prepareStatement(sql);
@@ -246,6 +251,7 @@ public class UserDAO {
     }
     
     public int getMaxUserId(){
+        Connection conn = DBUtils.getConnection();   
         int id = 0;
         try {
             String sql = " SELECT MAX(userID) FROM users ";
@@ -259,5 +265,22 @@ public class UserDAO {
             ex.printStackTrace();
         }
         return id;
+    }
+    
+    public int countAccountUser (){
+        Connection con = DBUtils.getConnection();   
+        int count = 0; 
+        try {
+            String sql = " SELECT COUNT(*) FROM users ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getInt(1);
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println("Count account user error. Details: " + e.getMessage());
+        }
+        return count;
     }
 }
