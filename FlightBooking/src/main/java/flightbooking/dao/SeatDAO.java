@@ -99,6 +99,7 @@ public class SeatDAO {
                 seat.setSeatStatus(rs.getString("seatStatus"));
                 seat.setFlightID(rs.getInt("flightID"));
                 seat.setPrice(rs.getDouble("price"));
+                
                 seatlist.add(seat);
                 System.out.println(seat.getSeatID() + " - " + seat.getPrice());
             }

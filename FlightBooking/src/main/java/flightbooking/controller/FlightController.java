@@ -22,8 +22,10 @@ import javax.servlet.http.HttpSession;
 import flightbooking.dao.AirportDAO;
 import flightbooking.dao.FlightDAO;
 import flightbooking.dao.SeatDAO;
+import flightbooking.dao.SeatTicketDAO;
 import flightbooking.model.FlightDTO;
 import flightbooking.model.SeatDTO;
+import flightbooking.model.SeatTicketDTO;
 import flightbooking.model.UserDTO;
 
 /**
@@ -241,8 +243,8 @@ public class FlightController extends HttpServlet {
             FlightDTO flight = null;
             flight = flightDao.loadFlightById(flightId);
             if (flight != null) {
-                SeatDAO seatdao = new SeatDAO();
-                List<Integer> seatlist = seatdao.getListSeatIDByFlightID(flightId);
+                SeatTicketDAO seatdao = new SeatTicketDAO();
+                List<SeatTicketDTO> seatlist = seatdao.getListSeatByFlightID(flightId);
                 request.setAttribute("seatlist", seatlist);
                 request.setAttribute("flight", flight);
                 request.getRequestDispatcher("ticket-list.jsp").forward(request, response);
