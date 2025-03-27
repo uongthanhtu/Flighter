@@ -42,9 +42,8 @@
 
 ```
 1. Account Management
-    - Register an account (via Email or Google).
+    - Register an account .
     - Log in and log out.
-    - Change password.
 2. Flight Search & Booking
     - Search for flights by date, time, departure, arrival Ariport.
     - Select fare class (Economy, Business, First Class).
@@ -124,6 +123,29 @@
 #### Report & Analytics
 
 ![report](images/admin_report.jpg)
+
+#### Self Evaluation
+
+**_Project Overview_**
+
+- Allows users to easily book flights, receive emails and conduct payment.
+- Allows admin to perform operations on flights (create, modify info, delete ...), manage flight list, user list, be aware of statistics and report.
+  **_Accomplishments_**
+- User-friendly UI/UX
+- Automatically sending email to user's email
+- Integrate payment
+  **_Challenges Faced_**
+- Face difficulties when trying to design a good-looking user interface
+- Faced problems with integrating payment service
+- Facing problems when working with Git, mostly with merge conflicts
+  **_Skills Learned & Improved_**
+- Improve proficiency in Java by implementing complex backend logic
+- Learned how to use SQL Server for managing relational data
+- Improved Git workflow when working in a team
+- Improved team work skills
+  **_Future Improvements_**
+- Refactor the project to keep track of every step in the booking process
+- Implement Front-end frameworks such as ReactJS to make UI/UX more user-friendly
 
 ```
 Mail: uongthanhtu5@gmail.com, tuutse183853@fpt.edu.vn
