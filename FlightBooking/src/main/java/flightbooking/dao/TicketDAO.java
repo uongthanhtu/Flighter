@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -129,6 +130,22 @@ public class TicketDAO {
             System.out.println("Count ticket booked error. Details: " + e.getMessage());
         }
         return count;
+    }
+    
+    public boolean updatePassegerName(int seatid, String passengerName){
+        Connection conn = DBUtils.getConnection();
+        try {
+            String sql = " UPDATE ticket SET passengerName = ? WHERE ticketID = ? ";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, passengerName);
+            ps.setInt(2, seatid);
+            ps.executeUpdate();
+            conn.close();
+            return true;
+        } catch (Exception e) {
+            System.out.println("Update ticket status is error, Details: " + e.getMessage());
+        }
+        return false;
     }
         
     public String generateTicketCode() {
