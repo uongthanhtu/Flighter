@@ -18,7 +18,7 @@ import java.util.List;
  * @author ADMIN
  */
 public class TicketHistoryDAO {
-    public List<TicketHistoryDTO> getAllTicketHistoryByUserID (int userID){
+    public List<TicketHistoryDTO> getAllTicketHistoryByUserID (int userID, String pName, String tStatus){
         Connection conn = DBUtils.getConnection();
         List<TicketHistoryDTO> lists = new ArrayList<TicketHistoryDTO>();
         TicketHistoryDTO ticketHis = null;
@@ -33,9 +33,23 @@ public class TicketHistoryDAO {
                             " JOIN flight f ON f.flightID = s.flightID\n" +
                             " JOIN airport ad ON ad.airportID = f.departureId\n" +
                             " JOIN airport aa ON aa.airportID = f.arrivalId\n" +
-                            " WHERE userID = ? ORDER BY b.bookingID DESC  ";
+                            " WHERE u.userID = ?  ";
+            if(pName != null && !pName.isEmpty()){
+                sql += " AND t.passengerName LIKE ? ";
+            }
+            if(tStatus != null && !tStatus.isEmpty()){
+                sql += " AND t.ticketStatus = ? ";
+            }
+            sql += " ORDER BY b.bookingID DESC ";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1, userID);
+            int index = 2;
+            if(pName != null && !pName.isEmpty()){
+                ps.setString(index++, "%"+pName+"%");
+            }
+            if(tStatus != null && !tStatus.isEmpty()){
+                ps.setString(index++, tStatus);
+            }
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 ticketHis = new TicketHistoryDTO();

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Booking History</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <nav class="navbar">
+          <!-- Logo -->
+          <a href="AirportController" class="admin-logo"
+            ><img
+              src="./assets/img/airplane-flight.png"
+              alt="logo"
+              class="logo"
+            />
+            <p class="admin-logo__title">Flighter</p>
+          </a>
+          <div class="navbar__actions">
+            <a href="#!" class="navbar__link">My booking</a>
+            <a href="#!" class="navbar__link">Flights</a>
+            <a href="#!" class="navbar__link">Support</a>
+            <a href="login.jsp" class="navbar__link">Sign in</a>
+            <a href="register.jsp" class="navbar__link">Sign up</a>
+          </div>
+          <div class="navbar__users">
+            <a
+              href="ProfileController?action=profile_details"
+              class="user__avt"
+            >
+              <img src="./assets/img/user-avt.png" alt="User avt" /> </a
+            ><a href="./AuthController?action=logout" class="user__logout__btn"
+              >Log out</a
+            >
+          </div>
+        </nav>
+      </div>
+    </header>
+    <section class="booking-history">
+      <div class="container">
+        <div class="booking-history__header">
+          <h2 class="booking-history__title">Booking History</h2>
+          <form action="" method="GET" class="booking-history__form">
+            <input type="hidden" name="action" value="booking-history-search" />
+            <div class="booking-history__form-component">
+              <label for="name" class="booking-history__form__label"
+                >Customer Name</label
+              ><input
+                type="text"
+                class="booking-history__form-input"
+                name="name"
+                id="name"
+              />
+            </div>
+            <div class="booking-history__form-component custom-select">
+              <label for="status" class="booking-history__form__label"
+                >Status</label
+              >
+              <select
+                class="booking-history__form-input"
+                id="status"
+                name="status"
+              >
+                <option value="">Select status</option>
+                <option value="Pending">Pending</option>
+                <option value="Booked">Booked</option>
+              </select>
+            </div>
+            <input type="submit" value="Search" />
+          </form>
+        </div>
+        <div class="row">
+          <div class="col col-12">
+            <p class="booking-history__message--empty">
+              No tickets booked yet.
+            </p>
+            <div class="booking-history__ticket">
+              <div class="booking-history__ticket__img">
+                <img
+                  src="./assets/img/airplane-flight.png"
+                  alt="Nothing special"
+                />
+              </div>
+              <div class="booking-history__ticket__info">
+                <h3 class="booking-history__ticket-class">Economy</h3>
+                <div class="booking-history__ticket__info__row">
+                  <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">Name</p>
+                    <p class="booking-history__ticket__value">
+                      Hoai Phuong Cu Be
+                    </p>
+                  </div>
+                  <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">Date & Time</p>
+                    <p class="booking-history__ticket__value">
+                      11/02/2025, 23:30:00
+                    </p>
+                  </div>
+                  <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">Ticket Code</p>
+                    <p class="booking-history__ticket__value">ABCDEFG</p>
+                  </div>
+                </div>
+                <div class="booking-history__ticket__info__row">
+                  <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">From - To</p>
+                    <p class="booking-history__ticket__value">
+                      Ho Chi Minh - Da Nang
+                    </p>
+                  </div>
+                  <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">Seat</p>
+                    <p class="booking-history__ticket__value">G16</p>
+                  </div>
+                </div>
+                <div class="booking-history__ticket__info__row">
+                  <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">Flight No</p>
+                    <p class="booking-history__ticket__value">FL42342324</p>
+                  </div>
+                  <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">Price</p>
+                    <p class="booking-history__ticket__value">1,800,000 VND</p>
+                  </div>
+                  <div class="booking-history__ticket__info__col">
+                    <p class="booking-history__ticket__label">Status</p>
+                    <p class="booking-history__ticket__value">Pending</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
