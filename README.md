@@ -59,8 +59,7 @@
 
 ### Database
 
-![erd](images/ERD.jpg)
-![diagrams](images/diagrams.png)
+![diagrams](images/img_readme/diagrams.jpg)
 
 ### GUI
 
@@ -68,61 +67,68 @@
 
 #### Home
 
-![home](images/homepage.jpg)
+![home](images/img_readme/homepage.jpg)
+![home](images/img_readme/homepage2.jpg)
 
 #### Login & Register
 
-![login](images/login.png)
-![register](images/register.png)
+![login](images/img_readme/login.jpg)
+![register](images/img_readme/register.jpg)
 
 #### Search by departure, arrival Ariport and departure date
 
-![search](images/search.jpg)
+![search](images/img_readme/flightlist.jpg)
 
 #### Flight Details Display:
 
 #### After selecting a flight, the system will display the following details:
 
-![bookingdetails](images/bookingdetail.jpg)
+![bookingdetails](images/img_readme/flightdetails.jpg)
 
 #### Seat Selection: After viewing flight details and selecting a fare class, the user will proceed to seat selection
 
-![seat](images/bookingseat.jpg)
+![seat](images/img_readme/selected_seat.jpg)
 
 #### Passenger information
 
-![passengerinfo](images/passengerInfo.jpg)
+![passengerinfo](images/img_readme/informationpassenger.jpg)
 
 #### Payment
 
-![payment](images/payment.jpg)
+![payment](images/img_readme/payment.jpg)
+![payment](images/img_readme/payment2.jpg)
+![payment](images/img_readme/payment3.jpg)
+![bookinghis](images/img_readme/payment4.jpg)
+
+#### Booking successfully -> send mail
+
+![payment](images/img_readme/email.jpg)
 
 #### Booking History
 
-![bookinghis](images/bookinghis1.jpg)
-![bookinghis](images/bookinghis.jpg)
+![bookinghis](images/img_readme/bookinghistory.jpg)
 
 ### Admin
 
 #### Flight List Management
 
-![flightlistmanage](images/admin_dashboard.jpg)
+![flightlistmanage](images/img_readme/admin1.jpg)
 
-#### Ticket List Management (After clicking "View" button)
+#### Seat Information List Management (After clicking "View" button)
 
-![ticketlist](images/admin_ticketmana.png)
+![flightlistmanage](images/img_readme/admin2.jpg)
 
 #### Add Flight
 
-![addflight](images/admin_addflight.jpg)
+![flightlistmanage](images/img_readme/admin3.jpg)
 
 #### User Account Management
 
-![useraccuntmanagement](images/admin_useraccount.jpg)
+![flightlistmanage](images/img_readme/admin4.jpg)
 
 #### Report & Analytics
 
-![report](images/admin_report.jpg)
+![flightlistmanage](images/img_readme/admin5.jpg)
 
 #### Self Evaluation
 
